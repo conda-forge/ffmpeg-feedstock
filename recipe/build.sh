@@ -1,22 +1,16 @@
 #!/bin/bash
 
-export CFLAGS="-Wall -g -m64 -pipe -O3 -march=x86-64 -fPIC"
-export CXXFLAGS="${CFLAGS}"
-
-if [ "$(uname)" == "Darwin" ];
-then
-    export LIBRARY_SEARCH_VAR=DYLD_FALLBACK_LIBRARY_PATH
-elif [ "$(uname)" == "Linux" ];
-then
-    export LIBRARY_SEARCH_VAR=LD_LIBRARY_PATH
-fi
-
 ./configure \
         --prefix="${PREFIX}" \
-        --enable-shared \
-        --enable-pic \
-        --enable-libx264 \
         --disable-doc \
-        --enable-gpl
+        --enable-shared \
+        --enable-static \
+        --extra-cflags="-Wall -g -m64 -pipe -O3 -march=x86-64 -fPIC `pkg-config --cflags zlib`" \
+        --extra-cxxflags=="-Wall -g -m64 -pipe -O3 -march=x86-64 -fPIC" \
+        --extra-libs="`pkg-config --libs zlib`" \
+        --enable-pic \
+        --enable-gpl \
+        --enable-libx264
+
 make
 make install
