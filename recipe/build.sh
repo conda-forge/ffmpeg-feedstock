@@ -19,4 +19,5 @@ fi
         --disable-doc \
         --enable-gpl
 make
+make check
 make install
