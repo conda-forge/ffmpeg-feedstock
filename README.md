@@ -5,7 +5,7 @@ Home: http://www.ffmpeg.org/
 
 Package license: GPL 2
 
-Feedstock license: BSD
+Feedstock license: BSD 3-Clause
 
 Summary: Cross-platform solution to record, convert and stream audio and video.
 
@@ -69,6 +69,7 @@ Terminology
 
 Current build status
 ====================
+
 Linux: [![Circle CI](https://circleci.com/gh/conda-forge/ffmpeg-feedstock.svg?style=svg)](https://circleci.com/gh/conda-forge/ffmpeg-feedstock)
 OSX: [![TravisCI](https://travis-ci.org/conda-forge/ffmpeg-feedstock.svg?branch=master)](https://travis-ci.org/conda-forge/ffmpeg-feedstock) 
 Windows: [![AppVeyor](https://ci.appveyor.com/api/projects/status/github/conda-forge/ffmpeg-feedstock?svg=True)](https://ci.appveyor.com/project/conda-forge/ffmpeg-feedstock/branch/master)
