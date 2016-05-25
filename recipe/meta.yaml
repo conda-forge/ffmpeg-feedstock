@@ -14,15 +14,19 @@ build:
 
 requirements:
     build:
-        - pkg-config
-        - libtool
+        - pkg-config      # [unix]
+        - libtool         # [unix]
         - yasm
-        - gcc          # [osx]
-        - x264
+        - gcc             # [osx]
+        - posix           # [win]
+        - m2w64-binutils  # [win]
+        - c99-to-c89      # [win]
+        - msinttypes      # [win and py<34]
+        - x264            # [unix]
         - zlib 1.2*
     run:
-        - libgcc       # [osx]
-        - x264
+        - libgcc          # [osx]
+        - x264            # [unix]
         - zlib 1.2*
 
 test:
