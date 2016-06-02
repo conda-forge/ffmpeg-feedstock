@@ -11,7 +11,7 @@ source:
 
 build:
     skip: true         # [win]
-    number: 1
+    number: 2
 
 requirements:
     build:
@@ -29,6 +29,7 @@ requirements:
 test:
     commands:
         - ffmpeg --help
+        - ffmpeg -codecs | grep "DEVI.S zlib"  # [unix]
 
 about:
     home: http://www.ffmpeg.org/
@@ -39,3 +40,4 @@ extra:
     recipe-maintainers:
         - danielballan
         - jakirkham
+        - 183amir
