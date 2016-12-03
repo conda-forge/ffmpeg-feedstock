@@ -11,7 +11,7 @@ source:
 
 build:
     skip: true         # [win]
-    number: 2
+    number: 3
 
 requirements:
     build:
@@ -20,11 +20,11 @@ requirements:
         - yasm
         - gcc          # [osx]
         - x264
-        - zlib 1.2*
+        - zlib 1.2.*
     run:
         - libgcc       # [osx]
         - x264
-        - zlib 1.2*
+        - zlib 1.2.*
 
 test:
     commands:
