@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# unset the SUBDIR variable since it changes the behavior of make here
+unset SUBDIR
+
 ./configure \
         --prefix="${PREFIX}" \
         --disable-doc \
