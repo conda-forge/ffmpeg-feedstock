@@ -6,8 +6,8 @@ package:
 
 source:
     fn: ffmpeg-{{ version }}.tar.gz  # [not win]
-    url: https://ffmpeg.org/releases/ffmpeg-{{ version }}.tar.gz # [not win]
-    md5: 7b9449795790c46331dae2c6e8e28f15 # [not win]
+    url: https://ffmpeg.org/releases/ffmpeg-{{ version }}.tar.gz  # [not win]
+    md5: 7b9449795790c46331dae2c6e8e28f15  # [not win]
     
     fn: ffmpeg-{{ version }}-win32-shared.7z  # [win32]
     url: https://ffmpeg.zeranoe.com/builds/win32/shared/ffmpeg-{{ version }}-shared.7z  # [win32]
