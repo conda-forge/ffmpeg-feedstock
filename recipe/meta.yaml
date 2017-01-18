@@ -5,26 +5,34 @@ package:
     version: {{ version }}
 
 source:
-    fn: ffmpeg-{{ version }}.tar.gz
-    url: https://ffmpeg.org/releases/ffmpeg-{{ version }}.tar.gz
-    md5: 7b9449795790c46331dae2c6e8e28f15
+    fn: ffmpeg-{{ version }}.tar.gz  # [not win]
+    url: https://ffmpeg.org/releases/ffmpeg-{{ version }}.tar.gz  # [not win]
+    md5: 7b9449795790c46331dae2c6e8e28f15  # [not win]
+    
+    fn: ffmpeg-{{ version }}-win32-shared.7z  # [win32]
+    url: https://ffmpeg.zeranoe.com/builds/win32/shared/ffmpeg-{{ version }}-win32-shared.7z  # [win32]
+    sha256: 192117a332d08c53412c3c52b32eac8fca72db874509a627b7b41e55eab3396c  # [win32]
+
+    fn: ffmpeg-{{ version }}-win64-shared.7z  # [win64]
+    url: https://ffmpeg.zeranoe.com/builds/win64/shared/ffmpeg-{{ version }}-win64-shared.7z  # [win64]
+    sha256: efe0e446391676aff51c575978f915ddae5358f49c44ab174ed128ba1ad2de2b  # [win64]
 
 build:
-    skip: true         # [win]
     number: 3
 
 requirements:
     build:
-        - pkg-config
-        - libtool
-        - yasm
+        - pkg-config   # [not win]
+        - libtool      # [not win]
+        - yasm         # [not win]
         - gcc          # [osx]
-        - x264
-        - zlib 1.2.*
+        - x264         # [not win]
+        - zlib 1.2.*   # [not win]
+        - 7za          # [win] 
     run:
         - libgcc       # [osx]
-        - x264
-        - zlib 1.2.*
+        - x264         # [not win]
+        - zlib 1.2.*   # [not win]
 
 test:
     commands:
