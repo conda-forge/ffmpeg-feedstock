@@ -11,6 +11,6 @@ copy %SRC_DIR%\%FFMPEG_FN%-dev\lib %LIBRARY_LIB%
 copy %SRC_DIR%\%FFMPEG_FN%-shared\README.txt %RECIPE_DIR%
 
 mkdir %RECIPE_DIR%\licenses
-copy %SRC_DIR%\%FFMPEG_FN%-shared\lincenses %RECIPE_DIR%\licenses
+copy %SRC_DIR%\%FFMPEG_FN%-shared\licenses %RECIPE_DIR%\licenses
 
 exit 0
