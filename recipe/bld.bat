@@ -1,9 +1,9 @@
 set FFMPEG_FN=ffmpeg-%PKG_VERSION%-win%ARCH%
 
-Invoke-WebRequest "https://ffmpeg.zeranoe.com/builds/win%ARCH%/dev/%FFMPEG_FN%-dev.7z" -OutFile "%SRC_DIR%\%FFMPEG_FN%-dev.7z"
+curl -L -O "https://ffmpeg.zeranoe.com/builds/win%ARCH%/dev/%FFMPEG_FN%-dev.7z"
 
 7za x %SRC_DIR%\%FFMPEG_FN%-shared.7z -o%SRC_DIR%
-7za x %SRC_DIR%\%FFMPEG_FN%-dev.7z -o%SRC_DIR%
+7za x %FFMPEG_FN%-dev.7z -o%SRC_DIR%
 
 copy %SRC_DIR%\%FFMPEG_FN%-shared\bin %LIBRARY_BIN%
 copy %SRC_DIR%\%FFMPEG_FN%-dev\include %LIBRARY_INC%
