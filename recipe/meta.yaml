@@ -30,6 +30,7 @@ requirements:
         - zlib 1.2.*   # [not win]
         - 7za          # [win] 
         - curl         # [win]
+        - openssl      # [win]
     run:
         - libgcc       # [osx]
         - x264         # [not win]
