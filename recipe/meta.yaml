@@ -18,7 +18,7 @@ source:
     sha256: efe0e446391676aff51c575978f915ddae5358f49c44ab174ed128ba1ad2de2b  # [win64]
 
 build:
-    number: 3
+    number: 4
 
 requirements:
     build:
@@ -29,6 +29,8 @@ requirements:
         - x264         # [not win]
         - zlib 1.2.*   # [not win]
         - 7za          # [win] 
+        - curl         # [win]
+        - openssl      # [win]
     run:
         - libgcc       # [osx]
         - x264         # [not win]
@@ -49,3 +51,4 @@ extra:
         - danielballan
         - jakirkham
         - 183amir
+        - caspervdw
