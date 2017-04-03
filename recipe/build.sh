@@ -13,6 +13,7 @@ unset SUBDIR
         --extra-libs="`pkg-config --libs zlib`" \
         --enable-pic \
         --enable-gpl \
+	--enable-libvpx \
         --enable-libx264
 
 make
