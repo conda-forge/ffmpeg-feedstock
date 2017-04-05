@@ -3,6 +3,13 @@
 # unset the SUBDIR variable since it changes the behavior of make here
 unset SUBDIR
 
+git clone --depth 1 https://chromium.googlesource.com/webm/libvpx.git
+cd libvpx
+./configure --prefix="/usr" --disable-examples
+make
+make install
+
+
 ./configure \
         --prefix="${PREFIX}" \
         --disable-doc \
