@@ -9,8 +9,7 @@ osx_image: beta-xcode6.1
 env:
   global:
     # The BINSTAR_TOKEN secure variable. This is defined canonically in conda-forge.yml.
-    - secure: "QdGfZZDijxrvBmVD7o4cOFfUG8mkKUgCUUiZ+Rr4plqknNma0PQNtKWSoS26C6fM5p1yw4d+qEVKQD6kwxZBBmli8sPVGlC1a/vGeP7fS9mXHM/DtACL8NRMhrKo7lfxZnQLPqHTVnWNN2HBXJ396htH08qLGUkxNniNsSQUWKysu9TVSliWa2p6KjnASlJDwzr6dEuICbGcGvRz2De2SsghNl4tZ5fmccvV9sgsOVW4pgtUMSx7eiV3EvnLiVgJHBzSELZWQ0V5BiCfRCI3vbywYM1MLQiaQfI/hMC0hq1GTpcHfyjmjov5wsJUOFMd1Q6Q+12dQKHzwMQRxpZT8WBMtV2CcLErO1MbU7FApfGORo/OdmzJIJmtMsS7L94Hhb+oXOlm6+BQtw+zTLdPiFAMfNanR0ldzdf9N9C8sCFVu9YYwscGlaLj55D4r2+BQsiMJBm6aLZRaPFnDbRZhGjhOqLpMbRBDwc3pi1Ok2nzTtX6v0v4DMekBHF58A4LY/Nyz5q3b4XwwNYFaDToFNxODX2yhGJpw28zdKRGCqPYW+KPhqG3FyTZds3hogBz0gEcRj95uZMVHYCniHlWdVw24dF7V++avQbuRcNZ9ejfjP/bRWrI/oEWOIuLwZmM45Fq1hFh+knQryJErekcPZtBCs/J+afNo88EYrmN/ms="
-
+    - secure: le-f548c2b3-47ad-45e0-946f-864491311998
 
 before_install:
     # Remove homebrew.
