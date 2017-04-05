@@ -3,6 +3,15 @@
 # unset the SUBDIR variable since it changes the behavior of make here
 unset SUBDIR
 
+#Install libvorbis (dep)
+cd ~/src
+wget http://downloads.xiph.org/releases/vorbis/libvorbis-1.3.3.tar.gz
+tar xzvf libvorbis-1.3.3.tar.gz
+cd libvorbis-1.3.3
+./configure --disable-shared
+make
+
+#Install libvpx
 git clone --depth 1 https://chromium.googlesource.com/webm/libvpx.git
 cd libvpx
 ./configure --prefix="${PREFIX}" --disable-examples
