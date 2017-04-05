@@ -5,7 +5,7 @@ unset SUBDIR
 
 git clone --depth 1 https://chromium.googlesource.com/webm/libvpx.git
 cd libvpx
-./configure --prefix="/usr" --disable-examples
+./configure --prefix="${PREFIX}" --disable-examples
 make
 make install
 
