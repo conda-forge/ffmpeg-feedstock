@@ -10,7 +10,7 @@ dependencies:
   # Note, we used to use the naive caching of docker images, but found that it was quicker
   # just to pull each time. #rollondockercaching
   override:
-    - docker pull condaforge/linux-anvil
+    - docker pull lengra/ffmpeg-libvpx
 
 test:
   override:
