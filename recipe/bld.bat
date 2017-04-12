@@ -11,15 +11,15 @@ if %ARCH% == 32 (
 
 rem Download the source and check the SHA256
 curl -L -O "https://ffmpeg.zeranoe.com/builds/win%ARCH%/dev/%FFMPEG_FN%-dev.7z"
-openssl dgst -sha256 -out sha256.out %FFMPEG_FN%-dev.7z
+openssl dgst -sha256 -out sha256.out %FFMPEG_FN%-dev.zip
 SET /p DOWNLOADED_SHA256=<sha256.out
 if NOT "%DOWNLOADED_SHA256%" == %FFMPEG_SHA256% (
     exit 1
 )
 
 rem Extract the archives
-7za x %SRC_DIR%\%FFMPEG_FN%-shared.7z -o%SRC_DIR%
-7za x %FFMPEG_FN%-dev.7z -o%SRC_DIR%
+7za x %SRC_DIR%\%FFMPEG_FN%-shared.zip -o%SRC_DIR%
+7za x %FFMPEG_FN%-dev.zip -o%SRC_DIR%
 
 rem Copy over the bin, include and lib dirs
 robocopy %SRC_DIR%\%FFMPEG_FN%-shared\bin\ %LIBRARY_BIN%\ *.* /E
