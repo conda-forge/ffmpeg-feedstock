@@ -26,12 +26,16 @@ requirements:
     - pkg-config   # [not win]
     - libtool      # [not win]
     - yasm         # [not win]
+    - bzip2 1.0.*  # [not win]
+    - libiconv     # [not win]
     - x264         # [not win]
     - zlib 1.2.*   # [not win]
     - 7za          # [win]
     - curl         # [win]
     - openssl      # [win]
   run:
+    - bzip2 1.0.*  # [not win]
+    - libiconv     # [not win]
     - x264         # [not win]
     - zlib 1.2.*   # [not win]
 
