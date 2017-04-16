@@ -1,54 +1,58 @@
 {% set version = "2.8.6" %}
 
 package:
-    name: ffmpeg
-    version: {{ version }}
+  name: ffmpeg
+  version: {{ version }}
 
 source:
-    fn: ffmpeg-{{ version }}.tar.gz  # [not win]
-    url: https://ffmpeg.org/releases/ffmpeg-{{ version }}.tar.gz  # [not win]
-    md5: 7b9449795790c46331dae2c6e8e28f15  # [not win]
+  fn: ffmpeg-{{ version }}.tar.gz  # [not win]
+  url: https://ffmpeg.org/releases/ffmpeg-{{ version }}.tar.gz  # [not win]
+  sha256: f4c1dfe5a0adc04bc9ca164cf96e32bee97b2994ec06de2a40af2ba5d2b1b9d9  # [not win]
     
-    fn: ffmpeg-{{ version }}-win32-shared.7z  # [win32]
-    url: https://ffmpeg.zeranoe.com/builds/win32/shared/ffmpeg-{{ version }}-win32-shared.7z  # [win32]
-    sha256: 192117a332d08c53412c3c52b32eac8fca72db874509a627b7b41e55eab3396c  # [win32]
+  fn: ffmpeg-{{ version }}-win32-shared.7z  # [win32]
+  url: https://ffmpeg.zeranoe.com/builds/win32/shared/ffmpeg-{{ version }}-win32-shared.7z  # [win32]
+  sha256: 192117a332d08c53412c3c52b32eac8fca72db874509a627b7b41e55eab3396c  # [win32]
 
-    fn: ffmpeg-{{ version }}-win64-shared.7z  # [win64]
-    url: https://ffmpeg.zeranoe.com/builds/win64/shared/ffmpeg-{{ version }}-win64-shared.7z  # [win64]
-    sha256: efe0e446391676aff51c575978f915ddae5358f49c44ab174ed128ba1ad2de2b  # [win64]
+  fn: ffmpeg-{{ version }}-win64-shared.7z  # [win64]
+  url: https://ffmpeg.zeranoe.com/builds/win64/shared/ffmpeg-{{ version }}-win64-shared.7z  # [win64]
+  sha256: efe0e446391676aff51c575978f915ddae5358f49c44ab174ed128ba1ad2de2b  # [win64]
 
 build:
-    number: 4
+  number: 5
 
 requirements:
-    build:
-        - pkg-config   # [not win]
-        - libtool      # [not win]
-        - yasm         # [not win]
-        - gcc          # [osx]
-        - x264         # [not win]
-        - zlib 1.2.*   # [not win]
-        - 7za          # [win] 
-        - curl         # [win]
-        - openssl      # [win]
-    run:
-        - libgcc       # [osx]
-        - x264         # [not win]
-        - zlib 1.2.*   # [not win]
+  build:
+    - toolchain    # [not win]
+    - pkg-config   # [not win]
+    - libtool      # [not win]
+    - yasm         # [not win]
+    - bzip2 1.0.*  # [not win]
+    - libiconv     # [not win]
+    - x264         # [not win]
+    - zlib 1.2.*   # [not win]
+    - 7za          # [win]
+    - curl         # [win]
+    - openssl      # [win]
+  run:
+    - bzip2 1.0.*  # [not win]
+    - libiconv     # [not win]
+    - x264         # [not win]
+    - zlib 1.2.*   # [not win]
 
 test:
-    commands:
-        - ffmpeg --help
-        - ffmpeg -codecs | grep "DEVI.S zlib"  # [unix]
+  commands:
+    - ffmpeg --help
+    - ffmpeg -codecs | grep "DEVI.S zlib"  # [unix]
 
 about:
-    home: http://www.ffmpeg.org/
-    license: GPL 2
-    summary: Cross-platform solution to record, convert and stream audio and video.
+  home: http://www.ffmpeg.org/
+  license: GPL 2
+  license_file: COPYING.GPLv2  # [unix]
+  summary: Cross-platform solution to record, convert and stream audio and video.
 
 extra:
-    recipe-maintainers:
-        - danielballan
-        - jakirkham
-        - 183amir
-        - caspervdw
+  recipe-maintainers:
+    - danielballan
+    - jakirkham
+    - 183amir
+    - caspervdw
