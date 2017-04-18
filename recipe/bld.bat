@@ -10,7 +10,7 @@ if %ARCH% == 32 (
 )
 
 rem Download the source and check the SHA256
-curl -L -O "https://ffmpeg.zeranoe.com/builds/win%ARCH%/dev/%FFMPEG_FN%-dev.7z"
+curl -L -O "https://ffmpeg.zeranoe.com/builds/win%ARCH%/dev/%FFMPEG_FN%-dev.zip"
 openssl dgst -sha256 -out sha256.out %FFMPEG_FN%-dev.zip
 SET /p DOWNLOADED_SHA256=<sha256.out
 if NOT "%DOWNLOADED_SHA256%" == %FFMPEG_SHA256% (
