@@ -31,10 +31,16 @@ requirements:
         - 7za          # [win] 
         - curl         # [win]
         - openssl      # [win]
+        - libvpx
+        - libogg
+        - libvorbis
     run:
         - libgcc       # [osx]
         - x264         # [not win]
         - zlib 1.2.*   # [not win]
+        - libvpx
+        - libogg
+        - libvorbis
 
 test:
     commands:
