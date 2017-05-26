@@ -13,6 +13,9 @@ unset SUBDIR
         --extra-libs="`pkg-config --libs zlib`" \
         --enable-pic \
         --enable-gpl \
+        --enable-version3 \
+        --enable-hardcoded-tables \
+        --enable-avresample \
         --enable-libx264
 
 make
