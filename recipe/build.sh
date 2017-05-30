@@ -26,7 +26,7 @@ conda install -c hcc libvpx=1.5.0
         --enable-pic \
         --enable-gpl \
         --enable-libx264 \
-        --enable-libvorbis
+        --enable-libvorbis \
 		--enable-libvpx \
 
 make
