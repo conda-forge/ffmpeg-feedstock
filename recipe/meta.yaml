@@ -7,15 +7,16 @@ package:
 source:
     fn: ffmpeg-{{ version }}.tar.gz  # [not win]
     url: https://ffmpeg.org/releases/ffmpeg-{{ version }}.tar.gz  # [not win]
-    md5: 7b9449795790c46331dae2c6e8e28f15  # [not win]
-    
-    fn: ffmpeg-{{ version }}-win32-shared.7z  # [win32]
-    url: https://ffmpeg.zeranoe.com/builds/win32/shared/ffmpeg-{{ version }}-win32-shared.7z  # [win32]
-    sha256: 192117a332d08c53412c3c52b32eac8fca72db874509a627b7b41e55eab3396c  # [win32]
+    sha256: 2838c37bd35dba6e9b08ebe4e6c11dedbe2d9909583e3c2b9e7a1ad3ce2a9607  # [not win]
 
-    fn: ffmpeg-{{ version }}-win64-shared.7z  # [win64]
-    url: https://ffmpeg.zeranoe.com/builds/win64/shared/ffmpeg-{{ version }}-win64-shared.7z  # [win64]
-    sha256: efe0e446391676aff51c575978f915ddae5358f49c44ab174ed128ba1ad2de2b  # [win64]
+    fn: ffmpeg-{{ version }}-win32-shared.zip  # [win32]
+    url: https://ffmpeg.zeranoe.com/builds/win32/shared/ffmpeg-{{ version }}-win32-shared.zip  # [win32]
+    sha256: c62a6e2237097cedbfd6b2e122f6650baf468d1bb4e9f73105126bf2a44b2329  # [win32]
+
+    fn: ffmpeg-{{ version }}-win64-shared.zip  # [win64]
+    url: https://ffmpeg.zeranoe.com/builds/win64/shared/ffmpeg-{{ version }}-win64-shared.zip  # [win64]
+    sha256: 31dab0e45aa2808fc422927eca5d49761985d1471b7122aadc6f85deb7bf6a7f  # [win64]
+
 
 
 build:
