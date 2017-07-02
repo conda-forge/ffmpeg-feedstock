@@ -6,6 +6,8 @@ unset SUBDIR
 ./configure \
         --prefix="${PREFIX}" \
         --disable-doc \
+        --enable-nonfree \
+        --enable-openssl \
         --enable-shared \
         --enable-static \
         --extra-cflags="-Wall -g -m64 -pipe -O3 -march=x86-64 -fPIC `pkg-config --cflags zlib`" \
@@ -16,7 +18,8 @@ unset SUBDIR
         --enable-version3 \
         --enable-hardcoded-tables \
         --enable-avresample \
-        --enable-libx264
+        --enable-libx264 \
+        --enable-libx265
 
 make
 make install
