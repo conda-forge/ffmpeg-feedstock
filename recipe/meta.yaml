@@ -37,6 +37,7 @@ requirements:
     - bzip2 1.0.*  # [not win]
     - libiconv     # [not win]
     - x264         # [not win]
+    - x265         # [not win]
     - zlib 1.2.*   # [not win]
 
 test:
