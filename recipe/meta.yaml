@@ -18,7 +18,7 @@ source:
   sha256: 31dab0e45aa2808fc422927eca5d49761985d1471b7122aadc6f85deb7bf6a7f  # [win64]
 
 build:
-  number: 1
+  number: 2
 
 requirements:
   build:
@@ -29,7 +29,7 @@ requirements:
     - bzip2 1.0.*  # [not win]
     - libiconv     # [not win]
     - x264         # [not win]
-    - zlib 1.2.*   # [not win]
+    - zlib 1.2.11   # [not win]
     - 7za          # [win]
     - curl         # [win]
     - openssl      # [win]
@@ -37,7 +37,7 @@ requirements:
     - bzip2 1.0.*  # [not win]
     - libiconv     # [not win]
     - x264         # [not win]
-    - zlib 1.2.*   # [not win]
+    - zlib 1.2.11   # [not win]
 
 test:
   commands:
@@ -74,3 +74,4 @@ extra:
     - 183amir
     - caspervdw
     - patricksnape
+    - ocefpaf
