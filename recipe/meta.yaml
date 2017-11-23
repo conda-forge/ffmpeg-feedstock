@@ -60,6 +60,8 @@ test:
     - test -f $PREFIX/lib/lib{{ each_ffmpeg_lib }}.dylib  # [osx]
     - test -f $PREFIX/lib/lib{{ each_ffmpeg_lib }}.so     # [linux]
     {% endfor %}
+    - conda inspect linkages -p $PREFIX $PKG_NAME  # [not win]
+    - conda inspect objects -p $PREFIX $PKG_NAME  # [osx]
 
 about:
   home: http://www.ffmpeg.org/
