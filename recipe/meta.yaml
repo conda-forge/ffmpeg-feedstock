@@ -67,8 +67,8 @@ test:
 
 about:
   home: http://www.ffmpeg.org/
-  license: GPL 2
-  license_file: COPYING.GPLv2  # [unix]
+  license: GPL 3
+  license_file: COPYING.GPLv3  # [unix]
   summary: Cross-platform solution to record, convert and stream audio and video.
 
 extra:
