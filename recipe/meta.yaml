@@ -27,6 +27,7 @@ requirements:
     - libtool      # [not win]
     - yasm         # [not win]
     - bzip2 1.0.*  # [not win]
+    - freetype 2.8.1     # [not win]
     - libiconv 1.15     # [not win]
     - x264         # [not win]
     - zlib 1.2.11   # [not win]
@@ -35,6 +36,7 @@ requirements:
     - openssl      # [win]
   run:
     - bzip2 1.0.*  # [not win]
+    - freetype 2.8.1     # [not win]
     - libiconv 1.15     # [not win]
     - x264         # [not win]
     - zlib 1.2.11   # [not win]
