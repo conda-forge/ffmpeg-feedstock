@@ -18,7 +18,7 @@ source:
   sha256: 14eca81117af4c081d820d5bb669437ac9380060feaecb1d438188daf3eaca96  # [win64]
 
 build:
-  number: 0
+  number: 1
 
 requirements:
   build:
@@ -27,6 +27,7 @@ requirements:
     - libtool      # [not win]
     - yasm         # [not win]
     - bzip2 1.0.*  # [not win]
+    - freetype 2.8.1     # [not win]
     - libiconv 1.15     # [not win]
     - x264         # [not win]
     - zlib 1.2.11   # [not win]
@@ -35,6 +36,7 @@ requirements:
     - openssl      # [win]
   run:
     - bzip2 1.0.*  # [not win]
+    - freetype 2.8.1     # [not win]
     - libiconv 1.15     # [not win]
     - x264         # [not win]
     - zlib 1.2.11   # [not win]
@@ -65,8 +67,8 @@ test:
 
 about:
   home: http://www.ffmpeg.org/
-  license: GPL 2
-  license_file: COPYING.GPLv2  # [unix]
+  license: GPL 3
+  license_file: COPYING.GPLv3  # [unix]
   summary: Cross-platform solution to record, convert and stream audio and video.
 
 extra:
@@ -77,3 +79,4 @@ extra:
     - caspervdw
     - patricksnape
     - ocefpaf
+    - sdvillal
