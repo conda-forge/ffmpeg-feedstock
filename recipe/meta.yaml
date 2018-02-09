@@ -18,7 +18,7 @@ source:
   sha256: 14eca81117af4c081d820d5bb669437ac9380060feaecb1d438188daf3eaca96  # [win64]
 
 build:
-  number: 1
+  number: 2
 
 requirements:
   build:
@@ -31,6 +31,7 @@ requirements:
     - libiconv 1.15     # [not win]
     - x264         # [not win]
     - zlib 1.2.11   # [not win]
+    - gnutls       # [not win]
     - 7za          # [win]
     - curl >=7.44.0,<8         # [win]
     - openssl      # [win]
@@ -40,11 +41,13 @@ requirements:
     - libiconv 1.15     # [not win]
     - x264         # [not win]
     - zlib 1.2.11   # [not win]
+    - gnutls       # [not win]
 
 test:
   commands:
     - ffmpeg --help
     - ffmpeg -codecs | grep "DEVI.S zlib"  # [unix]
+    - ffmpeg -protocols | grep "https"  # [not win]
     # Verify dynamic libraries on all systems
     {% set ffmpeg_libs = [
         "avcodec",
