@@ -16,6 +16,8 @@ unset SUBDIR
         --enable-version3 \
         --enable-hardcoded-tables \
         --enable-avresample \
+        --enable-libfreetype \
+        --enable-gnutls \
         --enable-libx264
 
 make
