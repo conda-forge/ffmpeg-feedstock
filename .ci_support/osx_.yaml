@@ -1,0 +1,37 @@
+MACOSX_DEPLOYMENT_TARGET:
+- '10.9'
+bzip2:
+- '1.0'
+c_compiler:
+- toolchain_c
+curl:
+- '7.44'
+ffmpeg:
+- 3.2.3
+freetype:
+- 2.8.1
+libiconv:
+- '1.15'
+macos_machine:
+- x86_64-apple-darwin13.4.0
+macos_min_version:
+- '10.9'
+openssl:
+- 1.0.2
+pin_run_as_build:
+  bzip2:
+    max_pin: x.x
+  curl:
+    max_pin: x.x
+  ffmpeg:
+    max_pin: x.x.x
+  freetype:
+    max_pin: x.x.x
+  libiconv:
+    max_pin: x.x
+  openssl:
+    max_pin: x.x.x
+  zlib:
+    max_pin: x.x
+zlib:
+- '1.2'

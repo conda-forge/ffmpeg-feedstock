@@ -8,10 +8,12 @@ unset SUBDIR
         --disable-doc \
         --enable-shared \
         --enable-static \
-        --extra-cflags="-Wall -g -m64 -pipe -O3 -march=x86-64 -fPIC `pkg-config --cflags zlib`" \
-        --extra-cxxflags=="-Wall -g -m64 -pipe -O3 -march=x86-64 -fPIC" \
-        --extra-libs="`pkg-config --libs zlib`" \
+        --extra-cflags="-Wall -g -m64 -pipe -O3 -march=x86-64 -fPIC" \
+        --extra-cxxflags="-Wall -g -m64 -pipe -O3 -march=x86-64 -fPIC" \
+        --extra-libs="-lpthread -lm -lz" \
+        --enable-zlib \
         --enable-pic \
+        --enable-pthreads \
         --enable-gpl \
         --enable-version3 \
         --enable-hardcoded-tables \
@@ -20,5 +22,5 @@ unset SUBDIR
         --enable-gnutls \
         --enable-libx264
 
-make
-make install
+make -j${CPU_COUNT}
+make install -j${CPU_COUNT}

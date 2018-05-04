@@ -1,4 +1,4 @@
-{% set version = "3.4.2" %}
+{% set version = "4.0" %}
 
 package:
   name: ffmpeg
@@ -7,46 +7,53 @@ package:
 source:
   fn: ffmpeg-{{ version }}.tar.gz  # [not win]
   url: https://ffmpeg.org/releases/ffmpeg-{{ version }}.tar.gz  # [not win]
-  sha256: ecb99b0d191c6a16d114d2ee4b91e4ca824f67d31565dd6de9d1c26ee192739f  # [not win]
+  sha256: dc4b1c622baa34fc68d763cd2818e419d1af90271e0506604905f25a46ea8273  # [not win]
+  # This patch is required to fix https://trac.macports.org/ticket/55746
+  # with Xcode < 7.0, where _Nullable attribues are not supported.
+  # Can probably be removed once the compiler infrastructure is updated.
+  patches:  # [osx]
+    - patch-libavcodec-videotoolboxenc.c-drop-Nullable.patch  # [osx]
 
   fn: ffmpeg-{{ version }}-win32-shared.zip  # [win32]
   url: https://ffmpeg.zeranoe.com/builds/win32/shared/ffmpeg-{{ version }}-win32-shared.zip  # [win32]
-  sha256: 58f091d8fafbb15631226fa6c2023e8f8c83efaad5a4fedf1ff8a4d0626a3b30  # [win32]
+  sha256: 530c92df0ca14c35901b4b681847d62da3c50a0cc9b7ced37b04968f6b5c243d  # [win32]
 
   fn: ffmpeg-{{ version }}-win64-shared.zip  # [win64]
   url: https://ffmpeg.zeranoe.com/builds/win64/shared/ffmpeg-{{ version }}-win64-shared.zip  # [win64]
-  sha256: 03731faabc5bec2e13ad6079e26a246c087934c1b3cf7fad80e7723d8f8a23f2  # [win64]
+  sha256: 8fe2d344463dbefc2db4239a4203a55ed0324faceaae57276a40c4fabda84c37  # [win64]
 
 build:
   number: 0
 
 requirements:
   build:
-    - toolchain    # [not win]
-    - pkg-config   # [not win]
-    - libtool      # [not win]
-    - yasm         # [not win]
-    - bzip2 1.0.*  # [not win]
-    - freetype 2.8.1     # [not win]
-    - libiconv 1.15     # [not win]
-    - x264         # [not win]
-    - zlib 1.2.11   # [not win]
-    - gnutls       # [not win]
-    - 7za          # [win]
-    - curl >=7.44.0,<8         # [win]
-    - openssl      # [win]
+    - {{ compiler("c") }}
+    - pkg-config  # [not win]
+    - libtool  # [not win]
+    - nasm  # [not win]
+    - 7za  # [win]
+    - curl >=7  # [win]
+    - openssl  # [win]
+  host:
+    - bzip2  # [not win]
+    - freetype  # [not win]
+    - libiconv  # [not win]
+    - x264  # [not win]
+    - zlib  # [not win]
+    - gnutls  # [not win]
   run:
-    - bzip2 1.0.*  # [not win]
-    - freetype 2.8.1     # [not win]
-    - libiconv 1.15     # [not win]
-    - x264         # [not win]
-    - zlib 1.2.11   # [not win]
-    - gnutls       # [not win]
+    - bzip2  # [not win]
+    - freetype  # [not win]
+    - libiconv  # [not win]
+    - x264  # [not win]
+    - zlib  # [not win]
+    - gnutls  # [not win]
 
 test:
   commands:
     - ffmpeg --help
     - ffmpeg -codecs | grep "DEVI.S zlib"  # [unix]
+    - ffmpeg -codecs | grep "DEV.LS h264"  # [unix]
     - ffmpeg -protocols | grep "https"  # [not win]
     # Verify dynamic libraries on all systems
     {% set ffmpeg_libs = [
