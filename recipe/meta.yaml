@@ -45,7 +45,7 @@ requirements:
     - bzip2  # [not win]
     - freetype  # [not win]
     - libiconv  # [not win]
-    - {{ pin_compatible('x264') }}  # [not win]
+    - x264  # [not win]
     - zlib  # [not win]
     - gnutls  # [not win]
 
