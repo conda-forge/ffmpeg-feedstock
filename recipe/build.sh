@@ -18,7 +18,8 @@ unset SUBDIR
         --enable-avresample \
         --enable-libfreetype \
         --enable-gnutls \
-        --enable-libx264
+        --enable-libx264 \
+        --disable-openssl
 
 make
 make install

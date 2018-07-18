@@ -18,7 +18,8 @@ source:
   sha256: 03731faabc5bec2e13ad6079e26a246c087934c1b3cf7fad80e7723d8f8a23f2  # [win64]
 
 build:
-  number: 0
+  number: 2
+  skip: true  # [win]
 
 requirements:
   build:
@@ -29,7 +30,7 @@ requirements:
     - bzip2 1.0.*  # [not win]
     - freetype 2.8.1     # [not win]
     - libiconv 1.15     # [not win]
-    - x264         # [not win]
+    - x264 1!152.*         # [not win]
     - zlib 1.2.11   # [not win]
     - gnutls       # [not win]
     - 7za          # [win]
@@ -39,7 +40,7 @@ requirements:
     - bzip2 1.0.*  # [not win]
     - freetype 2.8.1     # [not win]
     - libiconv 1.15     # [not win]
-    - x264         # [not win]
+    - x264 1!152.*         # [not win]
     - zlib 1.2.11   # [not win]
     - gnutls       # [not win]
 
