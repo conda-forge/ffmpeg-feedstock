@@ -1,0 +1,5 @@
+openssl:
+- 1.0.2
+pin_run_as_build:
+  openssl:
+    max_pin: x.x.x
