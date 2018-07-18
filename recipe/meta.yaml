@@ -32,7 +32,7 @@ requirements:
     - libtool  # [not win]
     - nasm  # [not win]
     - 7za  # [win]
-    - curl >=7  # [win]
+    - curl  # [win]
     - openssl  # [win]
   host:
     - bzip2  # [not win]
