@@ -37,16 +37,13 @@ requirements:
   host:
     - bzip2  # [not win]
     - freetype  # [not win]
-    - libiconv  # [not win]
-    - x264 1!152.*  # [not win]
-    - zlib  # [not win]
     - gnutls  # [not win]
+    - libiconv  # [not win]
+    - x264  # [not win]
+    - zlib  # [not win]
   run:
     - bzip2  # [not win]
     - freetype  # [not win]
-    - libiconv  # [not win]
-    - x264 1!152.*  # [not win]
-    - zlib  # [not win]
     - gnutls  # [not win]
 
 test:
