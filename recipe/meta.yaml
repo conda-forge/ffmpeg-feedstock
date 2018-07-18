@@ -18,7 +18,8 @@ source:
   sha256: efe0e446391676aff51c575978f915ddae5358f49c44ab174ed128ba1ad2de2b  # [win64]
 
 build:
-  number: 5
+  number: 7
+  skip: true  # [win]
 
 requirements:
   build:
@@ -28,7 +29,7 @@ requirements:
     - yasm         # [not win]
     - bzip2 1.0.*  # [not win]
     - libiconv     # [not win]
-    - x264         # [not win]
+    - x264 1!152.*         # [not win]
     - zlib 1.2.*   # [not win]
     - 7za          # [win]
     - curl         # [win]
@@ -36,7 +37,7 @@ requirements:
   run:
     - bzip2 1.0.*  # [not win]
     - libiconv     # [not win]
-    - x264         # [not win]
+    - x264 1!152.*         # [not win]
     - zlib 1.2.*   # [not win]
 
 test:

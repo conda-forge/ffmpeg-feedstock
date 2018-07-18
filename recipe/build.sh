@@ -13,7 +13,8 @@ unset SUBDIR
         --extra-libs="`pkg-config --libs zlib`" \
         --enable-pic \
         --enable-gpl \
-        --enable-libx264
+        --enable-libx264 \
+        --disable-openssl
 
 make
 make install
