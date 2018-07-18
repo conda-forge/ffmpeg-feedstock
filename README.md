@@ -14,14 +14,16 @@ Summary: Cross-platform solution to record, convert and stream audio and video.
 Current build status
 ====================
 
-Linux: [![Circle CI](https://circleci.com/gh/conda-forge/ffmpeg-feedstock.svg?style=shield)](https://circleci.com/gh/conda-forge/ffmpeg-feedstock)
-OSX: [![TravisCI](https://travis-ci.org/conda-forge/ffmpeg-feedstock.svg?branch=master)](https://travis-ci.org/conda-forge/ffmpeg-feedstock)
-Windows: [![AppVeyor](https://ci.appveyor.com/api/projects/status/github/conda-forge/ffmpeg-feedstock?svg=True)](https://ci.appveyor.com/project/conda-forge/ffmpeg-feedstock/branch/master)
+[![Linux](https://img.shields.io/circleci/project/github/conda-forge/ffmpeg-feedstock-pin-x264-in-old-releases-feedstock/master.svg?label=Linux)](https://circleci.com/gh/conda-forge/ffmpeg-feedstock-pin-x264-in-old-releases-feedstock)
+[![OSX](https://img.shields.io/travis/conda-forge/ffmpeg-feedstock-pin-x264-in-old-releases-feedstock/master.svg?label=macOS)](https://travis-ci.org/conda-forge/ffmpeg-feedstock-pin-x264-in-old-releases-feedstock)
+![Windows disabled](https://img.shields.io/badge/Windows-disabled-lightgrey.svg)
 
 Current release info
 ====================
-Version: [![Anaconda-Server Badge](https://anaconda.org/conda-forge/ffmpeg/badges/version.svg)](https://anaconda.org/conda-forge/ffmpeg)
-Downloads: [![Anaconda-Server Badge](https://anaconda.org/conda-forge/ffmpeg/badges/downloads.svg)](https://anaconda.org/conda-forge/ffmpeg)
+
+| Name | Downloads | Version | Platforms |
+| --- | --- | --- | --- |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-ffmpeg-green.svg)](https://anaconda.org/conda-forge/ffmpeg) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/ffmpeg.svg)](https://anaconda.org/conda-forge/ffmpeg) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/ffmpeg.svg)](https://anaconda.org/conda-forge/ffmpeg) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/ffmpeg.svg)](https://anaconda.org/conda-forge/ffmpeg) |
 
 Installing ffmpeg
 =================
@@ -66,6 +68,7 @@ To manage the continuous integration and simplify feedstock maintenance
 Using the ``conda-forge.yml`` within this repository, it is possible to re-render all of
 this feedstock's supporting files (e.g. the CI configuration files) with ``conda smithy rerender``.
 
+For more information please check the [conda-forge documentation](https://conda-forge.org/docs/).
 
 Terminology
 ===========
