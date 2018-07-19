@@ -29,5 +29,7 @@ pin_run_as_build:
     max_pin: x.x.x
   zlib:
     max_pin: x.x
+x264:
+- 1!152
 zlib:
 - '1.2'
