@@ -1,4 +1,4 @@
-{% set version = "4.0" %}
+{% set version = "4.0.1" %}
 
 package:
   name: ffmpeg
@@ -7,23 +7,23 @@ package:
 source:
   fn: ffmpeg-{{ version }}.tar.gz  # [not win]
   url: https://ffmpeg.org/releases/ffmpeg-{{ version }}.tar.gz  # [not win]
-  sha256: dc4b1c622baa34fc68d763cd2818e419d1af90271e0506604905f25a46ea8273  # [not win]
+  sha256: c61ef108430ccd02959e770a3e85a26c26723a60c998cfd0f29c204aa6776cca  # [not win]
   # This patch is required to fix https://trac.macports.org/ticket/55746
   # with Xcode < 7.0, where _Nullable attribues are not supported.
   # Can probably be removed once the compiler infrastructure is updated.
   patches:  # [osx]
     - patch-libavcodec-videotoolboxenc.c-drop-Nullable.patch  # [osx]
 
-  fn: ffmpeg-{{ version }}-win32-shared.zip  # [win32]
-  url: https://ffmpeg.zeranoe.com/builds/win32/shared/ffmpeg-{{ version }}-win32-shared.zip  # [win32]
-  sha256: 530c92df0ca14c35901b4b681847d62da3c50a0cc9b7ced37b04968f6b5c243d  # [win32]
-
-  fn: ffmpeg-{{ version }}-win64-shared.zip  # [win64]
-  url: https://ffmpeg.zeranoe.com/builds/win64/shared/ffmpeg-{{ version }}-win64-shared.zip  # [win64]
-  sha256: 8fe2d344463dbefc2db4239a4203a55ed0324faceaae57276a40c4fabda84c37  # [win64]
+  fn: ffmpeg-{{ version }}-win64-shared.zip  # [win]
+  url: https://ffmpeg.zeranoe.com/builds/win64/shared/ffmpeg-{{ version }}-win64-shared.zip  # [win]
+  sha256: 5947067be825a3e5e61dd69a6fc07bbd4cab1f44a73ff371a96a258aac08d6ac  # [win]
 
 build:
-  number: 3
+  number: 0
+  run_exports:
+  # seems to be minor version compatibility
+  # https://abi-laboratory.pro/tracker/timeline/ffmpeg/
+    - {{ pin_subpackage('ffmpeg', max_pin='x.x') }}
 
 requirements:
   build:
