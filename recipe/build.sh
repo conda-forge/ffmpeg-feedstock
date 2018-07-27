@@ -6,6 +6,7 @@ unset SUBDIR
 ./configure \
         --prefix="${PREFIX}" \
         --disable-doc \
+        --disable-openssl \
         --enable-shared \
         --enable-static \
         --extra-cflags="-Wall -g -m64 -pipe -O3 -march=x86-64 -fPIC" \
@@ -20,7 +21,8 @@ unset SUBDIR
         --enable-avresample \
         --enable-libfreetype \
         --enable-gnutls \
-        --enable-libx264
+        --enable-libx264 \
+        --enable-libopenh264
 
 make -j${CPU_COUNT}
 make install -j${CPU_COUNT}
