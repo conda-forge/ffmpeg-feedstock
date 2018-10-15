@@ -2,10 +2,16 @@ bzip2:
 - '1'
 c_compiler:
 - toolchain_c
+channel_sources:
+- conda-forge,defaults
+channel_targets:
+- conda-forge main
 curl:
 - '7.59'
+docker_image:
+- condaforge/linux-anvil
 freetype:
-- 2.8.1
+- 2.9.1
 libiconv:
 - '1.15'
 openssl:
@@ -16,7 +22,7 @@ pin_run_as_build:
   curl:
     max_pin: x
   freetype:
-    max_pin: x.x
+    max_pin: x
   libiconv:
     max_pin: x.x
   openssl:
