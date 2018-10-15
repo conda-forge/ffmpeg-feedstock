@@ -19,7 +19,7 @@ source:
   sha256: ede566aca8b5348dff85570f9638c6bad33209f9419f79db7bde7daa37599bff  # [win]
 
 build:
-  number: 1
+  number: 2
   run_exports:
   # seems to be minor version compatibility
   # https://abi-laboratory.pro/tracker/timeline/ffmpeg/
@@ -41,12 +41,12 @@ requirements:
     - libiconv  # [not win]
     - x264  # [not win]
     - zlib  # [not win]
-    - openh264 1.7.*  # [not win]
+    - openh264 1.8.*  # [not win]
   run:
     - bzip2  # [not win]
     - freetype  # [not win]
     - gnutls 3.5.*  # [not win]
-    - openh264 1.7.*  # [not win]
+    - openh264 1.8.*  # [not win]
 
 test:
   commands:
