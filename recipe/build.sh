@@ -1,4 +1,5 @@
 #!/bin/bash
+set -ex
 
 # unset the SUBDIR variable since it changes the behavior of make here
 unset SUBDIR
@@ -22,6 +23,10 @@ if [[ "$CONDA_BUILD_CROSS_COMPILATION" == "1" ]]; then
   EXTRA_CONFIGURE_OPTIONS="--enable-cross-compile --arch=$ARCH --target-os=$OS --cross-prefix=$HOST- --host-cc=$CC_FOR_BUILD"
 fi
 
+if [[ "$HOST" == x86_64-conda-linux* ]]; then
+    extra_codecs=--enable-vaapi
+fi
+
 ./configure \
         --prefix="${PREFIX}" \
         --cc=${CC} \
@@ -34,6 +39,7 @@ fi
         --enable-hardcoded-tables \
         --enable-libfreetype \
         --enable-libopenh264 \
+        ${extra_codecs} \
         --enable-libx264 \
         --enable-libxml2 \
         --enable-libvpx \
@@ -43,9 +49,9 @@ fi
         --disable-static \
         --enable-version3 \
         --enable-zlib \
-	--enable-libmp3lame \
-	--pkg-config=$BUILD_PREFIX/bin/pkg-config \
-	$EXTRA_CONFIGURE_OPTIONS
+        --enable-libmp3lame \
+        --pkg-config=$BUILD_PREFIX/bin/pkg-config \
+        $EXTRA_CONFIGURE_OPTIONS
 
 make -j${CPU_COUNT}
 make install -j${CPU_COUNT}
