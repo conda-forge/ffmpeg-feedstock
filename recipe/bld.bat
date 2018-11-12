@@ -3,7 +3,7 @@
 set FFMPEG_FN=ffmpeg-%PKG_VERSION%-win%ARCH%
 
 rem On a version update, change the following SHA256 hashes (win64)
-set FFMPEG_SHA256="SHA256(%FFMPEG_FN%-dev.zip)= 23ee994161c51285cb956b98d3caa499d48083dae7b26c1fdf77f22e98df1c5f"
+set FFMPEG_SHA256="SHA256(%FFMPEG_FN%-dev.zip)= 761ec79aa3dae66698c9791a2f0bb9da8794246f8356cadc741ddc0eabab0471"
 
 
 rem Download the source and check the SHA256

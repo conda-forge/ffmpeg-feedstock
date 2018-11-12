@@ -1,4 +1,4 @@
-{% set version = "4.0.2" %}
+{% set version = "4.1" %}
 
 package:
   name: ffmpeg
@@ -7,7 +7,7 @@ package:
 source:
   fn: ffmpeg-{{ version }}.tar.gz  # [not win]
   url: https://ffmpeg.org/releases/ffmpeg-{{ version }}.tar.gz  # [not win]
-  sha256: a56ef203c14ffab56b97690a1005522cfa0dc2c42c3c40c33c0bec4875b706eb  # [not win]
+  sha256: e7196ba28d7527daee917babdcbebb56b04c77e0b20593f2dd0bc11528a27066  # [not win]
   # This patch is required to fix https://trac.macports.org/ticket/55746
   # with Xcode < 7.0, where _Nullable attribues are not supported.
   # Can probably be removed once the compiler infrastructure is updated.
@@ -16,7 +16,7 @@ source:
 
   fn: ffmpeg-{{ version }}-win64-shared.zip  # [win]
   url: https://ffmpeg.zeranoe.com/builds/win64/shared/ffmpeg-{{ version }}-win64-shared.zip  # [win]
-  sha256: ede566aca8b5348dff85570f9638c6bad33209f9419f79db7bde7daa37599bff  # [win]
+  sha256: c4908c97436c946509dc365e421159274fa4b1e66dce6fb5b63d82a6294d5357  # [win]
 
 build:
   number: 2
