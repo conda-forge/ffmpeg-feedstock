@@ -8,11 +8,6 @@ source:
   fn: ffmpeg-{{ version }}.tar.gz  # [not win]
   url: https://ffmpeg.org/releases/ffmpeg-{{ version }}.tar.gz  # [not win]
   sha256: e7196ba28d7527daee917babdcbebb56b04c77e0b20593f2dd0bc11528a27066  # [not win]
-  # This patch is required to fix https://trac.macports.org/ticket/55746
-  # with Xcode < 7.0, where _Nullable attribues are not supported.
-  # Can probably be removed once the compiler infrastructure is updated.
-  patches:  # [osx]
-    - patch-libavcodec-videotoolboxenc.c-drop-Nullable.patch  # [osx]
 
   fn: ffmpeg-{{ version }}-win64-shared.zip  # [win]
   url: https://ffmpeg.zeranoe.com/builds/win64/shared/ffmpeg-{{ version }}-win64-shared.zip  # [win]
