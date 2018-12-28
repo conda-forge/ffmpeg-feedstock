@@ -14,7 +14,7 @@ source:
   sha256: c4908c97436c946509dc365e421159274fa4b1e66dce6fb5b63d82a6294d5357  # [win]
 
 build:
-  number: 0
+  number: 1000
   run_exports:
   # seems to be minor version compatibility
   # https://abi-laboratory.pro/tracker/timeline/ffmpeg/
