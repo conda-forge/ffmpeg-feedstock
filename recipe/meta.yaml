@@ -38,11 +38,13 @@ requirements:
     - x264  # [not win]
     - zlib  # [not win]
     - openh264  # [not win]
+    - gmp  # [unix]
   run:
     - bzip2  # [not win]
     - freetype  # [not win]
     - gnutls  # [not win]
     - openh264  # [not win]
+    - gmp  # [unix]
 
 test:
   commands:
