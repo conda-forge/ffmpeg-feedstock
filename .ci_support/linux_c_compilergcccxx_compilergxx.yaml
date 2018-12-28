@@ -1,23 +1,21 @@
-MACOSX_DEPLOYMENT_TARGET:
-- '10.9'
 build_number_decrement:
-- '1000'
+- '0'
 bzip2:
 - '1'
 c_compiler:
-- toolchain_c
+- gcc
 channel_sources:
-- conda-forge,defaults
+- conda-forge/label/gcc7,defaults
 channel_targets:
-- conda-forge main
+- conda-forge gcc7
+cxx_compiler:
+- gxx
+docker_image:
+- condaforge/linux-anvil-comp7
 freetype:
 - 2.9.1
 libiconv:
 - '1.15'
-macos_machine:
-- x86_64-apple-darwin13.4.0
-macos_min_version:
-- '10.9'
 pin_run_as_build:
   bzip2:
     max_pin: x
@@ -31,8 +29,10 @@ x264:
 - 1!152.*
 zip_keys:
 - - c_compiler
+  - cxx_compiler
   - channel_sources
   - channel_targets
+  - docker_image
   - build_number_decrement
 zlib:
 - '1.2'
