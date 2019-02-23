@@ -14,7 +14,7 @@ source:
   sha256: c4908c97436c946509dc365e421159274fa4b1e66dce6fb5b63d82a6294d5357  # [win]
 
 build:
-  number: 1001
+  number: 1002
   run_exports:
   # seems to be minor version compatibility
   # https://abi-laboratory.pro/tracker/timeline/ffmpeg/
@@ -30,6 +30,7 @@ requirements:
     - 7za  # [win]
     - curl  # [win]
     - openssl  # [win]
+    - lame  # [not win]
   host:
     - bzip2  # [not win]
     - freetype  # [not win]
@@ -38,18 +39,21 @@ requirements:
     - x264  # [not win]
     - zlib  # [not win]
     - openh264  # [not win]
-    - gmp  # [unix]
+    - lame  # [not win]
+    - gmp  # [unix]    
   run:
     - bzip2  # [not win]
     - freetype  # [not win]
     - gnutls  # [not win]
     - openh264  # [not win]
+    - lame  # [not win]
     - gmp  # [unix]
 
 test:
   commands:
     - ffmpeg --help
     - ffmpeg -loglevel panic -protocols | grep "https"  # [not win]
+    - ffmpeg -loglevel panic -codecs | grep "libmp3lame"  # [not win]
     - ffmpeg -loglevel panic -codecs | grep "DEVI.S zlib"  # [unix]
     - ffmpeg -loglevel panic -codecs | grep "DEV.LS h264"  # [unix]
     - ffmpeg -loglevel panic -codecs | grep "libx264"  # [unix]

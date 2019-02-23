@@ -20,7 +20,8 @@ unset SUBDIR
         --enable-shared \
         --enable-static \
         --enable-version3 \
-        --enable-zlib
+        --enable-zlib \
+	--enable-libmp3lame
 
 make -j${CPU_COUNT}
 make install -j${CPU_COUNT}
