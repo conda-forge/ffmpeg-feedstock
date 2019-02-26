@@ -31,7 +31,7 @@ requirements:
     - pkg-config  # [not win]
     - libtool  # [not win]
     - nasm  # [not win]
-   host:
+  host:
     - bzip2  # [not win]
     - freetype  # [not win]
     - gnutls  # [not win]
