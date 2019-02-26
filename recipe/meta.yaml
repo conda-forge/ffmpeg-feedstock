@@ -5,13 +5,14 @@ package:
   version: {{ version }}
 
 source:
-  fn: ffmpeg-{{ version }}.tar.gz  # [not win]
-  url: https://ffmpeg.org/releases/ffmpeg-{{ version }}.tar.gz  # [not win]
-  sha256: e7196ba28d7527daee917babdcbebb56b04c77e0b20593f2dd0bc11528a27066  # [not win]
+  - url: https://ffmpeg.org/releases/ffmpeg-{{ version }}.tar.gz  # [not win]
+    sha256: e7196ba28d7527daee917babdcbebb56b04c77e0b20593f2dd0bc11528a27066  # [not win]
 
-  fn: ffmpeg-{{ version }}-win64-shared.zip  # [win]
-  url: https://ffmpeg.zeranoe.com/builds/win64/shared/ffmpeg-{{ version }}-win64-shared.zip  # [win]
-  sha256: c4908c97436c946509dc365e421159274fa4b1e66dce6fb5b63d82a6294d5357  # [win]
+  - url: https://ffmpeg.zeranoe.com/builds/win64/shared/ffmpeg-{{ version }}-win64-shared.zip  # [win]
+    sha256: c4908c97436c946509dc365e421159274fa4b1e66dce6fb5b63d82a6294d5357  # [win]
+
+  - url: https://ffmpeg.zeranoe.com/builds/win64/dev/ffmpeg-{{ version }}-win64-dev.zip  # [win]
+    sha256: 761ec79aa3dae66698c9791a2f0bb9da8794246f8356cadc741ddc0eabab0471  # [win]
 
 build:
   number: 1001
@@ -27,9 +28,6 @@ requirements:
     - pkg-config  # [not win]
     - libtool  # [not win]
     - nasm  # [not win]
-    - 7za  # [win]
-    - curl  # [win]
-    - openssl  # [win]
   host:
     - bzip2  # [not win]
     - freetype  # [not win]
