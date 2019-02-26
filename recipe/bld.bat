@@ -1,6 +1,5 @@
 @echo ON
 
-ls -R
 rem Copy over the bin, include and lib dirs
 robocopy %SRC_DIR%\bin\ %LIBRARY_BIN%\ *.* /E
 if %ERRORLEVEL% GEQ 8 exit 1
