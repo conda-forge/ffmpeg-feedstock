@@ -1,6 +1,5 @@
 @echo ON
 
-pushd %SRC_DIR%
 ls -R
 rem Copy over the bin, include and lib dirs
 robocopy %SRC_DIR%\bin\ %LIBRARY_BIN%\ *.* /E
@@ -16,5 +15,5 @@ rem Add the licences to the recipe directory
 copy "%SRC_DIR%\README.txt" "%RECIPE_DIR%"
 mkdir "%RECIPE_DIR%\licenses"
 copy "%SRC_DIR%\licenses" "%RECIPE_DIR%\licenses"
-popd
+
 exit 0
