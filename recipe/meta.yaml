@@ -13,8 +13,12 @@ source:
   url: https://ffmpeg.zeranoe.com/builds/win64/shared/ffmpeg-{{ version }}-win64-shared.zip  # [win]
   sha256: c4908c97436c946509dc365e421159274fa4b1e66dce6fb5b63d82a6294d5357  # [win]
 
+  fn: ffmpeg-{{ version }}-win64-dev.zip  # [win]
+  url: https://ffmpeg.zeranoe.com/builds/win64/dev/ffmpeg-{{ version }}-win64-dev.zip  # [win]
+  sha256: 761ec79aa3dae66698c9791a2f0bb9da8794246f8356cadc741ddc0eabab0471  # [win]
+
 build:
-  number: 1002
+  number: 1001
   run_exports:
   # seems to be minor version compatibility
   # https://abi-laboratory.pro/tracker/timeline/ffmpeg/
@@ -27,10 +31,7 @@ requirements:
     - pkg-config  # [not win]
     - libtool  # [not win]
     - nasm  # [not win]
-    - 7za  # [win]
-    - curl  # [win]
-    - openssl  # [win]
-  host:
+   host:
     - bzip2  # [not win]
     - freetype  # [not win]
     - gnutls  # [not win]
