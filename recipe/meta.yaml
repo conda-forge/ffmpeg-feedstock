@@ -1,4 +1,4 @@
-{% set version = "4.1" %}
+{% set version = "4.1.1" %}
 
 package:
   name: ffmpeg
@@ -6,16 +6,16 @@ package:
 
 source:
   - url: https://ffmpeg.org/releases/ffmpeg-{{ version }}.tar.gz  # [not win]
-    sha256: e7196ba28d7527daee917babdcbebb56b04c77e0b20593f2dd0bc11528a27066  # [not win]
+    sha256: 4c4a67f581f69741290390dbcf52b09147d25be8129074eb79673957f4c1b10c  # [not win]
 
   - url: https://ffmpeg.zeranoe.com/builds/win64/shared/ffmpeg-{{ version }}-win64-shared.zip  # [win]
-    sha256: c4908c97436c946509dc365e421159274fa4b1e66dce6fb5b63d82a6294d5357  # [win]
+    sha256: cd052634d7e0fe906530814e94e9ed57228cc03a253640e87b063e5bf114903f  # [win]
 
   - url: https://ffmpeg.zeranoe.com/builds/win64/dev/ffmpeg-{{ version }}-win64-dev.zip  # [win]
-    sha256: 761ec79aa3dae66698c9791a2f0bb9da8794246f8356cadc741ddc0eabab0471  # [win]
+    sha256: 3014c21b44f7896520cf22aed06f9efca9e1cf07fccbb21b169d48e0d399c4bf  # [win]
 
 build:
-  number: 1002
+  number: 0
   run_exports:
   # seems to be minor version compatibility
   # https://abi-laboratory.pro/tracker/timeline/ffmpeg/
