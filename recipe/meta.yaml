@@ -6,13 +6,13 @@ package:
 
 source:
   - url: https://ffmpeg.org/releases/ffmpeg-{{ version }}.tar.gz  # [not win]
-    sha256: 4c4a67f581f69741290390dbcf52b09147d25be8129074eb79673957f4c1b10c  # [not win]
+    sha256: 2f5b24f30e41963ce80f0ab7c78a1b91e86fb3fbb4a7661147c572c587177eee  # [not win]
 
   - url: https://ffmpeg.zeranoe.com/builds/win64/shared/ffmpeg-{{ version }}-win64-shared.zip  # [win]
-    sha256: cd052634d7e0fe906530814e94e9ed57228cc03a253640e87b063e5bf114903f  # [win]
+    sha256: 0b974578e07d974c4bafb36c7ed0b46e46b001d38b149455089c13b57ddefe5d  # [win]
 
   - url: https://ffmpeg.zeranoe.com/builds/win64/dev/ffmpeg-{{ version }}-win64-dev.zip  # [win]
-    sha256: 3014c21b44f7896520cf22aed06f9efca9e1cf07fccbb21b169d48e0d399c4bf  # [win]
+    sha256: 334b473467db096a5b74242743592a73e120a137232794508e4fc55593696a5b  # [win]
 
 build:
   number: 0
