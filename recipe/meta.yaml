@@ -29,6 +29,7 @@ requirements:
     - libtool  # [not win]
     - nasm  # [not win]
     - lame  # [not win]
+    - make  # [not win]
   host:
     - bzip2  # [not win]
     - freetype  # [not win]
@@ -38,7 +39,7 @@ requirements:
     - zlib  # [not win]
     - openh264  # [not win]
     - lame  # [not win]
-    - gmp  # [unix]    
+    - gmp  # [unix]
   run:
     - bzip2  # [not win]
     - freetype  # [not win]
