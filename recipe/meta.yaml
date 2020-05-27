@@ -1,4 +1,4 @@
-{% set version = "4.2.2" %}
+{% set version = "4.2.3" %}
 
 package:
   name: ffmpeg
@@ -6,13 +6,13 @@ package:
 
 source:
   - url: https://ffmpeg.org/releases/ffmpeg-{{ version }}.tar.gz  # [not win]
-    sha256: 83f9a9aa0acf8036daf47494d99a8c31154a18ebb6841d89878ba47783559bd0  # [not win]
+    sha256: f5cb08b01ba34d12c73875a422d7e8d1903f7086d881a77baeb3f871b822a52f  # [not win]
 
   - url: https://ffmpeg.zeranoe.com/builds/win64/shared/ffmpeg-{{ version }}-win64-shared.zip  # [win]
-    sha256: 5aedf268952b7d9f6541dbfcb47cd86a7e7881a3b7ba482fd3bc4ca33bda7bf5  # [win]
+    sha256: f21e519746112a9ae183bff50372286859b085ff6416cb68a8e418801555dc0b  # [win]
 
   - url: https://ffmpeg.zeranoe.com/builds/win64/dev/ffmpeg-{{ version }}-win64-dev.zip  # [win]
-    sha256: f4885f859c5b0d6663c2a0a4c1cf035b1c60b146402790b796bd3ad84f4f3ca2  # [win]
+    sha256: ce59245b32d3ef6fe74b48634ef4d05e8d7efa08fe21e1de5602ed42c2bfed02  # [win]
 
 build:
   number: 0
