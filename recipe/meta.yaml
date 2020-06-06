@@ -35,7 +35,7 @@ requirements:
     - freetype  # [not win]
     - gnutls  # [not win]
     - libiconv  # [not win]
-    - libxml2
+    - libxml2  # [not win]
     - x264  # [not win]
     - zlib  # [not win]
     - openh264  # [not win]
@@ -47,7 +47,7 @@ requirements:
     - gnutls  # [not win]
     - openh264  # [not win]
     - lame  # [not win]
-    - libxml2
+    - libxml2 # [not win] 
     - gmp  # [unix]
 
 test:
