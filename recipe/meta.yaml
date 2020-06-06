@@ -15,7 +15,7 @@ source:
     sha256: ce59245b32d3ef6fe74b48634ef4d05e8d7efa08fe21e1de5602ed42c2bfed02  # [win]
 
 build:
-  number: 0
+  number: 1
   run_exports:
   # seems to be minor version compatibility
   # https://abi-laboratory.pro/tracker/timeline/ffmpeg/
@@ -35,6 +35,7 @@ requirements:
     - freetype  # [not win]
     - gnutls  # [not win]
     - libiconv  # [not win]
+    - libxml2
     - x264  # [not win]
     - zlib  # [not win]
     - openh264  # [not win]
@@ -46,6 +47,7 @@ requirements:
     - gnutls  # [not win]
     - openh264  # [not win]
     - lame  # [not win]
+    - libxml2
     - gmp  # [unix]
 
 test:
