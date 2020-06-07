@@ -47,7 +47,7 @@ requirements:
     - gnutls  # [not win]
     - openh264  # [not win]
     - lame  # [not win]
-    - libxml2 # [not win] 
+    - libxml2  # [not win] 
     - gmp  # [unix]
 
 test:
