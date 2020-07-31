@@ -31,6 +31,8 @@ pin_run_as_build:
     max_pin: x.x
   zlib:
     max_pin: x.x
+target_platform:
+- linux-64
 x264:
 - 1!152.*
 zlib:
