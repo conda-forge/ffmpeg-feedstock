@@ -4,7 +4,7 @@
 
 package:
   name: ffmpeg
-  version: {{ version_ffmpeg_style }}
+  version: {{ version }}
 
 source:
   - url: https://ffmpeg.org/releases/ffmpeg-{{ version_ffmpeg_style }}.tar.gz  # [not win]
