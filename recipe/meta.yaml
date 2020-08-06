@@ -1,4 +1,4 @@
-{% set version = "4.3.0" %} # semver: (x.y.z)
+{% set version = "4.3.1" %} # semver: (x.y.z)
 {% set x,y,z = version.split('.') %}
 {% set version_ffmpeg_style = x ~ '.' ~ y if z == "0" else version %}
 
@@ -17,7 +17,7 @@ source:
     sha256: 019a81f79ef88f8465a807f8fa2a416836810d7775a933cbde519e2eff69ead9  # [win]
 
 build:
-  number: 1
+  number: 0
   run_exports:
   # seems to be minor version compatibility
   # https://abi-laboratory.pro/tracker/timeline/ffmpeg/
