@@ -18,7 +18,6 @@ unset SUBDIR
         --enable-pic \
         --enable-pthreads \
         --enable-shared \
-        --enable-static \
         --enable-version3 \
         --enable-zlib \
 	--enable-libmp3lame
