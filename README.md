@@ -5,11 +5,9 @@ Home: http://www.ffmpeg.org/
 
 Package license: GPL-3.0-or-later
 
-Feedstock license: BSD-3-Clause
+Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/ffmpeg-feedstock/blob/master/LICENSE.txt)
 
 Summary: Cross-platform solution to record, convert and stream audio and video.
-
-
 
 Current build status
 ====================

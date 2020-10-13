@@ -35,5 +35,8 @@ target_platform:
 - linux-64
 x264:
 - 1!152.*
+zip_keys:
+- - c_compiler_version
+  - cxx_compiler_version
 zlib:
 - '1.2'
