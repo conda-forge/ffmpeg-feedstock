@@ -5,15 +5,23 @@ unset SUBDIR
 
 ./configure \
         --prefix="${PREFIX}" \
+        --cc=${CC} \
         --disable-doc \
+        --disable-openssl \
+        --enable-avresample \
+        --enable-gnutls \
+        --enable-gpl \
+        --enable-hardcoded-tables \
+        --enable-libfreetype \
+        --enable-libopenh264 \
+        --enable-libx264 \
+        --enable-pic \
+        --enable-pthreads \
         --enable-shared \
         --enable-static \
-        --extra-cflags="-Wall -g -m64 -pipe -O3 -march=x86-64 -fPIC `pkg-config --cflags zlib`" \
-        --extra-cxxflags=="-Wall -g -m64 -pipe -O3 -march=x86-64 -fPIC" \
-        --extra-libs="`pkg-config --libs zlib`" \
-        --enable-pic \
-        --enable-gpl \
-        --enable-libx264
+        --enable-version3 \
+        --enable-zlib \
+	--enable-libmp3lame
 
-make
-make install
+make -j${CPU_COUNT}
+make install -j${CPU_COUNT}

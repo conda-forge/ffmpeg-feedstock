@@ -1,53 +1,96 @@
-{% set version = "2.8.6" %}
+{% set version = "4.3.1" %} # semver: (x.y.z)
+{% set x,y,z = version.split('.') %}
+{% set version_ffmpeg_style = x ~ '.' ~ y if z == "0" else version %}
 
 package:
-    name: ffmpeg
-    version: {{ version }}
+  name: ffmpeg
+  version: {{ version }}
 
 source:
-    fn: ffmpeg-{{ version }}.tar.gz  # [not win]
-    url: https://ffmpeg.org/releases/ffmpeg-{{ version }}.tar.gz  # [not win]
-    md5: 7b9449795790c46331dae2c6e8e28f15  # [not win]
-    
-    fn: ffmpeg-{{ version }}-win32-shared.7z  # [win32]
-    url: https://ffmpeg.zeranoe.com/builds/win32/shared/ffmpeg-{{ version }}-win32-shared.7z  # [win32]
-    sha256: 192117a332d08c53412c3c52b32eac8fca72db874509a627b7b41e55eab3396c  # [win32]
+  - url: https://ffmpeg.org/releases/ffmpeg-{{ version_ffmpeg_style }}.tar.gz  # [not win]
+    sha256: 45035f15d6f192772de2309c846e1d60472694f479679354a39c699719e53772  # [not win]
 
-    fn: ffmpeg-{{ version }}-win64-shared.7z  # [win64]
-    url: https://ffmpeg.zeranoe.com/builds/win64/shared/ffmpeg-{{ version }}-win64-shared.7z  # [win64]
-    sha256: efe0e446391676aff51c575978f915ddae5358f49c44ab174ed128ba1ad2de2b  # [win64]
+  - url: https://ffmpeg.zeranoe.com/builds/win64/shared/ffmpeg-{{ version_ffmpeg_style }}-win64-shared.zip  # [win]
+    sha256: dd29b7f92f48dead4dd940492c7509138c0f99db445076d0a597007298a79940  # [win]
+
+  - url: https://ffmpeg.zeranoe.com/builds/win64/dev/ffmpeg-{{ version_ffmpeg_style }}-win64-dev.zip  # [win]
+    sha256: 2e8038242cf8e1bd095c2978f196ff0462b122cc6ef7e74626a6af15459d8b81  # [win]
 
 build:
-    number: 5 
+  number: 1 
+  run_exports:
+  # seems to be minor version compatibility
+  # https://abi-laboratory.pro/tracker/timeline/ffmpeg/
+    - {{ pin_subpackage('ffmpeg', max_pin='x.x') }}
 
 requirements:
-    build:
-        - pkg-config   # [not win]
-        - libtool      # [not win]
-        - yasm         # [not win]
-        - gcc          # [osx]
-        - x264         # [not win]
-        - zlib 1.2.*   # [not win]
-        - 7za          # [win] 
-        - curl         # [win]
-        - openssl      # [win]
-    run:
-        - libgcc       # [osx]
-        - x264         # [not win]
-        - zlib 1.2.*   # [not win]
+  build:
+    - {{ compiler("c") }}
+    - {{ compiler("cxx") }}
+    - pkg-config  # [not win]
+    - libtool  # [not win]
+    - nasm  # [not win]
+    - lame  # [not win]
+    - make  # [not win]
+  host:
+    - bzip2  # [not win]
+    - freetype  # [not win]
+    - gnutls  # [not win]
+    - libiconv  # [not win]
+    - x264  # [not win]
+    - zlib  # [not win]
+    - openh264  # [not win]
+    - lame  # [not win]
+    - gmp  # [unix]
+  run:
+    - bzip2  # [not win]
+    - freetype  # [not win]
+    - gnutls  # [not win]
+    - openh264  # [not win]
+    - lame  # [not win]
+    - gmp  # [unix]
 
 test:
-    commands:
-        - ffmpeg --help
-        - ffmpeg -codecs | grep "DEVI.S zlib"  # [unix]
+  commands:
+    - ffmpeg --help
+    - ffmpeg -loglevel panic -protocols | grep "https"  # [not win]
+    - ffmpeg -loglevel panic -codecs | grep "libmp3lame"  # [not win]
+    - ffmpeg -loglevel panic -codecs | grep "DEVI.S zlib"  # [unix]
+    - ffmpeg -loglevel panic -codecs | grep "DEV.LS h264"  # [unix]
+    - ffmpeg -loglevel panic -codecs | grep "libx264"  # [unix]
+    - ffmpeg -loglevel panic -codecs | grep "libopenh264"  # [unix]
+    # Verify dynamic libraries on all systems
+    {% set ffmpeg_libs = [
+        "avcodec",
+        "avdevice",
+        "swresample",
+        "postproc",
+        "avfilter",
+        "swresample",
+        "avcodec",
+        "avformat",
+        "swscale",
+        "avresample"
+    ] %}
+    {% for each_ffmpeg_lib in ffmpeg_libs %}
+    - test -f $PREFIX/lib/lib{{ each_ffmpeg_lib }}.dylib  # [osx]
+    - test -f $PREFIX/lib/lib{{ each_ffmpeg_lib }}.so     # [linux]
+    {% endfor %}
+    - conda inspect linkages -p $PREFIX $PKG_NAME  # [not win]
+    - conda inspect objects -p $PREFIX $PKG_NAME  # [osx]
 
 about:
-    home: http://www.ffmpeg.org/
-    license: GPL 2
-    summary: Cross-platform solution to record, convert and stream audio and video.
+  home: http://www.ffmpeg.org/
+  license: GPL-3.0-or-later
+  license_file: COPYING.GPLv3  # [unix]
+  summary: Cross-platform solution to record, convert and stream audio and video.
 
 extra:
-    recipe-maintainers:
-        - danielballan
-        - jakirkham
-        - 183amir
+  recipe-maintainers:
+    - danielballan
+    - jakirkham
+    - 183amir
+    - patricksnape
+    - ocefpaf
+    - sdvillal
+    - carlodri
