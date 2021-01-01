@@ -3,7 +3,9 @@ bzip2:
 c_compiler:
 - gcc
 c_compiler_version:
-- '7'
+- '9'
+cdt_name:
+- cos6
 channel_sources:
 - conda-forge,defaults
 channel_targets:
@@ -11,11 +13,11 @@ channel_targets:
 cxx_compiler:
 - gxx
 cxx_compiler_version:
-- '7'
+- '9'
 docker_image:
-- condaforge/linux-anvil-comp7
+- quay.io/condaforge/linux-anvil-comp7
 freetype:
-- 2.9.1
+- '2'
 gmp:
 - '6'
 libiconv:
@@ -34,7 +36,7 @@ pin_run_as_build:
 target_platform:
 - linux-64
 x264:
-- 1!152.*
+- 1!161
 zip_keys:
 - - c_compiler_version
   - cxx_compiler_version
