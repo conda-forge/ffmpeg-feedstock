@@ -4,7 +4,22 @@
 unset SUBDIR
 
 if [[ "$CONDA_BUILD_CROSS_COMPILATION" == "1" ]]; then
-  EXTRA_CONFIGURE_OPTIONS="--enable-cross-compile"
+  if [[ "$ARCH" == "64" ]]; then
+    ARCH=x86_64
+  fi
+  case "$target_platform" in
+    linux-*)
+      OS=linux
+      ;;
+    osx-*)
+      OS=darwin
+      ;;
+    *)
+      echo "unknown OS for cross compile"
+      exit 1
+      ;;
+  esac
+  EXTRA_CONFIGURE_OPTIONS="--enable-cross-compile --arch=$ARCH --target-os=$OS --cross-prefix=$HOST"
 fi
 
 ./configure \
