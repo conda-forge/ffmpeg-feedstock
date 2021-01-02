@@ -19,7 +19,7 @@ if [[ "$CONDA_BUILD_CROSS_COMPILATION" == "1" ]]; then
       exit 1
       ;;
   esac
-  EXTRA_CONFIGURE_OPTIONS="--enable-cross-compile --arch=$ARCH --target-os=$OS --cross-prefix=$HOST"
+  EXTRA_CONFIGURE_OPTIONS="--enable-cross-compile --arch=$ARCH --target-os=$OS --cross-prefix=$HOST-"
 fi
 
 ./configure \
