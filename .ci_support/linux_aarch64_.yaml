@@ -40,7 +40,7 @@ pin_run_as_build:
 target_platform:
 - linux-aarch64
 x264:
-- 1!161
+- 1!161.*
 zip_keys:
 - - c_compiler_version
   - cxx_compiler_version
