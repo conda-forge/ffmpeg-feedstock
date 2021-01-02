@@ -41,6 +41,7 @@ fi
         --enable-version3 \
         --enable-zlib \
 	--enable-libmp3lame \
+	--pkg-config=$BUILD_PREFIX/bin/pkg-config \
 	$EXTRA_CONFIGURE_OPTIONS
 
 make -j${CPU_COUNT}
