@@ -1,5 +1,5 @@
 MACOSX_DEPLOYMENT_TARGET:
-- '10.9'
+- '11.0'
 bzip2:
 - '1'
 c_compiler:
@@ -7,7 +7,7 @@ c_compiler:
 c_compiler_version:
 - '11'
 channel_sources:
-- conda-forge,defaults
+- conda-forge
 channel_targets:
 - conda-forge main
 cxx_compiler:
@@ -21,7 +21,7 @@ gmp:
 libiconv:
 - '1.16'
 macos_machine:
-- x86_64-apple-darwin13.4.0
+- arm64-apple-darwin20.0.0
 pin_run_as_build:
   bzip2:
     max_pin: x
@@ -34,9 +34,9 @@ pin_run_as_build:
   zlib:
     max_pin: x.x
 target_platform:
-- osx-64
+- osx-arm64
 x264:
-- 1!152.*
+- 1!161.*
 zip_keys:
 - - c_compiler_version
   - cxx_compiler_version
