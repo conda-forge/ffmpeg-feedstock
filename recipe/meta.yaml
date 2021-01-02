@@ -19,9 +19,9 @@ source:
 build:
   number: 2
   run_exports:
-  # seems to be minor version compatibility
+  # seems to be major version compatibility
   # https://abi-laboratory.pro/tracker/timeline/ffmpeg/
-    - {{ pin_subpackage('ffmpeg', max_pin='x.x') }}
+    - {{ pin_subpackage('ffmpeg', max_pin='x') }}
 
 requirements:
   build:
@@ -36,7 +36,7 @@ requirements:
     - bzip2  # [not win]
     - freetype  # [not win]
     - gnutls  # [not win]
-    - libiconv  # [not win]
+    - libiconv  # [osx]
     - x264  # [not win]
     - zlib  # [not win]
     - openh264  # [not win]
