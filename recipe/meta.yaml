@@ -10,14 +10,14 @@ source:
   - url: https://ffmpeg.org/releases/ffmpeg-{{ version_ffmpeg_style }}.tar.gz  # [not win]
     sha256: 45035f15d6f192772de2309c846e1d60472694f479679354a39c699719e53772  # [not win]
 
-  - url: https://ffmpeg.zeranoe.com/builds/win64/shared/ffmpeg-{{ version_ffmpeg_style }}-win64-shared.zip  # [win]
+  - url: https://web.archive.org/web/20200918193221/https://ffmpeg.zeranoe.com/builds/win64/shared/ffmpeg-{{ version_ffmpeg_style }}-win64-shared.zip  # [win]
     sha256: dd29b7f92f48dead4dd940492c7509138c0f99db445076d0a597007298a79940  # [win]
 
-  - url: https://ffmpeg.zeranoe.com/builds/win64/dev/ffmpeg-{{ version_ffmpeg_style }}-win64-dev.zip  # [win]
+  - url: https://web.archive.org/web/20200918193155/https://ffmpeg.zeranoe.com/builds/win64/dev/ffmpeg-{{ version_ffmpeg_style }}-win64-dev.zip  # [win]
     sha256: 2e8038242cf8e1bd095c2978f196ff0462b122cc6ef7e74626a6af15459d8b81  # [win]
 
 build:
-  number: 2
+  number: 3
   run_exports:
   # seems to be major version compatibility
   # https://abi-laboratory.pro/tracker/timeline/ffmpeg/
@@ -92,3 +92,4 @@ extra:
     - ocefpaf
     - sdvillal
     - carlodri
+    - davidbrochart
