@@ -185,6 +185,7 @@ Feedstock Maintainers
 * [@183amir](https://github.com/183amir/)
 * [@carlodri](https://github.com/carlodri/)
 * [@danielballan](https://github.com/danielballan/)
+* [@davidbrochart](https://github.com/davidbrochart/)
 * [@jakirkham](https://github.com/jakirkham/)
 * [@ocefpaf](https://github.com/ocefpaf/)
 * [@patricksnape](https://github.com/patricksnape/)
