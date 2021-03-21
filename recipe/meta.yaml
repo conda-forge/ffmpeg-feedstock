@@ -14,7 +14,7 @@ source:
 
 
 build:
-  number: 0
+  number: 1
   run_exports:
   # seems to be major version compatibility
   # https://abi-laboratory.pro/tracker/timeline/ffmpeg/
@@ -46,6 +46,7 @@ requirements:
     - libva  # [linux and not (ppc64le or aarch64)]
     - aom  # [unix]
     - svt-av1  # [unix]
+    - ffnvcodec-headers  # [linux and not (ppc64le or aarch64)]
   run:
     - bzip2  # [not win]
     - freetype  # [not win]
@@ -71,6 +72,22 @@ test:
     - ffmpeg -loglevel panic -codecs | grep "vaapi"  # [linux and not (ppc64le or aarch64)]
     - ffmpeg -loglevel panic -codecs | grep "libaom"  # [unix]
     - ffmpeg -loglevel panic -codecs | grep "libsvtav1"  # [unix]
+    # Verify nvidia codecs on linux
+    {% set nvcodecs = [
+        "nvenc",
+        "h264_nvenc",
+        "hevc_nvenc",
+        "mjpeg_cuvid",
+        "mpeg1_cuvid",
+        "mpeg2_cuvid",
+        "mpeg4_cuvid",
+        "vc1_cuvid",
+        "vp8_cuvid",
+        "vp9_cuvid"
+    ] %}
+    {% for nvcodec in nvcodecs %}
+    - ffmpeg -loglevel panic -codecs | grep "{{ nvcodec }}"  # [linux and not (ppc64le or aarch64)]
+    {% endfor %}
     # Verify dynamic libraries on all systems
     {% set ffmpeg_libs = [
         "avcodec",

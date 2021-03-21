@@ -24,7 +24,8 @@ if [[ "$CONDA_BUILD_CROSS_COMPILATION" == "1" ]]; then
 fi
 
 if [[ "${target_platform}" == "linux-64" ]]; then
-    extra_codecs=--enable-vaapi
+    extra_codecs="${extra_codecs} --enable-vaapi"
+    extra_codecs="${extra_codecs} --enable-nvenc"
 fi
 
 ./configure \
