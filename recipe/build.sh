@@ -22,6 +22,11 @@ if [[ "$CONDA_BUILD_CROSS_COMPILATION" == "1" ]]; then
   EXTRA_CONFIGURE_OPTIONS="--enable-cross-compile --arch=$ARCH --target-os=$OS --cross-prefix=$HOST- --host-cc=$CC_FOR_BUILD"
 fi
 
+
+if [[ "$target_platform" == linux-64 ]]; then
+    extra_codecs=--enable-nvenc
+fi
+
 ./configure \
         --prefix="${PREFIX}" \
         --cc=${CC} \
@@ -34,6 +39,7 @@ fi
         --enable-libfreetype \
         --enable-libopenh264 \
         --enable-libx264 \
+        ${extra_codecs} \
         --enable-pic \
         --enable-pthreads \
         --enable-shared \
