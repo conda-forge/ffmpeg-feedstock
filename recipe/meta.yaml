@@ -8,10 +8,10 @@ package:
 
 source:
   - url: https://ffmpeg.org/releases/ffmpeg-{{ version_ffmpeg_style }}.tar.gz  # [not win]
-    sha256: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855  # [not win]
+    sha256: a4abede145de22eaf233baa1726e38e137f5698d9edd61b5763cd02b883f3c7c  # [not win]
 
   - url: https://github.com/GyanD/codexffmpeg/releases/download/{{ version_ffmpeg_style }}/ffmpeg-{{ version_ffmpeg_style }}-full_build-shared.zip  # [win]
-    sha256: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855  # [win]
+    sha256: ba6fa745b970ebcadae265b0474290a247deebae1bf835f5c13b352661c2d213  # [win]
 
 build:
   number: 0
