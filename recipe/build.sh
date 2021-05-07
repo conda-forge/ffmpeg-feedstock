@@ -22,7 +22,9 @@ if [[ "$CONDA_BUILD_CROSS_COMPILATION" == "1" ]]; then
   EXTRA_CONFIGURE_OPTIONS="--enable-cross-compile --arch=$ARCH --target-os=$OS --cross-prefix=$HOST- --host-cc=$CC_FOR_BUILD"
 fi
 
-git clone https://aomedia.googlesource.com/aom
+yum install cmake
+
+git clone https://aomedia.googlesource.com/aom --depth 1
 cmake ./aom
 make -j${CPU_COUNT}
 make install -j${CPU_COUNT}
