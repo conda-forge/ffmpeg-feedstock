@@ -1,4 +1,4 @@
-{% set version = "4.3.1" %} # semver: (x.y.z)
+{% set version = "4.4.0" %} # semver: (x.y.z)
 {% set x,y,z = version.split('.') %}
 {% set version_ffmpeg_style = x ~ '.' ~ y if z == "0" else version %}
 
@@ -8,16 +8,13 @@ package:
 
 source:
   - url: https://ffmpeg.org/releases/ffmpeg-{{ version_ffmpeg_style }}.tar.gz  # [not win]
-    sha256: 45035f15d6f192772de2309c846e1d60472694f479679354a39c699719e53772  # [not win]
+    sha256: a4abede145de22eaf233baa1726e38e137f5698d9edd61b5763cd02b883f3c7c  # [not win]
 
-  - url: https://ffmpeg.zeranoe.com/builds/win64/shared/ffmpeg-{{ version_ffmpeg_style }}-win64-shared.zip  # [win]
-    sha256: dd29b7f92f48dead4dd940492c7509138c0f99db445076d0a597007298a79940  # [win]
-
-  - url: https://ffmpeg.zeranoe.com/builds/win64/dev/ffmpeg-{{ version_ffmpeg_style }}-win64-dev.zip  # [win]
-    sha256: 2e8038242cf8e1bd095c2978f196ff0462b122cc6ef7e74626a6af15459d8b81  # [win]
+  - url: https://github.com/GyanD/codexffmpeg/releases/download/{{ version_ffmpeg_style }}/ffmpeg-{{ version_ffmpeg_style }}-full_build-shared.zip  # [win]
+    sha256: ba6fa745b970ebcadae265b0474290a247deebae1bf835f5c13b352661c2d213  # [win]
 
 build:
-  number: 2
+  number: 0
   run_exports:
   # seems to be major version compatibility
   # https://abi-laboratory.pro/tracker/timeline/ffmpeg/
@@ -59,6 +56,7 @@ test:
     - ffmpeg -loglevel panic -codecs | grep "DEV.LS h264"  # [unix]
     - ffmpeg -loglevel panic -codecs | grep "libx264"  # [unix]
     - ffmpeg -loglevel panic -codecs | grep "libopenh264"  # [unix]
+    - ffmpeg -loglevel panic -codecs | grep "libaom"  # [unix]
     # Verify dynamic libraries on all systems
     {% set ffmpeg_libs = [
         "avcodec",
@@ -70,7 +68,8 @@ test:
         "avcodec",
         "avformat",
         "swscale",
-        "avresample"
+        "avresample",
+        "aom",
     ] %}
     {% for each_ffmpeg_lib in ffmpeg_libs %}
     - test -f $PREFIX/lib/lib{{ each_ffmpeg_lib }}.dylib  # [osx]
