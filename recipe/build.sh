@@ -31,6 +31,7 @@ fi
         --enable-gnutls \
         --enable-gpl \
         --enable-hardcoded-tables \
+	--enable-libaom \
         --enable-libfreetype \
         --enable-libopenh264 \
         --enable-libx264 \
