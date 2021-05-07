@@ -1,4 +1,4 @@
-{% set version = "4.3.1" %} # semver: (x.y.z)
+{% set version = "4.4.0" %} # semver: (x.y.z)
 {% set x,y,z = version.split('.') %}
 {% set version_ffmpeg_style = x ~ '.' ~ y if z == "0" else version %}
 
