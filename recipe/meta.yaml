@@ -7,7 +7,7 @@ package:
   version: {{ version }}
 
 source:
-  - url: https://github.com/FFmpeg/FFmpeg/releases/tag/n{{ version_ffmpeg_style }}.tar.gz
+  - url: https://github.com/FFmpeg/FFmpeg/archive/refs/n{{ version_ffmpeg_style }}.tar.gz
     sha256: bea6d9f91cdbe4c5ad98e0878955ad5077df3883ef321fd4668ee1076de793fe
 
 build:
