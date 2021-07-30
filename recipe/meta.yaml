@@ -16,30 +16,31 @@ build:
   # seems to be major version compatibility
   # https://abi-laboratory.pro/tracker/timeline/ffmpeg/
     - {{ pin_subpackage('ffmpeg', max_pin='x') }}
+  skip: true  # [win]
 
 requirements:
   build:
     - {{ compiler("c") }}
     - {{ compiler("cxx") }}
-    - pkg-config
+    - pkg-config  # [not win]
     - libtool  # [not win]
-    - nasm
+    - nasm  # [not win]
     - lame  # [not win]
-    - make
+    - make  # [not win]
   host:
-    - bzip2
-    - freetype
+    - bzip2  # [not win]
+    - freetype  # [not win]
     - gnutls  # [not win]
     - libiconv  # [osx]
-    - x264
-    - zlib
+    - x264  # [not win]
+    - zlib  # [not win]
     - openh264  # [not win]
     - lame  # [not win]
     - gmp  # [unix]
   run:
-    - bzip2
-    - freetype
-    - gnutls
+    - bzip2  # [not win]
+    - freetype  # [not win]
+    - gnutls  # [not win]
     - openh264  # [not win]
     - lame  # [not win]
     - gmp  # [unix]
