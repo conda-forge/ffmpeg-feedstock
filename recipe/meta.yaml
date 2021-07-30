@@ -21,25 +21,25 @@ requirements:
   build:
     - {{ compiler("c") }}
     - {{ compiler("cxx") }}
-    - pkg-config  # [not win]
+    - pkg-config
     - libtool  # [not win]
-    - nasm  # [not win]
+    - nasm
     - lame  # [not win]
-    - make  # [not win]
+    - make
   host:
-    - bzip2  # [not win]
-    - freetype  # [not win]
+    - bzip2
+    - freetype
     - gnutls  # [not win]
     - libiconv  # [osx]
-    - x264  # [not win]
-    - zlib  # [not win]
+    - x264
+    - zlib
     - openh264  # [not win]
     - lame  # [not win]
     - gmp  # [unix]
   run:
-    - bzip2  # [not win]
-    - freetype  # [not win]
-    - gnutls  # [not win]
+    - bzip2
+    - freetype
+    - gnutls
     - openh264  # [not win]
     - lame  # [not win]
     - gmp  # [unix]
