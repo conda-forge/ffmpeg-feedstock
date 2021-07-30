@@ -1,4 +1,4 @@
-{% set version = "4.4.0" %} # semver: (x.y.z)
+{% set version = "4.3.2" %} # semver: (x.y.z)
 {% set x,y,z = version.split('.') %}
 {% set version_ffmpeg_style = x ~ '.' ~ y if z == "0" else version %}
 
@@ -8,7 +8,7 @@ package:
 
 source:
   - url: https://github.com/FFmpeg/FFmpeg/archive/refs/tags/n{{ version_ffmpeg_style }}.tar.gz
-    sha256: bea6d9f91cdbe4c5ad98e0878955ad5077df3883ef321fd4668ee1076de793fe
+    sha256: d9b650a5aaaa6e2907a5578135b715ca532896fe9a6dc7a823c25f89790ff1ed
 
 build:
   number: 0
