@@ -24,6 +24,7 @@ requirements:
     - {{ compiler("cxx") }}
     - pkg-config  # [not win]
     - libtool  # [not win]
+    - libvpx  # [not win]
     - nasm  # [not win]
     - lame  # [not win]
     - make  # [not win]
@@ -33,7 +34,7 @@ requirements:
     - gnutls  # [not win]
     - libiconv  # [osx]
     - x264  # [not win]
-    - libvpx # [not win]
+    - libvpx  # [not win]
     - zlib  # [not win]
     - openh264  # [not win]
     - lame  # [not win]
