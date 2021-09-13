@@ -24,7 +24,6 @@ requirements:
     - {{ compiler("cxx") }}
     - pkg-config  # [not win]
     - libtool  # [not win]
-    - libvpx  # [not win]
     - nasm  # [not win]
     - lame  # [not win]
     - make  # [not win]
