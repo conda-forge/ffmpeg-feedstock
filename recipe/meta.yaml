@@ -7,11 +7,11 @@ package:
   version: {{ version }}
 
 source:
-  - url: https://github.com/FFmpeg/FFmpeg/archive/refs/tags/n{{ version_ffmpeg_style }}.tar.gz
+  - url: https://ffmpeg.org/releases/ffmpeg-{{ version_ffmpeg_style }}.tar.gz
     sha256: d9b650a5aaaa6e2907a5578135b715ca532896fe9a6dc7a823c25f89790ff1ed
 
 build:
-  number: 0
+  number: 1
   run_exports:
   # seems to be major version compatibility
   # https://abi-laboratory.pro/tracker/timeline/ffmpeg/
