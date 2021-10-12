@@ -9,6 +9,10 @@ Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/ffmpeg-feedstoc
 
 Summary: Cross-platform solution to record, convert and stream audio and video.
 
+Development: https://git.ffmpeg.org/ffmpeg.git
+
+Documentation: https://ffmpeg.org/documentation.html
+
 Current build status
 ====================
 
@@ -181,6 +185,7 @@ Feedstock Maintainers
 * [@carlodri](https://github.com/carlodri/)
 * [@danielballan](https://github.com/danielballan/)
 * [@jakirkham](https://github.com/jakirkham/)
+* [@matthiasdiener](https://github.com/matthiasdiener/)
 * [@ocefpaf](https://github.com/ocefpaf/)
 * [@patricksnape](https://github.com/patricksnape/)
 * [@sdvillal](https://github.com/sdvillal/)
