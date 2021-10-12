@@ -8,7 +8,7 @@ package:
 
 source:
   - url: https://ffmpeg.org/releases/ffmpeg-{{ version_ffmpeg_style }}.tar.gz
-    sha256: d9b650a5aaaa6e2907a5578135b715ca532896fe9a6dc7a823c25f89790ff1ed
+    sha256: b4701d5d1220cfa2f140090a0ae349cd76dafe335e60227d1e3f8301998634c9 
 
 build:
   number: 1
