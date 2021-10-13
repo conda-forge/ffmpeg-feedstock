@@ -1,0 +1,23 @@
+From 115aa7cea38161765ef0602f255aa56d17c4bbee Mon Sep 17 00:00:00 2001
+From: Thilo Borgmann <thilo.borgmann@mail.de>
+Date: Mon, 14 Jun 2021 15:53:20 +0200
+Subject: [PATCH] lavc/videotoolboxenc.c: Fix preprocessor macro for OSX
+ 10.10.5 and probably older versions
+
+---
+ libavcodec/videotoolboxenc.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/libavcodec/videotoolboxenc.c b/libavcodec/videotoolboxenc.c
+index f063a86e7340..4eaabed5d8f0 100644
+--- a/libavcodec/videotoolboxenc.c
++++ b/libavcodec/videotoolboxenc.c
+@@ -1038,7 +1038,7 @@ static int get_cv_ycbcr_matrix(AVCodecContext *avctx, CFStringRef *matrix) {
+ // constant quality only on Macs with Apple Silicon
+ static bool vtenc_qscale_enabled(void)
+ {
+-    return TARGET_OS_OSX && TARGET_CPU_ARM64;
++    return !TARGET_OS_IPHONE && TARGET_CPU_ARM64;
+ }
+ 
+ static int vtenc_create_encoder(AVCodecContext   *avctx,
