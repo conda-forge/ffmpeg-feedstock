@@ -7,11 +7,11 @@ package:
   version: {{ version }}
 
 source:
-  - url: https://github.com/FFmpeg/FFmpeg/archive/refs/tags/n{{ version_ffmpeg_style }}.tar.gz
-    sha256: bea6d9f91cdbe4c5ad98e0878955ad5077df3883ef321fd4668ee1076de793fe
+  - url: https://ffmpeg.org/releases/ffmpeg-{{ version_ffmpeg_style }}.tar.gz
+    sha256: b4701d5d1220cfa2f140090a0ae349cd76dafe335e60227d1e3f8301998634c9 
 
 build:
-  number: 0
+  number: 1
   run_exports:
   # seems to be major version compatibility
   # https://abi-laboratory.pro/tracker/timeline/ffmpeg/
@@ -77,6 +77,8 @@ about:
   license: GPL-3.0-or-later
   license_file: COPYING.GPLv3  # [unix]
   summary: Cross-platform solution to record, convert and stream audio and video.
+  dev_url: https://git.ffmpeg.org/ffmpeg.git
+  doc_url: https://ffmpeg.org/documentation.html
 
 extra:
   recipe-maintainers:
@@ -88,3 +90,4 @@ extra:
     - sdvillal
     - carlodri
     - benjaminrwilson
+    - matthiasdiener
