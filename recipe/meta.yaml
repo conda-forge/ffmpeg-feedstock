@@ -15,7 +15,7 @@ source:
 
 
 build:
-  number: 0
+  number: 1
   run_exports:
   # seems to be major version compatibility
   # https://abi-laboratory.pro/tracker/timeline/ffmpeg/
@@ -41,6 +41,7 @@ requirements:
     - openh264  # [not win]
     - lame  # [not win]
     - gmp  # [unix]
+    - ffnvcodec-headers  # [linux and not (ppc64le or aarch64)]
   run:
     - bzip2  # [not win]
     - freetype  # [not win]
@@ -58,6 +59,22 @@ test:
     - ffmpeg -loglevel panic -codecs | grep "DEV.LS h264"  # [unix]
     - ffmpeg -loglevel panic -codecs | grep "libx264"  # [unix]
     - ffmpeg -loglevel panic -codecs | grep "libopenh264"  # [unix]
+    # Verify nvidia codecs on linux
+    {% set nvcodecs = [
+        "nvenc",
+        "h264_nvenc",
+        "hevc_nvenc",
+        "mjpeg_cuvid",
+        "mpeg1_cuvid",
+        "mpeg2_cuvid",
+        "mpeg4_cuvid",
+        "vc1_cuvid",
+        "vp8_cuvid",
+        "vp9_cuvid"
+    ] %}
+    {% for nvcodec in nvcodecs %}
+    - ffmpeg -loglevel panic -codecs | grep "{{ nvcodec }}"  # [linux and not (ppc64le or aarch64)]
+    {% endfor %}
     # Verify dynamic libraries on all systems
     {% set ffmpeg_libs = [
         "avcodec",
