@@ -1,25 +1,27 @@
+MACOSX_DEPLOYMENT_TARGET:
+- '11.0'
 bzip2:
 - '1'
 c_compiler:
-- gcc
+- clang
 c_compiler_version:
-- '9'
-cdt_name:
-- cos7
+- '11'
 channel_sources:
 - conda-forge
 channel_targets:
 - conda-forge main
 cxx_compiler:
-- gxx
+- clangxx
 cxx_compiler_version:
-- '9'
-docker_image:
-- quay.io/condaforge/linux-anvil-ppc64le
+- '11'
 freetype:
 - '2'
 gmp:
 - '6'
+libiconv:
+- '1.16'
+macos_machine:
+- arm64-apple-darwin20.0.0
 pin_run_as_build:
   bzip2:
     max_pin: x
@@ -27,10 +29,12 @@ pin_run_as_build:
     max_pin: x
   gmp:
     max_pin: x
+  libiconv:
+    max_pin: x.x
   zlib:
     max_pin: x.x
 target_platform:
-- linux-ppc64le
+- osx-arm64
 x264:
 - 1!161.*
 zip_keys:

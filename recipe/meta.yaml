@@ -1,4 +1,4 @@
-{% set version = "4.3.1" %} # semver: (x.y.z)
+{% set version = "4.4.0" %} # semver: (x.y.z)
 {% set x,y,z = version.split('.') %}
 {% set version_ffmpeg_style = x ~ '.' ~ y if z == "0" else version %}
 
@@ -7,21 +7,20 @@ package:
   version: {{ version }}
 
 source:
-  - url: https://ffmpeg.org/releases/ffmpeg-{{ version_ffmpeg_style }}.tar.gz  # [not win]
-    sha256: 45035f15d6f192772de2309c846e1d60472694f479679354a39c699719e53772  # [not win]
+  - url: https://ffmpeg.org/releases/ffmpeg-{{ version_ffmpeg_style }}.tar.gz
+    sha256: a4abede145de22eaf233baa1726e38e137f5698d9edd61b5763cd02b883f3c7c
+  - patches:
+    - patches/TARGET_CPU_ARM64.patch  # [osx]
+    - patches/TARGET_OS_OSX.patch     # [osx]
 
-  - url: https://ffmpeg.zeranoe.com/builds/win64/shared/ffmpeg-{{ version_ffmpeg_style }}-win64-shared.zip  # [win]
-    sha256: dd29b7f92f48dead4dd940492c7509138c0f99db445076d0a597007298a79940  # [win]
-
-  - url: https://ffmpeg.zeranoe.com/builds/win64/dev/ffmpeg-{{ version_ffmpeg_style }}-win64-dev.zip  # [win]
-    sha256: 2e8038242cf8e1bd095c2978f196ff0462b122cc6ef7e74626a6af15459d8b81  # [win]
 
 build:
   number: 1
   run_exports:
-  # seems to be minor version compatibility
+  # seems to be major version compatibility
   # https://abi-laboratory.pro/tracker/timeline/ffmpeg/
-    - {{ pin_subpackage('ffmpeg', max_pin='x.x') }}
+    - {{ pin_subpackage('ffmpeg', max_pin='x') }}
+  skip: true  # [win]
 
 requirements:
   build:
@@ -36,7 +35,7 @@ requirements:
     - bzip2  # [not win]
     - freetype  # [not win]
     - gnutls  # [not win]
-    - libiconv  # [not win]
+    - libiconv  # [osx]
     - x264  # [not win]
     - zlib  # [not win]
     - openh264  # [not win]
@@ -76,22 +75,23 @@ test:
     - test -f $PREFIX/lib/lib{{ each_ffmpeg_lib }}.dylib  # [osx]
     - test -f $PREFIX/lib/lib{{ each_ffmpeg_lib }}.so     # [linux]
     {% endfor %}
-    - conda inspect linkages -p $PREFIX $PKG_NAME  # [not win]
-    - conda inspect objects -p $PREFIX $PKG_NAME  # [osx]
 
 about:
   home: http://www.ffmpeg.org/
   license: GPL-3.0-or-later
   license_file: COPYING.GPLv3  # [unix]
   summary: Cross-platform solution to record, convert and stream audio and video.
+  dev_url: https://git.ffmpeg.org/ffmpeg.git
+  doc_url: https://ffmpeg.org/documentation.html
 
 extra:
   recipe-maintainers:
     - danielballan
     - jakirkham
     - 183amir
-    - caspervdw
     - patricksnape
     - ocefpaf
     - sdvillal
     - carlodri
+    - benjaminrwilson
+    - matthiasdiener

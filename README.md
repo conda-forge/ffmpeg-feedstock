@@ -9,18 +9,15 @@ Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/ffmpeg-feedstoc
 
 Summary: Cross-platform solution to record, convert and stream audio and video.
 
+Development: https://git.ffmpeg.org/ffmpeg.git
+
+Documentation: https://ffmpeg.org/documentation.html
+
 Current build status
 ====================
 
 
 <table><tr>
-    <td>Travis</td>
-    <td>
-      <a href="https://travis-ci.com/conda-forge/ffmpeg-feedstock">
-        <img alt="macOS" src="https://img.shields.io/travis/com/conda-forge/ffmpeg-feedstock/master.svg?label=macOS">
-      </a>
-    </td>
-  </tr><tr>
     <td>Drone</td>
     <td>
       <a href="https://cloud.drone.io/conda-forge/ffmpeg-feedstock">
@@ -69,10 +66,10 @@ Current build status
                 </a>
               </td>
             </tr><tr>
-              <td>win_64</td>
+              <td>osx_arm64</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=5418&branchName=master">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/ffmpeg-feedstock?branchName=master&jobName=win&configuration=win_64_" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/ffmpeg-feedstock?branchName=master&jobName=osx&configuration=osx_arm64_" alt="variant">
                 </a>
               </td>
             </tr>
@@ -97,6 +94,7 @@ Installing `ffmpeg` from the `conda-forge` channel can be achieved by adding `co
 
 ```
 conda config --add channels conda-forge
+conda config --set channel_priority strict
 ```
 
 Once the `conda-forge` channel has been enabled, `ffmpeg` can be installed with:
@@ -167,19 +165,20 @@ build distinct package versions.
 
 In order to produce a uniquely identifiable distribution:
  * If the version of a package **is not** being increased, please add or increase
-   the [``build/number``](https://conda.io/docs/user-guide/tasks/build-packages/define-metadata.html#build-number-and-string).
+   the [``build/number``](https://docs.conda.io/projects/conda-build/en/latest/resources/define-metadata.html#build-number-and-string).
  * If the version of a package **is** being increased, please remember to return
-   the [``build/number``](https://conda.io/docs/user-guide/tasks/build-packages/define-metadata.html#build-number-and-string)
+   the [``build/number``](https://docs.conda.io/projects/conda-build/en/latest/resources/define-metadata.html#build-number-and-string)
    back to 0.
 
 Feedstock Maintainers
 =====================
 
 * [@183amir](https://github.com/183amir/)
+* [@benjaminrwilson](https://github.com/benjaminrwilson/)
 * [@carlodri](https://github.com/carlodri/)
-* [@caspervdw](https://github.com/caspervdw/)
 * [@danielballan](https://github.com/danielballan/)
 * [@jakirkham](https://github.com/jakirkham/)
+* [@matthiasdiener](https://github.com/matthiasdiener/)
 * [@ocefpaf](https://github.com/ocefpaf/)
 * [@patricksnape](https://github.com/patricksnape/)
 * [@sdvillal](https://github.com/sdvillal/)
