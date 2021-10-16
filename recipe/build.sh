@@ -37,6 +37,7 @@ fi
         --enable-pic \
         --enable-pthreads \
         --enable-shared \
+	--disable-static \
         --enable-version3 \
         --enable-zlib \
 	--enable-libmp3lame \
