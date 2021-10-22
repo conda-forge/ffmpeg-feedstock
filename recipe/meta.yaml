@@ -15,7 +15,7 @@ source:
 
 
 build:
-  number: 0
+  number: 1
   run_exports:
   # seems to be major version compatibility
   # https://abi-laboratory.pro/tracker/timeline/ffmpeg/
@@ -37,6 +37,7 @@ requirements:
     - gnutls  # [not win]
     - libiconv  # [osx]
     - x264  # [not win]
+    - libvpx  # [not win]
     - zlib  # [not win]
     - openh264  # [not win]
     - lame  # [not win]
