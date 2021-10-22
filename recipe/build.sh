@@ -28,12 +28,14 @@ fi
         --disable-doc \
         --disable-openssl \
         --enable-avresample \
+        --enable-demuxer=dash \
         --enable-gnutls \
         --enable-gpl \
         --enable-hardcoded-tables \
         --enable-libfreetype \
         --enable-libopenh264 \
         --enable-libx264 \
+        --enable-libxml2 \
         --enable-libvpx \
         --enable-pic \
         --enable-pthreads \
