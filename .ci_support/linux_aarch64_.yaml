@@ -24,6 +24,8 @@ freetype:
 - '2'
 gmp:
 - '6'
+libxml2:
+- '2.9'
 pin_run_as_build:
   bzip2:
     max_pin: x
@@ -31,6 +33,8 @@ pin_run_as_build:
     max_pin: x
   gmp:
     max_pin: x
+  libxml2:
+    max_pin: x.x
   zlib:
     max_pin: x.x
 target_platform:
