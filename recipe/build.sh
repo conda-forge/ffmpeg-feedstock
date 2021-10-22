@@ -36,10 +36,11 @@ fi
         --enable-libopenh264 \
         --enable-libx264 \
         --enable-libxml2 \
+        --enable-libvpx \
         --enable-pic \
         --enable-pthreads \
         --enable-shared \
-        --enable-static \
+        --disable-static \
         --enable-version3 \
         --enable-zlib \
 	--enable-libmp3lame \
