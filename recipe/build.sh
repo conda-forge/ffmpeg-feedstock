@@ -35,6 +35,7 @@ fi
         --enable-libfreetype \
         --enable-libopenh264 \
         --enable-libx264 \
+        --enable-libx265 \
         --enable-libxml2 \
         --enable-libvpx \
         --enable-pic \
