@@ -23,7 +23,7 @@ if [[ "$CONDA_BUILD_CROSS_COMPILATION" == "1" ]]; then
   EXTRA_CONFIGURE_OPTIONS="--enable-cross-compile --arch=$ARCH --target-os=$OS --cross-prefix=$HOST- --host-cc=$CC_FOR_BUILD"
 fi
 
-if [[ "$HOST" == x86_64-conda-linux* ]]; then
+if [[ "${target_platform}" == "x86_64-conda-linux*" ]]; then
     extra_codecs=--enable-vaapi
 fi
 
