@@ -82,8 +82,7 @@ test:
         "aom",
     ] %}
     {% for each_ffmpeg_lib in ffmpeg_libs %}
-    - test -f $PREFIX/lib/lib{{ each_ffmpeg_lib }}.dylib  # [osx]
-    - test -f $PREFIX/lib/lib{{ each_ffmpeg_lib }}.so     # [linux]
+    - test -f $PREFIX/lib/lib{{ each_ffmpeg_lib }}${SHLIB_EXT}  # [unix]
     {% endfor %}
 
 about:
