@@ -80,6 +80,7 @@ test:
         "swscale",
         "avresample",
         "aom",
+        "avutil",
     ] %}
     {% for each_ffmpeg_lib in ffmpeg_libs %}
     - test -f $PREFIX/lib/lib{{ each_ffmpeg_lib }}${SHLIB_EXT}  # [unix]
