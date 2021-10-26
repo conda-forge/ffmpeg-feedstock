@@ -41,6 +41,8 @@ fi
         --enable-libopenh264 \
         ${extra_codecs} \
         --enable-libx264 \
+        --enable-libx265 \
+        --enable-libaom \
         --enable-libxml2 \
         --enable-libvpx \
         --enable-pic \
