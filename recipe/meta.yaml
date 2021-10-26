@@ -15,7 +15,7 @@ source:
 
 
 build:
-  number: 4
+  number: 5
   run_exports:
   # seems to be major version compatibility
   # https://abi-laboratory.pro/tracker/timeline/ffmpeg/
@@ -44,6 +44,7 @@ requirements:
     - openh264  # [not win]
     - lame  # [not win]
     - gmp  # [unix]
+    - aom  # [unix]
   run:
     - bzip2  # [not win]
     - freetype  # [not win]
@@ -53,6 +54,7 @@ requirements:
     - libxml2  # [not win]
     - gmp  # [unix]
     - x265  # [not win]
+    - aom  # [not win]
 
 test:
   commands:
@@ -62,7 +64,9 @@ test:
     - ffmpeg -loglevel panic -codecs | grep "DEVI.S zlib"  # [unix]
     - ffmpeg -loglevel panic -codecs | grep "DEV.LS h264"  # [unix]
     - ffmpeg -loglevel panic -codecs | grep "libx264"  # [unix]
+    - ffmpeg -loglevel panic -codecs | grep "libx265"  # [unix]
     - ffmpeg -loglevel panic -codecs | grep "libopenh264"  # [unix]
+    - ffmpeg -loglevel panic -codecs | grep "libaom" # [unix]
     # Verify dynamic libraries on all systems
     {% set ffmpeg_libs = [
         "avcodec",
@@ -74,7 +78,8 @@ test:
         "avcodec",
         "avformat",
         "swscale",
-        "avresample"
+        "avresample",
+        "aom",
     ] %}
     {% for each_ffmpeg_lib in ffmpeg_libs %}
     - test -f $PREFIX/lib/lib{{ each_ffmpeg_lib }}.dylib  # [osx]
