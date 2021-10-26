@@ -66,7 +66,7 @@ test:
     - ffmpeg -loglevel panic -codecs | grep "libx264"  # [unix]
     - ffmpeg -loglevel panic -codecs | grep "libx265"  # [unix]
     - ffmpeg -loglevel panic -codecs | grep "libopenh264"  # [unix]
-    - ffmpeg -loglevel panic -codecs | grep "libaom" # [unix]
+    - ffmpeg -loglevel panic -codecs | grep "libaom"  # [unix]
     # Verify dynamic libraries on all systems
     {% set ffmpeg_libs = [
         "avcodec",
