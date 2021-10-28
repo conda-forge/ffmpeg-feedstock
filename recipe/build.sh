@@ -27,6 +27,9 @@ if [[ "${target_platform}" == "linux-64" ]]; then
     extra_codecs=--enable-vaapi
 fi
 
+echo $PKG_CONFIG_PATH
+ls $PKG_CONFIG_PATH
+
 ./configure \
         --prefix="${PREFIX}" \
         --cc=${CC} \
@@ -54,7 +57,7 @@ fi
         --enable-zlib \
         --enable-libmp3lame \
         --pkg-config=$BUILD_PREFIX/bin/pkg-config \
-        $EXTRA_CONFIGURE_OPTIONS
+        $EXTRA_CONFIGURE_OPTIONS || { cat ffbuild/config.log; exit 1; }
 
 make -j${CPU_COUNT}
 make install -j${CPU_COUNT}
