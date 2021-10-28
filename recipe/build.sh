@@ -43,6 +43,7 @@ fi
         --enable-libx264 \
         --enable-libx265 \
         --enable-libaom \
+        --enable-libsvtav1 \
         --enable-libxml2 \
         --enable-libvpx \
         --enable-pic \
