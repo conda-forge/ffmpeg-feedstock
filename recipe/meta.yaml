@@ -15,7 +15,7 @@ source:
 
 
 build:
-  number: 6
+  number: 7
   run_exports:
   # seems to be major version compatibility
   # https://abi-laboratory.pro/tracker/timeline/ffmpeg/
@@ -46,6 +46,7 @@ requirements:
     - gmp  # [unix]
     - libva  # [linux and not (ppc64le or aarch64)]
     - aom  # [unix]
+    - svt-av1  # [unix]
   run:
     - bzip2  # [not win]
     - freetype  # [not win]
@@ -56,6 +57,7 @@ requirements:
     - gmp  # [unix]
     - x265  # [not win]
     - aom  # [not win]
+    - svt-av1  # [unix]
 
 test:
   commands:
@@ -69,6 +71,7 @@ test:
     - ffmpeg -loglevel panic -codecs | grep "libopenh264"  # [unix]
     - ffmpeg -loglevel panic -codecs | grep "vaapi"  # [linux and not (ppc64le or aarch64)]
     - ffmpeg -loglevel panic -codecs | grep "libaom"  # [unix]
+    - ffmpeg -loglevel panic -codecs | grep "libsvtav1"  # [unix]
     # Verify dynamic libraries on all systems
     {% set ffmpeg_libs = [
         "avcodec",
