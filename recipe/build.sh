@@ -27,9 +27,6 @@ if [[ "${target_platform}" == "linux-64" ]]; then
     extra_codecs=--enable-vaapi
 fi
 
-echo $PKG_CONFIG_PATH
-ls $PKG_CONFIG_PATH
-
 ./configure \
         --prefix="${PREFIX}" \
         --cc=${CC} \
