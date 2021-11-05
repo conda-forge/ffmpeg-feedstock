@@ -43,6 +43,7 @@ fi
         --enable-libx264 \
         --enable-libx265 \
         --enable-libaom \
+        --enable-libsvtav1 \
         --enable-libxml2 \
         --enable-libvpx \
         --enable-pic \
@@ -53,7 +54,7 @@ fi
         --enable-zlib \
         --enable-libmp3lame \
         --pkg-config=$BUILD_PREFIX/bin/pkg-config \
-        $EXTRA_CONFIGURE_OPTIONS
+        $EXTRA_CONFIGURE_OPTIONS || { cat ffbuild/config.log; exit 1; }
 
 make -j${CPU_COUNT}
 make install -j${CPU_COUNT}
