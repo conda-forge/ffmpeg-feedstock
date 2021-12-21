@@ -14,11 +14,12 @@ source:
 
 
 build:
-  number: 0
+  number: 1
   run_exports:
-  # seems to be major version compatibility
+  # originally seemed to be major version compatibility
   # https://abi-laboratory.pro/tracker/timeline/ffmpeg/
-    - {{ pin_subpackage('ffmpeg', max_pin='x') }}
+  # but 4.4 seems to have removed a symbol from 4.3
+    - {{ pin_subpackage('ffmpeg', max_pin='x.x') }}
   skip: true  # [win]
 
 requirements:
