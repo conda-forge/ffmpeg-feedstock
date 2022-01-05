@@ -10,14 +10,18 @@ channel_sources:
 - conda-forge
 channel_targets:
 - conda-forge main
+cuda_compiler:
+- nvcc
 cuda_compiler_version:
-- None
+- '11.1'
+cudnn:
+- '8'
 cxx_compiler:
 - gxx
 cxx_compiler_version:
 - '9'
 docker_image:
-- quay.io/condaforge/linux-anvil-ppc64le
+- quay.io/condaforge/linux-anvil-cuda:11.1
 freetype:
 - '2'
 gmp:
@@ -36,12 +40,13 @@ pin_run_as_build:
   zlib:
     max_pin: x.x
 target_platform:
-- linux-ppc64le
+- linux-64
 x264:
 - 1!161.*
 zip_keys:
 - - c_compiler_version
   - cxx_compiler_version
+  - cudnn
   - cuda_compiler_version
   - cdt_name
   - docker_image
