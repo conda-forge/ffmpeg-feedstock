@@ -25,12 +25,14 @@ requirements:
   build:
     - {{ compiler("c") }}
     - {{ compiler("cxx") }}
+    - {{ compiler('cuda') }}    # [cuda_compiler_version != "None"]
     - pkg-config  # [not win]
     - libtool  # [not win]
     - nasm  # [not win]
     - lame  # [not win]
     - make  # [not win]
   host:
+    - cudnn                           # [cuda_compiler_version != "None"]
     - bzip2  # [not win]
     - freetype  # [not win]
     - gnutls  # [not win]
