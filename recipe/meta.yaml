@@ -33,6 +33,7 @@ requirements:
     - make  # [not win]
   host:
     - cudnn                           # [cuda_compiler_version != "None"]
+    - nccl                            # [cuda_compiler_version != "None"]
     - bzip2  # [not win]
     - freetype  # [not win]
     - gnutls  # [not win]

@@ -27,6 +27,7 @@ if [[ "${target_platform}" == "linux-64" ]]; then
     extra_codecs="${extra_codecs} --enable-vaapi"
     extra_codecs="${extra_codecs} --enable-nvenc"
     extra_codecs="${extra_codecs} --enable-cuda-nvcc"
+    extra_codecs="${extra_codecs} --enable-nonfree"
 fi
 
 ./configure \
