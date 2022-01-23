@@ -56,5 +56,5 @@ fi
         --pkg-config=$BUILD_PREFIX/bin/pkg-config \
         $EXTRA_CONFIGURE_OPTIONS || { cat ffbuild/config.log; exit 1; }
 
-make -j${CPU_COUNT}
-make install -j${CPU_COUNT}
+make -j${CPU_COUNT} V=1
+make install -j${CPU_COUNT} V=1
