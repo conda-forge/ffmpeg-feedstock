@@ -17,14 +17,7 @@ Current build status
 ====================
 
 
-<table><tr>
-    <td>Travis</td>
-    <td>
-      <a href="https://travis-ci.com/conda-forge/ffmpeg-feedstock">
-        <img alt="macOS" src="https://img.shields.io/travis/com/conda-forge/ffmpeg-feedstock/master.svg?label=macOS">
-      </a>
-    </td>
-  </tr>
+<table>
     
   <tr>
     <td>Azure</td>
@@ -178,6 +171,7 @@ Feedstock Maintainers
 * [@benjaminrwilson](https://github.com/benjaminrwilson/)
 * [@carlodri](https://github.com/carlodri/)
 * [@danielballan](https://github.com/danielballan/)
+* [@h-vetinari](https://github.com/h-vetinari/)
 * [@jakirkham](https://github.com/jakirkham/)
 * [@matthiasdiener](https://github.com/matthiasdiener/)
 * [@ocefpaf](https://github.com/ocefpaf/)
