@@ -27,7 +27,8 @@ requirements:
     - {{ compiler("cxx") }}
     - pkg-config  # [not win]
     - libtool  # [not win]
-    - nasm  # [not win]
+    - nasm  # [not (win or osx)]
+    - yasm  # [osx]
     - lame  # [not win]
     - make  # [not win]
   host:
