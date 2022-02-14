@@ -171,6 +171,7 @@ Feedstock Maintainers
 * [@benjaminrwilson](https://github.com/benjaminrwilson/)
 * [@carlodri](https://github.com/carlodri/)
 * [@danielballan](https://github.com/danielballan/)
+* [@h-vetinari](https://github.com/h-vetinari/)
 * [@jakirkham](https://github.com/jakirkham/)
 * [@matthiasdiener](https://github.com/matthiasdiener/)
 * [@ocefpaf](https://github.com/ocefpaf/)
