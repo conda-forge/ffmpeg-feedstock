@@ -82,7 +82,6 @@ test:
         "avcodec",
         "avformat",
         "swscale",
-        "avresample",
         "aom",
         "avutil",
     ] %}
