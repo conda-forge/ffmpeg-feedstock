@@ -24,7 +24,15 @@ if [[ "$CONDA_BUILD_CROSS_COMPILATION" == "1" ]]; then
 fi
 
 if [[ "${target_platform}" == "linux-64" ]]; then
-    extra_codecs=--enable-vaapi
+  extra_args=--enable-vaapi
+elif [[ "${target_platform}" == osx-* ]]; then
+  if [[ "${target_platform}" == osx-arm64 ]]; then
+    extra_args=--enable-neon
+  fi
+
+  # See https://github.com/conda-forge/ffmpeg-feedstock/pull/115
+  # why this flag needs to be removed.
+  sed -i.bak s/-Wl,-single_module// configure
 fi
 
 ./configure \
@@ -32,14 +40,13 @@ fi
         --cc=${CC} \
         --disable-doc \
         --disable-openssl \
-        --enable-avresample \
         --enable-demuxer=dash \
         --enable-gnutls \
         --enable-gpl \
         --enable-hardcoded-tables \
         --enable-libfreetype \
         --enable-libopenh264 \
-        ${extra_codecs} \
+        ${extra_args} \
         --enable-libx264 \
         --enable-libx265 \
         --enable-libaom \
