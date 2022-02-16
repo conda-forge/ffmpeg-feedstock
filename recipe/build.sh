@@ -28,7 +28,7 @@ if [[ "${target_platform}" == "linux-64" ]]; then
 elif [[ "${target_platform}" == osx-* ]]; then
   extra_args="--enable-videotoolbox"
   if [[ "${target_platform}" == osx-arm64 ]]; then
-    extra_args+=--enable-neon
+    extra_args+=" --enable-neon"
   fi
 
   # See https://github.com/conda-forge/ffmpeg-feedstock/pull/115
