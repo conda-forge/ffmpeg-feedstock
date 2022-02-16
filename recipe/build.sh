@@ -24,7 +24,11 @@ if [[ "$CONDA_BUILD_CROSS_COMPILATION" == "1" ]]; then
 fi
 
 if [[ "${target_platform}" == "linux-64" ]]; then
-    extra_codecs=--enable-vaapi
+  extra_codecs=--enable-vaapi
+elif [[ "${target_platform}" == osx-* ]]; then
+  # See https://github.com/conda-forge/ffmpeg-feedstock/pull/115
+  # why this flag needs to be removed.
+  sed -i.bak s/-Wl,-single_module// configure
 fi
 
 ./configure \
