@@ -90,7 +90,7 @@ test:
     {% endfor %}
 
 about:
-  home: http://www.ffmpeg.org/
+  home: https://www.ffmpeg.org/
   license: GPL-3.0-or-later
   license_file: COPYING.GPLv3  # [unix]
   summary: Cross-platform solution to record, convert and stream audio and video.
