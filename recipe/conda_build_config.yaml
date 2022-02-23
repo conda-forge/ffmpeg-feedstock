@@ -1,0 +1,4 @@
+c_compiler_version:            # [linux and ppc64le]
+  - 9                          # [linux and ppc64le]
+cxx_compiler_version:          # [linux and ppc64le]
+  - 9                          # [linux and ppc64le]
