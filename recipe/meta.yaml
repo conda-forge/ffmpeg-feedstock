@@ -11,13 +11,12 @@ source:
     sha256: b4701d5d1220cfa2f140090a0ae349cd76dafe335e60227d1e3f8301998634c9 
 
 build:
-  number: 1
+  number: 2
   run_exports:
-  # seems to be major version compatibility
+  # 4.4 and 4.3 are not ABI compatible, see
   # https://abi-laboratory.pro/tracker/timeline/ffmpeg/
-    - {{ pin_subpackage('ffmpeg', max_pin='x') }}
-  # temporarily skip everything to push new branch
-  skip: true
+    - {{ pin_subpackage('ffmpeg', max_pin='x.x') }}
+  skip: true  # [win]
 
 requirements:
   build:
@@ -25,7 +24,9 @@ requirements:
     - {{ compiler("cxx") }}
     - pkg-config  # [not win]
     - libtool  # [not win]
-    - nasm  # [not win]
+    - nasm  # [not (win or (osx and x86_64))]
+    # osx_64 needs yasm due to https://stackoverflow.com/questions/58796267/building-for-macos-but-linking-in-object-file-built-for-free-standing
+    - yasm  # [osx and x86_64]
     - lame  # [not win]
     - make  # [not win]
   host:
