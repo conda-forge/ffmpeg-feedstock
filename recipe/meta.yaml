@@ -16,8 +16,7 @@ build:
   # seems to be major version compatibility
   # https://abi-laboratory.pro/tracker/timeline/ffmpeg/
     - {{ pin_subpackage('ffmpeg', max_pin='x') }}
-  # temporarily skip everything to push new branch
-  skip: true
+  skip: true  # [win]
 
 requirements:
   build:
