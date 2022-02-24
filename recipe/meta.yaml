@@ -89,7 +89,10 @@ test:
         "avutil",
     ] %}
     {% for each_ffmpeg_lib in ffmpeg_libs %}
+    - echo Testing presence of dynamic {{ each_ffmpeg_lib }}    # [unix]
     - test -f $PREFIX/lib/lib{{ each_ffmpeg_lib }}${SHLIB_EXT}  # [unix]
+    - echo Testing lack of static {{ each_ffmpeg_lib }}         # [linux]
+    - test ! -f $PREFIX/lib/lib{{ each_ffmpeg_lib }}.a          # [linux]
     {% endfor %}
 
 about:
