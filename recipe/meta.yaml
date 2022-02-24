@@ -80,12 +80,10 @@ test:
         "swresample",
         "postproc",
         "avfilter",
-        "swresample",
         "avcodec",
         "avformat",
         "swscale",
         "avresample",
-        "aom",
         "avutil",
     ] %}
     {% for each_ffmpeg_lib in ffmpeg_libs %}
