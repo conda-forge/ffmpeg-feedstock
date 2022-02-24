@@ -78,11 +78,9 @@ test:
         "swresample",
         "postproc",
         "avfilter",
-        "swresample",
         "avcodec",
         "avformat",
         "swscale",
-        "aom",
         "avutil",
     ] %}
     {% for each_ffmpeg_lib in ffmpeg_libs %}
