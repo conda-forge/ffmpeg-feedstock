@@ -1,4 +1,4 @@
-{% set version = "4.4.1" %} # semver: (x.y.z)
+{% set version = "5.0.0" %} # semver: (x.y.z)
 {% set x,y,z = version.split('.') %}
 {% set version_ffmpeg_style = x ~ '.' ~ y if z == "0" else version %}
 
@@ -8,13 +8,11 @@ package:
 
 source:
   - url: https://ffmpeg.org/releases/ffmpeg-{{ version_ffmpeg_style }}.tar.gz
-    sha256: 82c98f74777f623710b72f9a3389fd38c1ed93bc661107e65df19234e395f6b9
-  - patches:
-    - patches/TARGET_OS_OSX.patch     # [osx]
+    sha256: 7bf52bc242b5db8df67c62cb826df134d917dedcf6abf1289e15e4057bcc1750
 
 
 build:
-  number: 1
+  number: 0
   run_exports:
   # seems to be major version compatibility
   # https://abi-laboratory.pro/tracker/timeline/ffmpeg/
@@ -80,12 +78,9 @@ test:
         "swresample",
         "postproc",
         "avfilter",
-        "swresample",
         "avcodec",
         "avformat",
         "swscale",
-        "avresample",
-        "aom",
         "avutil",
     ] %}
     {% for each_ffmpeg_lib in ffmpeg_libs %}
@@ -93,7 +88,7 @@ test:
     {% endfor %}
 
 about:
-  home: http://www.ffmpeg.org/
+  home: https://www.ffmpeg.org/
   license: GPL-3.0-or-later
   license_file: COPYING.GPLv3  # [unix]
   summary: Cross-platform solution to record, convert and stream audio and video.
