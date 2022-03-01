@@ -54,7 +54,6 @@ requirements:
     - lame  # [not win]
     - libxml2  # [not win]
     - gmp  # [unix]
-    - x265  # [not win]
     - aom  # [not win]
     - svt-av1  # [unix]
 
