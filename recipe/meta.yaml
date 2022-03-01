@@ -10,7 +10,7 @@ source:
   - url: https://ffmpeg.org/releases/ffmpeg-{{ version_ffmpeg_style }}.tar.gz
     sha256: 840c012766ceb1a95ec92fcbe51d80024a74b1b3134c92c2ff64a6f8165e9059
 
-{%- set number = 5 %}
+{%- set number = 6 %}
 {%- if license_family == 'gpl' %}
 {%- set number = number + 100 %}
 {%- endif %}
@@ -22,39 +22,52 @@ build:
   # seems to be major version compatibility
   # https://abi-laboratory.pro/tracker/timeline/ffmpeg/
     - {{ pin_subpackage('ffmpeg', max_pin='x') }}
-  skip: true  # [win]
 
 requirements:
   build:
-    - {{ compiler("c") }}
-    - {{ compiler("cxx") }}
+    - {{ compiler("c") }}          # [not win]
+    - {{ compiler("cxx") }}        # [not win]
     # clangxx is required for support of the nvidia encoders and decoders
     - clangxx  # [linux64]
-    - pkg-config  # [not win]
-    - libtool  # [not win]
-    - nasm  # [not (win or (osx and x86_64))]
+    - libtool      # [not win]
+    - lame         # [not win]
+    - make         # [not win]
+    - pkg-config   # [not win]
     # osx_64 needs yasm due to https://stackoverflow.com/questions/58796267/building-for-macos-but-linking-in-object-file-built-for-free-standing
-    - yasm  # [osx and x86_64]
-    - lame  # [not win]
-    - make  # [not win]
+    - yasm         # [osx and x86_64]
+    - nasm         # [not (osx and x86_64)]
+    - {{ compiler("m2w64_c") }}    # [win]
+    - {{ compiler("m2w64_cxx") }}  # [win]
+    - m2-bash                      # [win]
+    - m2-sed                       # [win]
+    - m2-grep                      # [win]
+    - m2-automake-wrapper          # [win]
+    - m2-libtool                   # [win]
+    - m2-autoconf                  # [win]
+    # - m2w64-make                   # [win]
+    - m2-make                      # [win]
+    - m2-findutils                 # [win]
+    - m2-m4                        # [win]
+    # makedef uses the printf command which is provided by coreutils
+    - m2-coreutils                 # [win]
   host:
-    - bzip2  # [not win]
-    - freetype  # [not win]
+    - bzip2
+    - freetype
     - gnutls  # [not win]
     - libiconv  # [osx]
-    - libxml2  # [not win]
+    - libxml2
     {% if license_family == 'gpl' %}
-    - x264  # [not win]
-    - x265  # [not win]
+    - x264
+    - x265
     {% endif %}
     - libvpx  # [not win]
-    - zlib  # [not win]
+    - zlib
     - openh264  # [not win]
     - lame  # [not win]
     - gmp  # [unix]
     - libva  # [linux and not (ppc64le or aarch64)]
-    - aom  # [unix]
-    - svt-av1  # [unix]
+    - aom
+    - svt-av1
     - ffnvcodec-headers  # [linux64]
 
 test:
