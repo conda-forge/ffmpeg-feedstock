@@ -47,14 +47,6 @@ requirements:
     - aom  # [unix]
     - svt-av1  # [unix]
   run:
-    - bzip2  # [not win]
-    - freetype  # [not win]
-    - gnutls  # [not win]
-    - openh264  # [not win]
-    - lame  # [not win]
-    - libxml2  # [not win]
-    - gmp  # [unix]
-    - aom  # [not win]
     - svt-av1  # [unix]
 
 test:
