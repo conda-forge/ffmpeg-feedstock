@@ -12,7 +12,7 @@ source:
 
 
 build:
-  number: 0
+  number: 1
   run_exports:
   # seems to be major version compatibility
   # https://abi-laboratory.pro/tracker/timeline/ffmpeg/
@@ -47,15 +47,6 @@ requirements:
     - aom  # [unix]
     - svt-av1  # [unix]
   run:
-    - bzip2  # [not win]
-    - freetype  # [not win]
-    - gnutls  # [not win]
-    - openh264  # [not win]
-    - lame  # [not win]
-    - libxml2  # [not win]
-    - gmp  # [unix]
-    - x265  # [not win]
-    - aom  # [not win]
     - svt-av1  # [unix]
 
 test:
