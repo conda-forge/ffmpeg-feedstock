@@ -47,6 +47,7 @@ fi
 ./configure \
         --prefix="${PREFIX}" \
         --cc=${CC} \
+        --cxx=${CXX} \
         --disable-doc \
         --disable-openssl \
         --enable-demuxer=dash \
