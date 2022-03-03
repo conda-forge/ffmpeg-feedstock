@@ -24,13 +24,19 @@ if [[ "$CONDA_BUILD_CROSS_COMPILATION" == "1" ]]; then
 fi
 
 if [[ "${target_platform}" == "linux-64" ]]; then
-  extra_args=--enable-vaapi
+  extra_args="--enable-vaapi"
+  extra_args="${extra_args} --enable-gnutls"
+  extra_args="${extra_args} --enable-libx265"
+  extra_args="${extra_args} --enable-libaom"
 elif [[ "${target_platform}" == osx-* ]]; then
   if [[ "${target_platform}" == osx-arm64 ]]; then
-    extra_args=" --enable-neon"
+    extra_args="--enable-neon"
   else
     extra_args="--disable-videotoolbox"
   fi
+  extra_args="${extra_args} --enable-gnutls"
+  extra_args="${extra_args} --enable-libx265"
+  extra_args="${extra_args} --enable-libaom"
 
   # See https://github.com/conda-forge/ffmpeg-feedstock/pull/115
   # why this flag needs to be removed.
@@ -43,15 +49,12 @@ fi
         --disable-doc \
         --disable-openssl \
         --enable-demuxer=dash \
-        --enable-gnutls \
         --enable-gpl \
         --enable-hardcoded-tables \
         --enable-libfreetype \
         --enable-libopenh264 \
         ${extra_args} \
         --enable-libx264 \
-        --enable-libx265 \
-        --enable-libaom \
         --enable-libsvtav1 \
         --enable-libxml2 \
         --enable-libvpx \
