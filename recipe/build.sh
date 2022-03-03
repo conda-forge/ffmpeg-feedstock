@@ -23,7 +23,9 @@ if [[ "$CONDA_BUILD_CROSS_COMPILATION" == "1" ]]; then
   EXTRA_CONFIGURE_OPTIONS="--enable-cross-compile --arch=$ARCH --target-os=$OS --cross-prefix=$HOST- --host-cc=$CC_FOR_BUILD"
 fi
 
-if [[ "${target_platform}" == "linux-64" ]]; then
+if [[ "${target_platform}" == "win-64" ]]; then
+  EXTRA_CONFIGURE_OPTIONS="--target_os=win64"
+elif [[ "${target_platform}" == "linux-64" ]]; then
   extra_args="--enable-vaapi"
   extra_args="${extra_args} --enable-gnutls"
   extra_args="${extra_args} --enable-libx265"
