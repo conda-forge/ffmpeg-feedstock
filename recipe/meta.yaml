@@ -12,7 +12,7 @@ source:
   patches:
     - patches/TARGET_OS_OSX.patch     # [osx]
 
-{%- set number = 3 %}
+{%- set number = 4 %}
 {%- if license_family == 'gpl' %}
 {%- set number = number + 100 %}
 {%- endif %}
@@ -24,7 +24,6 @@ build:
   # seems to be major version compatibility
   # https://abi-laboratory.pro/tracker/timeline/ffmpeg/
     - {{ pin_subpackage('ffmpeg', max_pin='x') }}
-  skip: true  # [win]
 
 requirements:
   build:
@@ -32,46 +31,55 @@ requirements:
     - {{ compiler("cxx") }}
     # clangxx is required for support of the nvidia encoders and decoders
     - clangxx  # [linux64]
-    - pkg-config  # [not win]
+    - autotools_clang_conda  # [win]
+    - pkg-config
     - libtool  # [not win]
-    - nasm  # [not (win or (osx and x86_64))]
+    - nasm  # [not (osx and x86_64)]
     # osx_64 needs yasm due to https://stackoverflow.com/questions/58796267/building-for-macos-but-linking-in-object-file-built-for-free-standing
     - yasm  # [osx and x86_64]
     - lame  # [not win]
     - make  # [not win]
+    - m2-sed  # [win]
   host:
-    - bzip2  # [not win]
-    - freetype  # [not win]
+    - bzip2
+    - freetype
     - fontconfig
     - gnutls  # [not win]
     - libiconv  # [osx]
-    - libxml2  # [not win]
+    - libxml2
     {% if license_family == 'gpl' %}
-    - x264  # [not win]
-    - x265  # [not win]
+    - x264
+    - x265
     {% endif %}
     - libvpx  # [not win]
-    - zlib  # [not win]
-    - openh264  # [not win]
+    - zlib
+    - openh264
     - lame  # [not win]
     - gmp  # [unix]
-    - libva  # [linux and not (ppc64le or aarch64)]
-    - aom  # [unix]
-    - svt-av1  # [unix]
-    - ffnvcodec-headers  # [linux64]
+    - libva  # [linux64]
+    - aom
+    - svt-av1
+    - ffnvcodec-headers  # [linux64 or win]
 
 test:
   commands:
     - ffmpeg --help
     - ffmpeg -hide_banner -codecs
-    - ffmpeg -hide_banner -protocols | grep "https"  # [not win]
-    - ffmpeg -hide_banner -codecs | grep "libmp3lame"  # [not win]
-    - ffmpeg -hide_banner -codecs | grep "DEVI.S zlib"  # [unix]
-    - ffmpeg -hide_banner -codecs | grep "DEV.LS h264"  # [unix]
-    - ffmpeg -hide_banner -codecs | grep "libopenh264"  # [unix]
-    - ffmpeg -hide_banner -codecs | grep "vaapi"  # [linux and not (ppc64le or aarch64)]
-    - ffmpeg -hide_banner -codecs | grep "libaom"  # [unix]
-    - ffmpeg -hide_banner -codecs | grep "libsvtav1"  # [unix]
+    - ffmpeg -hide_banner -protocols
+    - ffmpeg -hide_banner -protocols | grep "https"         # [unix]
+    - ffmpeg -hide_banner -protocols | findstr "https"      # [win]
+    - ffmpeg -hide_banner -codecs | grep "libmp3lame"       # [unix]
+    - ffmpeg -hide_banner -codecs | grep "DEVI.S zlib"      # [unix]
+    - ffmpeg -hide_banner -codecs | findstr "DEVI.S\ zlib"  # [win]
+    - ffmpeg -hide_banner -codecs | grep "DEV.LS h264"      # [unix]
+    - ffmpeg -hide_banner -codecs | findstr "DEV.LS\ h264"  # [win]
+    - ffmpeg -hide_banner -codecs | grep "libopenh264"      # [unix]
+    - ffmpeg -hide_banner -codecs | findstr "libopenh264"   # [win]
+    - ffmpeg -hide_banner -codecs | grep "vaapi"            # [linux64]
+    - ffmpeg -hide_banner -codecs | grep "libaom"           # [unix]
+    - ffmpeg -hide_banner -codecs | findstr "libaom"        # [win]
+    - ffmpeg -hide_banner -codecs | grep "libsvtav1"        # [unix]
+    - ffmpeg -hide_banner -codecs | findstr "libsvtav1"     # [win]
     # Verify dynamic libraries on all systems
     {% set ffmpeg_libs = [
         "avdevice",
@@ -85,18 +93,38 @@ test:
     ] %}
     {% for each_ffmpeg_lib in ffmpeg_libs %}
     - test -f $PREFIX/lib/lib{{ each_ffmpeg_lib }}${SHLIB_EXT}  # [unix]
+    - if not exist %PREFIX%\\Library\\lib\\{{ each_ffmpeg_lib }}.lib exit 1  # [win]
+    {% endfor %}
+    # Windows dynamic libraries have a suffix
+    {% set ffmpeg_libs = [
+        "avdevice-59",
+        "swresample-4",
+        "avfilter-8",
+        "avcodec-59",
+        "avformat-59",
+        "swscale-6",
+        "avutil-57",
+    ] %}
+    {% for each_ffmpeg_lib in ffmpeg_libs %}
+    - if not exist %PREFIX%\\Library\\bin\\{{ each_ffmpeg_lib }}.dll exit 1  # [win]
     {% endfor %}
     {%- if license_family == 'gpl' %}
     - ffmpeg -hide_banner -buildconf | grep "enable-gpl"  # [unix]
-    - ffmpeg -hide_banner -codecs | grep "libx264"     # [unix]
-    - ffmpeg -hide_banner -codecs | grep "libx265"     # [unix]
+    - ffmpeg -hide_banner -codecs | grep "libx264"        # [unix]
+    - ffmpeg -hide_banner -codecs | grep "libx265"        # [unix]
     - test -f $PREFIX/lib/libpostproc${SHLIB_EXT}         # [unix]
+    - ffmpeg -hide_banner -buildconf | findstr "enable-gpl"     # [win]
+    - ffmpeg -hide_banner -codecs | findstr "libx264"           # [win]
+    - ffmpeg -hide_banner -codecs | findstr "libx265"           # [win]
+    - if not exist %PREFIX%\\Library\\bin\\postproc-56.dll exit 1  # [win]
+    - if not exist %PREFIX%\\Library\\lib\\postproc.lib exit 1  # [win]
     {%- endif %}
     {%- if license_family == 'lgpl' %}
     - ffmpeg -hide_banner -buildconf | grep "disable-gpl"        # [unix]
-    - test ! $(ffmpeg -hide_banner -codecs | grep "libx264")  # [unix]
-    - test ! $(ffmpeg -hide_banner -codecs | grep "libx265")  # [unix]
+    - test ! $(ffmpeg -hide_banner -codecs | grep "libx264")     # [unix]
+    - test ! $(ffmpeg -hide_banner -codecs | grep "libx265")     # [unix]
     - test ! -f $PREFIX/lib/libpostproc${SHLIB_EXT}              # [unix]
+    - ffmpeg -hide_banner -buildconf | findstr "disable-gpl"     # [win]
     {%- endif %}
     # Verify nvidia codecs on linux
     {% set nvcodecs = [
@@ -113,8 +141,13 @@ test:
     ] %}
     {% for nvcodec in nvcodecs %}
     # Make sure to include a space in there to ensure we get an exact match
-    - ffmpeg -hide_banner -codecs | grep " {{ nvcodec }} "  # [linux64]
+    - ffmpeg -hide_banner -codecs | grep " {{ nvcodec }} "     # [linux64]
+    - ffmpeg -hide_banner -codecs | findstr " {{ nvcodec }} "  # [win]
     {% endfor %}
+    # https://trac.ffmpeg.org/wiki/Null
+    - ffmpeg -hide_banner -f lavfi -i nullsrc=s=256x256:d=8 -vcodec libopenh264 -f null -
+    - ffmpeg -hide_banner -f lavfi -i nullsrc=s=256x256:d=8 -vcodec libx264 -f null -  # [license_family=='gpl']
+    - ffmpeg -hide_banner -f lavfi -i nullsrc=s=256x256:d=8 -vcodec libx265 -f null -  # [license_family=='gpl']
 
 about:
   home: http://www.ffmpeg.org/
