@@ -26,7 +26,7 @@ requirements:
     - autotools_clang_conda  # [win]
     - pkg-config  # [not win]
     - libtool  # [not win]
-    - nasm  # [not (win or (osx and x86_64))]
+    - nasm  # [not (osx and x86_64)]
     # osx_64 needs yasm due to https://stackoverflow.com/questions/58796267/building-for-macos-but-linking-in-object-file-built-for-free-standing
     - yasm  # [osx and x86_64]
     - lame  # [not win]
@@ -45,7 +45,7 @@ requirements:
     - lame  # [not win]
     - gmp  # [unix]
     - libva  # [linux and not (ppc64le or aarch64)]
-    - aom  # [unix]
+    - aom
     - svt-av1  # [unix]
   run:
     - svt-av1  # [unix]
