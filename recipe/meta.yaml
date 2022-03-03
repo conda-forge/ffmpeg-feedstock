@@ -32,15 +32,15 @@ requirements:
     - lame  # [not win]
     - make  # [not win]
   host:
-    - bzip2  # [not win]
-    - freetype  # [not win]
+    - bzip2
+    - freetype
     - gnutls  # [not win]
     - libiconv  # [osx]
-    - libxml2  # [not win]
-    - x264  # [not win]
+    - libxml2
+    - x264
     - x265  # [not win]
     - libvpx  # [not win]
-    - zlib  # [not win]
+    - zlib
     - openh264  # [not win]
     - lame  # [not win]
     - gmp  # [unix]
