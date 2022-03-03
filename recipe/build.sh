@@ -65,5 +65,7 @@ fi
         --pkg-config=$BUILD_PREFIX/bin/pkg-config \
         $EXTRA_CONFIGURE_OPTIONS || { cat ffbuild/config.log; exit 1; }
 
+[[ "$target_platform" == "win-64" ]] && patch_libtool
+
 make -j${CPU_COUNT}
 make install -j${CPU_COUNT}
