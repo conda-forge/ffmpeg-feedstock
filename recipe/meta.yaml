@@ -17,12 +17,13 @@ build:
   # seems to be major version compatibility
   # https://abi-laboratory.pro/tracker/timeline/ffmpeg/
     - {{ pin_subpackage('ffmpeg', max_pin='x') }}
-  skip: true  # [win]
+  skip: true  # [not win]
 
 requirements:
   build:
     - {{ compiler("c") }}
     - {{ compiler("cxx") }}
+    - autotools_clang_conda  # [win]
     - pkg-config  # [not win]
     - libtool  # [not win]
     - nasm  # [not (win or (osx and x86_64))]
