@@ -35,6 +35,9 @@ elif [[ "${target_platform}" == "linux-64" ]]; then
   extra_args="${extra_args} --enable-libmp3lame"
   extra_args="${extra_args} --enable-libsvtav1"
   extra_args="${extra_args} --enable-libvpx"
+  extra_args="${extra_args} --enable-libx264"
+  extra_args="${extra_args} --enable-libxml2"
+  extra_args="${extra_args} --enable-zlib"
 elif [[ "${target_platform}" == osx-* ]]; then
   if [[ "${target_platform}" == osx-arm64 ]]; then
     extra_args="--enable-neon"
@@ -49,6 +52,9 @@ elif [[ "${target_platform}" == osx-* ]]; then
   extra_args="${extra_args} --enable-libmp3lame"
   extra_args="${extra_args} --enable-libsvtav1"
   extra_args="${extra_args} --enable-libvpx"
+  extra_args="${extra_args} --enable-libx264"
+  extra_args="${extra_args} --enable-libxml2"
+  extra_args="${extra_args} --enable-zlib"
   # See https://github.com/conda-forge/ffmpeg-feedstock/pull/115
   # why this flag needs to be removed.
   sed -i.bak s/-Wl,-single_module// configure
@@ -64,14 +70,11 @@ fi
         --enable-gpl \
         --enable-hardcoded-tables \
         ${extra_args} \
-        --enable-libx264 \
-        --enable-libxml2 \
         --enable-pic \
         --enable-pthreads \
         --enable-shared \
         --disable-static \
         --enable-version3 \
-        --enable-zlib \
         --pkg-config=$BUILD_PREFIX/bin/pkg-config \
         $EXTRA_CONFIGURE_OPTIONS || { cat ffbuild/config.log; exit 1; }
 
