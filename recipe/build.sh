@@ -38,6 +38,7 @@ elif [[ "${target_platform}" == "linux-64" ]]; then
   extra_args="${extra_args} --enable-libx264"
   extra_args="${extra_args} --enable-libxml2"
   extra_args="${extra_args} --enable-zlib"
+  extra_args="${extra_args} --enable-pthreads"
 elif [[ "${target_platform}" == osx-* ]]; then
   if [[ "${target_platform}" == osx-arm64 ]]; then
     extra_args="--enable-neon"
@@ -55,6 +56,7 @@ elif [[ "${target_platform}" == osx-* ]]; then
   extra_args="${extra_args} --enable-libx264"
   extra_args="${extra_args} --enable-libxml2"
   extra_args="${extra_args} --enable-zlib"
+  extra_args="${extra_args} --enable-pthreads"
   # See https://github.com/conda-forge/ffmpeg-feedstock/pull/115
   # why this flag needs to be removed.
   sed -i.bak s/-Wl,-single_module// configure
@@ -71,7 +73,6 @@ fi
         --enable-hardcoded-tables \
         ${extra_args} \
         --enable-pic \
-        --enable-pthreads \
         --enable-shared \
         --disable-static \
         --enable-version3 \
