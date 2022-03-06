@@ -25,6 +25,9 @@ fi
 
 if [[ "${target_platform}" == "win-64" ]]; then
   EXTRA_CONFIGURE_OPTIONS="--target-os=win64"
+  echo Current PKG_CONFIG=${PKG_CONFIG}
+  echo Current CC=${CC}
+  echo Current CXX=${CXX}
   echo Current AR=${AR}
   echo Current NM=${NM}
   echo Current LD=${LD}
@@ -66,12 +69,12 @@ elif [[ "${target_platform}" == osx-* ]]; then
 fi
 
 ./configure \
-        --verbose \
         --prefix="${PREFIX}" \
         --cc=${CC} \
         --cxx=${CXX} \
         --nm=${NM} \
         --ar=${AR} \
+        --ld=${LD} \
         --disable-doc \
         --disable-openssl \
         --enable-demuxer=dash \
