@@ -24,7 +24,7 @@ if [[ "$CONDA_BUILD_CROSS_COMPILATION" == "1" ]]; then
 fi
 
 if [[ "${target_platform}" == "win-64" ]]; then
-  EXTRA_CONFIGURE_OPTIONS="--target_os=win64"
+  EXTRA_CONFIGURE_OPTIONS="--target-os=win64"
   echo Current AR=$AR
   echo Current NM=$AR
 elif [[ "${target_platform}" == "linux-64" ]]; then
@@ -65,6 +65,7 @@ elif [[ "${target_platform}" == osx-* ]]; then
 fi
 
 ./configure \
+        --verbose \
         --prefix="${PREFIX}" \
         --cc=${CC} \
         --cxx=${CXX} \
