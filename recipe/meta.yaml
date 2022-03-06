@@ -31,6 +31,8 @@ requirements:
     - yasm  # [osx and x86_64]
     - lame  # [not win]
     - make  # [not win]
+    # makedef uses the printf command which is provided by coreutils
+    - m2-coreutils  # [win]
   host:
     - bzip2
     - freetype
