@@ -25,8 +25,9 @@ fi
 
 if [[ "${target_platform}" == "win-64" ]]; then
   EXTRA_CONFIGURE_OPTIONS="--target-os=win64"
-  echo Current AR=$AR
-  echo Current NM=$AR
+  echo Current AR=${AR}
+  echo Current NM=${NM}
+  echo Current LD=${LD}
 elif [[ "${target_platform}" == "linux-64" ]]; then
   extra_args="--enable-vaapi"
   extra_args="${extra_args} --enable-gnutls"
