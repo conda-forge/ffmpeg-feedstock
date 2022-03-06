@@ -83,5 +83,5 @@ fi
 # [[ "$target_platform" == "win-64" ]] && patch_libtool
 
 # make -j${CPU_COUNT}
-make
+make V=1 VERBOSE=1
 make install -j${CPU_COUNT}
