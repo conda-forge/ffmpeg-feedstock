@@ -26,9 +26,7 @@ fi
 if [[ "${target_platform}" == "win-64" ]]; then
   EXTRA_CONFIGURE_OPTIONS="--target_os=win64"
   echo Current AR=$AR
-  # ??? Not sure why this necessary
-  export AR=llvm-ar
-  echo NEW AR=$AR
+  echo Current NM=$AR
 elif [[ "${target_platform}" == "linux-64" ]]; then
   extra_args="--enable-vaapi"
   extra_args="${extra_args} --enable-gnutls"
@@ -70,6 +68,8 @@ fi
         --prefix="${PREFIX}" \
         --cc=${CC} \
         --cxx=${CXX} \
+        --nm=${NM} \
+        --ar=${AR} \
         --disable-doc \
         --disable-openssl \
         --enable-demuxer=dash \
