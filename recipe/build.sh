@@ -24,7 +24,7 @@ if [[ "$CONDA_BUILD_CROSS_COMPILATION" == "1" ]]; then
 fi
 
 if [[ "${target_platform}" == "win-64" ]]; then
-  EXTRA_CONFIGURE_OPTIONS="--target-os=win64"
+  EXTRA_CONFIGURE_OPTIONS="--target-os=mingw64"
   echo Current PKG_CONFIG=${PKG_CONFIG}
   echo Current CC=${CC}
   echo Current CXX=${CXX}
