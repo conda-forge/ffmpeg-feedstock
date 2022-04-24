@@ -12,7 +12,7 @@ source:
 
 
 build:
-  number: 0
+  number: 1
   run_exports:
   # seems to be major version compatibility
   # https://abi-laboratory.pro/tracker/timeline/ffmpeg/
@@ -64,7 +64,6 @@ test:
     - ffmpeg -loglevel panic -codecs | grep "libsvtav1"  # [unix]
     # Verify dynamic libraries on all systems
     {% set ffmpeg_libs = [
-        "avcodec",
         "avdevice",
         "swresample",
         "postproc",
