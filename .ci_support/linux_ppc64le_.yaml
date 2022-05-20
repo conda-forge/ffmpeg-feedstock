@@ -33,6 +33,8 @@ pin_run_as_build:
     max_pin: x.x
   zlib:
     max_pin: x.x
+svt_av1:
+- 1.1.0
 target_platform:
 - linux-ppc64le
 x264:
