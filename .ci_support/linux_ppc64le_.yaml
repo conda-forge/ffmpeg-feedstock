@@ -20,6 +20,8 @@ freetype:
 - '2'
 gmp:
 - '6'
+gnutls:
+- '3.7'
 libxml2:
 - '2.9'
 pin_run_as_build:
