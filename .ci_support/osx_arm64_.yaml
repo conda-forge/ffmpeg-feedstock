@@ -18,6 +18,8 @@ freetype:
 - '2'
 gmp:
 - '6'
+gnutls:
+- '3.7'
 libiconv:
 - '1.16'
 libxml2:
