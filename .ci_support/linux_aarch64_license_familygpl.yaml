@@ -1,9 +1,13 @@
+BUILD:
+- aarch64-conda_cos7-linux-gnu
 bzip2:
 - '1'
 c_compiler:
 - gcc
 c_compiler_version:
 - '10'
+cdt_arch:
+- aarch64
 cdt_name:
 - cos7
 channel_sources:
@@ -24,6 +28,8 @@ gnutls:
 - '3.7'
 libxml2:
 - '2.9'
+license_family:
+- gpl
 pin_run_as_build:
   bzip2:
     max_pin: x
@@ -38,7 +44,7 @@ pin_run_as_build:
 svt_av1:
 - 1.1.0
 target_platform:
-- linux-ppc64le
+- linux-aarch64
 x264:
 - 1!161.*
 x265:
