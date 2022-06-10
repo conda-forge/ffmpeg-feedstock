@@ -3,6 +3,7 @@ set -ex
 
 # unset the SUBDIR variable since it changes the behavior of make here
 unset SUBDIR
+cuda_compiler_version=${cuda_compiler_version:-None}
 
 if [[ "$CONDA_BUILD_CROSS_COMPILATION" == "1" ]]; then
   if [[ "$ARCH" == "64" ]]; then
@@ -26,9 +27,7 @@ fi
 extra_args=""
 if [[ "${target_platform}" == "linux-64" ]]; then
   extra_args="${extra_args} --enable-vaapi"
-  extra_args="${extra_args} --enable-nvenc"
-  # extra_args="${extra_args} --enable-cuda-nvcc"
-  # extra_args="${extra_args} --enable-nonfree"
+
 elif [[ "${target_platform}" == osx-* ]]; then
   if [[ "${target_platform}" == osx-arm64 ]]; then
     extra_args="${extra_args} --enable-neon"
@@ -39,6 +38,11 @@ elif [[ "${target_platform}" == osx-* ]]; then
   # See https://github.com/conda-forge/ffmpeg-feedstock/pull/115
   # why this flag needs to be removed.
   sed -i.bak s/-Wl,-single_module// configure
+fi
+if [[ ${cuda_compiler_version} != "None" ]]; then
+  extra_args="${extra_args} --enable-nvenc"
+  extra_args="${extra_args} --enable-cuda-nvcc"
+  extra_args="${extra_args} --enable-nonfree"
 fi
 
 if [[ "${license_family}" == "gpl" ]]; then

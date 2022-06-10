@@ -14,6 +14,11 @@ source:
 
 {%- set number = 6 %}
 {%- if license_family == 'gpl' %}
+{%- set number = number + 200 %}
+{%- endif %}
+
+# Prefer the cuda builds
+{%- if cuda_compiler_version != "None" %}
 {%- set number = number + 100 %}
 {%- endif %}
 
@@ -30,6 +35,7 @@ requirements:
   build:
     - {{ compiler("c") }}
     - {{ compiler("cxx") }}
+    - {{ compiler('cuda') }}    # [cuda_compiler_version != "None"]
     - pkg-config  # [not win]
     - libtool  # [not win]
     - nasm  # [not (win or (osx and x86_64))]
@@ -38,6 +44,8 @@ requirements:
     - lame  # [not win]
     - make  # [not win]
   host:
+    - cudnn                     # [cuda_compiler_version != "None"]
+    - nccl                      # [cuda_compiler_version != "None"]
     - bzip2  # [not win]
     - freetype  # [not win]
     - gnutls  # [not win]
@@ -55,7 +63,11 @@ requirements:
     - libva  # [linux and not (ppc64le or aarch64)]
     - aom  # [unix]
     - svt-av1  # [unix]
-    - ffnvcodec-headers  # [linux and not (ppc64le or aarch64)]
+    # While ffnvcodec does not need cuda, this helps ensure that users have
+    # a supported GPU
+    - ffnvcodec-headers        # [cuda_compiler_version != "None"]
+  run:
+    - __cuda                   # [cuda_compiler_version != "None"]
 
 test:
   commands:
@@ -108,7 +120,7 @@ test:
         "vp9_cuvid"
     ] %}
     {% for nvcodec in nvcodecs %}
-    - ffmpeg -loglevel panic -codecs | grep "{{ nvcodec }}"  # [linux and not (ppc64le or aarch64)]
+    - ffmpeg -loglevel panic -codecs | grep "{{ nvcodec }}"  # [cuda_compiler_version != None]
     {% endfor %}
 
 about:
