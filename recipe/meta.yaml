@@ -55,6 +55,7 @@ requirements:
     - libva  # [linux and not (ppc64le or aarch64)]
     - aom  # [unix]
     - svt-av1  # [unix]
+    - ffnvcodec-headers  # [linux and not (ppc64le or aarch64)]
 
 test:
   commands:
@@ -93,6 +94,22 @@ test:
     - test ! $(ffmpeg -loglevel panic -codecs | grep "libx265")  # [unix]
     - test ! -f $PREFIX/lib/libpostproc${SHLIB_EXT}              # [unix]
     {%- endif %}
+    # Verify nvidia codecs on linux
+    {% set nvcodecs = [
+        "nvenc",
+        "h264_nvenc",
+        "hevc_nvenc",
+        "mjpeg_cuvid",
+        "mpeg1_cuvid",
+        "mpeg2_cuvid",
+        "mpeg4_cuvid",
+        "vc1_cuvid",
+        "vp8_cuvid",
+        "vp9_cuvid"
+    ] %}
+    {% for nvcodec in nvcodecs %}
+    - ffmpeg -loglevel panic -codecs | grep "{{ nvcodec }}"  # [linux and not (ppc64le or aarch64)]
+    {% endfor %}
 
 about:
   home: http://www.ffmpeg.org/

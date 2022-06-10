@@ -25,7 +25,10 @@ fi
 
 extra_args=""
 if [[ "${target_platform}" == "linux-64" ]]; then
-  extra_args=--enable-vaapi
+  extra_args="${extra_args} --enable-vaapi"
+  extra_args="${extra_args} --enable-nvenc"
+  # extra_args="${extra_args} --enable-cuda-nvcc"
+  # extra_args="${extra_args} --enable-nonfree"
 elif [[ "${target_platform}" == osx-* ]]; then
   if [[ "${target_platform}" == osx-arm64 ]]; then
     extra_args="${extra_args} --enable-neon"
