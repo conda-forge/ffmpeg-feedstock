@@ -5,13 +5,17 @@ c_compiler:
 c_compiler_version:
 - '10'
 cdt_name:
-- cos7
+- cos6
 channel_sources:
 - conda-forge
 channel_targets:
 - conda-forge main
+cuda_compiler:
+- nvcc
 cuda_compiler_version:
 - None
+cudnn:
+- undefined
 cxx_compiler:
 - gxx
 cxx_compiler_version:
@@ -28,6 +32,8 @@ libxml2:
 - '2.9'
 license_family:
 - gpl
+nccl:
+- '2'
 pin_run_as_build:
   bzip2:
     max_pin: x
@@ -42,7 +48,7 @@ pin_run_as_build:
 svt_av1:
 - 1.1.0
 target_platform:
-- linux-ppc64le
+- linux-64
 x264:
 - 1!161.*
 x265:
@@ -50,6 +56,7 @@ x265:
 zip_keys:
 - - c_compiler_version
   - cxx_compiler_version
+  - cudnn
   - cuda_compiler_version
   - cdt_name
   - docker_image
