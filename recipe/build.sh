@@ -3,6 +3,7 @@ set -ex
 
 # unset the SUBDIR variable since it changes the behavior of make here
 unset SUBDIR
+cuda_compiler_version=${cuda_compiler_version:-None}
 
 if [[ "$CONDA_BUILD_CROSS_COMPILATION" == "1" ]]; then
   if [[ "$ARCH" == "64" ]]; then
@@ -25,7 +26,8 @@ fi
 
 extra_args=""
 if [[ "${target_platform}" == "linux-64" ]]; then
-  extra_args=--enable-vaapi
+  extra_args="${extra_args} --enable-vaapi"
+
 elif [[ "${target_platform}" == osx-* ]]; then
   if [[ "${target_platform}" == osx-arm64 ]]; then
     extra_args="${extra_args} --enable-neon"
@@ -37,7 +39,6 @@ elif [[ "${target_platform}" == osx-* ]]; then
   # why this flag needs to be removed.
   sed -i.bak s/-Wl,-single_module// configure
 fi
-
 if [[ "${license_family}" == "gpl" ]]; then
     extra_args="${extra_args} --enable-gpl --enable-libx264 --enable-libx265"
 else
@@ -47,8 +48,10 @@ fi
 ./configure \
         --prefix="${PREFIX}" \
         --cc=${CC} \
+        --cxx=${CXX} \
         --disable-doc \
         --disable-openssl \
+        --enable-avresample \
         --enable-demuxer=dash \
         --enable-gnutls \
         --enable-hardcoded-tables \
