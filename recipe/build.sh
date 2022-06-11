@@ -80,5 +80,11 @@ fi
         --pkg-config=$BUILD_PREFIX/bin/pkg-config \
         $EXTRA_CONFIGURE_OPTIONS || { cat ffbuild/config.log; exit 1; }
 
-make -j${CPU_COUNT}
+if [[ ${cuda_compiler_version} != "None" ]]; then
+    # hmaarrfk 2022/06/11
+    # This is super strange, without verbose, the nvidia builds fail....
+    make -j${CPU_COUNT} V=1
+else
+    make -j${CPU_COUNT}
+fi
 make install -j${CPU_COUNT}
