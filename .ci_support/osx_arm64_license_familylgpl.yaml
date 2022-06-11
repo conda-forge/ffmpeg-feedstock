@@ -1,5 +1,5 @@
 MACOSX_DEPLOYMENT_TARGET:
-- '10.9'
+- '11.0'
 bzip2:
 - '1'
 c_compiler:
@@ -24,8 +24,10 @@ libiconv:
 - '1.16'
 libxml2:
 - '2.9'
+license_family:
+- lgpl
 macos_machine:
-- x86_64-apple-darwin13.4.0
+- arm64-apple-darwin20.0.0
 pin_run_as_build:
   bzip2:
     max_pin: x
@@ -42,7 +44,7 @@ pin_run_as_build:
 svt_av1:
 - 1.1.0
 target_platform:
-- osx-64
+- osx-arm64
 x264:
 - 1!161.*
 x265:
