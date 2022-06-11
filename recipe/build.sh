@@ -44,7 +44,7 @@ if [[ ${cuda_compiler_version} != "None" ]]; then
   extra_args="${extra_args} --enable-cuda-nvcc"
   extra_args="${extra_args} --enable-nonfree"
   # Override the defaults for nvidia cuda toolkit 11.X
-  extra_args="${extra_args} --nvccflags='-gencode arch=compute_52,code=sm_52'"
+  export nvccflags="-gencode arch=compute_52,code=sm_52 -Xfatbin"
 fi
 
 if [[ "${license_family}" == "gpl" ]]; then
@@ -56,6 +56,7 @@ fi
 ./configure \
         --prefix="${PREFIX}" \
         --cc=${CC} \
+        --cxx=${CXX} \
         --disable-doc \
         --disable-openssl \
         --enable-demuxer=dash \
