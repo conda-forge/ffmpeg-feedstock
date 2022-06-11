@@ -39,7 +39,7 @@ elif [[ "${target_platform}" == osx-* ]]; then
 fi
 
 if [[ "${license_family}" == "gpl" ]]; then
-    extra_args="${extra_args} --enable-gpl --enable-libx264 --enable-libx265"
+    extra_args="${extra_args} --enable-gpl --enable-libx264 --enable-libx265 --enable-avresample"
 else
     extra_args="${extra_args} --disable-gpl"
 fi
@@ -66,7 +66,6 @@ fi
         --enable-version3 \
         --enable-zlib \
         --enable-libmp3lame \
-		--enable-avresample \
         --pkg-config=$BUILD_PREFIX/bin/pkg-config \
         $EXTRA_CONFIGURE_OPTIONS || { cat ffbuild/config.log; exit 1; }
 
