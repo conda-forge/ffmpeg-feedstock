@@ -1,4 +1,4 @@
-{% set version = "4.4.1" %} # semver: (x.y.z)
+{% set version = "4.4.2" %} # semver: (x.y.z)
 {% set x,y,z = version.split('.') %}
 {% set version_ffmpeg_style = x ~ '.' ~ y if z == "0" else version %}
 
@@ -7,9 +7,9 @@ package:
   version: {{ version }}
 
 source:
-  - url: https://ffmpeg.org/releases/ffmpeg-{{ version_ffmpeg_style }}.tar.gz
-    sha256: 82c98f74777f623710b72f9a3389fd38c1ed93bc661107e65df19234e395f6b9
-  - patches:
+  url: https://ffmpeg.org/releases/ffmpeg-{{ version_ffmpeg_style }}.tar.gz
+  sha256: 058efd4b6459bc9df54186f17a989d0af619a793aa62f07e96b88632706d6a17
+  patches:
     - patches/TARGET_OS_OSX.patch     # [osx]
 
 
@@ -47,17 +47,6 @@ requirements:
     - gmp  # [unix]
     - libva  # [linux and not (ppc64le or aarch64)]
     - aom  # [unix]
-    - svt-av1  # [unix]
-  run:
-    - bzip2  # [not win]
-    - freetype  # [not win]
-    - gnutls  # [not win]
-    - openh264  # [not win]
-    - lame  # [not win]
-    - libxml2  # [not win]
-    - gmp  # [unix]
-    - x265  # [not win]
-    - aom  # [not win]
     - svt-av1  # [unix]
 
 test:
