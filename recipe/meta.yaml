@@ -75,6 +75,7 @@ test:
         "avcodec",
         "avformat",
         "swscale",
+        "avresample",
         "avutil",
     ] %}
     {% for each_ffmpeg_lib in ffmpeg_libs %}
