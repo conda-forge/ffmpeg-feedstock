@@ -59,6 +59,7 @@ fi
         --cxx=${CXX} \
         --disable-doc \
         --disable-openssl \
+        --enable-avresample \
         --enable-demuxer=dash \
         --enable-gnutls \
         --enable-hardcoded-tables \
