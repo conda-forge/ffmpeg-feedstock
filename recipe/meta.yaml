@@ -121,7 +121,7 @@ test:
     ] %}
     {% for nvcodec in nvcodecs %}
     # Make sure to include a space in there to ensure we get an exact match
-    - ffmpeg -hide_banner -codecs | grep " {{ nvcodec }} "  # [cuda_compiler_version != None]
+    - ffmpeg -hide_banner -codecs | grep " {{ nvcodec }} "  # [cuda_compiler_version != "None"]
     {% endfor %}
 
 about:
