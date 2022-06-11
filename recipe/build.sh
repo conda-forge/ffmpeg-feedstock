@@ -66,6 +66,7 @@ fi
         --enable-version3 \
         --enable-zlib \
         --enable-libmp3lame \
+		--enable-avresample \
         --pkg-config=$BUILD_PREFIX/bin/pkg-config \
         $EXTRA_CONFIGURE_OPTIONS || { cat ffbuild/config.log; exit 1; }
 
