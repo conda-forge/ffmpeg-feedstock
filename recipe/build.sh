@@ -53,6 +53,12 @@ else
     extra_args="${extra_args} --disable-gpl"
 fi
 
+# Enabling non-free can trigger these
+# We explicitely disable them so that we can enable cuda
+extra_args="${extra_args} --disable-decklink"
+extra_args="${extra_args} --disable-libfdk_aac"
+extra_args="${extra_args} --disable-libtls"
+
 ./configure \
         --prefix="${PREFIX}" \
         --cc=${CC} \
