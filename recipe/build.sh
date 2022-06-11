@@ -39,7 +39,7 @@ elif [[ "${target_platform}" == osx-* ]]; then
 fi
 
 if [[ "${license_family}" == "gpl" ]]; then
-    extra_args="${extra_args} --enable-gpl --enable-libx264 --enable-libx265 --enable-avresample"
+    extra_args="${extra_args} --enable-gpl --enable-libx264 --enable-libx265"
 else
     extra_args="${extra_args} --disable-gpl"
 fi
@@ -49,6 +49,7 @@ fi
         --cc=${CC} \
         --disable-doc \
         --disable-openssl \
+        --enable-avresample \
         --enable-demuxer=dash \
         --enable-gnutls \
         --enable-hardcoded-tables \
