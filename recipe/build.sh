@@ -44,7 +44,7 @@ if [[ ${cuda_compiler_version} != "None" ]]; then
   extra_args="${extra_args} --enable-cuda-nvcc"
   extra_args="${extra_args} --enable-nonfree"
   # Override the defaults for nvidia cuda toolkit 11.X
-  export nvccflags="-gencode arch=compute_52,code=sm_52 -Xfatbin"
+  export nvccflags="-gencode arch=compute_52,code=sm_52"
 fi
 
 if [[ "${license_family}" == "gpl" ]]; then
