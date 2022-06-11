@@ -120,7 +120,8 @@ test:
         "vp9_cuvid"
     ] %}
     {% for nvcodec in nvcodecs %}
-    - ffmpeg -loglevel panic -codecs | grep "{{ nvcodec }}"  # [cuda_compiler_version != None]
+    # Make sure to include a space in there to ensure we get an exact match
+    - ffmpeg -hide_banner -codecs | grep " {{ nvcodec }} "  # [cuda_compiler_version != None]
     {% endfor %}
 
 about:
