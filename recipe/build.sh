@@ -26,12 +26,8 @@ fi
 extra_args=""
 if [[ "${target_platform}" == "win-64" ]]; then
   extra_args="${extra_args} --target-os=mingw64"
-  echo Current PKG_CONFIG=${PKG_CONFIG}
-  echo Current CC=${CC}
-  echo Current CXX=${CXX}
-  echo Current AR=${AR}
-  echo Current NM=${NM}
-  echo Current LD=${LD}
+  # For some reason this is necessary
+  extra_args="${extra_args} --enable-cross-compile"
 elif [[ "${target_platform}" == "linux-64" ]]; then
   extra_args="${extra_args} --enable-vaapi"
   extra_args="${extra_args} --enable-gnutls"
@@ -68,6 +64,14 @@ elif [[ "${target_platform}" == osx-* ]]; then
   # why this flag needs to be removed.
   sed -i.bak s/-Wl,-single_module// configure
 fi
+
+echo Current PKG_CONFIG=${PKG_CONFIG}
+echo Current CC=${CC}
+echo Current CXX=${CXX}
+echo Current AR=${AR}
+echo Current NM=${NM}
+echo Current LD=${LD}
+echo Current PREFIX=${PREFIX}
 
 ./configure \
         --prefix="${PREFIX}" \
