@@ -23,8 +23,9 @@ if [[ "$CONDA_BUILD_CROSS_COMPILATION" == "1" ]]; then
   EXTRA_CONFIGURE_OPTIONS="--enable-cross-compile --arch=$ARCH --target-os=$OS --cross-prefix=$HOST- --host-cc=$CC_FOR_BUILD"
 fi
 
+extra_args=""
 if [[ "${target_platform}" == "win-64" ]]; then
-  EXTRA_CONFIGURE_OPTIONS="--target-os=mingw64"
+  extra_args="${extra_args} --target-os=mingw64"
   echo Current PKG_CONFIG=${PKG_CONFIG}
   echo Current CC=${CC}
   echo Current CXX=${CXX}
@@ -32,7 +33,7 @@ if [[ "${target_platform}" == "win-64" ]]; then
   echo Current NM=${NM}
   echo Current LD=${LD}
 elif [[ "${target_platform}" == "linux-64" ]]; then
-  extra_args="--enable-vaapi"
+  extra_args="${extra_args} --enable-vaapi"
   extra_args="${extra_args} --enable-gnutls"
   extra_args="${extra_args} --enable-libx265"
   extra_args="${extra_args} --enable-libaom"
@@ -47,9 +48,9 @@ elif [[ "${target_platform}" == "linux-64" ]]; then
   extra_args="${extra_args} --enable-pthreads"
 elif [[ "${target_platform}" == osx-* ]]; then
   if [[ "${target_platform}" == osx-arm64 ]]; then
-    extra_args="--enable-neon"
+    extra_args="${extra_args} --enable-neon"
   else
-    extra_args="--disable-videotoolbox"
+    extra_args="${extra_args} --disable-videotoolbox"
   fi
   extra_args="${extra_args} --enable-gnutls"
   extra_args="${extra_args} --enable-libx265"
@@ -86,7 +87,7 @@ fi
         --disable-static \
         --enable-version3 \
         --pkg-config=$BUILD_PREFIX/bin/pkg-config \
-        $EXTRA_CONFIGURE_OPTIONS || { cat ffbuild/config.log; exit 1; }
+        || { cat ffbuild/config.log; exit 1; }
 
 # Not sure why this isn't working.
 # [[ "$target_platform" == "win-64" ]] && patch_libtool
