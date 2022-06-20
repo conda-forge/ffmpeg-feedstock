@@ -29,6 +29,9 @@ if [[ "${target_platform}" == "win-64" ]]; then
   # For some reason this is necessary
   extra_args="${extra_args} --enable-cross-compile"
   extra_args="${extra_args} --toolchain=msvc"
+  echo PREVIOUS LDFLAGS=${LDFLAGS}
+  export LDFLAGS=
+  echo PRESENT  LDFLAGS=${LDFLAGS}
 elif [[ "${target_platform}" == "linux-64" ]]; then
   extra_args="${extra_args} --enable-vaapi"
   extra_args="${extra_args} --enable-gnutls"
