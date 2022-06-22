@@ -29,7 +29,7 @@ if [[ "${target_platform}" == "win-64" ]]; then
   # For some reason this is necessary
   extra_args="${extra_args} --enable-cross-compile"
   extra_args="${extra_args} --toolchain=msvc"
-  extra_args="${extra_args} --extra-libs=ucrt --extra-libs=vcruntime"
+  extra_args="${extra_args} --extra-libs=ucrt.lib --extra-libs=vcruntime.lib"
   echo PREVIOUS LDFLAGS=${LDFLAGS}
   export LDFLAGS=
   echo PRESENT  LDFLAGS=${LDFLAGS}
