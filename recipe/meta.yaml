@@ -10,7 +10,7 @@ source:
   - url: https://ffmpeg.org/releases/ffmpeg-{{ version_ffmpeg_style }}.tar.gz
     sha256: 840c012766ceb1a95ec92fcbe51d80024a74b1b3134c92c2ff64a6f8165e9059
 
-{%- set number = 4 %}
+{%- set number = 5 %}
 {%- if license_family == 'gpl' %}
 {%- set number = number + 100 %}
 {%- endif %}
@@ -28,6 +28,8 @@ requirements:
   build:
     - {{ compiler("c") }}
     - {{ compiler("cxx") }}
+    # clangxx is required for support of the nvidia encoders and decoders
+    - clangxx  # [linux64]
     - pkg-config  # [not win]
     - libtool  # [not win]
     - nasm  # [not (win or (osx and x86_64))]
@@ -53,6 +55,7 @@ requirements:
     - libva  # [linux and not (ppc64le or aarch64)]
     - aom  # [unix]
     - svt-av1  # [unix]
+    - ffnvcodec-headers  # [linux64]
 
 test:
   commands:
@@ -90,6 +93,23 @@ test:
     - test ! $(ffmpeg -loglevel panic -codecs | grep "libx265")  # [unix]
     - test ! -f $PREFIX/lib/libpostproc${SHLIB_EXT}              # [unix]
     {%- endif %}
+    # Verify nvidia codecs on linux
+    {% set nvcodecs = [
+        "nvenc",
+        "h264_nvenc",
+        "hevc_nvenc",
+        "mjpeg_cuvid",
+        "mpeg1_cuvid",
+        "mpeg2_cuvid",
+        "mpeg4_cuvid",
+        "vc1_cuvid",
+        "vp8_cuvid",
+        "vp9_cuvid"
+    ] %}
+    {% for nvcodec in nvcodecs %}
+    # Make sure to include a space in there to ensure we get an exact match
+    - ffmpeg -hide_banner -codecs | grep " {{ nvcodec }} "  # [linux64]
+    {% endfor %}
 
 about:
   home: https://www.ffmpeg.org/
