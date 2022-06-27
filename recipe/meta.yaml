@@ -60,14 +60,15 @@ requirements:
 test:
   commands:
     - ffmpeg --help
-    - ffmpeg -loglevel panic -protocols | grep "https"  # [not win]
-    - ffmpeg -loglevel panic -codecs | grep "libmp3lame"  # [not win]
-    - ffmpeg -loglevel panic -codecs | grep "DEVI.S zlib"  # [unix]
-    - ffmpeg -loglevel panic -codecs | grep "DEV.LS h264"  # [unix]
-    - ffmpeg -loglevel panic -codecs | grep "libopenh264"  # [unix]
-    - ffmpeg -loglevel panic -codecs | grep "vaapi"  # [linux and not (ppc64le or aarch64)]
-    - ffmpeg -loglevel panic -codecs | grep "libaom"  # [unix]
-    - ffmpeg -loglevel panic -codecs | grep "libsvtav1"  # [unix]
+    - ffmpeg -hide_banner -codecs
+    - ffmpeg -hide_banner -protocols | grep "https"  # [not win]
+    - ffmpeg -hide_banner -codecs | grep "libmp3lame"  # [not win]
+    - ffmpeg -hide_banner -codecs | grep "DEVI.S zlib"  # [unix]
+    - ffmpeg -hide_banner -codecs | grep "DEV.LS h264"  # [unix]
+    - ffmpeg -hide_banner -codecs | grep "libopenh264"  # [unix]
+    - ffmpeg -hide_banner -codecs | grep "vaapi"  # [linux and not (ppc64le or aarch64)]
+    - ffmpeg -hide_banner -codecs | grep "libaom"  # [unix]
+    - ffmpeg -hide_banner -codecs | grep "libsvtav1"  # [unix]
     # Verify dynamic libraries on all systems
     {% set ffmpeg_libs = [
         "avdevice",
@@ -83,19 +84,18 @@ test:
     {% endfor %}
     {%- if license_family == 'gpl' %}
     - ffmpeg -hide_banner -buildconf | grep "enable-gpl"  # [unix]
-    - ffmpeg -loglevel panic -codecs | grep "libx264"     # [unix]
-    - ffmpeg -loglevel panic -codecs | grep "libx265"     # [unix]
+    - ffmpeg -hide_banner -codecs | grep "libx264"     # [unix]
+    - ffmpeg -hide_banner -codecs | grep "libx265"     # [unix]
     - test -f $PREFIX/lib/libpostproc${SHLIB_EXT}         # [unix]
     {%- endif %}
     {%- if license_family == 'lgpl' %}
     - ffmpeg -hide_banner -buildconf | grep "disable-gpl"        # [unix]
-    - test ! $(ffmpeg -loglevel panic -codecs | grep "libx264")  # [unix]
-    - test ! $(ffmpeg -loglevel panic -codecs | grep "libx265")  # [unix]
+    - test ! $(ffmpeg -hide_banner -codecs | grep "libx264")  # [unix]
+    - test ! $(ffmpeg -hide_banner -codecs | grep "libx265")  # [unix]
     - test ! -f $PREFIX/lib/libpostproc${SHLIB_EXT}              # [unix]
     {%- endif %}
     # Verify nvidia codecs on linux
     {% set nvcodecs = [
-        "nvenc",
         "h264_nvenc",
         "hevc_nvenc",
         "mjpeg_cuvid",
