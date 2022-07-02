@@ -31,7 +31,7 @@ export NASM=${BUILD_PREFIX}/Library/bin/nasm
 # Fail early if PATH is not setup correctly
 ${CC} --version
 ${CXX} --version
-${NM} --version
+# ${NM} --version
 ${AR} --version
 ${NASM} --version
 ${PKG_CONFIG} --version
