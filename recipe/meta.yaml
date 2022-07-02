@@ -39,6 +39,8 @@ requirements:
     - nasm         # [not (osx and x86_64)]
     - {{ compiler("m2w64_c") }}    # [win]
     - {{ compiler("m2w64_cxx") }}  # [win]
+      # or is it https://anaconda.org/conda-forge/m2w64-pkg-config
+    - m2-pkg-config                # [win]
     - m2-bash                      # [win]
     - m2-sed                       # [win]
     - m2-grep                      # [win]
