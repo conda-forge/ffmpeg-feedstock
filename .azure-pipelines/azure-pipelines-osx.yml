@@ -8,17 +8,11 @@ jobs:
     vmImage: macOS-10.15
   strategy:
     matrix:
-      osx_64_license_familygpl:
-        CONFIG: osx_64_license_familygpl
+      osx_64_:
+        CONFIG: osx_64_
         UPLOAD_PACKAGES: 'True'
-      osx_64_license_familylgpl:
-        CONFIG: osx_64_license_familylgpl
-        UPLOAD_PACKAGES: 'True'
-      osx_arm64_license_familygpl:
-        CONFIG: osx_arm64_license_familygpl
-        UPLOAD_PACKAGES: 'True'
-      osx_arm64_license_familylgpl:
-        CONFIG: osx_arm64_license_familylgpl
+      osx_arm64_:
+        CONFIG: osx_arm64_
         UPLOAD_PACKAGES: 'True'
   timeoutInMinutes: 360
 

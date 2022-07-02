@@ -1,37 +1,23 @@
 bzip2:
 - '1'
-c_compiler:
-- gcc
-c_compiler_version:
-- '10'
-cdt_name:
-- cos6
 channel_sources:
 - conda-forge
 channel_targets:
 - conda-forge main
-cxx_compiler:
-- gxx
-cxx_compiler_version:
-- '10'
-docker_image:
-- quay.io/condaforge/linux-anvil-cos7-x86_64
 freetype:
 - '2'
-gmp:
-- '6'
-gnutls:
-- '3.7'
 libxml2:
 - '2.9'
 license_family:
-- gpl
+- lgpl
+m2w64_c_compiler:
+- m2w64-toolchain
+m2w64_cxx_compiler:
+- m2w64-toolchain
 pin_run_as_build:
   bzip2:
     max_pin: x
   freetype:
-    max_pin: x
-  gmp:
     max_pin: x
   libxml2:
     max_pin: x.x
@@ -40,13 +26,10 @@ pin_run_as_build:
 svt_av1:
 - 1.1.0
 target_platform:
-- linux-64
+- win-64
 x264:
 - 1!161.*
 x265:
 - '3.5'
-zip_keys:
-- - c_compiler_version
-  - cxx_compiler_version
 zlib:
 - '1.2'
