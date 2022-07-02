@@ -57,7 +57,7 @@ requirements:
     
     # Added, but maybe we should remove
     - m2-file                      # [win]
-    - m2-filesystem                # [win]
+    # - m2-filesystem                # [win]
     - m2-gzip                      # [win]
     - m2-info                      # [win]
     - m2-less                      # [win]
