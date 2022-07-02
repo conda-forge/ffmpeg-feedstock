@@ -44,6 +44,7 @@ requirements:
     - m2-bash                      # [win]
     - m2-sed                       # [win]
     - m2-grep                      # [win]
+    - m2-gawk                      # [win]
     - m2-automake-wrapper          # [win]
     - m2-libtool                   # [win]
     - m2-autoconf                  # [win]
