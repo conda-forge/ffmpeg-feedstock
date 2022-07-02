@@ -17,10 +17,11 @@ export AR=x86_64-w64-mingw32-gcc-ar
 echo ${target_platform}
 echo ${BUILD_PREFIX}
 ls -lah ${BUILD_PREFIX}
-ls -lah ${BUILD_PREFIX}/bin
+ls -lah ${BUILD_PREFIX}/Library
 nasm --help
 pkg-config --help
 which pkg-config
+ls -lah ${BUILD_PREFIX}/Library/bin
 
 
 
