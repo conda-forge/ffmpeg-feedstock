@@ -18,7 +18,7 @@ echo ${target_platform}
 echo ${BUILD_PREFIX}
 ls -lah ${BUILD_PREFIX}
 ls -lah ${BUILD_PREFIX}/Library
-nasm --help
+${BUILD_PREFIX}/Library/bin/nasm --help
 pkg-config --help
 # Check that this exists
 ${BUILD_PREFIX}/Library/mingw-w64/bin/pkg-config --help
@@ -26,13 +26,14 @@ ${BUILD_PREFIX}/Library/mingw-w64/bin/pkg-config --help
 # LD???
 # export LD=x86_64-w64-mingw32-gcc-ld
 export PKG_CONFIG=${BUILD_PREFIX}/Library/mingw-w64/bin/pkg-config
+export NASM=${BUILD_PREFIX}/Library/bin/nasm
 
 # Fail early if PATH is not setup correctly
 ${CC} --version
 ${CXX} --version
 ${NM} --version
 ${AR} --version
-nasm --version
+${NASM} --version
 ${PKG_CONFIG} --version
 
 ./configure                      \
@@ -55,6 +56,7 @@ ${PKG_CONFIG} --version
     --enable-shared              \
     --disable-static             \
     --enable-version3            \
+    --nasm=${NASM}               \
     --pkg-config=${PKG_CONFIG}   \
     || (cat ffbuild/config.log && exit 1)
 
