@@ -18,6 +18,7 @@ source:
 build:
   number: {{ number }}
   string: {{ license_family }}_h{{ PKG_HASH }}_{{ PKG_BUILDNUM }}
+  skip: true  # [not win]
   run_exports:
   # seems to be major version compatibility
   # https://abi-laboratory.pro/tracker/timeline/ffmpeg/
