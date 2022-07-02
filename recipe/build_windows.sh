@@ -14,6 +14,16 @@ export CXX=x86_64-w64-mingw32-g++
 export NM=x86_64-w64-mingw32-gcc-nm
 export AR=x86_64-w64-mingw32-gcc-ar
 
+echo ${target_platform}
+echo ${BUILD_PREFIX}
+ls -lah ${BUILD_PREFIX}
+ls -lah ${BUILD_PREFIX}/bin
+nasm --help
+pkg-config --help
+which pkg-config
+
+
+
 # LD???
 # export LD=x86_64-w64-mingw32-gcc-ld
 export PKG_CONFIG=${CYGWIN_PREFIX}/Library/mingw-w64/bin/pkg-config
