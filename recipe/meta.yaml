@@ -54,6 +54,14 @@ requirements:
     - m2-m4                        # [win]
     # makedef uses the printf command which is provided by coreutils
     - m2-coreutils                 # [win]
+    
+    # Added, but maybe we should remove
+    - m2-file                      # [win]
+    - m2-filesystem                # [win]
+    - m2-gzip                      # [win]
+    - m2-info                      # [win]
+    - m2-less                      # [win]
+    - m2-time                      # [win]
   host:
     - bzip2
     - freetype
