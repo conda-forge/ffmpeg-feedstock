@@ -20,14 +20,12 @@ ls -lah ${BUILD_PREFIX}
 ls -lah ${BUILD_PREFIX}/Library
 nasm --help
 pkg-config --help
-which pkg-config
-ls -lah ${BUILD_PREFIX}/Library/bin
-
-
+# Check that this exists
+${BUILD_PREFIX}/Library/mingw-w64/bin/pkg-config --help
 
 # LD???
 # export LD=x86_64-w64-mingw32-gcc-ld
-export PKG_CONFIG=${CYGWIN_PREFIX}/Library/mingw-w64/bin/pkg-config
+export PKG_CONFIG=${BUILD_PREFIX}/Library/mingw-w64/bin/pkg-config
 
 # Fail early if PATH is not setup correctly
 ${CC} --version
