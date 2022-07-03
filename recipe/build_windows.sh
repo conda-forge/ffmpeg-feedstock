@@ -27,7 +27,7 @@ ${BUILD_PREFIX}/Library/mingw-w64/bin/pkg-config --help
 # export LD=x86_64-w64-mingw32-gcc-ld
 export PKG_CONFIG=${BUILD_PREFIX}/Library/mingw-w64/bin/pkg-config
 export NASM=${BUILD_PREFIX}/Library/bin/nasm
-
+export V=1
 # Fail early if PATH is not setup correctly
 ${CC} --version
 ${CXX} --version
