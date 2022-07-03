@@ -56,7 +56,7 @@ ${PKG_CONFIG} --version
     --enable-shared              \
     --disable-static             \
     --enable-version3            \
-    --nasm=${NASM}               \
+    --x86asmexe=${NASM}          \
     --pkg-config=${PKG_CONFIG}   \
     || (cat ffbuild/config.log && exit 1)
 
