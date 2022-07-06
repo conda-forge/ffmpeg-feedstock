@@ -54,6 +54,7 @@ fi
         --enable-gnutls \
         --enable-hardcoded-tables \
         --enable-libfreetype \
+        --enable-libfontconfig \
         --enable-libopenh264 \
         ${extra_args} \
         --enable-libaom \

@@ -3,7 +3,7 @@ About ffmpeg
 
 Home: https://www.ffmpeg.org/
 
-Package license: GPL-2.0-or-later
+Package license: LGPL-2.1-or-later
 
 Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/ffmpeg-feedstock/blob/main/LICENSE.txt)
 
