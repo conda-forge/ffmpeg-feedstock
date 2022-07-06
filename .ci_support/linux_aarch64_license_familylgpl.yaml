@@ -20,6 +20,8 @@ cxx_compiler_version:
 - '10'
 docker_image:
 - quay.io/condaforge/linux-anvil-cos7-x86_64
+fontconfig:
+- '2.13'
 freetype:
 - '2'
 gmp:
@@ -32,6 +34,8 @@ license_family:
 - lgpl
 pin_run_as_build:
   bzip2:
+    max_pin: x
+  fontconfig:
     max_pin: x
   freetype:
     max_pin: x
