@@ -97,13 +97,14 @@ test:
     {% endfor %}
     # Windows dynamic libraries have a suffix
     {% set ffmpeg_libs = [
-        "avdevice-59",
-        "swresample-4",
-        "avfilter-8",
-        "avcodec-59",
-        "avformat-59",
-        "swscale-6",
-        "avutil-57",
+        "avdevice-58",
+        "swresample-3",
+        "avfilter-7",
+        "avcodec-58",
+        "avformat-58",
+        "swscale-5",
+        "avresample-4",
+        "avutil-56",
     ] %}
     {% for each_ffmpeg_lib in ffmpeg_libs %}
     - if not exist %PREFIX%\\Library\\bin\\{{ each_ffmpeg_lib }}.dll exit 1  # [win]
@@ -116,7 +117,7 @@ test:
     - ffmpeg -hide_banner -buildconf | findstr "enable-gpl"     # [win]
     - ffmpeg -hide_banner -codecs | findstr "libx264"           # [win]
     - ffmpeg -hide_banner -codecs | findstr "libx265"           # [win]
-    - if not exist %PREFIX%\\Library\\bin\\postproc-56.dll exit 1  # [win]
+    - if not exist %PREFIX%\\Library\\bin\\postproc-55.dll exit 1  # [win]
     - if not exist %PREFIX%\\Library\\lib\\postproc.lib exit 1  # [win]
     {%- endif %}
     {%- if license_family == 'lgpl' %}
