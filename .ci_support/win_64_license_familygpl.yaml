@@ -1,0 +1,39 @@
+bzip2:
+- '1'
+c_compiler:
+- vs2017
+channel_sources:
+- conda-forge
+channel_targets:
+- conda-forge main
+cxx_compiler:
+- vs2017
+fontconfig:
+- '2.13'
+freetype:
+- '2'
+libxml2:
+- '2.9'
+license_family:
+- gpl
+pin_run_as_build:
+  bzip2:
+    max_pin: x
+  fontconfig:
+    max_pin: x
+  freetype:
+    max_pin: x
+  libxml2:
+    max_pin: x.x
+  zlib:
+    max_pin: x.x
+svt_av1:
+- 1.1.0
+target_platform:
+- win-64
+x264:
+- 1!161.*
+x265:
+- '3.5'
+zlib:
+- '1.2'
