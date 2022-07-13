@@ -1,0 +1,18 @@
+diff --git a/ffbuild/pkgconfig_generate.sh b/ffbuild/pkgconfig_generate.sh
+index e5de6716d2..734c50771c 100755
+--- a/ffbuild/pkgconfig_generate.sh
++++ b/ffbuild/pkgconfig_generate.sh
+@@ -43,6 +43,13 @@ Libs.private: $($shared && echo $libs)
+ Cflags: -I\${includedir}
+ EOF
+ 
++# Ensure we use unix flags, not windows flags
++sed -i 's,-libpath:,-L,g' ${name}/${fullname}.pc
++# Remove the leading slash on the pkgconfig variables
++sed -i 's,=/,=,g' ${name}/${fullname}.pc
++# Upper case the first character of the drive
++sed -i 's,=[a-z],\U&:,g' ${name}/${fullname}.pc
++
+ mkdir -p doc/examples/pc-uninstalled
+ includedir=${source_path}
+ [ "$includedir" = . ] && includedir="\${pcfiledir}/../../.."

@@ -9,6 +9,8 @@ package:
 source:
   url: https://ffmpeg.org/releases/ffmpeg-{{ version_ffmpeg_style }}.tar.gz
   sha256: 840c012766ceb1a95ec92fcbe51d80024a74b1b3134c92c2ff64a6f8165e9059
+  patches:
+    - patches/pkgconfig_generate_windows_llvm.patch  # [win]
 
 {%- set number = 7 %}
 {%- if license_family == 'gpl' %}
