@@ -13,10 +13,10 @@ source:
     - patches/TARGET_OS_OSX.patch     # [osx]
     - patches/pkgconfig_generate_windows_llvm.patch  # [win]
 
-{%- set number = 5 %}
-{%- if license_family == 'gpl' %}
-{%- set number = number + 100 %}
-{%- endif %}
+{% set number = 5 %}
+{% if license_family == 'gpl' %}
+    {% set number = number + 100 %}
+{% endif %}
 
 build:
   number: {{ number }}
