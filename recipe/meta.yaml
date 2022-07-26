@@ -1,4 +1,4 @@
-{% set version = "5.0.1" %} # semver: (x.y.z)
+{% set version = "5.1.0" %} # semver: (x.y.z)
 {% set x,y,z = version.split('.') %}
 {% set version_ffmpeg_style = x ~ '.' ~ y if z == "0" else version %}
 
@@ -8,11 +8,11 @@ package:
 
 source:
   url: https://ffmpeg.org/releases/ffmpeg-{{ version_ffmpeg_style }}.tar.gz
-  sha256: 840c012766ceb1a95ec92fcbe51d80024a74b1b3134c92c2ff64a6f8165e9059
+  sha256: c0b2ec290abd5ad31b5e0a8c455c34f90306ecd2ede6ace5db5ca3a07f3b842f
   patches:
     - patches/pkgconfig_generate_windows_llvm.patch  # [win]
 
-{% set number = 8 %}
+{% set number = 0 %}
 {% if license_family == 'gpl' %}
     {% set number = number + 100 %}
 {% endif %}
@@ -146,8 +146,8 @@ test:
 
 about:
   home: https://www.ffmpeg.org/
-  license: GPL-2.0-or-later     # [license_family=='gpl']
-  license: LGPL-2.1-or-later    # [license_family=='lgpl']
+  license: GPL-2.0-or-later    # [license_family=='gpl']
+  license: LGPL-2.1-or-later   # [license_family=='lgpl']
   license_file:
     - COPYING.GPLv2            # [license_family=='gpl']
     - COPYING.GPLv3            # [license_family=='gpl']
