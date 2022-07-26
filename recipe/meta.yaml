@@ -14,7 +14,7 @@ source:
 
 {% set number = 0 %}
 {% if license_family == 'gpl' %}
-{% set number = number + 100 %}
+    {% set number = number + 100 %}
 {% endif %}
 
 build:
