@@ -44,11 +44,11 @@ pin_run_as_build:
   zlib:
     max_pin: x.x
 svt_av1:
-- 1.1.0
+- 1.2.0
 target_platform:
 - linux-64
 x264:
-- 1!161.*
+- '1164'
 x265:
 - '3.5'
 zip_keys:
