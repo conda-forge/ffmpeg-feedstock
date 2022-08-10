@@ -1,3 +1,6 @@
 license_family:
   - lgpl
   - gpl
+
+x264:
+  - '1!164.*'
