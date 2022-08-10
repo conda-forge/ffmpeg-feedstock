@@ -104,17 +104,6 @@ if [[ "${license_family}" == "gpl" ]]; then
     extra_args="${extra_args} --enable-gpl"
     extra_args="${extra_args} --enable-libx264"
     extra_args="${extra_args} --enable-libx265"
-
-    if [[ "${target_platform}" == "win-64" ]]; then
-      # seems like we don't use the same organization as
-      # others for x264.
-      # This may not be necessary with version 164
-      # https://github.com/conda-forge/x264-feedstock/pull/28#issuecomment-1178402181
-      if [[ ! -f "${PREFIX}/lib/libx264.lib" ]]; then
-        cp ${PREFIX}/lib/x264.lib ${PREFIX}/lib/libx264.lib
-        LIBX264_LIB_CREATED=1
-      fi
-    fi
 else
     extra_args="${extra_args} --disable-gpl"
 fi
@@ -167,8 +156,5 @@ make install
 if [[ "${target_platform}" == win-* ]]; then
   if [[ "${UNISTD_CREATED}" == "1" ]]; then
       rm -f "${PREFIX}/include/unistd.h"
-  fi
-  if [[ "${LIBX264_LIB_CREATED}" == "1" ]]; then
-    rm -f ${PREFIX}/lib/libx264.lib
   fi
 fi
