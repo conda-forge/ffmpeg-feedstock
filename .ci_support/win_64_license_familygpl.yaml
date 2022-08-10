@@ -17,7 +17,7 @@ libxml2:
 license_family:
 - gpl
 openh264:
-- '2.2'
+- '2.3'
 pin_run_as_build:
   bzip2:
     max_pin: x
