@@ -52,7 +52,7 @@ svt_av1:
 target_platform:
 - osx-arm64
 x264:
-- 1!161.*
+- 1!164.*
 x265:
 - '3.5'
 zip_keys:
