@@ -12,7 +12,7 @@ source:
   patches:
     - patches/pkgconfig_generate_windows_llvm.patch  # [win]
 
-{% set number = 0 %}
+{% set number = 1 %}
 {% if license_family == 'gpl' %}
     {% set number = number + 100 %}
 {% endif %}
