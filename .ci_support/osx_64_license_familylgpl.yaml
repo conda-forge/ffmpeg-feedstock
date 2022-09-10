@@ -23,7 +23,7 @@ gmp:
 gnutls:
 - '3.7'
 libiconv:
-- '1.16'
+- '1.17'
 libxml2:
 - '2.9'
 license_family:
