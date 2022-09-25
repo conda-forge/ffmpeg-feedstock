@@ -1,4 +1,4 @@
-{% set version = "5.1.1" %} # semver: (x.y.z)
+{% set version = "5.1.2" %} # semver: (x.y.z)
 {% set x,y,z = version.split('.') %}
 {% set version_ffmpeg_style = x ~ '.' ~ y if z == "0" else version %}
 
@@ -8,7 +8,7 @@ package:
 
 source:
   url: https://ffmpeg.org/releases/ffmpeg-{{ version_ffmpeg_style }}.tar.gz
-  sha256: 4f07a5696273c0503848c97ee3f215f6e38f67f490f93a9efa18d19aef777725
+  sha256: 87fe8defa37ce5f7449e36047171fed5e4c3f4bb73eaccea8c954ee81393581c
   patches:
     - patches/pkgconfig_generate_windows_llvm.patch  # [win]
 
