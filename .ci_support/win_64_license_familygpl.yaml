@@ -9,7 +9,7 @@ channel_targets:
 cxx_compiler:
 - vs2019
 fontconfig:
-- '2.13'
+- '2'
 freetype:
 - '2'
 libxml2:
@@ -17,18 +17,7 @@ libxml2:
 license_family:
 - gpl
 openh264:
-- '2.3'
-pin_run_as_build:
-  bzip2:
-    max_pin: x
-  fontconfig:
-    max_pin: x
-  freetype:
-    max_pin: x
-  libxml2:
-    max_pin: x.x
-  zlib:
-    max_pin: x.x
+- 2.3.1
 svt_av1:
 - 1.2.1
 target_platform:
