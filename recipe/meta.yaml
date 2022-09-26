@@ -12,13 +12,13 @@ source:
   patches:
     - patches/pkgconfig_generate_windows_llvm.patch  # [win]
 
-{% set number = 2 %}
+{% set build = 0 %}
 {% if license_family == 'gpl' %}
-    {% set number = number + 100 %}
+    {% set build = build + 100 %}
 {% endif %}
 
 build:
-  number: {{ number }}
+  number: {{ build }}
   string: {{ license_family }}_h{{ PKG_HASH }}_{{ PKG_BUILDNUM }}
   run_exports:
   # seems to be major version compatibility
