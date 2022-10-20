@@ -13,7 +13,7 @@ source:
     - patches/TARGET_OS_OSX.patch     # [osx]
     - patches/pkgconfig_generate_windows_llvm.patch  # [win]
 
-{% set build = 8 %}
+{% set build = 9 %}
 {% if license_family == 'gpl' %}
     {% set build = build + 100 %}
 {% endif %}
