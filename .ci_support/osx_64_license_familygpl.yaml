@@ -27,7 +27,7 @@ gnutls:
 libiconv:
 - '1'
 libxml2:
-- '2.9'
+- '2.10'
 license_family:
 - gpl
 macos_machine:
