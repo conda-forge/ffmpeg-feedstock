@@ -15,7 +15,7 @@ fontconfig:
 freetype:
 - '2'
 libxml2:
-- '2.9'
+- '2.10'
 license_family:
 - lgpl
 openh264:
