@@ -141,6 +141,7 @@ fi
         --disable-static \
         --enable-version3 \
         --enable-zlib \
+        --enable-libopus \
         --pkg-config=${PKG_CONFIG} \
         || { if [[ ${CI} != "" ]]; then cat ffbuild/config.log; fi; exit 1; }
 

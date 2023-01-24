@@ -62,6 +62,7 @@ requirements:
     - aom
     - svt-av1
     - ffnvcodec-headers  # [linux64 or win]
+    - libopus
 
 {% set grep = "grep" %}  # [unix]
 {% set grep = "findstr" %}  # [win]
