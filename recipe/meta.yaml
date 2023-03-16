@@ -11,6 +11,8 @@ source:
   sha256: f4ccf961403752c93961927715f524576d1f4dd02cd76d8c76aed3bbe6686656
   patches:
     - patches/pkgconfig_generate_windows_llvm.patch  # [win]
+    # https://github.com/FFmpeg/FFmpeg/commit/814178f92647be2411516bbb82f48532373d2554
+    - patches/table_gen_fix_build_error.patch
 
 {% set build = 0 %}
 {% if license_family == 'gpl' %}

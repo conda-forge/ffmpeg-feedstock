@@ -1,0 +1,28 @@
+From 814178f92647be2411516bbb82f48532373d2554 Mon Sep 17 00:00:00 2001
+From: Zhao Zhili <zhilizhao@tencent.com>
+Date: Wed, 1 Mar 2023 02:23:00 +0800
+Subject: [PATCH] avcodec/aacps_tablegen: fix build error after avutil bump
+
+Fix tickets #10225
+
+DECLARE_ALIGNED has been moved to mem_internal.h.
+
+Signed-off-by: Zhao Zhili <zhilizhao@tencent.com>
+Reviewed-by: Anton Khirnov <anton@khirnov.net>
+---
+ libavcodec/aacps_tablegen.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/libavcodec/aacps_tablegen.h b/libavcodec/aacps_tablegen.h
+index 0ac4f68d68d6..5fdd7f0a9dda 100644
+--- a/libavcodec/aacps_tablegen.h
++++ b/libavcodec/aacps_tablegen.h
+@@ -34,7 +34,7 @@
+ #include "libavutil/common.h"
+ #include "libavutil/libm.h"
+ #include "libavutil/mathematics.h"
+-#include "libavutil/mem.h"
++#include "libavutil/mem_internal.h"
+ #define NR_ALLPASS_BANDS20 30
+ #define NR_ALLPASS_BANDS34 50
+ #define PS_AP_LINKS 3
