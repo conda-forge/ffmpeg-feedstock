@@ -1,11 +1,26 @@
+About ffmpeg-feedstock
+======================
+
+Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/ffmpeg-feedstock/blob/main/LICENSE.txt)
+
 About ffmpeg
-============
+------------
+
+Home: http://www.ffmpeg.org/
+
+Package license: GPL-2.0-or-later
+
+Summary: Cross-platform solution to record, convert and stream audio and video.
+
+Development: https://git.ffmpeg.org/ffmpeg.git
+
+Documentation: https://ffmpeg.org/documentation.html
+About ffmpeg
+------------
 
 Home: http://www.ffmpeg.org/
 
 Package license: LGPL-2.1-or-later
-
-Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/ffmpeg-feedstock/blob/master/LICENSE.txt)
 
 Summary: Cross-platform solution to record, convert and stream audio and video.
 
@@ -24,8 +39,8 @@ Current build status
     <td>
       <details>
         <summary>
-          <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=5418&branchName=master">
-            <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/ffmpeg-feedstock?branchName=master">
+          <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=5418&branchName=main">
+            <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/ffmpeg-feedstock?branchName=main">
           </a>
         </summary>
         <table>
@@ -33,85 +48,85 @@ Current build status
           <tbody><tr>
               <td>linux_64_license_familygpl</td>
               <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=5418&branchName=master">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/ffmpeg-feedstock?branchName=master&jobName=linux&configuration=linux%20linux_64_license_familygpl" alt="variant">
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=5418&branchName=main">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/ffmpeg-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_license_familygpl" alt="variant">
                 </a>
               </td>
             </tr><tr>
               <td>linux_64_license_familylgpl</td>
               <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=5418&branchName=master">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/ffmpeg-feedstock?branchName=master&jobName=linux&configuration=linux%20linux_64_license_familylgpl" alt="variant">
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=5418&branchName=main">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/ffmpeg-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_license_familylgpl" alt="variant">
                 </a>
               </td>
             </tr><tr>
               <td>linux_aarch64_license_familygpl</td>
               <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=5418&branchName=master">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/ffmpeg-feedstock?branchName=master&jobName=linux&configuration=linux%20linux_aarch64_license_familygpl" alt="variant">
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=5418&branchName=main">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/ffmpeg-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_aarch64_license_familygpl" alt="variant">
                 </a>
               </td>
             </tr><tr>
               <td>linux_aarch64_license_familylgpl</td>
               <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=5418&branchName=master">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/ffmpeg-feedstock?branchName=master&jobName=linux&configuration=linux%20linux_aarch64_license_familylgpl" alt="variant">
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=5418&branchName=main">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/ffmpeg-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_aarch64_license_familylgpl" alt="variant">
                 </a>
               </td>
             </tr><tr>
               <td>linux_ppc64le_license_familygpl</td>
               <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=5418&branchName=master">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/ffmpeg-feedstock?branchName=master&jobName=linux&configuration=linux%20linux_ppc64le_license_familygpl" alt="variant">
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=5418&branchName=main">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/ffmpeg-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_ppc64le_license_familygpl" alt="variant">
                 </a>
               </td>
             </tr><tr>
               <td>linux_ppc64le_license_familylgpl</td>
               <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=5418&branchName=master">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/ffmpeg-feedstock?branchName=master&jobName=linux&configuration=linux%20linux_ppc64le_license_familylgpl" alt="variant">
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=5418&branchName=main">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/ffmpeg-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_ppc64le_license_familylgpl" alt="variant">
                 </a>
               </td>
             </tr><tr>
               <td>osx_64_license_familygpl</td>
               <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=5418&branchName=master">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/ffmpeg-feedstock?branchName=master&jobName=osx&configuration=osx%20osx_64_license_familygpl" alt="variant">
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=5418&branchName=main">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/ffmpeg-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_64_license_familygpl" alt="variant">
                 </a>
               </td>
             </tr><tr>
               <td>osx_64_license_familylgpl</td>
               <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=5418&branchName=master">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/ffmpeg-feedstock?branchName=master&jobName=osx&configuration=osx%20osx_64_license_familylgpl" alt="variant">
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=5418&branchName=main">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/ffmpeg-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_64_license_familylgpl" alt="variant">
                 </a>
               </td>
             </tr><tr>
               <td>osx_arm64_license_familygpl</td>
               <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=5418&branchName=master">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/ffmpeg-feedstock?branchName=master&jobName=osx&configuration=osx%20osx_arm64_license_familygpl" alt="variant">
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=5418&branchName=main">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/ffmpeg-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_arm64_license_familygpl" alt="variant">
                 </a>
               </td>
             </tr><tr>
               <td>osx_arm64_license_familylgpl</td>
               <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=5418&branchName=master">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/ffmpeg-feedstock?branchName=master&jobName=osx&configuration=osx%20osx_arm64_license_familylgpl" alt="variant">
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=5418&branchName=main">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/ffmpeg-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_arm64_license_familylgpl" alt="variant">
                 </a>
               </td>
             </tr><tr>
               <td>win_64_license_familygpl</td>
               <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=5418&branchName=master">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/ffmpeg-feedstock?branchName=master&jobName=win&configuration=win%20win_64_license_familygpl" alt="variant">
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=5418&branchName=main">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/ffmpeg-feedstock?branchName=main&jobName=win&configuration=win%20win_64_license_familygpl" alt="variant">
                 </a>
               </td>
             </tr><tr>
               <td>win_64_license_familylgpl</td>
               <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=5418&branchName=master">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/ffmpeg-feedstock?branchName=master&jobName=win&configuration=win%20win_64_license_familylgpl" alt="variant">
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=5418&branchName=main">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/ffmpeg-feedstock?branchName=main&jobName=win&configuration=win%20win_64_license_familylgpl" alt="variant">
                 </a>
               </td>
             </tr>
