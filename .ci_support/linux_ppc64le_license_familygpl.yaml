@@ -5,7 +5,7 @@ bzip2:
 c_compiler:
 - gcc
 c_compiler_version:
-- '11'
+- '12'
 cdt_name:
 - cos7
 channel_sources:
@@ -15,7 +15,7 @@ channel_targets:
 cxx_compiler:
 - gxx
 cxx_compiler_version:
-- '11'
+- '12'
 docker_image:
 - quay.io/condaforge/linux-anvil-cos7-x86_64
 fontconfig:
@@ -33,7 +33,7 @@ license_family:
 openh264:
 - 2.3.1
 svt_av1:
-- 1.4.1
+- 1.5.0
 target_platform:
 - linux-ppc64le
 x264:
