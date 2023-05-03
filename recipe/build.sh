@@ -133,6 +133,7 @@ fi
         --enable-libfontconfig \
         --enable-libopenh264 \
         ${extra_args} \
+        --enable-libass \
         --enable-libaom \
         --enable-libsvtav1 \
         --enable-libxml2 \
