@@ -63,9 +63,7 @@ requirements:
     - svt-av1
     - ffnvcodec-headers  # [linux64 or win]
     - libopus
-    - libass
-  run:
-    - libass
+    - libass  # [not win]
 
 {% set grep = "grep" %}  # [unix]
 {% set grep = "findstr" %}  # [win]
