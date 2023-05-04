@@ -80,6 +80,7 @@ elif [[ "${target_platform}" == linux-* ]]; then
   extra_args="${extra_args} --enable-gnutls"
   extra_args="${extra_args} --enable-libmp3lame"
   extra_args="${extra_args} --enable-libvpx"
+  extra_args="${extra_args} --enable-libass"
   extra_args="${extra_args} --enable-pthreads"
   if [[ "${target_platform}" == "linux-64" ]]; then
     extra_args="${extra_args} --enable-vaapi"
@@ -93,6 +94,7 @@ elif [[ "${target_platform}" == osx-* ]]; then
   extra_args="${extra_args} --enable-gnutls"
   extra_args="${extra_args} --enable-libmp3lame"
   extra_args="${extra_args} --enable-libvpx"
+  extra_args="${extra_args} --enable-libass"
   extra_args="${extra_args} --enable-pthreads"
   # See https://github.com/conda-forge/ffmpeg-feedstock/pull/115
   # why this flag needs to be removed.
