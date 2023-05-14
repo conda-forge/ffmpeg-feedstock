@@ -60,7 +60,7 @@ requirements:
     - gmp  # [unix]
     - libva  # [linux64]
     - aom
-    - svt-av1
+    - svt-av1  1.4.1   # latest version to support ffmpeg 5.0
     - ffnvcodec-headers  # [linux64 or win]
     - libopus
     - libass  # [not win]
