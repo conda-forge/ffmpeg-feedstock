@@ -8,7 +8,7 @@ About ffmpeg
 
 Home: https://www.ffmpeg.org/
 
-Package license: GPL-2.0-or-later
+Package license: LGPL-2.1-or-later
 
 Summary: Cross-platform solution to record, convert and stream audio and video.
 
@@ -20,7 +20,7 @@ About ffmpeg
 
 Home: https://www.ffmpeg.org/
 
-Package license: LGPL-2.1-or-later
+Package license: GPL-2.0-or-later
 
 Summary: Cross-platform solution to record, convert and stream audio and video.
 

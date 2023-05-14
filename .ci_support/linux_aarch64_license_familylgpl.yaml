@@ -36,8 +36,6 @@ license_family:
 - lgpl
 openh264:
 - 2.3.1
-svt_av1:
-- 1.4.1
 target_platform:
 - linux-aarch64
 x264:
