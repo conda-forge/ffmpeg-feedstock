@@ -71,6 +71,7 @@ requirements:
     - ffnvcodec-headers  # [linux64 or win]
     - libopus
     - libass  # [not win]
+    - dav1d
 
 {% set grep = "grep" %}  # [unix]
 {% set grep = "findstr" %}  # [win]
