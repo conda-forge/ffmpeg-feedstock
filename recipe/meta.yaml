@@ -105,13 +105,13 @@ test:
     {% endfor %}
     # Windows dynamic libraries have a suffix
     {% set ffmpeg_libs = [
-        "avdevice-59",
+        "avdevice-60",
         "swresample-4",
-        "avfilter-8",
-        "avcodec-59",
-        "avformat-59",
-        "swscale-6",
-        "avutil-57",
+        "avfilter-9",
+        "avcodec-60",
+        "avformat-60",
+        "swscale-7",
+        "avutil-58",
     ] %}
     {% for each_ffmpeg_lib in ffmpeg_libs %}
     - if not exist %PREFIX%\\Library\\bin\\{{ each_ffmpeg_lib }}.dll exit 1  # [win]
