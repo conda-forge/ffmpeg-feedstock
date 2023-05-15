@@ -121,7 +121,7 @@ test:
     - ffmpeg -hide_banner -codecs | {{ grep }} "libx264"
     - ffmpeg -hide_banner -codecs | {{ grep }} "libx265"
     - test -f $PREFIX/lib/libpostproc${SHLIB_EXT}         # [unix]
-    - if not exist %PREFIX%\\Library\\bin\\postproc-56.dll exit 1  # [win]
+    - if not exist %PREFIX%\\Library\\bin\\postproc-57.dll exit 1  # [win]
     - if not exist %PREFIX%\\Library\\lib\\postproc.lib exit 1  # [win]
     # https://trac.ffmpeg.org/wiki/Null
     - ffmpeg -hide_banner -f lavfi -i nullsrc=s=256x256:d=8 -vcodec libx264 -f null -
@@ -132,7 +132,7 @@ test:
     - test ! $(ffmpeg -hide_banner -codecs | grep "libx264")     # [unix]
     - test ! $(ffmpeg -hide_banner -codecs | grep "libx265")     # [unix]
     - test ! -f $PREFIX/lib/libpostproc${SHLIB_EXT}              # [unix]
-    - if exist %PREFIX%\\Library\\bin\\postproc-55.dll exit 1    # [win]
+    - if exist %PREFIX%\\Library\\bin\\postproc-57.dll exit 1    # [win]
     - if exist %PREFIX%\\Library\\lib\\postproc.lib exit 1       # [win]
     {%- endif %}
     # Verify nvidia codecs on linux
