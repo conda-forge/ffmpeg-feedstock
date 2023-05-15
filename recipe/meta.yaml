@@ -12,7 +12,7 @@ source:
   patches:
     - patches/pkgconfig_generate_windows_llvm.patch  # [win]
 
-{% set build = 7 %}
+{% set build = 8 %}
 {% if license_family == 'gpl' %}
     {% set build = build + 100 %}
 {% endif %}
@@ -60,10 +60,11 @@ requirements:
     - gmp  # [unix]
     - libva  # [linux64]
     - aom
-    - svt-av1
+    - svt-av1  1.4.1   # latest version to support ffmpeg 5.0
     - ffnvcodec-headers  # [linux64 or win]
     - libopus
     - libass  # [not win]
+    - dav1d
 
 {% set grep = "grep" %}  # [unix]
 {% set grep = "findstr" %}  # [win]
