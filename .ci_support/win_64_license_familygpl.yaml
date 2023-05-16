@@ -10,6 +10,8 @@ channel_targets:
 - conda-forge main
 cxx_compiler:
 - vs2019
+dav1d:
+- 1.2.0
 fontconfig:
 - '2'
 freetype:
@@ -21,7 +23,7 @@ license_family:
 openh264:
 - 2.3.1
 svt_av1:
-- 1.4.1
+- 1.5.0
 target_platform:
 - win-64
 x264:

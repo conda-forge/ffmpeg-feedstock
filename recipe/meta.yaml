@@ -1,4 +1,4 @@
-{% set version = "5.1.2" %} # semver: (x.y.z)
+{% set version = "6.0.0" %} # semver: (x.y.z)
 {% set x,y,z = version.split('.') %}
 {% set version_ffmpeg_style = x ~ '.' ~ y if z == "0" else version %}
 
@@ -8,11 +8,18 @@ package:
 
 source:
   url: https://ffmpeg.org/releases/ffmpeg-{{ version_ffmpeg_style }}.tar.gz
-  sha256: 87fe8defa37ce5f7449e36047171fed5e4c3f4bb73eaccea8c954ee81393581c
+  sha256: f4ccf961403752c93961927715f524576d1f4dd02cd76d8c76aed3bbe6686656
   patches:
     - patches/pkgconfig_generate_windows_llvm.patch  # [win]
+    # https://github.com/FFmpeg/FFmpeg/commit/814178f92647be2411516bbb82f48532373d2554
+    - patches/table_gen_fix_build_error.patch
+    # I don't really think that the original changes made at FFmpeg make sense for
+    # conda-forge's conmpiler stack on windows
+    # https://github.com/FFmpeg/FFmpeg/commit/f8d6d0fbf12b3247a37885cd0a5cd32ddc1f01b3
+    # https://github.com/conda-forge/ffmpeg-feedstock/pull/193#issuecomment-1484476264
+    - patches/0001-Revert-compat-Use-instead-of-for-rc.exe-options.patch
 
-{% set build = 7 %}
+{% set build = 0 %}
 {% if license_family == 'gpl' %}
     {% set build = build + 100 %}
 {% endif %}
@@ -64,6 +71,7 @@ requirements:
     - ffnvcodec-headers  # [linux64 or win]
     - libopus
     - libass  # [not win]
+    - dav1d
 
 {% set grep = "grep" %}  # [unix]
 {% set grep = "findstr" %}  # [win]
@@ -97,13 +105,13 @@ test:
     {% endfor %}
     # Windows dynamic libraries have a suffix
     {% set ffmpeg_libs = [
-        "avdevice-59",
+        "avdevice-60",
         "swresample-4",
-        "avfilter-8",
-        "avcodec-59",
-        "avformat-59",
-        "swscale-6",
-        "avutil-57",
+        "avfilter-9",
+        "avcodec-60",
+        "avformat-60",
+        "swscale-7",
+        "avutil-58",
     ] %}
     {% for each_ffmpeg_lib in ffmpeg_libs %}
     - if not exist %PREFIX%\\Library\\bin\\{{ each_ffmpeg_lib }}.dll exit 1  # [win]
@@ -113,7 +121,6 @@ test:
     - ffmpeg -hide_banner -codecs | {{ grep }} "libx264"
     - ffmpeg -hide_banner -codecs | {{ grep }} "libx265"
     - test -f $PREFIX/lib/libpostproc${SHLIB_EXT}         # [unix]
-    - if not exist %PREFIX%\\Library\\bin\\postproc-56.dll exit 1  # [win]
     - if not exist %PREFIX%\\Library\\lib\\postproc.lib exit 1  # [win]
     # https://trac.ffmpeg.org/wiki/Null
     - ffmpeg -hide_banner -f lavfi -i nullsrc=s=256x256:d=8 -vcodec libx264 -f null -
@@ -124,7 +131,6 @@ test:
     - test ! $(ffmpeg -hide_banner -codecs | grep "libx264")     # [unix]
     - test ! $(ffmpeg -hide_banner -codecs | grep "libx265")     # [unix]
     - test ! -f $PREFIX/lib/libpostproc${SHLIB_EXT}              # [unix]
-    - if exist %PREFIX%\\Library\\bin\\postproc-55.dll exit 1    # [win]
     - if exist %PREFIX%\\Library\\lib\\postproc.lib exit 1       # [win]
     {%- endif %}
     # Verify nvidia codecs on linux
