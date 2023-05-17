@@ -33,7 +33,7 @@ gmp:
 gnutls:
 - '3.7'
 libxml2:
-- '2.10'
+- '2.11'
 license_family:
 - lgpl
 openh264:
