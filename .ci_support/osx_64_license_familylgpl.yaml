@@ -17,7 +17,7 @@ cxx_compiler:
 cxx_compiler_version:
 - '15'
 dav1d:
-- 1.2.0
+- 1.2.1
 fontconfig:
 - '2'
 freetype:
