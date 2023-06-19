@@ -2,6 +2,6 @@ __migrator:
   build_number: 1
   kind: version
   migration_number: 1
-dav1d:
-- 1.2.1
-migrator_ts: 1685706112.1313546
+migrator_ts: 1687142939.3683062
+svt_av1:
+- 1.6.0

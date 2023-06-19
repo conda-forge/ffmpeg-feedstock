@@ -23,7 +23,7 @@ license_family:
 openh264:
 - 2.3.1
 svt_av1:
-- 1.5.0
+- 1.6.0
 target_platform:
 - win-64
 x264:
