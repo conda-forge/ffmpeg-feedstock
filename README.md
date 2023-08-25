@@ -3,6 +3,7 @@ About ffmpeg-feedstock
 
 Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/ffmpeg-feedstock/blob/main/LICENSE.txt)
 
+
 About ffmpeg
 ------------
 
@@ -15,6 +16,7 @@ Summary: Cross-platform solution to record, convert and stream audio and video.
 Development: https://git.ffmpeg.org/ffmpeg.git
 
 Documentation: https://ffmpeg.org/documentation.html
+
 About ffmpeg
 ------------
 
