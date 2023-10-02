@@ -12,7 +12,7 @@ source:
   patches:
     - patches/pkgconfig_generate_windows_llvm.patch  # [win]
 
-{% set build = 11 %}
+{% set build = 12 %}
 {% if license_family == 'gpl' %}
     {% set build = build + 100 %}
 {% endif %}
