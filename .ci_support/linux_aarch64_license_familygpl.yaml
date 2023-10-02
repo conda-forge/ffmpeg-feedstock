@@ -1,7 +1,7 @@
 BUILD:
 - aarch64-conda_cos7-linux-gnu
 aom:
-- '3.5'
+- '3.6'
 bzip2:
 - '1'
 c_compiler:
