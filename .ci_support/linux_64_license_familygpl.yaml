@@ -33,7 +33,7 @@ license_family:
 openh264:
 - 2.3.1
 svt_av1:
-- 1.7.0
+- 1.4.1
 target_platform:
 - linux-64
 x264:
