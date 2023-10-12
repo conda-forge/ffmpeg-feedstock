@@ -1,5 +1,5 @@
 aom:
-- '3.5'
+- '3.6'
 bzip2:
 - '1'
 c_compiler:
@@ -15,7 +15,7 @@ fontconfig:
 freetype:
 - '2'
 libxml2:
-- '2.10'
+- '2.11'
 license_family:
 - lgpl
 openh264:

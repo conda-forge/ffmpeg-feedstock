@@ -1,11 +1,11 @@
 aom:
-- '3.5'
+- '3.6'
 bzip2:
 - '1'
 c_compiler:
 - gcc
 c_compiler_version:
-- '11'
+- '12'
 cdt_name:
 - cos7
 channel_sources:
@@ -15,7 +15,7 @@ channel_targets:
 cxx_compiler:
 - gxx
 cxx_compiler_version:
-- '11'
+- '12'
 docker_image:
 - quay.io/condaforge/linux-anvil-cos7-x86_64
 fontconfig:
@@ -27,7 +27,7 @@ gmp:
 gnutls:
 - '3.7'
 libxml2:
-- '2.10'
+- '2.11'
 license_family:
 - lgpl
 openh264:
