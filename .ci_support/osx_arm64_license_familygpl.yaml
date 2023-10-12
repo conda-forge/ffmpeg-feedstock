@@ -1,13 +1,13 @@
 MACOSX_DEPLOYMENT_TARGET:
 - '11.0'
 aom:
-- '3.5'
+- '3.6'
 bzip2:
 - '1'
 c_compiler:
 - clang
 c_compiler_version:
-- '14'
+- '16'
 channel_sources:
 - conda-forge
 channel_targets:
@@ -15,7 +15,7 @@ channel_targets:
 cxx_compiler:
 - clangxx
 cxx_compiler_version:
-- '14'
+- '16'
 fontconfig:
 - '2'
 freetype:
@@ -27,7 +27,7 @@ gnutls:
 libiconv:
 - '1'
 libxml2:
-- '2.10'
+- '2.11'
 license_family:
 - gpl
 macos_machine:
@@ -35,7 +35,7 @@ macos_machine:
 openh264:
 - 2.3.1
 svt_av1:
-- 1.4.1
+- 1.7.0
 target_platform:
 - osx-arm64
 x264:
