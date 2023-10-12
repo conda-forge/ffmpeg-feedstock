@@ -60,7 +60,10 @@ requirements:
     - libva  # [linux64]
     - aom
     - svt-av1
-    - ffnvcodec-headers  # [linux64 or win]
+    # This is the last known version to work with FFMPEG4
+    # Be careful to pass the nvidia encoder test below when attempting to
+    # update it.
+    - ffnvcodec-headers 11.1.5.2 # [linux64 or win]
 
 {% set grep = "grep" %}     # [unix]
 {% set grep = "findstr" %}  # [win]
