@@ -1,4 +1,4 @@
-{% set version = "6.0.0" %} # semver: (x.y.z)
+{% set version = "6.0.1" %} # semver: (x.y.z)
 {% set x,y,z = version.split('.') %}
 {% set version_ffmpeg_style = x ~ '.' ~ y if z == "0" else version %}
 
@@ -8,18 +8,16 @@ package:
 
 source:
   url: https://ffmpeg.org/releases/ffmpeg-{{ version_ffmpeg_style }}.tar.gz
-  sha256: f4ccf961403752c93961927715f524576d1f4dd02cd76d8c76aed3bbe6686656
+  sha256: 375fd8abab657d18578554927d23abfc9cb3b6794bd9839330230cf5f9fcea26
   patches:
     - patches/pkgconfig_generate_windows_llvm.patch  # [win]
-    # https://github.com/FFmpeg/FFmpeg/commit/814178f92647be2411516bbb82f48532373d2554
-    - patches/table_gen_fix_build_error.patch
     # I don't really think that the original changes made at FFmpeg make sense for
     # conda-forge's conmpiler stack on windows
     # https://github.com/FFmpeg/FFmpeg/commit/f8d6d0fbf12b3247a37885cd0a5cd32ddc1f01b3
     # https://github.com/conda-forge/ffmpeg-feedstock/pull/193#issuecomment-1484476264
     - patches/0001-Revert-compat-Use-instead-of-for-rc.exe-options.patch
 
-{% set build = 5 %}
+{% set build = 0 %}
 {% if license_family == 'gpl' %}
     {% set build = build + 100 %}
 {% endif %}
