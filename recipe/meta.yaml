@@ -26,9 +26,9 @@ build:
   number: {{ build }}
   string: {{ license_family }}_h{{ PKG_HASH }}_{{ PKG_BUILDNUM }}
   run_exports:
-  # seems to be major version compatibility
+  # seems to be minor version compatibility
   # https://abi-laboratory.pro/tracker/timeline/ffmpeg/
-    - {{ pin_subpackage('ffmpeg', max_pin='x') }}
+    - {{ pin_subpackage('ffmpeg', max_pin='x.x') }}
 
 requirements:
   build:
