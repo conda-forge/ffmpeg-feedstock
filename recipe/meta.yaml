@@ -52,7 +52,7 @@ requirements:
     - freetype
     - fontconfig
     - gnutls  # [not win]
-    - libiconv  # [osx]
+    - libiconv
     - libxml2
     {% if license_family == 'gpl' %}
     - x264
@@ -70,6 +70,9 @@ requirements:
     - libopus
     - libass  # [not win]
     - dav1d
+    - xz
+    - libxcb       # [linux]
+    - xorg-libx11  # [linux]
 
 {% set grep = "grep" %}    # [unix]
 {% set grep = "findstr" %}  # [win]
