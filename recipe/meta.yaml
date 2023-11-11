@@ -1,4 +1,4 @@
-{% set version = "6.0.1" %} # semver: (x.y.z)
+{% set version = "6.1.0" %} # semver: (x.y.z)
 {% set x,y,z = version.split('.') %}
 {% set version_ffmpeg_style = x ~ '.' ~ y if z == "0" else version %}
 
@@ -8,7 +8,7 @@ package:
 
 source:
   url: https://ffmpeg.org/releases/ffmpeg-{{ version_ffmpeg_style }}.tar.gz
-  sha256: 375fd8abab657d18578554927d23abfc9cb3b6794bd9839330230cf5f9fcea26
+  sha256: 938dd778baa04d353163ca5cb06c909c918850055f549205b29b1224e45a5316
   patches:
     - patches/pkgconfig_generate_windows_llvm.patch  # [win]
     # I don't really think that the original changes made at FFmpeg make sense for
