@@ -71,7 +71,7 @@ requirements:
     - libass  # [not win]
     - dav1d
 
-{% set grep = "grep" %}        # [unix]
+{% set grep = "grep" %}    # [unix]
 {% set grep = "findstr" %}  # [win]
 
 test:
