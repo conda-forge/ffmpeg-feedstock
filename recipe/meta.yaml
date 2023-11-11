@@ -72,7 +72,7 @@ requirements:
     - dav1d
 
 {% set grep = "grep" %}        # [unix]
-{% set grep = "findstr /r" %}  # [win]
+{% set grep = "findstr" %}  # [win]
 
 test:
   commands:
@@ -147,8 +147,7 @@ test:
         "vp9_cuvid"
     ] %}
     {% for nvcodec in nvcodecs %}
-    # Make sure to include a space in there to ensure we get an exact match
-    - ffmpeg -hide_banner -codecs | {{ grep }} "[ \(]{{ nvcodec }}[ \)]"  # [linux64 or win]
+    - ffmpeg -hide_banner -codecs | {{ grep }} "{{ nvcodec }}"  # [linux64 or win]
     {% endfor %}
     # https://trac.ffmpeg.org/wiki/Null
     - ffmpeg -hide_banner -f lavfi -i nullsrc=s=256x256:d=8 -vcodec libopenh264 -f null -
