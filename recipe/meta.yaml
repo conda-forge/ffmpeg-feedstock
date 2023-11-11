@@ -71,8 +71,8 @@ requirements:
     - libass  # [not win]
     - dav1d
 
-{% set grep = "grep" %}  # [unix]
-{% set grep = "findstr" %}  # [win]
+{% set grep = "grep" %}        # [unix]
+{% set grep = "findstr /r" %}  # [win]
 
 test:
   commands:
@@ -102,6 +102,7 @@ test:
     - if not exist %PREFIX%\\Library\\lib\\{{ each_ffmpeg_lib }}.lib exit 1  # [win]
     {% endfor %}
     # Windows dynamic libraries have a suffix
+    # This is useful to keep since it helps detect ABI breakage
     {% set ffmpeg_libs = [
         "avdevice-60",
         "swresample-4",
@@ -118,8 +119,9 @@ test:
     - ffmpeg -hide_banner -buildconf | {{ grep }} "enable-gpl"
     - ffmpeg -hide_banner -codecs | {{ grep }} "libx264"
     - ffmpeg -hide_banner -codecs | {{ grep }} "libx265"
-    - test -f $PREFIX/lib/libpostproc${SHLIB_EXT}         # [unix]
-    - if not exist %PREFIX%\\Library\\lib\\postproc.lib exit 1  # [win]
+    - test -f $PREFIX/lib/libpostproc${SHLIB_EXT}                  # [unix]
+    - if not exist %PREFIX%\\Library\\lib\\postproc.lib exit 1     # [win]
+    - if not exist %PREFIX%\\Library\\bin\\postproc-57.dll exit 1  # [win]
     # https://trac.ffmpeg.org/wiki/Null
     - ffmpeg -hide_banner -f lavfi -i nullsrc=s=256x256:d=8 -vcodec libx264 -f null -
     - ffmpeg -hide_banner -f lavfi -i nullsrc=s=256x256:d=8 -vcodec libx265 -f null -
@@ -130,6 +132,7 @@ test:
     - test ! $(ffmpeg -hide_banner -codecs | grep "libx265")     # [unix]
     - test ! -f $PREFIX/lib/libpostproc${SHLIB_EXT}              # [unix]
     - if exist %PREFIX%\\Library\\lib\\postproc.lib exit 1       # [win]
+    - if exist %PREFIX%\\Library\\bin\\postproc-57.dll exit 1    # [win]
     {%- endif %}
     # Verify nvidia codecs on linux
     {% set nvcodecs = [
