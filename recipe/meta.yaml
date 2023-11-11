@@ -1,4 +1,4 @@
-{% set version = "6.0.1" %} # semver: (x.y.z)
+{% set version = "6.1.0" %} # semver: (x.y.z)
 {% set x,y,z = version.split('.') %}
 {% set version_ffmpeg_style = x ~ '.' ~ y if z == "0" else version %}
 
@@ -8,7 +8,7 @@ package:
 
 source:
   url: https://ffmpeg.org/releases/ffmpeg-{{ version_ffmpeg_style }}.tar.gz
-  sha256: 375fd8abab657d18578554927d23abfc9cb3b6794bd9839330230cf5f9fcea26
+  sha256: 938dd778baa04d353163ca5cb06c909c918850055f549205b29b1224e45a5316
   patches:
     - patches/pkgconfig_generate_windows_llvm.patch  # [win]
     # I don't really think that the original changes made at FFmpeg make sense for
@@ -52,7 +52,7 @@ requirements:
     - freetype
     - fontconfig
     - gnutls  # [not win]
-    - libiconv  # [osx]
+    - libiconv
     - libxml2
     {% if license_family == 'gpl' %}
     - x264
@@ -70,8 +70,11 @@ requirements:
     - libopus
     - libass  # [not win]
     - dav1d
+    - xz
+    - libxcb       # [linux]
+    - xorg-libx11  # [linux]
 
-{% set grep = "grep" %}  # [unix]
+{% set grep = "grep" %}    # [unix]
 {% set grep = "findstr" %}  # [win]
 
 test:
@@ -102,6 +105,7 @@ test:
     - if not exist %PREFIX%\\Library\\lib\\{{ each_ffmpeg_lib }}.lib exit 1  # [win]
     {% endfor %}
     # Windows dynamic libraries have a suffix
+    # This is useful to keep since it helps detect ABI breakage
     {% set ffmpeg_libs = [
         "avdevice-60",
         "swresample-4",
@@ -118,8 +122,9 @@ test:
     - ffmpeg -hide_banner -buildconf | {{ grep }} "enable-gpl"
     - ffmpeg -hide_banner -codecs | {{ grep }} "libx264"
     - ffmpeg -hide_banner -codecs | {{ grep }} "libx265"
-    - test -f $PREFIX/lib/libpostproc${SHLIB_EXT}         # [unix]
-    - if not exist %PREFIX%\\Library\\lib\\postproc.lib exit 1  # [win]
+    - test -f $PREFIX/lib/libpostproc${SHLIB_EXT}                  # [unix]
+    - if not exist %PREFIX%\\Library\\lib\\postproc.lib exit 1     # [win]
+    - if not exist %PREFIX%\\Library\\bin\\postproc-57.dll exit 1  # [win]
     # https://trac.ffmpeg.org/wiki/Null
     - ffmpeg -hide_banner -f lavfi -i nullsrc=s=256x256:d=8 -vcodec libx264 -f null -
     - ffmpeg -hide_banner -f lavfi -i nullsrc=s=256x256:d=8 -vcodec libx265 -f null -
@@ -130,6 +135,7 @@ test:
     - test ! $(ffmpeg -hide_banner -codecs | grep "libx265")     # [unix]
     - test ! -f $PREFIX/lib/libpostproc${SHLIB_EXT}              # [unix]
     - if exist %PREFIX%\\Library\\lib\\postproc.lib exit 1       # [win]
+    - if exist %PREFIX%\\Library\\bin\\postproc-57.dll exit 1    # [win]
     {%- endif %}
     # Verify nvidia codecs on linux
     {% set nvcodecs = [
@@ -144,8 +150,7 @@ test:
         "vp9_cuvid"
     ] %}
     {% for nvcodec in nvcodecs %}
-    # Make sure to include a space in there to ensure we get an exact match
-    - ffmpeg -hide_banner -codecs | {{ grep }} " {{ nvcodec }} "  # [linux64 or win]
+    - ffmpeg -hide_banner -codecs | {{ grep }} "{{ nvcodec }}"  # [linux64 or win]
     {% endfor %}
     # https://trac.ffmpeg.org/wiki/Null
     - ffmpeg -hide_banner -f lavfi -i nullsrc=s=256x256:d=8 -vcodec libopenh264 -f null -
