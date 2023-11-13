@@ -1,7 +1,7 @@
 BUILD:
 - aarch64-conda_cos7-linux-gnu
 aom:
-- '3.6'
+- '3.7'
 bzip2:
 - '1'
 c_compiler:
@@ -32,6 +32,10 @@ gmp:
 - '6'
 gnutls:
 - '3.7'
+libiconv:
+- '1'
+libxcb:
+- '1.15'
 libxml2:
 - '2.11'
 license_family:
@@ -46,6 +50,8 @@ x264:
 - 1!164.*
 x265:
 - '3.5'
+xz:
+- '5'
 zip_keys:
 - - c_compiler_version
   - cxx_compiler_version

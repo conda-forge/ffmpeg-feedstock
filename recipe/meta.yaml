@@ -17,7 +17,7 @@ source:
     # https://github.com/conda-forge/ffmpeg-feedstock/pull/193#issuecomment-1484476264
     - patches/0001-Revert-compat-Use-instead-of-for-rc.exe-options.patch
 
-{% set build = 0 %}
+{% set build = 1 %}
 {% if license_family == 'gpl' %}
     {% set build = build + 100 %}
 {% endif %}
