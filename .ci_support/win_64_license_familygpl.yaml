@@ -19,7 +19,7 @@ freetype:
 libiconv:
 - '1'
 libxml2:
-- '2.11'
+- '2.12'
 license_family:
 - gpl
 openh264:
