@@ -16,6 +16,10 @@ fontconfig:
 - '2'
 freetype:
 - '2'
+glib:
+- '2'
+harfbuzz:
+- '8'
 libiconv:
 - '1'
 libxml2:
