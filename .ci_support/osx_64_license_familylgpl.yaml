@@ -22,10 +22,14 @@ fontconfig:
 - '2'
 freetype:
 - '2'
+glib:
+- '2'
 gmp:
 - '6'
 gnutls:
 - '3.7'
+harfbuzz:
+- '8'
 libiconv:
 - '1'
 libxml2:
