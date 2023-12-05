@@ -132,6 +132,7 @@ fi
         --enable-demuxer=dash \
         --enable-hardcoded-tables \
         --enable-libfreetype \
+        --enable-libharfbuzz \
         --enable-libfontconfig \
         --enable-libopenh264 \
         --enable-libdav1d \

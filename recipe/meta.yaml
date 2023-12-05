@@ -17,7 +17,7 @@ source:
     # https://github.com/conda-forge/ffmpeg-feedstock/pull/193#issuecomment-1484476264
     - patches/0001-Revert-compat-Use-instead-of-for-rc.exe-options.patch
 
-{% set build = 3 %}
+{% set build = 4 %}
 {% if license_family == 'gpl' %}
     {% set build = build + 100 %}
 {% endif %}
@@ -29,6 +29,8 @@ build:
   # seems to be major version compatibility
   # https://abi-laboratory.pro/tracker/timeline/ffmpeg/
     - {{ pin_subpackage('ffmpeg', max_pin='x') }}
+  ignore_run_exports_from:
+    - glib
 
 requirements:
   build:
@@ -50,6 +52,10 @@ requirements:
   host:
     - bzip2
     - freetype
+    - harfbuzz
+    # glib is only required to find harfbuzz with pkg-config at compilation time
+    # but it is not directly linked to the system
+    - glib
     - fontconfig
     - gnutls  # [not win]
     - libiconv
