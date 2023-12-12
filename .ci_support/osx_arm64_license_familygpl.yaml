@@ -41,7 +41,7 @@ macos_machine:
 openh264:
 - 2.4.0
 svt_av1:
-- 1.7.0
+- 1.8.0
 target_platform:
 - osx-arm64
 x264:
