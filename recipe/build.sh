@@ -102,6 +102,13 @@ elif [[ "${target_platform}" == osx-* ]]; then
   PKG_CONFIG="${BUILD_PREFIX}/bin/pkg-config"
 fi
 
+# enable OpenVINO to optimize AI tasks of avfilter component
+if [[ "${target_platform}" == linux-ppc64le ]] || [[ "${target_platform}" == win-64 ]]; then
+    extra_args="${extra_args} --disable-libopenvino"
+else
+    extra_args="${extra_args} --enable-libopenvino"
+fi
+
 if [[ "${license_family}" == "gpl" ]]; then
     extra_args="${extra_args} --enable-gpl"
     extra_args="${extra_args} --enable-libx264"

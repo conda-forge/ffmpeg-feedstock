@@ -32,8 +32,10 @@ harfbuzz:
 - '8'
 libiconv:
 - '1'
+libopenvino_dev:
+- 2023.2.0
 libxml2:
-- '2.12'
+- '2'
 license_family:
 - gpl
 macos_machine:
