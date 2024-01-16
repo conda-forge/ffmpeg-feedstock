@@ -23,7 +23,7 @@ harfbuzz:
 libiconv:
 - '1'
 libxml2:
-- '2.12'
+- '2'
 license_family:
 - lgpl
 openh264:

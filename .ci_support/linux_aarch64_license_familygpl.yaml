@@ -43,7 +43,7 @@ libopenvino_dev:
 libxcb:
 - '1.15'
 libxml2:
-- '2.12'
+- '2'
 license_family:
 - gpl
 openh264:
