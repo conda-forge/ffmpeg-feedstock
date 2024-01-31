@@ -1,5 +1,5 @@
 aom:
-- '3.7'
+- '3.8'
 bzip2:
 - '1'
 c_compiler:
