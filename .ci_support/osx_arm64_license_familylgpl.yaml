@@ -41,7 +41,7 @@ license_family:
 macos_machine:
 - arm64-apple-darwin20.0.0
 openh264:
-- 2.4.0
+- 2.4.1
 svt_av1:
 - 1.8.0
 target_platform:
