@@ -49,7 +49,7 @@ license_family:
 openh264:
 - 2.4.1
 svt_av1:
-- 1.8.0
+- 2.0.0
 target_platform:
 - linux-aarch64
 x264:
