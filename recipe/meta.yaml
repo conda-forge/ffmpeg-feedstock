@@ -58,7 +58,7 @@ requirements:
     - harfbuzz
     # glib is only required to find harfbuzz with pkg-config at compilation time
     # but it is not directly linked to the system
-    - glib 1.78
+    - glib
     - fontconfig
     - gnutls  # [not win]
     - libiconv
