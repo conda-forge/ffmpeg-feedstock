@@ -21,6 +21,7 @@ jobs:
         CONFIG: osx_arm64_license_familylgpl
         UPLOAD_PACKAGES: 'True'
   timeoutInMinutes: 360
+  variables: {}
 
   steps:
   # TODO: Fast finish on azure pipelines?
