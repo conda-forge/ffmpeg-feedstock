@@ -4,6 +4,8 @@ bzip2:
 - '1'
 c_compiler:
 - vs2019
+c_stdlib:
+- vs
 channel_sources:
 - conda-forge
 channel_targets:
@@ -29,7 +31,7 @@ license_family:
 openh264:
 - 2.4.1
 svt_av1:
-- 1.8.0
+- 2.0.0
 target_platform:
 - win-64
 x264:
