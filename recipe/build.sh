@@ -89,7 +89,7 @@ elif [[ "${target_platform}" == osx-* ]]; then
   if [[ "${target_platform}" == osx-arm64 ]]; then
     extra_args="${extra_args} --enable-neon"
   else
-    extra_args="${extra_args} --disable-videotoolbox"
+    extra_args="${extra_args} --enable-videotoolbox"
   fi
   extra_args="${extra_args} --enable-gnutls"
   extra_args="${extra_args} --enable-libmp3lame"
