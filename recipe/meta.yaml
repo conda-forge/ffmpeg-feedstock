@@ -20,7 +20,7 @@ source:
     # needed for qtwebengine
     - patches/add-av_stream_get_first_dts-for-chromium.patch
 
-{% set build = 7 %}
+{% set build = 8 %}
 {% if license_family == 'gpl' %}
     {% set build = build + 100 %}
 {% endif %}
@@ -39,6 +39,7 @@ requirements:
   build:
     - {{ compiler("c") }}
     - {{ compiler("cxx") }}
+    - {{ stdlib("c") }}  # [osx and x86_64]
     # clangxx is required for support of the nvidia encoders and decoders
     - clangxx  # [linux64]
     - autotools_clang_conda  # [win]
