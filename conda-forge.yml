@@ -12,3 +12,6 @@ provider:
   linux_aarch64: azure
   linux_ppc64le: azure
 test: native_and_emulated
+bot:
+  abi_migration_branches:
+    - 'v6.x'

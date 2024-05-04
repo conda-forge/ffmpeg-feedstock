@@ -1,4 +1,4 @@
-{% set version = "6.1.1" %} # semver: (x.y.z)
+{% set version = "7.0.0" %} # semver: (x.y.z)
 {% set x,y,z = version.split('.') %}
 {% set version_ffmpeg_style = x ~ '.' ~ y if z == "0" else version %}
 
@@ -8,7 +8,7 @@ package:
 
 source:
   url: https://ffmpeg.org/releases/ffmpeg-{{ version_ffmpeg_style }}.tar.gz
-  sha256: b0aee531e4a91fed6bc031445dfc3ad8eb36de1fcb0fa2acdb589ecc9f8dc9cb
+  sha256: 943a2a28044947c17a905c39075494b0da46ec0795224c2c61eff986518321eb
   patches:
     - patches/pkgconfig_generate_windows_llvm.patch  # [win]
     # I don't really think that the original changes made at FFmpeg make sense for
@@ -20,7 +20,10 @@ source:
     # needed for qtwebengine
     - patches/add-av_stream_get_first_dts-for-chromium.patch
 
-{% set build = 9 %}
+    # Include time_internal header for windows to correctly locate localtime_r and gmtime_r
+    - patches/include_time_internal_header.patch
+
+{% set build = 0 %}
 {% if license_family == 'gpl' %}
     {% set build = build + 100 %}
 {% endif %}
@@ -39,7 +42,7 @@ requirements:
   build:
     - {{ compiler("c") }}
     - {{ compiler("cxx") }}
-    - {{ stdlib("c") }}  # [osx and x86_64]
+    - {{ stdlib("c") }}
     # clangxx is required for support of the nvidia encoders and decoders
     - clangxx  # [linux64]
     - autotools_clang_conda  # [win]
@@ -118,15 +121,16 @@ test:
     # Windows dynamic libraries have a suffix
     # This is useful to keep since it helps detect ABI breakage
     {% set ffmpeg_libs = [
-        "avdevice-60",
-        "swresample-4",
-        "avfilter-9",
-        "avcodec-60",
-        "avformat-60",
-        "swscale-7",
-        "avutil-58",
+        "avdevice-61",
+        "swresample-5",
+        "avfilter-10",
+        "avcodec-61",
+        "avformat-61",
+        "swscale-8",
+        "avutil-59",
     ] %}
     {% for each_ffmpeg_lib in ffmpeg_libs %}
+    - echo "Checking for existance of {{ each_ffmpeg_lib }}.dll"             # [win]
     - if not exist %PREFIX%\\Library\\bin\\{{ each_ffmpeg_lib }}.dll exit 1  # [win]
     {% endfor %}
     {%- if license_family == 'gpl' %}
@@ -135,7 +139,7 @@ test:
     - ffmpeg -hide_banner -codecs | {{ grep }} "libx265"
     - test -f $PREFIX/lib/libpostproc${SHLIB_EXT}                  # [unix]
     - if not exist %PREFIX%\\Library\\lib\\postproc.lib exit 1     # [win]
-    - if not exist %PREFIX%\\Library\\bin\\postproc-57.dll exit 1  # [win]
+    - if not exist %PREFIX%\\Library\\bin\\postproc-58.dll exit 1  # [win]
     # https://trac.ffmpeg.org/wiki/Null
     - ffmpeg -hide_banner -f lavfi -i nullsrc=s=256x256:d=8 -vcodec libx264 -f null -
     - ffmpeg -hide_banner -f lavfi -i nullsrc=s=256x256:d=8 -vcodec libx265 -f null -
@@ -146,7 +150,7 @@ test:
     - test ! $(ffmpeg -hide_banner -codecs | grep "libx265")     # [unix]
     - test ! -f $PREFIX/lib/libpostproc${SHLIB_EXT}              # [unix]
     - if exist %PREFIX%\\Library\\lib\\postproc.lib exit 1       # [win]
-    - if exist %PREFIX%\\Library\\bin\\postproc-57.dll exit 1    # [win]
+    - if exist %PREFIX%\\Library\\bin\\postproc-58.dll exit 1    # [win]
     {%- endif %}
     # Verify nvidia codecs on linux
     {% set nvcodecs = [
