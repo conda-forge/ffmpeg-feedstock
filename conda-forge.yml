@@ -1,3 +1,6 @@
+bot:
+  abi_migration_branches:
+  - v6.x
 build_platform:
   linux_aarch64: linux_64
   linux_ppc64le: linux_64
@@ -12,6 +15,3 @@ provider:
   linux_aarch64: azure
   linux_ppc64le: azure
 test: native_and_emulated
-bot:
-  abi_migration_branches:
-    - 'v6.x'
