@@ -1,5 +1,7 @@
 MACOSX_DEPLOYMENT_TARGET:
 - '10.13'
+MACOSX_SDK_VERSION:
+- '10.13'
 aom:
 - '3.9'
 bzip2:
@@ -47,7 +49,7 @@ macos_machine:
 openh264:
 - 2.4.1
 svt_av1:
-- 2.0.0
+- 2.1.0
 target_platform:
 - osx-64
 x264:
