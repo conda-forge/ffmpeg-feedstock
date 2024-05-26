@@ -1,4 +1,4 @@
-{% set version = "7.0.0" %} # semver: (x.y.z)
+{% set version = "7.0.1" %} # semver: (x.y.z)
 {% set x,y,z = version.split('.') %}
 {% set version_ffmpeg_style = x ~ '.' ~ y if z == "0" else version %}
 
@@ -8,7 +8,7 @@ package:
 
 source:
   url: https://ffmpeg.org/releases/ffmpeg-{{ version_ffmpeg_style }}.tar.gz
-  sha256: 943a2a28044947c17a905c39075494b0da46ec0795224c2c61eff986518321eb
+  sha256: e273eae00b4f833595654c1ee2b2349240e0332f9dbf3c4cadd39df9819ff052
   patches:
     - patches/pkgconfig_generate_windows_llvm.patch  # [win]
     # I don't really think that the original changes made at FFmpeg make sense for
@@ -23,7 +23,7 @@ source:
     # Include time_internal header for windows to correctly locate localtime_r and gmtime_r
     - patches/include_time_internal_header.patch
 
-{% set build = 2 %}
+{% set build = 0 %}
 {% if license_family == 'gpl' %}
     {% set build = build + 100 %}
 {% endif %}
