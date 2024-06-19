@@ -39,7 +39,7 @@ harfbuzz:
 libiconv:
 - '1'
 libopenvino_dev:
-- 2024.1.0
+- 2024.2.0
 libxml2:
 - '2'
 license_family:
@@ -62,4 +62,4 @@ zip_keys:
 - - c_compiler_version
   - cxx_compiler_version
 zlib:
-- '1.2'
+- '1'
