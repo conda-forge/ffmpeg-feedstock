@@ -40,6 +40,8 @@ libiconv:
 - '1'
 libopenvino_dev:
 - 2024.2.0
+libxcb:
+- '1.16'
 libxml2:
 - '2'
 license_family:
