@@ -35,7 +35,7 @@ gmp:
 gnutls:
 - '3.7'
 harfbuzz:
-- '8'
+- '9'
 libiconv:
 - '1'
 libopenvino_dev:
