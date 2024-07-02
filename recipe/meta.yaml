@@ -20,7 +20,7 @@ source:
     # needed for qtwebengine
     - patches/add-av_stream_get_first_dts-for-chromium.patch
 
-{% set build = 15 %}
+{% set build = 16 %}
 {% if license_family == 'gpl' %}
     {% set build = build + 100 %}
 {% endif %}
