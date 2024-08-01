@@ -39,7 +39,7 @@ harfbuzz:
 libiconv:
 - '1'
 libopenvino_dev:
-- 2024.2.0
+- 2024.3.0
 libxml2:
 - '2'
 license_family:
