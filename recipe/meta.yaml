@@ -1,4 +1,4 @@
-{% set version = "6.1.1" %} # semver: (x.y.z)
+{% set version = "6.1.2" %} # semver: (x.y.z)
 {% set x,y,z = version.split('.') %}
 {% set version_ffmpeg_style = x ~ '.' ~ y if z == "0" else version %}
 
@@ -8,7 +8,7 @@ package:
 
 source:
   url: https://ffmpeg.org/releases/ffmpeg-{{ version_ffmpeg_style }}.tar.gz
-  sha256: b0aee531e4a91fed6bc031445dfc3ad8eb36de1fcb0fa2acdb589ecc9f8dc9cb
+  sha256: def310d21e40c39e6971a6bcd07fba78ca3ce39cc01ffda4dca382599dc06312
   patches:
     - patches/pkgconfig_generate_windows_llvm.patch  # [win]
     # I don't really think that the original changes made at FFmpeg make sense for
@@ -20,7 +20,7 @@ source:
     # needed for qtwebengine
     - patches/add-av_stream_get_first_dts-for-chromium.patch
 
-{% set build = 17 %}
+{% set build = 0 %}
 {% if license_family == 'gpl' %}
     {% set build = build + 100 %}
 {% endif %}
