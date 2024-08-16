@@ -33,7 +33,7 @@ glib:
 gmp:
 - '6'
 gnutls:
-- '3.7'
+- '3.8'
 harfbuzz:
 - '9'
 libiconv:
