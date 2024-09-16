@@ -135,7 +135,7 @@ fi
         --nm=${NM} \
         --ar=${AR} \
         --disable-doc \
-        --disable-openssl \
+        --enable-openssl \
         --enable-demuxer=dash \
         --enable-hardcoded-tables \
         --enable-libfreetype \
