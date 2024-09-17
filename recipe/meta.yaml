@@ -23,7 +23,7 @@ source:
     # Include time_internal header for windows to correctly locate localtime_r and gmtime_r
     - patches/include_time_internal_header.patch
 
-{% set build = 2 %}
+{% set build = 3 %}
 {% if license_family == 'gpl' %}
     {% set build = build + 100 %}
 {% endif %}
@@ -57,6 +57,7 @@ requirements:
     # makedef uses the printf command which is provided by coreutils
     # - m2-coreutils  # [win]
   host:
+    - openssl
     - bzip2
     - freetype
     - harfbuzz
@@ -64,7 +65,6 @@ requirements:
     # but it is not directly linked to the system
     - glib
     - fontconfig
-    - gnutls  # [not win]
     - libiconv
     - libxml2
     {% if license_family == 'gpl' %}
