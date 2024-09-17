@@ -77,7 +77,7 @@ if [[ "${target_platform}" == "win-64" ]]; then
   export V=1
 elif [[ "${target_platform}" == linux-* ]]; then
   PKG_CONFIG="${BUILD_PREFIX}/bin/pkg-config"
-  extra_args="${extra_args} --enable-gnutls"
+  extra_args="${extra_args} --disable-gnutls"
   extra_args="${extra_args} --enable-libmp3lame"
   extra_args="${extra_args} --enable-libvpx"
   extra_args="${extra_args} --enable-libass"
@@ -91,7 +91,7 @@ elif [[ "${target_platform}" == osx-* ]]; then
   else
     extra_args="${extra_args} --enable-videotoolbox"
   fi
-  extra_args="${extra_args} --enable-gnutls"
+  extra_args="${extra_args} --disable-gnutls"
   extra_args="${extra_args} --enable-libmp3lame"
   extra_args="${extra_args} --enable-libvpx"
   extra_args="${extra_args} --enable-libass"
