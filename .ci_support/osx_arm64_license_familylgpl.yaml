@@ -32,8 +32,6 @@ glib:
 - '2'
 gmp:
 - '6'
-gnutls:
-- '3.8'
 harfbuzz:
 - '9'
 libiconv:
@@ -48,6 +46,8 @@ macos_machine:
 - arm64-apple-darwin20.0.0
 openh264:
 - 2.4.1
+openssl:
+- '3'
 svt_av1:
 - 2.2.1
 target_platform:
