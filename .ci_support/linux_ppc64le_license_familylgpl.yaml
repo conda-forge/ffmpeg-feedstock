@@ -32,8 +32,6 @@ glib:
 - '2'
 gmp:
 - '6'
-gnutls:
-- '3.8'
 harfbuzz:
 - '9'
 libiconv:
@@ -46,6 +44,8 @@ license_family:
 - lgpl
 openh264:
 - 2.4.1
+openssl:
+- '3'
 svt_av1:
 - 2.2.1
 target_platform:
