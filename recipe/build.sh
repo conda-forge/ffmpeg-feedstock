@@ -83,6 +83,7 @@ elif [[ "${target_platform}" == linux-* ]]; then
   extra_args="${extra_args} --enable-libass"
   extra_args="${extra_args} --enable-pthreads"
   if [[ "${target_platform}" == "linux-64" ]]; then
+    extra_args="${extra_args} --enable-libvpl"
     extra_args="${extra_args} --enable-vaapi"
   fi
 elif [[ "${target_platform}" == osx-* ]]; then
@@ -153,7 +154,7 @@ fi
         --enable-version3 \
         --enable-zlib \
         --enable-libopus \
-	--enable-librsvg \
+        --enable-librsvg \
         --pkg-config=${PKG_CONFIG} \
         || { if [[ ${CI} != "" ]]; then cat ffbuild/config.log; fi; exit 1; }
 
