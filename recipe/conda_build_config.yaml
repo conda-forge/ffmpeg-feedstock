@@ -1,3 +1,5 @@
 license_family:
   - lgpl
   - gpl
+channel_sources:
+  - mark.harfouche,conda-forge
