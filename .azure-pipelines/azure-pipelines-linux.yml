@@ -16,22 +16,6 @@ jobs:
         CONFIG: linux_64_license_familylgpl
         UPLOAD_PACKAGES: 'True'
         DOCKER_IMAGE: quay.io/condaforge/linux-anvil-cos7-x86_64
-      linux_aarch64_license_familygpl:
-        CONFIG: linux_aarch64_license_familygpl
-        UPLOAD_PACKAGES: 'True'
-        DOCKER_IMAGE: quay.io/condaforge/linux-anvil-cos7-x86_64
-      linux_aarch64_license_familylgpl:
-        CONFIG: linux_aarch64_license_familylgpl
-        UPLOAD_PACKAGES: 'True'
-        DOCKER_IMAGE: quay.io/condaforge/linux-anvil-cos7-x86_64
-      linux_ppc64le_license_familygpl:
-        CONFIG: linux_ppc64le_license_familygpl
-        UPLOAD_PACKAGES: 'True'
-        DOCKER_IMAGE: quay.io/condaforge/linux-anvil-cos7-x86_64
-      linux_ppc64le_license_familylgpl:
-        CONFIG: linux_ppc64le_license_familylgpl
-        UPLOAD_PACKAGES: 'True'
-        DOCKER_IMAGE: quay.io/condaforge/linux-anvil-cos7-x86_64
   timeoutInMinutes: 360
   variables: {}
 
