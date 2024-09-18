@@ -89,6 +89,7 @@ elif [[ "${target_platform}" == linux-* ]]; then
   extra_args="${extra_args} --enable-alsa"
   extra_args="${extra_args} --enable-libpulse"
   if [[ "${target_platform}" == "linux-64" ]]; then
+    extra_args="${extra_args} --enable-libvpl"
     extra_args="${extra_args} --enable-vaapi"
   fi
 elif [[ "${target_platform}" == osx-* ]]; then
