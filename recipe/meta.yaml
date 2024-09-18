@@ -20,9 +20,6 @@ source:
     # needed for qtwebengine
     - patches/add-av_stream_get_first_dts-for-chromium.patch
 
-    # Include time_internal header for windows to correctly locate localtime_r and gmtime_r
-    - patches/include_time_internal_header.patch
-
 {% set build = 4 %}
 {% if license_family == 'gpl' %}
     {% set build = build + 100 %}
