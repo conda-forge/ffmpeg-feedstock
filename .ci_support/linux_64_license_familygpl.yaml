@@ -37,7 +37,7 @@ harfbuzz:
 libiconv:
 - '1'
 libopenvino_dev:
-- 2024.3.0
+- 2024.4.0
 libxcb:
 - '1.16'
 libxml2:
