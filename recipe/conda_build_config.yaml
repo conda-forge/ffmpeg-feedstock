@@ -1,3 +1,50 @@
 license_family:
   - lgpl
   - gpl
+
+# hmaarrfk
+# These could be wrong, but I'm not too sure how to find an exact correspondance
+# between the cuda version and the nvidia driver version
+# I think they could technically be out of sync
+# To find the compatibility version of ffnvcodec_headers, you can look at the
+# https://github.com/FFmpeg/nv-codec-headers/tree/n12.0.16.1
+# To find the __cuda version I:
+# Uninstall all nvidia driver from ubuntu
+# Installed a specific version they offered
+# rebooted
+# Checked what was reported by conda info
+# sudo apt remove *nvidia*
+# sudo apt install nvidia-driver-470
+# sudo reboot
+# conda info | grep cuda
+# I checked the following versions
+#     - nvidia-driver-550 -- cuda 12.4
+#     - nvidia-driver-535 -- cuda 12.2
+#     - nvidia-driver-530 -- seems to install 535...
+#     - nvidia-driver-525 -- seems to install 535...
+#     - nvidia-driver-520 -- seems to install 535...
+#     - nvidia-driver-515 -- seems to install 535...
+#     - nvidia-driver-510 -- seems to install 535...
+#     - nvidia-driver-470 -- Did not work on my machine (likely GPU too new)
+cuda_version_for_ffnvcodec:
+  - None
+  - 12.2                       # [linux64 or win]
+  - 12.4                       # [linux64 or win or aarch64]
+
+ffnvcodec_headers:
+  - None
+  - 12.1.14                    # [linux64 or win]
+  - 12.2.72                    # [linux64 or win or aarch64]
+
+# Build increment of 100 is used for lgpl/gpl builds
+build_number_increment:
+  - 0
+  # 200 is reserved for something compatible with 11.8
+  # but .... it would require adjusting the tests
+  - 400                        # [linux64 or win]
+  - 600                        # [linux64 or win or aarch64]
+
+zip_keys:
+  - - ffnvcodec_headers
+    - cuda_version_for_ffnvcodec
+    - build_number_increment

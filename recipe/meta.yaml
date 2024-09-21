@@ -20,9 +20,20 @@ source:
     # needed for qtwebengine
     - patches/add-av_stream_get_first_dts-for-chromium.patch
 
-{% set build = 4 %}
+{% set build = 5 %}
 {% if license_family == 'gpl' %}
     {% set build = build + 100 %}
+{% endif %}
+
+# Can't seem to get int + str to add without this...
+{% if build_number_increment == '200' %}
+    {% set build = build + 200 %}
+{% endif %}
+{% if build_number_increment == '400' %}
+    {% set build = build + 400 %}
+{% endif %}
+{% if build_number_increment == '600' %}
+    {% set build = build + 600 %}
 {% endif %}
 
 build:
@@ -76,7 +87,7 @@ requirements:
     - libva  # [linux64]
     - aom
     - svt-av1
-    - ffnvcodec-headers  # [linux64 or win]
+    - ffnvcodec-headers  {{ ffnvcodec_headers }}  # [ffnvcodec_headers != "None"]
     - libopus
     - libopenvino-dev    # [not ppc64le and not win]
     - libass  # [not win]
@@ -84,6 +95,8 @@ requirements:
     - xz
     - libxcb       # [linux]
     - xorg-libx11  # [linux]
+  run_constrained:
+    - __cuda  >={{ cuda_version_for_ffnvcodec }}  # [ffnvcodec_headers != "None"]
 
 {% set grep = "grep" %}  # [unix]
 {% set grep = "findstr" %}  # [win]
@@ -161,7 +174,7 @@ test:
         "vp9_cuvid"
     ] %}
     {% for nvcodec in nvcodecs %}
-    - ffmpeg -hide_banner -codecs | {{ grep }} "{{ nvcodec }}"  # [linux64 or win]
+    - ffmpeg -hide_banner -codecs | {{ grep }} "{{ nvcodec }}"  # [ffnvcodec_headers != "None"]
     {% endfor %}
     # https://trac.ffmpeg.org/wiki/Null
     - ffmpeg -hide_banner -f lavfi -i nullsrc=s=256x256:d=8 -vcodec libopenh264 -f null -
