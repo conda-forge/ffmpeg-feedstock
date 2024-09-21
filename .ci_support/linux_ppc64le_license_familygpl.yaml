@@ -1,5 +1,7 @@
 aom:
 - '3.9'
+build_number_increment:
+- '0'
 bzip2:
 - '1'
 c_compiler:
@@ -24,6 +26,8 @@ dav1d:
 - 1.2.1
 docker_image:
 - quay.io/condaforge/linux-anvil-cos7-x86_64
+ffnvcodec_headers:
+- None
 fontconfig:
 - '2'
 freetype:
@@ -61,5 +65,7 @@ zip_keys:
   - cxx_compiler_version
 - - c_stdlib_version
   - cdt_name
+- - ffnvcodec_headers
+  - build_number_increment
 zlib:
 - '1'
