@@ -4,6 +4,8 @@ MACOSX_SDK_VERSION:
 - '11.0'
 aom:
 - '3.9'
+build_number_increment:
+- '0'
 bzip2:
 - '1'
 c_compiler:
@@ -24,6 +26,8 @@ cxx_compiler_version:
 - '17'
 dav1d:
 - 1.2.1
+ffnvcodec_headers:
+- None
 fontconfig:
 - '2'
 freetype:
@@ -61,5 +65,7 @@ xz:
 zip_keys:
 - - c_compiler_version
   - cxx_compiler_version
+- - ffnvcodec_headers
+  - build_number_increment
 zlib:
 - '1'
