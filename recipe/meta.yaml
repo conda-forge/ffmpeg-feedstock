@@ -23,7 +23,7 @@ source:
     # Include time_internal header for windows to correctly locate localtime_r and gmtime_r
     - patches/include_time_internal_header.patch
 
-{% set build = 5 %}
+{% set build = 0 %}
 {% if license_family == 'gpl' %}
     {% set build = build + 100 %}
 {% endif %}
@@ -133,6 +133,8 @@ test:
     {% endfor %}
     # Windows dynamic libraries have a suffix
     # This is useful to keep since it helps detect ABI breakage
+    # One can find the SO versions by reading the release notes
+    # https://ffmpeg.org/download.html#releases
     {% set ffmpeg_libs = [
         "avdevice-61",
         "swresample-5",
