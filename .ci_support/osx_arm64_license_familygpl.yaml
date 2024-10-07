@@ -26,6 +26,8 @@ cxx_compiler_version:
 - '17'
 dav1d:
 - 1.2.1
+ffmpeg:
+- '6'
 ffnvcodec_headers:
 - None
 fontconfig:

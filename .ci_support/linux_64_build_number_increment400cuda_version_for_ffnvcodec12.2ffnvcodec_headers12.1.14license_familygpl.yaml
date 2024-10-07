@@ -28,6 +28,8 @@ dav1d:
 - 1.2.1
 docker_image:
 - quay.io/condaforge/linux-anvil-cos7-x86_64
+ffmpeg:
+- '6'
 ffnvcodec_headers:
 - 12.1.14
 fontconfig:
@@ -45,11 +47,11 @@ libiconv:
 libopenvino_dev:
 - 2024.4.0
 libxcb:
-- '1.16'
+- '1'
 libxml2:
 - '2'
 license_family:
-- lgpl
+- gpl
 openh264:
 - 2.4.1
 openssl:
