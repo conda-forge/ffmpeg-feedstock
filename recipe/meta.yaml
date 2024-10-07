@@ -105,6 +105,12 @@ requirements:
 {% set grep = "findstr" %}  # [win]
 
 test:
+  requires:
+    # we had a repodata patch that changed the compatibility from libxcb
+    # to encompass 1.16 and 1.17, for some reason build 0 of ffmpeg 7.1
+    # is only compatibile with libxcb 1.16
+    # libxcb 1.17 is required for Ubuntu 24.10 compatibility
+    - libxcb >=1.17    # [linux]
   commands:
     - ffmpeg --help
     - ffmpeg -hide_banner -codecs
