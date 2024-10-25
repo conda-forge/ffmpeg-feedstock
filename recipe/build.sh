@@ -153,6 +153,7 @@ fi
         --enable-version3 \
         --enable-zlib \
         --enable-libopus \
+	--enable-librsvg \
         --pkg-config=${PKG_CONFIG} \
         || { if [[ ${CI} != "" ]]; then cat ffbuild/config.log; fi; exit 1; }
 
