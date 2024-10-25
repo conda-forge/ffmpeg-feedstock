@@ -85,6 +85,7 @@ requirements:
     - libvpx  # [not win]
     - zlib
     - openh264
+    - librsvg
     - lame  # [not win]
     - gmp  # [unix]
     - libva  # [linux64]
