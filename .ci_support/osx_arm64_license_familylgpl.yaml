@@ -11,7 +11,7 @@ bzip2:
 c_compiler:
 - clang
 c_compiler_version:
-- '17'
+- '18'
 c_stdlib:
 - macosx_deployment_target
 c_stdlib_version:
@@ -23,9 +23,11 @@ channel_targets:
 cxx_compiler:
 - clangxx
 cxx_compiler_version:
-- '17'
+- '18'
 dav1d:
 - 1.2.1
+ffmpeg:
+- '7'
 ffnvcodec_headers:
 - None
 fontconfig:
@@ -53,7 +55,7 @@ openh264:
 openssl:
 - '3'
 svt_av1:
-- 2.2.1
+- 2.3.0
 target_platform:
 - osx-arm64
 x264:
