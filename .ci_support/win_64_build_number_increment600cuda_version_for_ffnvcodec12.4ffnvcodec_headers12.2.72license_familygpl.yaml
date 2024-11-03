@@ -18,6 +18,10 @@ cxx_compiler:
 - vs2019
 dav1d:
 - 1.2.1
+expat:
+- '2'
+ffmpeg:
+- '7'
 ffnvcodec_headers:
 - 12.2.72
 fontconfig:
@@ -39,7 +43,7 @@ openh264:
 openssl:
 - '3'
 svt_av1:
-- 2.2.1
+- 2.3.0
 target_platform:
 - win-64
 x264:
