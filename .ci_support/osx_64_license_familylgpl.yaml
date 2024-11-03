@@ -11,7 +11,7 @@ bzip2:
 c_compiler:
 - clang
 c_compiler_version:
-- '17'
+- '18'
 c_stdlib:
 - macosx_deployment_target
 c_stdlib_version:
@@ -23,11 +23,11 @@ channel_targets:
 cxx_compiler:
 - clangxx
 cxx_compiler_version:
-- '17'
+- '18'
 dav1d:
 - 1.2.1
-ffmpeg:
-- '6'
+expat:
+- '2'
 ffnvcodec_headers:
 - None
 fontconfig:
@@ -44,6 +44,8 @@ libiconv:
 - '1'
 libopenvino_dev:
 - 2024.4.0
+librsvg:
+- '2'
 libxml2:
 - '2'
 license_family:
@@ -55,7 +57,7 @@ openh264:
 openssl:
 - '3'
 svt_av1:
-- 2.2.1
+- 2.3.0
 target_platform:
 - osx-64
 x264:

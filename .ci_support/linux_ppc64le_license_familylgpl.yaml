@@ -26,8 +26,8 @@ dav1d:
 - 1.2.1
 docker_image:
 - quay.io/condaforge/linux-anvil-cos7-x86_64
-ffmpeg:
-- '6'
+expat:
+- '2'
 ffnvcodec_headers:
 - None
 fontconfig:
@@ -42,6 +42,8 @@ harfbuzz:
 - '9'
 libiconv:
 - '1'
+librsvg:
+- '2'
 libxcb:
 - '1'
 libxml2:
@@ -53,7 +55,7 @@ openh264:
 openssl:
 - '3'
 svt_av1:
-- 2.2.1
+- 2.3.0
 target_platform:
 - linux-ppc64le
 x264:
