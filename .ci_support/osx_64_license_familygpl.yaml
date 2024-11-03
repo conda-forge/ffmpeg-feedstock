@@ -26,6 +26,8 @@ cxx_compiler_version:
 - '18'
 dav1d:
 - 1.2.1
+expat:
+- '2'
 ffmpeg:
 - '7'
 ffnvcodec_headers:
