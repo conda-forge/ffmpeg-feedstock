@@ -71,6 +71,8 @@ requirements:
     - openssl
     - bzip2
     - freetype
+    - expat
+    - libass   # [unix]
     - harfbuzz
     # glib is only required to find harfbuzz with pkg-config at compilation time
     # but it is not directly linked to the system
