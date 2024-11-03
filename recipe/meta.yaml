@@ -73,6 +73,8 @@ requirements:
     # but it is not directly linked to the system
     - glib
     - fontconfig
+    - expat
+    - libass
     - libiconv
     - libxml2
     {% if license_family == 'gpl' %}
