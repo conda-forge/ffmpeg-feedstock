@@ -18,6 +18,8 @@ cxx_compiler:
 - vs2019
 dav1d:
 - 1.2.1
+expat:
+- '2'
 ffnvcodec_headers:
 - 12.2.72
 fontconfig:
