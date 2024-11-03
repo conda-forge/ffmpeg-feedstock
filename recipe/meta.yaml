@@ -74,7 +74,7 @@ requirements:
     - glib
     - fontconfig
     - expat
-    - libass
+    - libass   # [unix]
     - libiconv
     - libxml2
     {% if license_family == 'gpl' %}
