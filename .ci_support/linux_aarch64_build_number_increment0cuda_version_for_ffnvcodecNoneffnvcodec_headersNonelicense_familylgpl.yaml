@@ -1,3 +1,5 @@
+BUILD:
+- aarch64-conda_cos7-linux-gnu
 aom:
 - '3.9'
 build_number_increment:
@@ -12,6 +14,8 @@ c_stdlib:
 - sysroot
 c_stdlib_version:
 - '2.17'
+cdt_arch:
+- aarch64
 cdt_name:
 - cos7
 channel_sources:
@@ -28,8 +32,6 @@ dav1d:
 - 1.2.1
 docker_image:
 - quay.io/condaforge/linux-anvil-cos7-x86_64
-ffmpeg:
-- '7'
 ffnvcodec_headers:
 - None
 fontconfig:
@@ -59,9 +61,9 @@ openh264:
 openssl:
 - '3'
 svt_av1:
-- 2.2.1
+- 2.3.0
 target_platform:
-- linux-64
+- linux-aarch64
 x264:
 - 1!164.*
 x265:

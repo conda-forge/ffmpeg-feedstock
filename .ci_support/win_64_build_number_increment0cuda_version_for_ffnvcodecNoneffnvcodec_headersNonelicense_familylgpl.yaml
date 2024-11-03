@@ -1,71 +1,49 @@
-BUILD:
-- aarch64-conda_cos7-linux-gnu
 aom:
 - '3.9'
 build_number_increment:
-- '600'
+- '0'
 bzip2:
 - '1'
 c_compiler:
-- gcc
-c_compiler_version:
-- '13'
+- vs2019
 c_stdlib:
-- sysroot
-c_stdlib_version:
-- '2.17'
-cdt_arch:
-- aarch64
-cdt_name:
-- cos7
+- vs
 channel_sources:
 - conda-forge
 channel_targets:
 - conda-forge main
 cuda_version_for_ffnvcodec:
-- '12.4'
+- None
 cxx_compiler:
-- gxx
-cxx_compiler_version:
-- '13'
+- vs2019
 dav1d:
 - 1.2.1
-docker_image:
-- quay.io/condaforge/linux-anvil-cos7-x86_64
-ffmpeg:
-- '7'
 ffnvcodec_headers:
-- 12.2.72
+- None
 fontconfig:
 - '2'
 freetype:
 - '2'
 glib:
 - '2'
-gmp:
-- '6'
 harfbuzz:
 - '9'
 libiconv:
 - '1'
-libopenvino_dev:
-- 2024.4.0
 librsvg:
 - '2'
-libxcb:
-- '1'
 libxml2:
 - '2'
 license_family:
-- gpl
+- lgpl
 openh264:
 - 2.4.1
 openssl:
 - '3'
 svt_av1:
-- 2.2.1
+- 2.3.0
 target_platform:
-- linux-aarch64
+- win-64
 x264:
 - 1!164.*
 x265:
@@ -73,10 +51,6 @@ x265:
 xz:
 - '5'
 zip_keys:
-- - c_compiler_version
-  - cxx_compiler_version
-- - c_stdlib_version
-  - cdt_name
 - - ffnvcodec_headers
   - cuda_version_for_ffnvcodec
   - build_number_increment

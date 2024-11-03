@@ -26,8 +26,6 @@ cxx_compiler_version:
 - '18'
 dav1d:
 - 1.2.1
-ffmpeg:
-- '7'
 ffnvcodec_headers:
 - None
 fontconfig:
@@ -57,7 +55,7 @@ openh264:
 openssl:
 - '3'
 svt_av1:
-- 2.2.1
+- 2.3.0
 target_platform:
 - osx-arm64
 x264:
