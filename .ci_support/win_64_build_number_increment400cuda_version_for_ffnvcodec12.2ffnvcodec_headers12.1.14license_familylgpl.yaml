@@ -20,6 +20,8 @@ dav1d:
 - 1.2.1
 expat:
 - '2'
+ffmpeg:
+- '7'
 ffnvcodec_headers:
 - 12.1.14
 fontconfig:
@@ -39,7 +41,7 @@ libxml2:
 license_family:
 - lgpl
 openh264:
-- 2.4.1
+- 2.5.0
 openssl:
 - '3'
 svt_av1:

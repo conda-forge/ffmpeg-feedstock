@@ -17,7 +17,7 @@ c_stdlib_version:
 cdt_arch:
 - aarch64
 cdt_name:
-- cos7
+- conda
 channel_sources:
 - conda-forge
 channel_targets:
@@ -34,6 +34,8 @@ docker_image:
 - quay.io/condaforge/linux-anvil-cos7-x86_64
 expat:
 - '2'
+ffmpeg:
+- '7'
 ffnvcodec_headers:
 - 12.2.72
 fontconfig:
@@ -57,9 +59,9 @@ libxcb:
 libxml2:
 - '2'
 license_family:
-- lgpl
+- gpl
 openh264:
-- 2.4.1
+- 2.5.0
 openssl:
 - '3'
 svt_av1:
@@ -75,8 +77,6 @@ xz:
 zip_keys:
 - - c_compiler_version
   - cxx_compiler_version
-- - c_stdlib_version
-  - cdt_name
 - - ffnvcodec_headers
   - cuda_version_for_ffnvcodec
   - build_number_increment
