@@ -1,9 +1,7 @@
-BUILD:
-- aarch64-conda_cos7-linux-gnu
 aom:
 - '3.9'
 build_number_increment:
-- '600'
+- '0'
 bzip2:
 - '1'
 c_compiler:
@@ -14,8 +12,6 @@ c_stdlib:
 - sysroot
 c_stdlib_version:
 - '2.17'
-cdt_arch:
-- aarch64
 cdt_name:
 - conda
 channel_sources:
@@ -23,7 +19,7 @@ channel_sources:
 channel_targets:
 - conda-forge main
 cuda_version_for_ffnvcodec:
-- '12.4'
+- None
 cxx_compiler:
 - gxx
 cxx_compiler_version:
@@ -31,13 +27,13 @@ cxx_compiler_version:
 dav1d:
 - 1.2.1
 docker_image:
-- quay.io/condaforge/linux-anvil-cos7-x86_64
+- quay.io/condaforge/linux-anvil-x86_64:alma9
 expat:
 - '2'
 ffmpeg:
 - '7'
 ffnvcodec_headers:
-- 12.2.72
+- None
 fontconfig:
 - '2'
 freetype:
@@ -69,7 +65,7 @@ openssl:
 svt_av1:
 - 2.3.0
 target_platform:
-- linux-aarch64
+- linux-64
 x264:
 - 1!164.*
 x265:

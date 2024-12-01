@@ -9,7 +9,7 @@ About ffmpeg
 
 Home: https://www.ffmpeg.org/
 
-Package license: LGPL-2.1-or-later
+Package license: GPL-2.0-or-later
 
 Summary: Cross-platform solution to record, convert and stream audio and video.
 
@@ -22,7 +22,7 @@ About ffmpeg
 
 Home: https://www.ffmpeg.org/
 
-Package license: GPL-2.0-or-later
+Package license: LGPL-2.1-or-later
 
 Summary: Cross-platform solution to record, convert and stream audio and video.
 
@@ -48,73 +48,73 @@ Current build status
         <table>
           <thead><tr><th>Variant</th><th>Status</th></tr></thead>
           <tbody><tr>
-              <td>linux_64_build_number_increment0cuda_version_for_ffnvcodecNoneffnvcodec_headersNonelicense_familygpl</td>
+              <td>linux_64_build_number_increment0ffnvcodec_headersNonelicense_familygpl</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=5418&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/ffmpeg-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_build_number_increment0cuda_version_for_ffnvcodecNoneffnvcodec_headersNonelicense_familygpl" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/ffmpeg-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_build_number_increment0ffnvcodec_headersNonelicense_familygpl" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>linux_64_build_number_increment0cuda_version_for_ffnvcodecNoneffnvcodec_headersNonelicense_familylgpl</td>
+              <td>linux_64_build_number_increment0ffnvcodec_headersNonelicense_familylgpl</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=5418&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/ffmpeg-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_build_number_increment0cuda_version_for_ffnvcodecNoneffnvcodec_headersNonelicense_familylgpl" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/ffmpeg-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_build_number_increment0ffnvcodec_headersNonelicense_familylgpl" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>linux_64_build_number_increment400cuda_version_for_ffnvcodec12.2ffnvcodec_headers12.1.14license_familygpl</td>
+              <td>linux_64_build_number_increment400ffnvcodec_headers12.1.14license_familygpl</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=5418&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/ffmpeg-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_build_number_increment400cuda_version_for_ffnvcodec12.2ffnvcodec_headers12.1.14license_familygpl" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/ffmpeg-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_build_number_increment400ffnvcodec_headers12.1.14license_familygpl" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>linux_64_build_number_increment400cuda_version_for_ffnvcodec12.2ffnvcodec_headers12.1.14license_familylgpl</td>
+              <td>linux_64_build_number_increment400ffnvcodec_headers12.1.14license_familylgpl</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=5418&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/ffmpeg-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_build_number_increment400cuda_version_for_ffnvcodec12.2ffnvcodec_headers12.1.14license_familylgpl" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/ffmpeg-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_build_number_increment400ffnvcodec_headers12.1.14license_familylgpl" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>linux_64_build_number_increment600cuda_version_for_ffnvcodec12.4ffnvcodec_headers12.2.72license_familygpl</td>
+              <td>linux_64_build_number_increment600ffnvcodec_headers12.2.72license_familygpl</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=5418&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/ffmpeg-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_build_number_increment600cuda_version_for_ffnvcodec12.4ffnvcodec_headers12.2.72license_familygpl" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/ffmpeg-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_build_number_increment600ffnvcodec_headers12.2.72license_familygpl" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>linux_64_build_number_increment600cuda_version_for_ffnvcodec12.4ffnvcodec_headers12.2.72license_familylgpl</td>
+              <td>linux_64_build_number_increment600ffnvcodec_headers12.2.72license_familylgpl</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=5418&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/ffmpeg-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_build_number_increment600cuda_version_for_ffnvcodec12.4ffnvcodec_headers12.2.72license_familylgpl" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/ffmpeg-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_build_number_increment600ffnvcodec_headers12.2.72license_familylgpl" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>linux_aarch64_build_number_increment0cuda_version_for_ffnvcodecNoneffnvcodec_headersNonelicense_familygpl</td>
+              <td>linux_aarch64_build_number_increment0ffnvcodec_headersNonelicense_familygpl</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=5418&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/ffmpeg-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_aarch64_build_number_increment0cuda_version_for_ffnvcodecNoneffnvcodec_headersNonelicense_familygpl" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/ffmpeg-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_aarch64_build_number_increment0ffnvcodec_headersNonelicense_familygpl" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>linux_aarch64_build_number_increment0cuda_version_for_ffnvcodecNoneffnvcodec_headersNonelicense_familylgpl</td>
+              <td>linux_aarch64_build_number_increment0ffnvcodec_headersNonelicense_familylgpl</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=5418&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/ffmpeg-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_aarch64_build_number_increment0cuda_version_for_ffnvcodecNoneffnvcodec_headersNonelicense_familylgpl" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/ffmpeg-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_aarch64_build_number_increment0ffnvcodec_headersNonelicense_familylgpl" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>linux_aarch64_build_number_increment600cuda_version_for_ffnvcodec12.4ffnvcodec_headers12.2.72license_familygpl</td>
+              <td>linux_aarch64_build_number_increment600ffnvcodec_headers12.2.72license_familygpl</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=5418&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/ffmpeg-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_aarch64_build_number_increment600cuda_version_for_ffnvcodec12.4ffnvcodec_headers12.2.72license_familygpl" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/ffmpeg-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_aarch64_build_number_increment600ffnvcodec_headers12.2.72license_familygpl" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>linux_aarch64_build_number_increment600cuda_version_for_ffnvcodec12.4ffnvcodec_headers12.2.72license_familylgpl</td>
+              <td>linux_aarch64_build_number_increment600ffnvcodec_headers12.2.72license_familylgpl</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=5418&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/ffmpeg-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_aarch64_build_number_increment600cuda_version_for_ffnvcodec12.4ffnvcodec_headers12.2.72license_familylgpl" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/ffmpeg-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_aarch64_build_number_increment600ffnvcodec_headers12.2.72license_familylgpl" alt="variant">
                 </a>
               </td>
             </tr><tr>
@@ -160,45 +160,45 @@ Current build status
                 </a>
               </td>
             </tr><tr>
-              <td>win_64_build_number_increment0cuda_version_for_ffnvcodecNoneffnvcodec_headersNonelicense_familygpl</td>
+              <td>win_64_build_number_increment0ffnvcodec_headersNonelicense_familygpl</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=5418&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/ffmpeg-feedstock?branchName=main&jobName=win&configuration=win%20win_64_build_number_increment0cuda_version_for_ffnvcodecNoneffnvcodec_headersNonelicense_familygpl" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/ffmpeg-feedstock?branchName=main&jobName=win&configuration=win%20win_64_build_number_increment0ffnvcodec_headersNonelicense_familygpl" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>win_64_build_number_increment0cuda_version_for_ffnvcodecNoneffnvcodec_headersNonelicense_familylgpl</td>
+              <td>win_64_build_number_increment0ffnvcodec_headersNonelicense_familylgpl</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=5418&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/ffmpeg-feedstock?branchName=main&jobName=win&configuration=win%20win_64_build_number_increment0cuda_version_for_ffnvcodecNoneffnvcodec_headersNonelicense_familylgpl" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/ffmpeg-feedstock?branchName=main&jobName=win&configuration=win%20win_64_build_number_increment0ffnvcodec_headersNonelicense_familylgpl" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>win_64_build_number_increment400cuda_version_for_ffnvcodec12.2ffnvcodec_headers12.1.14license_familygpl</td>
+              <td>win_64_build_number_increment400ffnvcodec_headers12.1.14license_familygpl</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=5418&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/ffmpeg-feedstock?branchName=main&jobName=win&configuration=win%20win_64_build_number_increment400cuda_version_for_ffnvcodec12.2ffnvcodec_headers12.1.14license_familygpl" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/ffmpeg-feedstock?branchName=main&jobName=win&configuration=win%20win_64_build_number_increment400ffnvcodec_headers12.1.14license_familygpl" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>win_64_build_number_increment400cuda_version_for_ffnvcodec12.2ffnvcodec_headers12.1.14license_familylgpl</td>
+              <td>win_64_build_number_increment400ffnvcodec_headers12.1.14license_familylgpl</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=5418&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/ffmpeg-feedstock?branchName=main&jobName=win&configuration=win%20win_64_build_number_increment400cuda_version_for_ffnvcodec12.2ffnvcodec_headers12.1.14license_familylgpl" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/ffmpeg-feedstock?branchName=main&jobName=win&configuration=win%20win_64_build_number_increment400ffnvcodec_headers12.1.14license_familylgpl" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>win_64_build_number_increment600cuda_version_for_ffnvcodec12.4ffnvcodec_headers12.2.72license_familygpl</td>
+              <td>win_64_build_number_increment600ffnvcodec_headers12.2.72license_familygpl</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=5418&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/ffmpeg-feedstock?branchName=main&jobName=win&configuration=win%20win_64_build_number_increment600cuda_version_for_ffnvcodec12.4ffnvcodec_headers12.2.72license_familygpl" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/ffmpeg-feedstock?branchName=main&jobName=win&configuration=win%20win_64_build_number_increment600ffnvcodec_headers12.2.72license_familygpl" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>win_64_build_number_increment600cuda_version_for_ffnvcodec12.4ffnvcodec_headers12.2.72license_familylgpl</td>
+              <td>win_64_build_number_increment600ffnvcodec_headers12.2.72license_familylgpl</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=5418&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/ffmpeg-feedstock?branchName=main&jobName=win&configuration=win%20win_64_build_number_increment600cuda_version_for_ffnvcodec12.4ffnvcodec_headers12.2.72license_familylgpl" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/ffmpeg-feedstock?branchName=main&jobName=win&configuration=win%20win_64_build_number_increment600ffnvcodec_headers12.2.72license_familylgpl" alt="variant">
                 </a>
               </td>
             </tr>
