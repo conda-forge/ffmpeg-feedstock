@@ -8,6 +8,8 @@ license_family:
 # I think they could technically be out of sync
 # To find the compatibility version of ffnvcodec_headers, you can look at the
 # https://github.com/FFmpeg/nv-codec-headers/tree/n12.0.16.1
+# See minver variable in for mor info
+# https://github.com/FFmpeg/FFmpeg/blob/release/7.1/libavcodec/nvenc.c
 # To find the __cuda version I:
 # Uninstall all nvidia driver from ubuntu
 # Installed a specific version they offered
@@ -44,7 +46,7 @@ build_number_increment:
   - 400                        # [linux64 or win]
   - 600                        # [linux64 or win or aarch64]
 
-zip_keys:
-  - - ffnvcodec_headers
-    - cuda_version_for_ffnvcodec
-    - build_number_increment
+zip_keys:                               # [linux64 or win or aarch64]
+  - - ffnvcodec_headers                 # [linux64 or win or aarch64]
+    - cuda_version_for_ffnvcodec        # [linux64 or win or aarch64]
+    - build_number_increment            # [linux64 or win or aarch64]
