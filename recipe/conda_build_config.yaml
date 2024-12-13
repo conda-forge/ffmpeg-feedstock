@@ -44,7 +44,7 @@ build_number_increment:
   - 400                        # [linux64 or win]
   - 600                        # [linux64 or win or aarch64]
 
-zip_keys:
-  - - ffnvcodec_headers
-    - cuda_version_for_ffnvcodec
-    - build_number_increment
+zip_keys:                               # [linux64 or win or aarch64]
+  - - ffnvcodec_headers                 # [linux64 or win or aarch64]
+    - cuda_version_for_ffnvcodec        # [linux64 or win or aarch64]
+    - build_number_increment            # [linux64 or win or aarch64]
