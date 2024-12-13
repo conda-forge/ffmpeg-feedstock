@@ -23,7 +23,7 @@ source:
     # Include time_internal header for windows to correctly locate localtime_r and gmtime_r
     - patches/include_time_internal_header.patch
 
-{% set build = 5 %}
+{% set build = 6 %}
 {% if license_family == 'gpl' %}
     {% set build = build + 100 %}
 {% endif %}
@@ -88,19 +88,20 @@ requirements:
     - zlib
     - openh264
     - librsvg
-    - lame  # [not win]
-    - gmp  # [unix]
-    - libva  # [linux64]
+    - gmp                # [unix]
+    - libva              # [linux64]
     - aom
     - svt-av1
     - ffnvcodec-headers  {{ ffnvcodec_headers }}  # [ffnvcodec_headers != "None"]
     - libopus
-    - libopenvino-dev    # [not ppc64le and not win]
-    - libass  # [not win]
+    - lame               # [not win]
+    - libass             # [not win]
+    - libopenvino-dev    # [not win and not ppc64le]
     - dav1d
     - xz
-    - libxcb       # [linux]
-    - xorg-libx11  # [linux]
+    - libxcb             # [linux]
+    - xorg-libx11        # [linux]
+    - xorg-xorgproto     # [linux]
   run_constrained:
     - __cuda  >={{ cuda_version_for_ffnvcodec }}  # [ffnvcodec_headers != "None"]
 

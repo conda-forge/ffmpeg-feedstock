@@ -42,12 +42,10 @@ gmp:
 - '6'
 harfbuzz:
 - '9'
-libass:
-- 0.17.3
 libiconv:
 - '1'
 libopenvino_dev:
-- 2024.4.0
+- 2024.5.0
 librsvg:
 - '2'
 libxml2:
@@ -73,7 +71,5 @@ xz:
 zip_keys:
 - - c_compiler_version
   - cxx_compiler_version
-- - ffnvcodec_headers
-  - build_number_increment
 zlib:
 - '1'
