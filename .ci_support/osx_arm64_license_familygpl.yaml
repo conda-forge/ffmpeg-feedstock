@@ -71,7 +71,5 @@ xz:
 zip_keys:
 - - c_compiler_version
   - cxx_compiler_version
-- - ffnvcodec_headers
-  - build_number_increment
 zlib:
 - '1'
