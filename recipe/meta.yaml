@@ -23,7 +23,7 @@ source:
     # Include time_internal header for windows to correctly locate localtime_r and gmtime_r
     - patches/include_time_internal_header.patch
 
-{% set build = 6 %}
+{% set build = 7 %}
 {% if license_family == 'gpl' %}
     {% set build = build + 100 %}
 {% endif %}
@@ -98,7 +98,7 @@ requirements:
     - libass             # [not win]
     - libopenvino-dev    # [not win and not ppc64le]
     - dav1d
-    - xz
+    - liblzma-devel
     - libxcb             # [linux]
     - xorg-libx11        # [linux]
     - xorg-xorgproto     # [linux]
