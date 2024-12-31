@@ -23,7 +23,7 @@ source:
     # Include time_internal header for windows to correctly locate localtime_r and gmtime_r
     - patches/include_time_internal_header.patch
 
-{% set build = 8 %}
+{% set build = 9 %}
 {% if license_family == 'gpl' %}
     {% set build = build + 100 %}
 {% endif %}
