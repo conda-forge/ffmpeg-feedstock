@@ -49,7 +49,7 @@ libiconv:
 liblzma_devel:
 - '5'
 libopenvino_dev:
-- 2024.5.0
+- 2024.6.0
 librsvg:
 - '2'
 libxcb:
@@ -57,7 +57,7 @@ libxcb:
 libxml2:
 - '2'
 license_family:
-- gpl
+- lgpl
 openh264:
 - 2.5.0
 openssl:
@@ -65,7 +65,7 @@ openssl:
 svt_av1:
 - 2.3.0
 target_platform:
-- linux-aarch64
+- linux-64
 x264:
 - 1!164.*
 x265:
