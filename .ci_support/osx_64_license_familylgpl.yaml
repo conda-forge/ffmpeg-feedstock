@@ -47,7 +47,7 @@ libiconv:
 liblzma_devel:
 - '5'
 libopenvino_dev:
-- 2024.6.0
+- 2025.0.0
 librsvg:
 - '2'
 libxml2:
@@ -60,6 +60,8 @@ openh264:
 - 2.5.0
 openssl:
 - '3'
+sdl2:
+- '2'
 svt_av1:
 - 2.3.0
 target_platform:

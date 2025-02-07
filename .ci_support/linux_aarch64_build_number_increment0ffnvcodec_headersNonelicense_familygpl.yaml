@@ -51,7 +51,7 @@ libiconv:
 liblzma_devel:
 - '5'
 libopenvino_dev:
-- 2024.6.0
+- 2025.0.0
 librsvg:
 - '2'
 libxcb:
@@ -66,6 +66,8 @@ openssl:
 - '3'
 pulseaudio_client:
 - '17.0'
+sdl2:
+- '2'
 svt_av1:
 - 2.3.0
 target_platform:
