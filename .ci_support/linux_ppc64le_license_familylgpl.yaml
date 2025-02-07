@@ -1,3 +1,5 @@
+alsa_lib:
+- '1.2'
 aom:
 - '3.9'
 build_number_increment:
@@ -58,6 +60,8 @@ openh264:
 - 2.5.0
 openssl:
 - '3'
+pulseaudio_client:
+- '17.0'
 svt_av1:
 - 2.3.0
 target_platform:
