@@ -103,7 +103,7 @@ requirements:
     - xorg-libx11        # [linux]
     - xorg-xorgproto     # [linux]
     - alsa-lib           # [linux]
-    - pulseaudio         # [linux]
+    - pulseaudio-client  # [linux]
   run_constrained:
     - __cuda  >={{ cuda_version_for_ffnvcodec }}  # [ffnvcodec_headers != "None"]
 
