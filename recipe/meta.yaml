@@ -131,7 +131,7 @@ test:
     - ffmpeg -hide_banner -codecs | {{ grep }} "libaom"
     - ffmpeg -hide_banner -codecs | {{ grep }} "libsvtav1"
     # Verify ffplay is available
-    - ffplag -version
+    - ffplay -version
     # Verify dynamic libraries on all systems
     {% set ffmpeg_libs = [
         "avdevice",
