@@ -102,6 +102,8 @@ requirements:
     - libxcb             # [linux]
     - xorg-libx11        # [linux]
     - xorg-xorgproto     # [linux]
+    - alsa-lib           # [linux]
+    - pulseaudio         # [linux]
   run_constrained:
     - __cuda  >={{ cuda_version_for_ffnvcodec }}  # [ffnvcodec_headers != "None"]
 
@@ -194,6 +196,9 @@ test:
     {% endfor %}
     # https://trac.ffmpeg.org/wiki/Null
     - ffmpeg -hide_banner -f lavfi -i nullsrc=s=256x256:d=8 -vcodec libopenh264 -f null -
+    # Verify required devices on linux
+    - ffmpeg -hide_banner -devices | grep "alsa"  # [linux]
+    - ffmpeg -hide_banner -devices | grep "pulse"  # [linux]
 
 about:
   home: https://www.ffmpeg.org/

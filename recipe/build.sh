@@ -82,6 +82,8 @@ elif [[ "${target_platform}" == linux-* ]]; then
   extra_args="${extra_args} --enable-libvpx"
   extra_args="${extra_args} --enable-libass"
   extra_args="${extra_args} --enable-pthreads"
+  extra_args="${extra_args} --enable-alsa"
+  extra_args="${extra_args} --enable-libpulse"
   if [[ "${target_platform}" == "linux-64" ]]; then
     extra_args="${extra_args} --enable-vaapi"
   fi
