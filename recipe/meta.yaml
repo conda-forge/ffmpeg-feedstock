@@ -99,6 +99,7 @@ requirements:
     - libopenvino-dev    # [not win and not ppc64le]
     - dav1d
     - liblzma-devel
+    - sdl2
     - libxcb             # [linux]
     - xorg-libx11        # [linux]
     - xorg-xorgproto     # [linux]
@@ -129,6 +130,8 @@ test:
     - ffmpeg -hide_banner -codecs | {{ grep }} "vaapi"            # [linux64]
     - ffmpeg -hide_banner -codecs | {{ grep }} "libaom"
     - ffmpeg -hide_banner -codecs | {{ grep }} "libsvtav1"
+    # Verify ffplay is available
+    - ffplag -version
     # Verify dynamic libraries on all systems
     {% set ffmpeg_libs = [
         "avdevice",

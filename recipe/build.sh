@@ -156,6 +156,7 @@ fi
         --enable-zlib \
         --enable-libopus \
 	--enable-librsvg \
+         --enable-ffplay \
         --pkg-config=${PKG_CONFIG} \
         || { if [[ ${CI} != "" ]]; then cat ffbuild/config.log; fi; exit 1; }
 
