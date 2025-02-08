@@ -4,6 +4,10 @@ set -ex
 # unset the SUBDIR variable since it changes the behavior of make here
 unset SUBDIR
 
+# unset the sdl2 environment variable (set to 2 by conda-build) as somehow interferes
+# with the ffmpeg's configure script, see https://github.com/conda-forge/ffmpeg-feedstock/pull/308#issuecomment-2644150512
+unset sdl2
+
 extra_args=""
 if [[ "$CONDA_BUILD_CROSS_COMPILATION" == "1" ]]; then
   if [[ "$ARCH" == "64" ]]; then
