@@ -3,7 +3,7 @@ alsa_lib:
 aom:
 - '3.9'
 build_number_increment:
-- '0'
+- '600'
 bzip2:
 - '1'
 c_compiler:
@@ -21,7 +21,7 @@ channel_sources:
 channel_targets:
 - conda-forge main
 cuda_version_for_ffnvcodec:
-- None
+- '12.4'
 cxx_compiler:
 - gxx
 cxx_compiler_version:
@@ -35,7 +35,7 @@ expat:
 ffmpeg:
 - '7'
 ffnvcodec_headers:
-- None
+- 12.2.72
 fontconfig:
 - '2'
 freetype:
@@ -66,10 +66,12 @@ openssl:
 - '3'
 pulseaudio_client:
 - '17.0'
+sdl2:
+- '2'
 svt_av1:
 - 2.3.0
 target_platform:
-- linux-64
+- linux-aarch64
 x264:
 - 1!164.*
 x265:

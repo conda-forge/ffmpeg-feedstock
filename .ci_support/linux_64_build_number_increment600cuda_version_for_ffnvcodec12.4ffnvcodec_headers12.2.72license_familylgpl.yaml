@@ -66,6 +66,8 @@ openssl:
 - '3'
 pulseaudio_client:
 - '17.0'
+sdl2:
+- '2'
 svt_av1:
 - 2.3.0
 target_platform:
