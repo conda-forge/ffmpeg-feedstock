@@ -57,7 +57,7 @@ license_family:
 macos_machine:
 - x86_64-apple-darwin13.4.0
 openh264:
-- 2.5.0
+- 2.6.0
 openssl:
 - '3'
 sdl2:
