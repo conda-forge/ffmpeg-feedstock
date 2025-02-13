@@ -61,7 +61,7 @@ libxml2:
 license_family:
 - gpl
 openh264:
-- 2.5.0
+- 2.6.0
 openssl:
 - '3'
 pulseaudio_client:
@@ -71,7 +71,7 @@ sdl2:
 svt_av1:
 - 2.3.0
 target_platform:
-- linux-aarch64
+- linux-64
 x264:
 - 1!164.*
 x265:
