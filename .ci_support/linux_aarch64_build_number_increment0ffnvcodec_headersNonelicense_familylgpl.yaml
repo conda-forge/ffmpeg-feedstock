@@ -67,11 +67,11 @@ openssl:
 pulseaudio_client:
 - '17.0'
 sdl2:
-- '2'
+- 2.30.10
 svt_av1:
 - 2.3.0
 target_platform:
-- linux-64
+- linux-aarch64
 x264:
 - 1!164.*
 x265:
