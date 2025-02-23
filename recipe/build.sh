@@ -158,6 +158,7 @@ fi
         --disable-static \
         --enable-version3 \
         --enable-zlib \
+	--enable-libvorbis \
         --enable-libopus \
 	--enable-librsvg \
          --enable-ffplay \

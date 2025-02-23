@@ -23,7 +23,7 @@ source:
     # Include time_internal header for windows to correctly locate localtime_r and gmtime_r
     - patches/include_time_internal_header.patch
 
-{% set build = 12 %}
+{% set build = 13 %}
 {% if license_family == 'gpl' %}
     {% set build = build + 100 %}
 {% endif %}
@@ -105,6 +105,7 @@ requirements:
     - xorg-xorgproto     # [linux]
     - alsa-lib           # [linux]
     - pulseaudio-client  # [linux]
+    - libvorbis
   run_constrained:
     - __cuda  >={{ cuda_version_for_ffnvcodec }}  # [ffnvcodec_headers != "None"]
 
@@ -202,6 +203,8 @@ test:
     # Verify required devices on linux
     - ffmpeg -hide_banner -devices | grep "alsa"  # [linux]
     - ffmpeg -hide_banner -devices | grep "pulse"  # [linux]
+    # Test presence of certain codecs
+    - ffmpeg -hide_banner -codecs | {{ grep }} "libvorbis"
 
 about:
   home: https://www.ffmpeg.org/
