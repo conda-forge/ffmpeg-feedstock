@@ -160,8 +160,8 @@ fi
         --enable-zlib \
 	--enable-libvorbis \
         --enable-libopus \
-	--enable-librsvg \
-         --enable-ffplay \
+        --enable-librsvg \
+        --enable-ffplay \
         --pkg-config=${PKG_CONFIG} \
         || { if [[ ${CI} != "" ]]; then cat ffbuild/config.log; fi; exit 1; }
 
