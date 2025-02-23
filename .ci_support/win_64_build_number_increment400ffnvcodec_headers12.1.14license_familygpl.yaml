@@ -41,13 +41,13 @@ librsvg:
 libxml2:
 - '2'
 license_family:
-- lgpl
+- gpl
 openh264:
 - 2.6.0
 openssl:
 - '3'
 sdl2:
-- '2'
+- 2.30.10
 svt_av1:
 - 2.3.0
 target_platform:

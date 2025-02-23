@@ -1,7 +1,7 @@
 aom:
 - '3.9'
 build_number_increment:
-- '0'
+- '400'
 bzip2:
 - '1'
 c_compiler:
@@ -13,7 +13,7 @@ channel_sources:
 channel_targets:
 - conda-forge main
 cuda_version_for_ffnvcodec:
-- None
+- '12.2'
 cxx_compiler:
 - vs2019
 dav1d:
@@ -23,7 +23,7 @@ expat:
 ffmpeg:
 - '7'
 ffnvcodec_headers:
-- None
+- 12.1.14
 fontconfig:
 - '2'
 freetype:
@@ -47,7 +47,7 @@ openh264:
 openssl:
 - '3'
 sdl2:
-- '2'
+- 2.30.10
 svt_av1:
 - 2.3.0
 target_platform:
