@@ -8,23 +8,23 @@ jobs:
     vmImage: windows-2022
   strategy:
     matrix:
-      win_64_build_number_increment0ffnvcodec_headersNonelicense_familygpl:
-        CONFIG: win_64_build_number_increment0ffnvcodec_headersNonelicense_familygpl
+      win_64_build_number_increment0cuda_version_for_ffnvcodecNoneffnvcodec_headersNonelicense_familygpl:
+        CONFIG: win_64_build_number_increment0cuda_version_for_ffnvcodecNoneffnvcodec_headersNonelicense_familygpl
         UPLOAD_PACKAGES: 'True'
-      win_64_build_number_increment0ffnvcodec_headersNonelicense_familylgpl:
-        CONFIG: win_64_build_number_increment0ffnvcodec_headersNonelicense_familylgpl
+      win_64_build_number_increment0cuda_version_for_ffnvcodecNoneffnvcodec_headersNonelicense_familylgpl:
+        CONFIG: win_64_build_number_increment0cuda_version_for_ffnvcodecNoneffnvcodec_headersNonelicense_familylgpl
         UPLOAD_PACKAGES: 'True'
-      win_64_build_number_increment400ffnvcodec_headers12.1.14license_familygpl:
-        CONFIG: win_64_build_number_increment400ffnvcodec_headers12.1.14license_familygpl
+      win_64_build_number_increment400cuda_version_for_ffnvcodec12.2ffnvcodec_headers12.1.14license_familygpl:
+        CONFIG: win_64_build_number_increment400cuda_version_for_ffnvcodec12.2ffnvcodec_headers12.1.14license_familygpl
         UPLOAD_PACKAGES: 'True'
-      win_64_build_number_increment400ffnvcodec_headers12.1.14license_familylgpl:
-        CONFIG: win_64_build_number_increment400ffnvcodec_headers12.1.14license_familylgpl
+      win_64_build_number_increment400cuda_version_for_ffnvcodec12.2ffnvcodec_headers12.1.14license_familylgpl:
+        CONFIG: win_64_build_number_increment400cuda_version_for_ffnvcodec12.2ffnvcodec_headers12.1.14license_familylgpl
         UPLOAD_PACKAGES: 'True'
-      win_64_build_number_increment600ffnvcodec_headers12.2.72license_familygpl:
-        CONFIG: win_64_build_number_increment600ffnvcodec_headers12.2.72license_familygpl
+      win_64_build_number_increment600cuda_version_for_ffnvcodec12.4ffnvcodec_headers12.2.72license_familygpl:
+        CONFIG: win_64_build_number_increment600cuda_version_for_ffnvcodec12.4ffnvcodec_headers12.2.72license_familygpl
         UPLOAD_PACKAGES: 'True'
-      win_64_build_number_increment600ffnvcodec_headers12.2.72license_familylgpl:
-        CONFIG: win_64_build_number_increment600ffnvcodec_headers12.2.72license_familylgpl
+      win_64_build_number_increment600cuda_version_for_ffnvcodec12.4ffnvcodec_headers12.2.72license_familylgpl:
+        CONFIG: win_64_build_number_increment600cuda_version_for_ffnvcodec12.4ffnvcodec_headers12.2.72license_familylgpl
         UPLOAD_PACKAGES: 'True'
   timeoutInMinutes: 360
   variables:
