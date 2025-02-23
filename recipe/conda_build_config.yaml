@@ -7,6 +7,9 @@ license_family:
 svt_av1:
   - 2.3.0
 
+sdl2:
+  - 2.30.10
+
 # hmaarrfk
 # These could be wrong, but I'm not too sure how to find an exact correspondance
 # between the cuda version and the nvidia driver version
