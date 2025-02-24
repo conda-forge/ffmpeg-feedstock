@@ -23,7 +23,11 @@ source:
     # Include time_internal header for windows to correctly locate localtime_r and gmtime_r
     - patches/include_time_internal_header.patch
 
-{% set build = 13 %}
+    # https://gitlab.com/AOMediaCodec/SVT-AV1/-/issues/2249
+    # https://code.ffmpeg.org/FFmpeg/FFmpeg/pulls/12
+    - patches/12-svtav1_300_support.patch
+
+{% set build = 14 %}
 {% if license_family == 'gpl' %}
     {% set build = build + 100 %}
 {% endif %}
