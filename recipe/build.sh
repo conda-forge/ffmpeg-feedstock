@@ -162,6 +162,9 @@ else
     extra_args="${extra_args} --disable-gpl"
 fi
 
+pkg-config --exists sdl2 --debug
+exit 1
+
 ./configure \
         --prefix="${PREFIX}" \
         --cc=${CC} \
