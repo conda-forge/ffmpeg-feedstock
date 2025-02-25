@@ -61,7 +61,7 @@ requirements:
     # clangxx is required for support of the nvidia encoders and decoders
     - clangxx  # [linux64]
     - autotools_clang_conda  # [win]
-    - pkg-config
+    - pkgconf
     - libtool  # [not win]
     - nasm  # [not (osx and x86_64)]
     # osx_64 needs yasm due to https://stackoverflow.com/questions/58796267/building-for-macos-but-linking-in-object-file-built-for-free-standing

@@ -29,6 +29,13 @@ if [[ "$CONDA_BUILD_CROSS_COMPILATION" == "1" ]]; then
   extra_args="${extra_args} --enable-cross-compile --arch=$ARCH --target-os=$OS --cross-prefix=$HOST- --host-cc=$CC_FOR_BUILD"
 fi
 
+
+PKGCONF_LINKED=0
+if [[ ! -f ${BUILD_PREFIX}/bin/pkg-config ]]; then
+    ln -s ${BUILD_PREFIX}/bin/pkgconf ${BUILD_PREFIX}/bin/pkg-config
+    PKGCONF_LINKED=1
+fi
+
 if [[ "${target_platform}" == "win-64" ]]; then
   # 2022/07 hmaarrfk
   # Specifying these extra flags for osx and linux
@@ -192,4 +199,8 @@ if [[ "${target_platform}" == win-* ]]; then
   if [[ "${LIBX264_LIB_CREATED}" == "1" ]]; then
     rm -f ${PREFIX}/lib/libx264.lib
   fi
+fi
+
+if [[ "${PKGCONF_LINKED}" == "1" ]]; then
+    rm -f ${BUILD_PREFIX}/bin/pkg-config
 fi
