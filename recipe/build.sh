@@ -30,6 +30,7 @@ if [[ "$CONDA_BUILD_CROSS_COMPILATION" == "1" ]]; then
 fi
 
 
+export PKG_CONFIG_PATH=${PREFIX}/share/pkgconfig:${PKG_CONFIG_PATH}
 PKGCONF_LINKED=0
 if [[ ! -f ${BUILD_PREFIX}/bin/pkg-config ]]; then
     ln -s ${BUILD_PREFIX}/bin/pkgconf ${BUILD_PREFIX}/bin/pkg-config
