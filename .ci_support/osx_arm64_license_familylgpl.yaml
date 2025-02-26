@@ -61,7 +61,7 @@ openh264:
 openssl:
 - '3'
 sdl2:
-- 2.30.10
+- '2'
 svt_av1:
 - 3.0.0
 target_platform:
