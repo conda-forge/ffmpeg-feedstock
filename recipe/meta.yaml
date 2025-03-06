@@ -1,4 +1,4 @@
-{% set version = "7.1.0" %} # semver: (x.y.z)
+{% set version = "7.1.1" %} # semver: (x.y.z)
 {% set x,y,z = version.split('.') %}
 {% set version_ffmpeg_style = x ~ '.' ~ y if z == "0" else version %}
 
@@ -8,7 +8,7 @@ package:
 
 source:
   url: https://ffmpeg.org/releases/ffmpeg-{{ version_ffmpeg_style }}.tar.gz
-  sha256: 42a7dc0d1583885d1b8f6559fa7ce28f97acafea6803de6a8f73e3ba229348bd
+  sha256: 9a6e57a446b671012612aaeb9df5126794d5ac8f2015ca220934f99a6a4e0601
   patches:
     - patches/pkgconfig_generate_windows_llvm.patch  # [win]
     # I don't really think that the original changes made at FFmpeg make sense for
@@ -27,7 +27,7 @@ source:
     # https://code.ffmpeg.org/FFmpeg/FFmpeg/pulls/12
     - patches/12-svtav1_300_support.patch
 
-{% set build = 15 %}
+{% set build = 0 %}
 {% if license_family == 'gpl' %}
     {% set build = build + 100 %}
 {% endif %}
