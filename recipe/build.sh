@@ -83,7 +83,6 @@ if [[ "${target_platform}" == "win-64" ]]; then
 elif [[ "${target_platform}" == linux-* ]]; then
   PKG_CONFIG="${BUILD_PREFIX}/bin/pkg-config"
   extra_args="${extra_args} --disable-gnutls"
-  extra_args="${extra_args} --enable-libmp3lame"
   extra_args="${extra_args} --enable-libvpx"
   extra_args="${extra_args} --enable-libass"
   extra_args="${extra_args} --enable-pthreads"
@@ -99,7 +98,6 @@ elif [[ "${target_platform}" == osx-* ]]; then
     extra_args="${extra_args} --enable-videotoolbox"
   fi
   extra_args="${extra_args} --disable-gnutls"
-  extra_args="${extra_args} --enable-libmp3lame"
   extra_args="${extra_args} --enable-libvpx"
   extra_args="${extra_args} --enable-libass"
   extra_args="${extra_args} --enable-pthreads"
@@ -150,6 +148,7 @@ fi
         --enable-libfontconfig \
         --enable-libopenh264 \
         --enable-libdav1d \
+	--enable-libmp3lame \
         ${extra_args} \
         --enable-libaom \
         --enable-libsvtav1 \
