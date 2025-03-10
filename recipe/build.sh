@@ -46,6 +46,8 @@ if [[ "${target_platform}" == "win-64" ]]; then
   extra_args="${extra_args} --host-cc=${CC}"
   extra_args="${extra_args} --extra-libs=ucrt.lib --extra-libs=vcruntime.lib --extra-libs=oldnames.lib"
   extra_args="${extra_args} --strip=llvm-strip"
+  extra_args="${extra_args} --enable-vaapi"
+
   # Through, locally, I get
   #    This app can't run on your PC
   # and access denied on the terminal
