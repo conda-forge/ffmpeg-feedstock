@@ -93,7 +93,7 @@ requirements:
     - openh264
     - librsvg
     - gmp                # [unix]
-    - libva              # [linux64]
+    - libva              # [linux64 or win64]
     - aom
     - svt-av1
     - ffnvcodec-headers  {{ ffnvcodec_headers }}  # [ffnvcodec_headers != "None"]
