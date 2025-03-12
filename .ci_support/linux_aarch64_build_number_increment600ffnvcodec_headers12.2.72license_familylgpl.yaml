@@ -59,7 +59,7 @@ libxcb:
 libxml2:
 - '2'
 license_family:
-- gpl
+- lgpl
 openh264:
 - 2.6.0
 openssl:
@@ -69,9 +69,9 @@ pulseaudio_client:
 sdl2:
 - '2'
 svt_av1:
-- 3.0.0
+- 3.0.1
 target_platform:
-- linux-64
+- linux-aarch64
 x264:
 - 1!164.*
 x265:
