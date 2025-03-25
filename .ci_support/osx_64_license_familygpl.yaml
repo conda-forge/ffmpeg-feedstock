@@ -63,7 +63,7 @@ openssl:
 sdl2:
 - '2'
 svt_av1:
-- 3.0.1
+- 3.0.2
 target_platform:
 - osx-64
 x264:
