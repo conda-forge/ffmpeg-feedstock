@@ -66,7 +66,6 @@ requirements:
     - nasm  # [not (osx and x86_64)]
     # osx_64 needs yasm due to https://stackoverflow.com/questions/58796267/building-for-macos-but-linking-in-object-file-built-for-free-standing
     - yasm  # [osx and x86_64]
-    - lame
     - make  # [not win]
     - m2-sed  # [win]
     # makedef uses the printf command which is provided by coreutils
