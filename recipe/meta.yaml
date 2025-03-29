@@ -27,7 +27,7 @@ source:
     # https://code.ffmpeg.org/FFmpeg/FFmpeg/pulls/12
     - patches/12-svtav1_300_support.patch
 
-{% set build = 2 %}
+{% set build = 3 %}
 {% if license_family == 'gpl' %}
     {% set build = build + 100 %}
 {% endif %}
@@ -66,7 +66,7 @@ requirements:
     - nasm  # [not (osx and x86_64)]
     # osx_64 needs yasm due to https://stackoverflow.com/questions/58796267/building-for-macos-but-linking-in-object-file-built-for-free-standing
     - yasm  # [osx and x86_64]
-    - lame  # [not win]
+    - lame
     - make  # [not win]
     - m2-sed  # [win]
     # makedef uses the printf command which is provided by coreutils
@@ -98,7 +98,7 @@ requirements:
     - svt-av1
     - ffnvcodec-headers  {{ ffnvcodec_headers }}  # [ffnvcodec_headers != "None"]
     - libopus
-    - lame               # [not win]
+    - lame
     - libass             # [not win]
     - libopenvino-dev    # [not win and not ppc64le]
     - dav1d
