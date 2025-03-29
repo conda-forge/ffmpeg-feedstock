@@ -222,7 +222,7 @@ about:
   license_family: GPL  # [license_family=='gpl']
   license_family: LGPL  # [license_family=='lgpl']
   summary: Cross-platform solution to record, convert and stream audio and video.
-  dev_url: https://git.ffmpeg.org/ffmpeg.git
+  dev_url: https://github.com/FFmpeg/FFmpeg  # mirror of https://git.ffmpeg.org/ffmpeg.git
   doc_url: https://ffmpeg.org/documentation.html
 
 extra:
