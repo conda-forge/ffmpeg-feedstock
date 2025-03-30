@@ -3,7 +3,7 @@ alsa_lib:
 aom:
 - '3.9'
 build_number_increment:
-- '600'
+- '0'
 bzip2:
 - '1'
 c_compiler:
@@ -21,7 +21,7 @@ channel_sources:
 channel_targets:
 - conda-forge main
 cuda_version_for_ffnvcodec:
-- '12.4'
+- None
 cxx_compiler:
 - gxx
 cxx_compiler_version:
@@ -35,7 +35,7 @@ expat:
 ffmpeg:
 - '7'
 ffnvcodec_headers:
-- 12.2.72
+- None
 fontconfig:
 - '2'
 freetype:
@@ -45,7 +45,7 @@ glib:
 gmp:
 - '6'
 harfbuzz:
-- '10'
+- '11'
 libiconv:
 - '1'
 liblzma_devel:
@@ -71,7 +71,7 @@ sdl2:
 svt_av1:
 - 3.0.2
 target_platform:
-- linux-64
+- linux-aarch64
 x264:
 - 1!164.*
 x265:
