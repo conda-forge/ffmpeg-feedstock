@@ -45,7 +45,7 @@ glib:
 gmp:
 - '6'
 harfbuzz:
-- '10'
+- '11'
 libiconv:
 - '1'
 liblzma_devel:
