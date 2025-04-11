@@ -29,7 +29,18 @@ if [[ "$CONDA_BUILD_CROSS_COMPILATION" == "1" ]]; then
   extra_args="${extra_args} --enable-cross-compile --arch=$ARCH --target-os=$OS --cross-prefix=$HOST- --host-cc=$CC_FOR_BUILD"
 fi
 
+
+PKGCONF_LINKED=0
+
 if [[ "${target_platform}" == "win-64" ]]; then
+  ############################################
+  # Workaround to test pkgconf
+  export PKG_CONFIG_PATH=${PREFIX}/Library/share/pkgconfig:${PKG_CONFIG_PATH}
+  if [[ ! -f ${BUILD_PREFIX}/bin/pkg-config ]]; then
+      ln -s ${BUILD_PREFIX}/Library/bin/pkgconf ${BUILD_PREFIX}/Library/bin/pkg-config
+      PKGCONF_LINKED=1
+  fi
+  ############################################
   # 2022/07 hmaarrfk
   # Specifying these extra flags for osx and linux
   # seems to cause things to fail since FFmpeg
@@ -81,6 +92,14 @@ if [[ "${target_platform}" == "win-64" ]]; then
   # maybe related to https://trac.ffmpeg.org/ticket/6620
   export V=1
 elif [[ "${target_platform}" == linux-* ]]; then
+  ############################################
+  # Workaround to test pkgconf
+  export PKG_CONFIG_PATH=${PREFIX}/share/pkgconfig:${PKG_CONFIG_PATH}
+  if [[ ! -f ${BUILD_PREFIX}/bin/pkg-config ]]; then
+      ln -s ${BUILD_PREFIX}/bin/pkgconf ${BUILD_PREFIX}/bin/pkg-config
+      PKGCONF_LINKED=1
+  fi
+  ############################################
   PKG_CONFIG="${BUILD_PREFIX}/bin/pkg-config"
   extra_args="${extra_args} --disable-gnutls"
   extra_args="${extra_args} --enable-libvpx"
@@ -92,6 +111,14 @@ elif [[ "${target_platform}" == linux-* ]]; then
     extra_args="${extra_args} --enable-vaapi"
   fi
 elif [[ "${target_platform}" == osx-* ]]; then
+  ############################################
+  # Workaround to test pkgconf
+  export PKG_CONFIG_PATH=${PREFIX}/share/pkgconfig:${PKG_CONFIG_PATH}
+  if [[ ! -f ${BUILD_PREFIX}/bin/pkg-config ]]; then
+      ln -s ${BUILD_PREFIX}/bin/pkgconf ${BUILD_PREFIX}/bin/pkg-config
+      PKGCONF_LINKED=1
+  fi
+  ############################################
   if [[ "${target_platform}" == osx-arm64 ]]; then
     extra_args="${extra_args} --enable-neon"
   else
@@ -191,4 +218,9 @@ if [[ "${target_platform}" == win-* ]]; then
   if [[ "${LIBX264_LIB_CREATED}" == "1" ]]; then
     rm -f ${PREFIX}/lib/libx264.lib
   fi
+fi
+
+if [[ "${PKGCONF_LINKED}" == "1" ]]; then
+    rm -f ${BUILD_PREFIX}/bin/pkg-config
+    rm -f ${BUILD_PREFIX}/Library/bin/pkg-config
 fi
