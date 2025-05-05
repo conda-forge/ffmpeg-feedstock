@@ -16,20 +16,28 @@ jobs:
         CONFIG: linux_64_build_number_increment0ffnvcodec_headersNonelicense_familylgpl
         UPLOAD_PACKAGES: 'True'
         DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma9
-      linux_64_build_number_increment400ffnvcodec_headers12.1.14license_familygpl:
-        CONFIG: linux_64_build_number_increment400ffnvcodec_headers12.1.14license_familygpl
+      linux_64_build_number_increment400ffnvcodec_headers12.1._license_familygpl:
+        CONFIG: linux_64_build_number_increment400ffnvcodec_headers12.1._license_familygpl
         UPLOAD_PACKAGES: 'True'
         DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma9
-      linux_64_build_number_increment400ffnvcodec_headers12.1.14license_familylgpl:
-        CONFIG: linux_64_build_number_increment400ffnvcodec_headers12.1.14license_familylgpl
+      linux_64_build_number_increment400ffnvcodec_headers12.1._license_familylgpl:
+        CONFIG: linux_64_build_number_increment400ffnvcodec_headers12.1._license_familylgpl
         UPLOAD_PACKAGES: 'True'
         DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma9
-      linux_64_build_number_increment600ffnvcodec_headers12.2.72license_familygpl:
-        CONFIG: linux_64_build_number_increment600ffnvcodec_headers12.2.72license_familygpl
+      linux_64_build_number_increment600ffnvcodec_headers12.2._license_familygpl:
+        CONFIG: linux_64_build_number_increment600ffnvcodec_headers12.2._license_familygpl
         UPLOAD_PACKAGES: 'True'
         DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma9
-      linux_64_build_number_increment600ffnvcodec_headers12.2.72license_familylgpl:
-        CONFIG: linux_64_build_number_increment600ffnvcodec_headers12.2.72license_familylgpl
+      linux_64_build_number_increment600ffnvcodec_headers12.2._license_familylgpl:
+        CONFIG: linux_64_build_number_increment600ffnvcodec_headers12.2._license_familylgpl
+        UPLOAD_PACKAGES: 'True'
+        DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma9
+      linux_64_build_number_increment800ffnvcodec_headers13.0._license_familygpl:
+        CONFIG: linux_64_build_number_increment800ffnvcodec_headers13.0._license_familygpl
+        UPLOAD_PACKAGES: 'True'
+        DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma9
+      linux_64_build_number_increment800ffnvcodec_headers13.0._license_familylgpl:
+        CONFIG: linux_64_build_number_increment800ffnvcodec_headers13.0._license_familylgpl
         UPLOAD_PACKAGES: 'True'
         DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma9
       linux_aarch64_build_number_increment0ffnvcodec_headersNonelicense_familygpl:
@@ -40,12 +48,20 @@ jobs:
         CONFIG: linux_aarch64_build_number_increment0ffnvcodec_headersNonelicense_familylgpl
         UPLOAD_PACKAGES: 'True'
         DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma9
-      linux_aarch64_build_number_increment600ffnvcodec_headers12.2.72license_familygpl:
-        CONFIG: linux_aarch64_build_number_increment600ffnvcodec_headers12.2.72license_familygpl
+      linux_aarch64_build_number_increment600ffnvcodec_headers12.2._license_familygpl:
+        CONFIG: linux_aarch64_build_number_increment600ffnvcodec_headers12.2._license_familygpl
         UPLOAD_PACKAGES: 'True'
         DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma9
-      linux_aarch64_build_number_increment600ffnvcodec_headers12.2.72license_familylgpl:
-        CONFIG: linux_aarch64_build_number_increment600ffnvcodec_headers12.2.72license_familylgpl
+      linux_aarch64_build_number_increment600ffnvcodec_headers12.2._license_familylgpl:
+        CONFIG: linux_aarch64_build_number_increment600ffnvcodec_headers12.2._license_familylgpl
+        UPLOAD_PACKAGES: 'True'
+        DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma9
+      linux_aarch64_build_number_increment800ffnvcodec_headers13.0._license_familygpl:
+        CONFIG: linux_aarch64_build_number_increment800ffnvcodec_headers13.0._license_familygpl
+        UPLOAD_PACKAGES: 'True'
+        DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma9
+      linux_aarch64_build_number_increment800ffnvcodec_headers13.0._license_familylgpl:
+        CONFIG: linux_aarch64_build_number_increment800ffnvcodec_headers13.0._license_familylgpl
         UPLOAD_PACKAGES: 'True'
         DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma9
       linux_ppc64le_license_familygpl:

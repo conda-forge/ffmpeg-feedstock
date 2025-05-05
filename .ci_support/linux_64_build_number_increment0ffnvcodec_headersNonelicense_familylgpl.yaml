@@ -45,7 +45,7 @@ glib:
 gmp:
 - '6'
 harfbuzz:
-- '11'
+- 11.0.1
 libiconv:
 - '1'
 liblzma_devel:
@@ -57,7 +57,7 @@ librsvg:
 libxcb:
 - '1'
 libxml2:
-- '2'
+- '2.13'
 license_family:
 - lgpl
 openh264:
