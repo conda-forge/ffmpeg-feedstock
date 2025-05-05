@@ -31,7 +31,7 @@ freetype:
 glib:
 - '2'
 harfbuzz:
-- '11'
+- 11.0.1
 libiconv:
 - '1'
 liblzma_devel:
@@ -39,7 +39,7 @@ liblzma_devel:
 librsvg:
 - '2'
 libxml2:
-- '2'
+- '2.13'
 license_family:
 - lgpl
 openh264:

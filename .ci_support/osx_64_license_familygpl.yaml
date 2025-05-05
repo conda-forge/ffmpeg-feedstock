@@ -41,7 +41,7 @@ glib:
 gmp:
 - '6'
 harfbuzz:
-- '11'
+- 11.0.1
 libiconv:
 - '1'
 liblzma_devel:
@@ -51,7 +51,7 @@ libopenvino_dev:
 librsvg:
 - '2'
 libxml2:
-- '2'
+- '2.13'
 license_family:
 - gpl
 macos_machine:

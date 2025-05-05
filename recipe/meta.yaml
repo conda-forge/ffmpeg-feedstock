@@ -1,6 +1,8 @@
 {% set version = "7.1.1" %} # semver: (x.y.z)
 {% set x,y,z = version.split('.') %}
 {% set version_ffmpeg_style = x ~ '.' ~ y if z == "0" else version %}
+{% set build_number_increment = build_number_increment | default(0) %}
+{% set license_family = license_family | default("lgpl") %}
 
 package:
   name: ffmpeg
@@ -27,20 +29,10 @@ source:
     # https://code.ffmpeg.org/FFmpeg/FFmpeg/pulls/12
     - patches/12-svtav1_300_support.patch
 
-{% set build = 4 %}
+{% set build = 5 %}
+{% set build = build | int + build_number_increment | int %}
 {% if license_family == 'gpl' %}
     {% set build = build + 100 %}
-{% endif %}
-
-# Can't seem to get int + str to add without this...
-{% if build_number_increment == '200' %}
-    {% set build = build + 200 %}
-{% endif %}
-{% if build_number_increment == '400' %}
-    {% set build = build + 400 %}
-{% endif %}
-{% if build_number_increment == '600' %}
-    {% set build = build + 600 %}
 {% endif %}
 
 build:
