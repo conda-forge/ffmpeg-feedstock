@@ -29,7 +29,10 @@ source:
     # https://code.ffmpeg.org/FFmpeg/FFmpeg/pulls/12
     - patches/12-svtav1_300_support.patch
 
-{% set build = 5 %}
+    # Fix for CVE-2025-22921: NULL pointer dereference in JPEG2000 decoder
+    - patches/ffmpeg-CVE-2025-22921.patch
+
+{% set build = 6 %}
 {% set build = build | int + build_number_increment | int %}
 {% if license_family == 'gpl' %}
     {% set build = build + 100 %}
