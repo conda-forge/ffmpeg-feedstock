@@ -5,7 +5,7 @@ build_number_increment:
 bzip2:
 - '1'
 c_compiler:
-- vs2019
+- vs2022
 c_stdlib:
 - vs
 channel_sources:
@@ -15,7 +15,7 @@ channel_targets:
 cuda_version_for_ffnvcodec:
 - '12.2'
 cxx_compiler:
-- vs2019
+- vs2022
 dav1d:
 - 1.2.1
 expat:
