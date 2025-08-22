@@ -22,15 +22,12 @@ source:
     # needed for qtwebengine
     - patches/add-av_stream_get_first_dts-for-chromium.patch
 
-    # Include time_internal header for windows to correctly locate localtime_r and gmtime_r
-    - patches/include_time_internal_header.patch
-
-    # https://gitlab.com/AOMediaCodec/SVT-AV1/-/issues/2249
-    # https://code.ffmpeg.org/FFmpeg/FFmpeg/pulls/12
-    - patches/12-svtav1_300_support.patch
-
-    # Fix for CVE-2025-22921: NULL pointer dereference in JPEG2000 decoder
-    - patches/ffmpeg-CVE-2025-22921.patch
+    # Without this the paths on windows wouldn't work at the installation step
+    # hmaarrfk -- Need to file an issue upstream???
+    # https://code.ffmpeg.org/FFmpeg/FFmpeg/commit/a125f5db03b86c03fffb9598bd6e2026ba2c7a97
+    - patches/consolidate_pattern_rules_for_compression.patch
+    # hmaarrfk -- not sure why i need this one. need to report upstream
+    - patches/use_forward_slash_on_windows.patch
 
 {% set build = 0 %}
 {% set build = build | int + build_number_increment | int %}
@@ -58,9 +55,7 @@ requirements:
     - autotools_clang_conda  # [win]
     - pkg-config
     - libtool  # [not win]
-    - nasm  # [not (osx and x86_64)]
-    # osx_64 needs yasm due to https://stackoverflow.com/questions/58796267/building-for-macos-but-linking-in-object-file-built-for-free-standing
-    - yasm  # [osx and x86_64]
+    - nasm
     - make  # [not win]
     - m2-sed  # [win]
     # makedef uses the printf command which is provided by coreutils
@@ -150,13 +145,13 @@ test:
     # One can find the SO versions by reading the release notes
     # https://ffmpeg.org/download.html#releases
     {% set ffmpeg_libs = [
-        "avdevice-61",
-        "swresample-5",
-        "avfilter-10",
-        "avcodec-61",
-        "avformat-61",
-        "swscale-8",
-        "avutil-59",
+        "avutil-60",
+        "avcodec-62",
+        "avformat-62",
+        "avdevice-62",
+        "swresample-6",
+        "avfilter-11",
+        "swscale-9",
     ] %}
     {% for each_ffmpeg_lib in ffmpeg_libs %}
     - echo "Checking for existance of {{ each_ffmpeg_lib }}.dll"             # [win]
@@ -166,9 +161,6 @@ test:
     - ffmpeg -hide_banner -buildconf | {{ grep }} "enable-gpl"
     - ffmpeg -hide_banner -codecs | {{ grep }} "libx264"
     - ffmpeg -hide_banner -codecs | {{ grep }} "libx265"
-    - test -f $PREFIX/lib/libpostproc${SHLIB_EXT}                  # [unix]
-    - if not exist %PREFIX%\\Library\\lib\\postproc.lib exit 1     # [win]
-    - if not exist %PREFIX%\\Library\\bin\\postproc-58.dll exit 1  # [win]
     # https://trac.ffmpeg.org/wiki/Null
     - ffmpeg -hide_banner -f lavfi -i nullsrc=s=256x256:d=8 -vcodec libx264 -f null -
     - ffmpeg -hide_banner -f lavfi -i nullsrc=s=256x256:d=8 -vcodec libx265 -f null -
@@ -177,9 +169,6 @@ test:
     - ffmpeg -hide_banner -buildconf | {{ grep }} "disable-gpl"
     - test ! $(ffmpeg -hide_banner -codecs | grep "libx264")     # [unix]
     - test ! $(ffmpeg -hide_banner -codecs | grep "libx265")     # [unix]
-    - test ! -f $PREFIX/lib/libpostproc${SHLIB_EXT}              # [unix]
-    - if exist %PREFIX%\\Library\\lib\\postproc.lib exit 1       # [win]
-    - if exist %PREFIX%\\Library\\bin\\postproc-58.dll exit 1    # [win]
     {%- endif %}
     # Verify nvidia codecs on linux
     {% set nvcodecs = [
