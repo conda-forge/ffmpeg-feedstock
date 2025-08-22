@@ -1,4 +1,4 @@
-{% set version = "7.1.1" %} # semver: (x.y.z)
+{% set version = "8.0.0" %} # semver: (x.y.z)
 {% set x,y,z = version.split('.') %}
 {% set version_ffmpeg_style = x ~ '.' ~ y if z == "0" else version %}
 {% set build_number_increment = build_number_increment | default(0) %}
@@ -10,7 +10,7 @@ package:
 
 source:
   url: https://ffmpeg.org/releases/ffmpeg-{{ version_ffmpeg_style }}.tar.gz
-  sha256: 9a6e57a446b671012612aaeb9df5126794d5ac8f2015ca220934f99a6a4e0601
+  sha256: cce1136d38c389e6baaa452d6babc384cb2d3a9406ebe48c36a48f3ee115d8df
   patches:
     - patches/pkgconfig_generate_windows_llvm.patch  # [win]
     # I don't really think that the original changes made at FFmpeg make sense for
@@ -32,7 +32,7 @@ source:
     # Fix for CVE-2025-22921: NULL pointer dereference in JPEG2000 decoder
     - patches/ffmpeg-CVE-2025-22921.patch
 
-{% set build = 7 %}
+{% set build = 0 %}
 {% set build = build | int + build_number_increment | int %}
 {% if license_family == 'gpl' %}
     {% set build = build + 100 %}
