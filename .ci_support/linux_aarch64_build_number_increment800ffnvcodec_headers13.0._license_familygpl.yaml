@@ -44,8 +44,6 @@ glib:
 - '2'
 gmp:
 - '6'
-harfbuzz:
-- 11.0.1
 libiconv:
 - '1'
 liblzma_devel:

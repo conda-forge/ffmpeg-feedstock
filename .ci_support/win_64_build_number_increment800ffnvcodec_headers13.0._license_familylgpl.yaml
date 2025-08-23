@@ -30,8 +30,6 @@ freetype:
 - '2'
 glib:
 - '2'
-harfbuzz:
-- 11.0.1
 libiconv:
 - '1'
 liblzma_devel:
