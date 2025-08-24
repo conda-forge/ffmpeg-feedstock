@@ -42,8 +42,6 @@ glib:
 - '2'
 gmp:
 - '6'
-harfbuzz:
-- 11.0.1
 libiconv:
 - '1'
 liblzma_devel:
@@ -65,7 +63,7 @@ pulseaudio_client:
 sdl2:
 - '2'
 svt_av1:
-- 3.0.2
+- 3.1.1
 target_platform:
 - linux-ppc64le
 x264:

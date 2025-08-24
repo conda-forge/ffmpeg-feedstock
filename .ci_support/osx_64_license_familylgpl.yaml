@@ -40,8 +40,6 @@ glib:
 - '2'
 gmp:
 - '6'
-harfbuzz:
-- 11.0.1
 libiconv:
 - '1'
 liblzma_devel:
@@ -63,7 +61,7 @@ openssl:
 sdl2:
 - '2'
 svt_av1:
-- 3.0.2
+- 3.1.1
 target_platform:
 - osx-64
 x264:
