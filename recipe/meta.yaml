@@ -29,7 +29,7 @@ source:
     # hmaarrfk -- not sure why i need this one. need to report upstream
     - patches/use_forward_slash_on_windows.patch
 
-{% set build = 2 %}
+{% set build = 3 %}
 {% set build = build | int + build_number_increment | int %}
 {% if license_family == 'gpl' %}
     {% set build = build + 100 %}
@@ -99,6 +99,8 @@ requirements:
     - alsa-lib           # [linux]
     - pulseaudio-client  # [linux]
     - libvorbis
+    - libvulkan-loader   # [linux]
+    - libvulkan-headers  # [linux]
   run_constrained:
     - __cuda  >={{ cuda_version_for_ffnvcodec }}  # [ffnvcodec_headers != "None"]
 
@@ -192,6 +194,8 @@ test:
     - ffmpeg -hide_banner -devices | grep "pulse"  # [linux]
     # Test presence of certain codecs
     - ffmpeg -hide_banner -codecs | {{ grep }} "libvorbis"
+    # Test for Vulkan filters (only check if built with Vulkan support)
+    - ffmpeg -hide_banner -buildconf | {{ grep }} "enable-vulkan" || true  # [linux]
 
 about:
   home: https://www.ffmpeg.org/
