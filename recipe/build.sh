@@ -89,6 +89,7 @@ elif [[ "${target_platform}" == linux-* ]]; then
   extra_args="${extra_args} --enable-alsa"
   extra_args="${extra_args} --enable-libpulse"
   extra_args="${extra_args} --enable-vulkan"
+  extra_args="${extra_args} --enable-libshaderc"
   if [[ "${target_platform}" == "linux-64" ]]; then
     extra_args="${extra_args} --enable-vaapi"
   fi
