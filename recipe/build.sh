@@ -149,7 +149,7 @@ fi
         --enable-libopenh264 \
         --enable-libdav1d \
         ${extra_args} \
-	--enable-libmp3lame \
+        --enable-libmp3lame \
         --enable-libaom \
         --enable-libsvtav1 \
         --enable-libxml2 \
@@ -158,10 +158,12 @@ fi
         --disable-static \
         --enable-version3 \
         --enable-zlib \
-	--enable-libvorbis \
+        --enable-libvorbis \
         --enable-libopus \
         --enable-librsvg \
         --enable-ffplay \
+        --enable-vulkan \
+        --enable-libshaderc \
         --pkg-config=${PKG_CONFIG} \
         || { if [[ ${CI} != "" ]]; then cat ffbuild/config.log; fi; exit 1; }
 
