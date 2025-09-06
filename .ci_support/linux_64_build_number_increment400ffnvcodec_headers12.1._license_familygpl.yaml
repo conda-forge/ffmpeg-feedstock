@@ -48,6 +48,8 @@ libiconv:
 - '1'
 liblzma_devel:
 - '5'
+libvpl:
+- 2.15
 libopenvino_dev:
 - 2025.2.0
 librsvg:
