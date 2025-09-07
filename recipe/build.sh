@@ -90,6 +90,7 @@ elif [[ "${target_platform}" == linux-* ]]; then
   extra_args="${extra_args} --enable-libpulse"
   if [[ "${target_platform}" == "linux-64" ]]; then
     extra_args="${extra_args} --enable-vaapi"
+	extra_args="${extra_args} --enable-libvpl"
   fi
 elif [[ "${target_platform}" == osx-* ]]; then
   if [[ "${target_platform}" == osx-arm64 ]]; then
