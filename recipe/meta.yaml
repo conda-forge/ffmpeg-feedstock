@@ -197,6 +197,18 @@ test:
     {% for nvcodec in nvcodecs %}
     - ffmpeg -hide_banner -codecs | {{ grep }} "{{ nvcodec }}"  # [ffnvcodec_headers != "None"]
     {% endfor %}
+    {% set qsv_codecs = [
+        "h264_qsv",
+        "hevc_qsv",
+        "mjpeg_qsv",
+        "mpeg2_qsv",
+        "vc1_qsv",
+        "vp8_qsv",
+        "vp9_qsv",
+    ] %}
+    {% for qsv_codec in qsv_codecs %}
+    - ffmpeg -hide_banner -codecs | {{ grep }} "{{ qsv_codec }}"  # [linux64]
+    {% endfor %}
     # https://trac.ffmpeg.org/wiki/Null
     - ffmpeg -hide_banner -f lavfi -i nullsrc=s=256x256:d=8 -vcodec libopenh264 -f null -
     # Verify required devices on linux
