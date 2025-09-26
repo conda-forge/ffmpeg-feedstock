@@ -54,8 +54,8 @@ librsvg:
 - '2'
 libxcb:
 - '1'
-libxml2:
-- '2.13'
+libxml2_devel:
+- '2.14'
 license_family:
 - lgpl
 openh264:
