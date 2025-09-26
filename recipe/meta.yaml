@@ -29,7 +29,7 @@ source:
     # hmaarrfk -- not sure why i need this one. need to report upstream
     - patches/use_forward_slash_on_windows.patch
 
-{% set build = 5 %}
+{% set build = 6 %}
 {% set build = build | int + build_number_increment | int %}
 {% if license_family == 'gpl' %}
     {% set build = build + 100 %}
@@ -73,7 +73,7 @@ requirements:
     - glib
     - fontconfig
     - libiconv
-    - libxml2
+    - libxml2-devel
     {% if license_family == 'gpl' %}
     - x264
     - x265
