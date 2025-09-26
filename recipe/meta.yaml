@@ -32,7 +32,7 @@ source:
     # Fix for CVE-2025-22921: NULL pointer dereference in JPEG2000 decoder
     - patches/ffmpeg-CVE-2025-22921.patch
 
-{% set build = 10 %}
+{% set build = 11 %}
 {% set build = build | int + build_number_increment | int %}
 {% if license_family == 'gpl' %}
     {% set build = build + 100 %}
@@ -77,7 +77,7 @@ requirements:
     - glib
     - fontconfig
     - libiconv
-    - libxml2
+    - libxml2-devel
     {% if license_family == 'gpl' %}
     - x264
     - x265
