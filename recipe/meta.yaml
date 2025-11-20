@@ -1,4 +1,4 @@
-{% set version = "8.0.0" %} # semver: (x.y.z)
+{% set version = "8.0.1" %} # semver: (x.y.z)
 {% set x,y,z = version.split('.') %}
 {% set version_ffmpeg_style = x ~ '.' ~ y if z == "0" else version %}
 {% set build_number_increment = build_number_increment | default(0) %}
@@ -10,7 +10,7 @@ package:
 
 source:
   url: https://ffmpeg.org/releases/ffmpeg-{{ version_ffmpeg_style }}.tar.gz
-  sha256: cce1136d38c389e6baaa452d6babc384cb2d3a9406ebe48c36a48f3ee115d8df
+  sha256: ed1cfade43aab7711c88937a0afc15b7b22efdc528c6ff074b4027c55a3c175c
   patches:
     - patches/pkgconfig_generate_windows_llvm.patch  # [win]
     # I don't really think that the original changes made at FFmpeg make sense for
@@ -29,7 +29,7 @@ source:
     # hmaarrfk -- not sure why i need this one. need to report upstream
     - patches/use_forward_slash_on_windows.patch
 
-{% set build = 6 %}
+{% set build = 0 %}
 {% set build = build | int + build_number_increment | int %}
 {% if license_family == 'gpl' %}
     {% set build = build + 100 %}
@@ -213,8 +213,8 @@ test:
 
 about:
   home: https://www.ffmpeg.org/
-  license: GPL-2.0-or-later    # [license_family=='gpl']
-  license: LGPL-2.1-or-later   # [license_family=='lgpl']
+  license: GPL-2.0-or-later  # [license_family=='gpl']
+  license: LGPL-2.1-or-later  # [license_family=='lgpl']
   license_file:
     - COPYING.GPLv2            # [license_family=='gpl']
     - COPYING.GPLv3            # [license_family=='gpl']
