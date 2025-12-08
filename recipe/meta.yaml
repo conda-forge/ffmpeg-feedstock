@@ -26,6 +26,8 @@ source:
     # hmaarrfk -- Need to file an issue upstream???
     # https://code.ffmpeg.org/FFmpeg/FFmpeg/commit/a125f5db03b86c03fffb9598bd6e2026ba2c7a97
     - patches/consolidate_pattern_rules_for_compression.patch
+    # hmaarrfk -- not sure why i need this one. need to report upstream
+    - patches/use_forward_slash_on_windows.patch
 
 {% set build = 7 %}
 {% set build = build | int + build_number_increment | int %}
