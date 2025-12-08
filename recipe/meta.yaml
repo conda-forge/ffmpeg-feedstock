@@ -17,7 +17,7 @@ source:
     # conda-forge's conmpiler stack on windows
     # https://github.com/FFmpeg/FFmpeg/commit/f8d6d0fbf12b3247a37885cd0a5cd32ddc1f01b3
     # https://github.com/conda-forge/ffmpeg-feedstock/pull/193#issuecomment-1484476264
-    - patches/0001-Revert-compat-Use-instead-of-for-rc.exe-options.patch
+    # - patches/0001-Revert-compat-Use-instead-of-for-rc.exe-options.patch
 
     # needed for qtwebengine
     - patches/add-av_stream_get_first_dts-for-chromium.patch
