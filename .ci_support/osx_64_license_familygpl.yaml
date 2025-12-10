@@ -29,7 +29,7 @@ dav1d:
 expat:
 - '2'
 ffmpeg:
-- '7'
+- '8'
 ffnvcodec_headers:
 - None
 fontconfig:
@@ -57,7 +57,7 @@ macos_machine:
 openh264:
 - 2.6.0
 openssl:
-- '3'
+- '3.5'
 sdl2:
 - '2'
 svt_av1:

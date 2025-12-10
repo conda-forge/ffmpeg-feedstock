@@ -14,8 +14,6 @@ c_stdlib:
 - sysroot
 c_stdlib_version:
 - '2.17'
-cdt_name:
-- conda
 channel_sources:
 - conda-forge
 channel_targets:
@@ -33,7 +31,7 @@ docker_image:
 expat:
 - '2'
 ffmpeg:
-- '7'
+- '8'
 ffnvcodec_headers:
 - None
 fontconfig:
@@ -61,7 +59,7 @@ license_family:
 openh264:
 - 2.6.0
 openssl:
-- '3'
+- '3.5'
 pulseaudio_client:
 - '17.0'
 sdl2:
