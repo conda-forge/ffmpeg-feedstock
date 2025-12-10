@@ -55,6 +55,11 @@ if [[ "${target_platform}" == "win-64" ]]; then
   # ffmpeg by default attempts to link to libm
   # but that doesn't exist for windows
   extra_args="${extra_args} --host-extralibs="
+  # With updates to conda-forge tooling
+  # it seems that gnu-windres that it is found
+  # but we want to use vc's rc compiler
+  # https://github.com/conda-forge/ffmpeg-feedstock/pull/351#issuecomment-3637099344
+  extra_args="${extra_args} --disable-gnu-windres"
 
   # Delete line that includes unistd.h from zconf. we should patch this
   # better for LLVM compatibility
