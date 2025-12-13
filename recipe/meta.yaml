@@ -64,7 +64,7 @@ requirements:
     - {{ stdlib("c") }}
     # clangxx is required for support of the nvidia encoders and decoders
     - clangxx                # [linux64 or win]
-    - autotools_clang_conda  # [win]
+    - autotools_clang_conda  0.0.13  # [win]
     - pkg-config
     - libtool  # [not win]
     - nasm
