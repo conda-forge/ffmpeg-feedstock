@@ -1,0 +1,28 @@
+From caae134ce7f77e42a290eca8d7f70087a34b3fc4 Mon Sep 17 00:00:00 2001
+From: Mark Harfouche <mark.harfouche@gmail.com>
+Date: Wed, 10 Dec 2025 09:50:18 -0500
+Subject: [PATCH 3/3] Remove private requirements to help downstream
+ compilation
+
+---
+ ffbuild/pkgconfig_generate.sh | 2 --
+ 1 file changed, 2 deletions(-)
+
+diff --git a/ffbuild/pkgconfig_generate.sh b/ffbuild/pkgconfig_generate.sh
+index fc6af774a6..be361a2d95 100755
+--- a/ffbuild/pkgconfig_generate.sh
++++ b/ffbuild/pkgconfig_generate.sh
+@@ -36,10 +36,8 @@ Name: $fullname
+ Description: $comment
+ Version: $version
+ Requires: $($shared || echo $requires)
+-Requires.private: $($shared && echo $requires)
+ Conflicts:
+ Libs: -L\${libdir} $rpath -l${fullname#lib} $($shared || echo $libs)
+-Libs.private: $($shared && echo $libs)
+ Cflags: -I\${includedir}
+ EOF
+ 
+-- 
+2.51.0
+

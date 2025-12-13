@@ -21,7 +21,7 @@ dav1d:
 expat:
 - '2'
 ffmpeg:
-- '7'
+- '8'
 ffnvcodec_headers:
 - 13.0.*
 fontconfig:
@@ -43,7 +43,7 @@ license_family:
 openh264:
 - 2.6.0
 openssl:
-- '3'
+- '3.5'
 sdl2:
 - '2'
 svt_av1:
