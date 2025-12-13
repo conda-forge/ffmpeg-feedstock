@@ -36,7 +36,7 @@ source:
     # it seems that gnu-windres that it is found
     # but we want to use vc's rc compiler
     # https://github.com/conda-forge/ffmpeg-feedstock/pull/351#issuecomment-3637099344
-    - patches/0002-disable-gnu-windres.patch
+    # - patches/0002-disable-gnu-windres.patch
     # https://github.com/conda-forge/ffmpeg-feedstock/issues/347
     - patches/0003-Remove-private-requirements-to-help-downstream-compi.patch
 
@@ -47,6 +47,7 @@ source:
 {% endif %}
 
 build:
+  skip: true  # [not win]
   number: {{ build }}
   string: {{ license_family }}_h{{ PKG_HASH }}_{{ PKG_BUILDNUM }}
   run_exports:
