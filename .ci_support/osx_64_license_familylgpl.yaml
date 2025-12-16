@@ -45,7 +45,7 @@ libiconv:
 liblzma_devel:
 - '5'
 libopenvino_dev:
-- 2025.2.0
+- 2025.3.0
 librsvg:
 - '2'
 libxml2_devel:
