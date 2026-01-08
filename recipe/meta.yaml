@@ -114,6 +114,7 @@ requirements:
     - libvulkan-loader
     - libvulkan-headers
     - shaderc
+    - libjxl
   run_constrained:
     - __cuda  >={{ cuda_version_for_ffnvcodec }}  # [ffnvcodec_headers != "None"]
 
@@ -219,6 +220,7 @@ test:
     - ffmpeg -hide_banner -devices | grep "pulse"  # [linux]
     # Test presence of certain codecs
     - ffmpeg -hide_banner -codecs | {{ grep }} "libvorbis"
+    - ffmpeg -hide_banner -codecs | {{ grep }} "libjxl"
     # Test for Vulkan filters - verify they are actually available
     - ffmpeg -hide_banner -filters | {{ grep }} "vulkan"
 

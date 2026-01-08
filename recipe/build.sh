@@ -162,6 +162,7 @@ fi
         --enable-libvorbis \
         --enable-libopus \
         --enable-librsvg \
+        --enable-libjxl \
         --enable-ffplay \
         --enable-vulkan \
         --enable-libshaderc \
