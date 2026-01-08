@@ -67,6 +67,14 @@ if [[ "${target_platform}" == "win-64" ]]; then
       touch "${PREFIX}/include/unistd.h"
   fi
 
+  # Create empty m.lib stub for Windows (math functions are in ucrt)
+  # Some pkg-config files (done for libjxl in first place) incorrectly include -lm on Windows
+  # which causes the linker to look for m.lib that doesn't exist
+  if [[ ! -f "${PREFIX}/lib/m.lib" ]]; then
+      touch "${PREFIX}/lib/m.lib"
+      M_LIB_CREATED=1
+  fi
+
   # Add pkgconfig from the prefix to search through it correctly
   export PKG_CONFIG_PATH=${PREFIX}/lib/pkgconfig:${PKG_CONFIG_PATH}
   PKG_CONFIG="${BUILD_PREFIX}/Library/bin/pkg-config"
@@ -194,5 +202,8 @@ if [[ "${target_platform}" == win-* ]]; then
   fi
   if [[ "${LIBX264_LIB_CREATED}" == "1" ]]; then
     rm -f ${PREFIX}/lib/libx264.lib
+  fi
+  if [[ "${M_LIB_CREATED}" == "1" ]]; then
+    rm -f "${PREFIX}/lib/m.lib"
   fi
 fi
