@@ -68,10 +68,21 @@ if [[ "${target_platform}" == "win-64" ]]; then
   fi
 
   # Create empty m.lib stub for Windows (math functions are in ucrt)
-  # Some pkg-config files (done for libjxl in first place) incorrectly include -lm on Windows
-  # which causes the linker to look for m.lib that doesn't exist
+  # Some pkg-config files (e.g., libjxl) incorrectly include -lm on Windows
+  # which causes the linker to look for m.lib that doesn't exist.
   if [[ ! -f "${PREFIX}/lib/m.lib" ]]; then
-      touch "${PREFIX}/lib/m.lib"
+      # Create a minimal valid COFF import library using llvm-lib
+      # First create an empty object file, then archive it
+      echo "" | ${CC} -c -x c - -o empty_m.obj 2>/dev/null || true
+      if [[ -f empty_m.obj ]]; then
+          llvm-lib /OUT:"${PREFIX}/lib/m.lib" empty_m.obj 2>/dev/null || true
+          rm -f empty_m.obj
+      fi
+      # Fallback: if llvm-lib failed, try creating minimal lib with lib.exe or just skip
+      if [[ ! -f "${PREFIX}/lib/m.lib" ]]; then
+          # Create a minimal COFF archive header (empty archive)
+          printf '!<arch>\n' > "${PREFIX}/lib/m.lib"
+      fi
       M_LIB_CREATED=1
   fi
 
