@@ -40,7 +40,7 @@ source:
     # https://github.com/conda-forge/ffmpeg-feedstock/issues/347
     - patches/0003-Remove-private-requirements-to-help-downstream-compi.patch
 
-{% set build = 8 %}
+{% set build = 9 %}
 {% set build = build | int + build_number_increment | int %}
 {% if license_family == 'gpl' %}
     {% set build = build + 100 %}
