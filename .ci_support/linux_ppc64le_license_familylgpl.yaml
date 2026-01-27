@@ -46,6 +46,8 @@ liblzma_devel:
 - '5'
 librsvg:
 - '2'
+libwebp:
+- '1'
 libxcb:
 - '1'
 libxml2_devel:
@@ -61,7 +63,7 @@ pulseaudio_client:
 sdl2:
 - '2'
 svt_av1:
-- 3.1.2
+- 4.0.0
 target_platform:
 - linux-ppc64le
 x264:

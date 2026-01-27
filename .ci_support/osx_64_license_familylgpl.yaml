@@ -48,6 +48,8 @@ libopenvino_dev:
 - 2025.4.1
 librsvg:
 - '2'
+libwebp:
+- '1'
 libxml2_devel:
 - '2.14'
 license_family:
@@ -61,7 +63,7 @@ openssl:
 sdl2:
 - '2'
 svt_av1:
-- 3.1.2
+- 4.0.0
 target_platform:
 - osx-64
 x264:
