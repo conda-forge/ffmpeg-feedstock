@@ -43,7 +43,7 @@ source:
     # https://code.ffmpeg.org/FFmpeg/FFmpeg/commit/a5d4c398b411a00ac09d8fe3b66117222323844c
     - patches/svt140.patch
 
-{% set build = 11 %}
+{% set build = 12 %}
 {% set build = build | int + build_number_increment | int %}
 {% if license_family == 'gpl' %}
     {% set build = build + 100 %}
