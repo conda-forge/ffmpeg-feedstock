@@ -45,7 +45,7 @@ libiconv:
 liblzma_devel:
 - '5'
 libopenvino_dev:
-- 2025.4.1
+- 2026.0.0
 librsvg:
 - '2'
 libwebp:
