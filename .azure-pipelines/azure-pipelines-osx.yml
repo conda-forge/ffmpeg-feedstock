@@ -5,21 +5,25 @@
 jobs:
 - job: osx
   pool:
-    vmImage: macOS-15
+    vmImage: $(VMIMAGE)
   strategy:
     matrix:
       osx_64_license_familygpl:
         CONFIG: osx_64_license_familygpl
         UPLOAD_PACKAGES: 'True'
+        VMIMAGE: macOS-15
       osx_64_license_familylgpl:
         CONFIG: osx_64_license_familylgpl
         UPLOAD_PACKAGES: 'True'
+        VMIMAGE: macOS-15
       osx_arm64_license_familygpl:
         CONFIG: osx_arm64_license_familygpl
         UPLOAD_PACKAGES: 'True'
+        VMIMAGE: macOS-15
       osx_arm64_license_familylgpl:
         CONFIG: osx_arm64_license_familylgpl
         UPLOAD_PACKAGES: 'True'
+        VMIMAGE: macOS-15
   timeoutInMinutes: 360
   variables: {}
 
