@@ -51,7 +51,7 @@ libopenvino_dev:
 librsvg:
 - '2'
 libvpl:
-- '2.15'
+- '2.16'
 libwebp:
 - '1'
 libxcb:
