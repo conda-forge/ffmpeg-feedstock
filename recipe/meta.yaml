@@ -13,33 +13,27 @@ source:
   sha256: b13510e7a6a4ca28fa04307f2be54ef5a31e168eb2bbe055a7f4e4d2cadd51b1
   patches:
     ### conda-forge patches below
-    - patches/pkgconfig_generate_windows_llvm.patch  # [win]
+    - patches/0001-Generate-pkgconfig-for-windows.patch  # [win]
     # I don't really think that the original changes made at FFmpeg make sense for
     # conda-forge's conmpiler stack on windows
     # https://github.com/FFmpeg/FFmpeg/commit/f8d6d0fbf12b3247a37885cd0a5cd32ddc1f01b3
     # https://github.com/conda-forge/ffmpeg-feedstock/pull/193#issuecomment-1484476264
-    - patches/0001-Revert-compat-Use-instead-of-for-rc.exe-options.patch
-
-    # needed for qtwebengine
-    - patches/add-av_stream_get_first_dts-for-chromium.patch
-
-    # Without this the paths on windows wouldn't work at the installation step
-    # hmaarrfk -- Need to file an issue upstream???
-    # https://code.ffmpeg.org/FFmpeg/FFmpeg/commit/a125f5db03b86c03fffb9598bd6e2026ba2c7a97
-    - patches/consolidate_pattern_rules_for_compression.patch
-    # hmaarrfk -- not sure why i need this one. need to report upstream
-    - patches/use_forward_slash_on_windows.patch
+    - patches/0002-Revert-compat-Use-instead-of-for-rc.exe-options.patch
 
     # With updates to conda-forge tooling
     # it seems that gnu-windres that it is found
     # but we want to use vc's rc compiler
     # https://github.com/conda-forge/ffmpeg-feedstock/pull/351#issuecomment-3637099344
-    - patches/0002-disable-gnu-windres.patch
-    # https://github.com/conda-forge/ffmpeg-feedstock/issues/347
-    - patches/0003-Remove-private-requirements-to-help-downstream-compi.patch
+    - patches/0003-disable-gnu-windres.patch
 
-    # https://code.ffmpeg.org/FFmpeg/FFmpeg/commit/a5d4c398b411a00ac09d8fe3b66117222323844c
-    - patches/svt140.patch
+    # https://github.com/conda-forge/ffmpeg-feedstock/issues/347
+    - patches/0004-Remove-private-requirements-to-help-downstream-compi.patch
+
+    # needed for qtwebengine
+    - patches/0005-Chromium-patches-for-qtwebengine.patch
+
+    # hmaarrfk -- not sure why i need this one. need to report upstream
+    - patches/0006-Use-forward-lahs-on-windows.patch
 
 {% set build = 0 %}
 {% set build = build | int + build_number_increment | int %}
