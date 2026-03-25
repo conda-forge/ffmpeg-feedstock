@@ -12,8 +12,6 @@ source:
   url: https://ffmpeg.org/releases/ffmpeg-{{ version_ffmpeg_style }}.tar.gz
   sha256: b13510e7a6a4ca28fa04307f2be54ef5a31e168eb2bbe055a7f4e4d2cadd51b1
   patches:
-    # https://code.ffmpeg.org/FFmpeg/FFmpeg/issues/21102
-    - patches/21102-unbreak-hardcoded-tables.patch
     ### conda-forge patches below
     - patches/pkgconfig_generate_windows_llvm.patch  # [win]
     # I don't really think that the original changes made at FFmpeg make sense for
