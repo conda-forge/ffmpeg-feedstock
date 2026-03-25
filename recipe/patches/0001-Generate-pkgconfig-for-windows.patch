@@ -1,0 +1,30 @@
+From 0d1dd894afe4640b73e2843e331378184de02147 Mon Sep 17 00:00:00 2001
+From: Mark Harfouche <mark.harfouche@gmail.com>
+Date: Tue, 24 Mar 2026 22:28:58 -0400
+Subject: [PATCH 1/6] Generate pkgconfig for windows
+
+---
+ ffbuild/pkgconfig_generate.sh | 7 +++++++
+ 1 file changed, 7 insertions(+)
+
+diff --git a/ffbuild/pkgconfig_generate.sh b/ffbuild/pkgconfig_generate.sh
+index fc6af774a6..6e16c635ce 100755
+--- a/ffbuild/pkgconfig_generate.sh
++++ b/ffbuild/pkgconfig_generate.sh
+@@ -43,6 +43,13 @@ Libs.private: $($shared && echo $libs)
+ Cflags: -I\${includedir}
+ EOF
+ 
++# Ensure we use unix flags, not windows flags
++sed -i 's,-libpath:,-L,g' ${name}/${fullname}.pc
++# Remove the leading slash on the pkgconfig variables
++sed -i 's,=/,=,g' ${name}/${fullname}.pc
++# Upper case the first character of the drive
++sed -i 's,=[a-z],\U&:,g' ${name}/${fullname}.pc
++
+ mkdir -p doc/examples/pc-uninstalled
+ includedir=${source_path}
+ [ "$includedir" = . ] && includedir="\${pcfiledir}/../../.."
+-- 
+2.51.0
+

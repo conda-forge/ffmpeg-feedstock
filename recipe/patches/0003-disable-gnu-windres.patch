@@ -1,0 +1,43 @@
+From 836c3d5b0ac9895d273c854e9ae601be8b81dbfc Mon Sep 17 00:00:00 2001
+From: Mark Harfouche <mark.harfouche@gmail.com>
+Date: Tue, 24 Mar 2026 22:31:09 -0400
+Subject: [PATCH 3/6] disable gnu windres
+
+---
+ configure | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/configure b/configure
+index 1759694274..15fef3c001 100755
+--- a/configure
++++ b/configure
+@@ -6143,7 +6143,7 @@ case $target_os in
+             # Cannot build both shared and static libs when using dllimport.
+             disable static
+         fi
+-        ! enabled small && test_cmd $windres --version && enable gnu_windres
++        # ! enabled small && test_cmd $windres --version && enable gnu_windres
+         enabled x86_32 && check_ldflags -Wl,--large-address-aware
+         add_cppflags -DWIN32_LEAN_AND_MEAN
+         shlibdir_default="$bindir_default"
+@@ -6193,7 +6193,7 @@ case $target_os in
+             disable static
+             LIBSUF="-static.lib"
+         fi
+-        ! enabled small && test_cmd $windres --version && enable gnu_windres
++        # ! enabled small && test_cmd $windres --version && enable gnu_windres
+         enabled x86_32 && check_ldflags -LARGEADDRESSAWARE
+         add_cppflags -DWIN32_LEAN_AND_MEAN
+         shlibdir_default="$bindir_default"
+@@ -6229,7 +6229,7 @@ case $target_os in
+         SHFLAGS='-shared -Wl,--out-implib,$(SUBDIR)lib$(FULLNAME).dll.a'
+         enabled x86_64 && objformat="win64" || objformat="win32"
+         enable dos_paths
+-        ! enabled small && test_cmd $windres --version && enable gnu_windres
++        # ! enabled small && test_cmd $windres --version && enable gnu_windres
+         add_cppflags -DWIN32_LEAN_AND_MEAN
+         add_cppflags -D_POSIX_C_SOURCE=200112 -D_XOPEN_SOURCE=600
+         ;;
+-- 
+2.51.0
+
