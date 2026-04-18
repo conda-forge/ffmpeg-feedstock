@@ -117,7 +117,7 @@ requirements:
     - libvulkan-loader
     - libvulkan-headers
     - shaderc
-    - libplacebo  # [not win]
+    - libplacebo  # [not win and not ppc64le]
     - libjxl
     - libwebp
   run_constrained:
@@ -227,7 +227,7 @@ test:
     - ffmpeg -hide_banner -codecs | {{ grep }} "libvorbis"
     - ffmpeg -hide_banner -codecs | {{ grep }} "libjxl"
     - ffmpeg -hide_banner -codecs | {{ grep }} "libwebp"
-    - ffmpeg -hide_banner -filters | {{ grep }} "libplacebo"  # [not win]
+    - ffmpeg -hide_banner -filters | {{ grep }} "libplacebo"  # [not win and not ppc64le]
     # Test for Vulkan filters - verify they are actually available
     - ffmpeg -hide_banner -filters | {{ grep }} "vulkan"
 
