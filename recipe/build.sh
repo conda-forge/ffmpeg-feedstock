@@ -85,6 +85,7 @@ elif [[ "${target_platform}" == linux-* ]]; then
   extra_args="${extra_args} --disable-gnutls"
   extra_args="${extra_args} --enable-libvpx"
   extra_args="${extra_args} --enable-libass"
+  extra_args="${extra_args} --enable-libplacebo"
   extra_args="${extra_args} --enable-pthreads"
   extra_args="${extra_args} --enable-alsa"
   extra_args="${extra_args} --enable-libpulse"
@@ -101,6 +102,7 @@ elif [[ "${target_platform}" == osx-* ]]; then
   extra_args="${extra_args} --disable-gnutls"
   extra_args="${extra_args} --enable-libvpx"
   extra_args="${extra_args} --enable-libass"
+  extra_args="${extra_args} --enable-libplacebo"
   extra_args="${extra_args} --enable-pthreads"
   # See https://github.com/conda-forge/ffmpeg-feedstock/pull/115
   # why this flag needs to be removed.
