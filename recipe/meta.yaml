@@ -43,7 +43,7 @@ source:
     # https://code.ffmpeg.org/FFmpeg/FFmpeg/commit/a5d4c398b411a00ac09d8fe3b66117222323844c
     - patches/svt140.patch
 
-{% set build = 14 %}
+{% set build = 15 %}
 {% set build = build | int + build_number_increment | int %}
 {% if license_family == 'gpl' %}
     {% set build = build + 100 %}
@@ -117,6 +117,7 @@ requirements:
     - libvulkan-loader
     - libvulkan-headers
     - shaderc
+    - libplacebo  # [not win and not ppc64le]
     - libjxl
     - libwebp
   run_constrained:
@@ -226,6 +227,7 @@ test:
     - ffmpeg -hide_banner -codecs | {{ grep }} "libvorbis"
     - ffmpeg -hide_banner -codecs | {{ grep }} "libjxl"
     - ffmpeg -hide_banner -codecs | {{ grep }} "libwebp"
+    - ffmpeg -hide_banner -filters | {{ grep }} "libplacebo"  # [not win and not ppc64le]
     # Test for Vulkan filters - verify they are actually available
     - ffmpeg -hide_banner -filters | {{ grep }} "vulkan"
 

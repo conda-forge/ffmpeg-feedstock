@@ -70,7 +70,6 @@ if [[ "${target_platform}" == "win-64" ]]; then
   # Add pkgconfig from the prefix to search through it correctly
   export PKG_CONFIG_PATH=${PREFIX}/lib/pkgconfig:${PKG_CONFIG_PATH}
   PKG_CONFIG="${BUILD_PREFIX}/Library/bin/pkg-config"
-
   # I'm not sure, but it seems like
   # their hacky way of silencing things is messing with the AR command
   # Especially as it is called in compat/windows/makedef
@@ -85,6 +84,9 @@ elif [[ "${target_platform}" == linux-* ]]; then
   extra_args="${extra_args} --disable-gnutls"
   extra_args="${extra_args} --enable-libvpx"
   extra_args="${extra_args} --enable-libass"
+  if [[ "${target_platform}" != "linux-ppc64le" ]]; then
+    extra_args="${extra_args} --enable-libplacebo"
+  fi
   extra_args="${extra_args} --enable-pthreads"
   extra_args="${extra_args} --enable-alsa"
   extra_args="${extra_args} --enable-libpulse"
@@ -101,6 +103,7 @@ elif [[ "${target_platform}" == osx-* ]]; then
   extra_args="${extra_args} --disable-gnutls"
   extra_args="${extra_args} --enable-libvpx"
   extra_args="${extra_args} --enable-libass"
+  extra_args="${extra_args} --enable-libplacebo"
   extra_args="${extra_args} --enable-pthreads"
   # See https://github.com/conda-forge/ffmpeg-feedstock/pull/115
   # why this flag needs to be removed.
