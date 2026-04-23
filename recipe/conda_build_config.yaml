@@ -2,6 +2,11 @@ license_family:
   - lgpl
   - gpl
 
+# Bumped from the conda-forge default (11.0) to pick up kCMVideoCodecType_AV1,
+# which is required for ffmpeg's av1_videotoolbox encoder on Apple Silicon.
+MACOSX_SDK_VERSION:        # [osx]
+  - '14.5'                 # [osx]
+
 # See this issue for mapping between CTK version and video codec SDK version
 # https://github.com/conda-forge/ffmpeg-feedstock/issues/288
 cuda_version_for_ffnvcodec:
