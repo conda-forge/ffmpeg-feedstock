@@ -11,27 +11,35 @@ jobs:
       win_64_build_number_increment0ffnvcodec_headersNonelicense_familygpl:
         CONFIG: win_64_build_number_increment0ffnvcodec_headersNonelicense_familygpl
         UPLOAD_PACKAGES: 'True'
+        store_build_artifacts: false
       win_64_build_number_increment0ffnvcodec_headersNonelicense_familylgpl:
         CONFIG: win_64_build_number_increment0ffnvcodec_headersNonelicense_familylgpl
         UPLOAD_PACKAGES: 'True'
+        store_build_artifacts: false
       win_64_build_number_increment400ffnvcodec_headers12.1._license_familygpl:
         CONFIG: win_64_build_number_increment400ffnvcodec_headers12.1._license_familygpl
         UPLOAD_PACKAGES: 'True'
+        store_build_artifacts: false
       win_64_build_number_increment400ffnvcodec_headers12.1._license_familylgpl:
         CONFIG: win_64_build_number_increment400ffnvcodec_headers12.1._license_familylgpl
         UPLOAD_PACKAGES: 'True'
+        store_build_artifacts: false
       win_64_build_number_increment600ffnvcodec_headers12.2._license_familygpl:
         CONFIG: win_64_build_number_increment600ffnvcodec_headers12.2._license_familygpl
         UPLOAD_PACKAGES: 'True'
+        store_build_artifacts: false
       win_64_build_number_increment600ffnvcodec_headers12.2._license_familylgpl:
         CONFIG: win_64_build_number_increment600ffnvcodec_headers12.2._license_familylgpl
         UPLOAD_PACKAGES: 'True'
+        store_build_artifacts: false
       win_64_build_number_increment800ffnvcodec_headers13.0._license_familygpl:
         CONFIG: win_64_build_number_increment800ffnvcodec_headers13.0._license_familygpl
         UPLOAD_PACKAGES: 'True'
+        store_build_artifacts: false
       win_64_build_number_increment800ffnvcodec_headers13.0._license_familylgpl:
         CONFIG: win_64_build_number_increment800ffnvcodec_headers13.0._license_familylgpl
         UPLOAD_PACKAGES: 'True'
+        store_build_artifacts: false
   timeoutInMinutes: 360
   variables:
     CONDA_BLD_PATH: D:\\bld\\
