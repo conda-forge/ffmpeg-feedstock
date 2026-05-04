@@ -62,6 +62,8 @@ pulseaudio_client:
 - '17.0'
 sdl2:
 - '2'
+shaderc:
+- '2026.2'
 svt_av1:
 - 4.0.1
 target_platform:
