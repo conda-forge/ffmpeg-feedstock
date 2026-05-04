@@ -1,4 +1,4 @@
-{% set version = "8.1.0" %} # semver: (x.y.z)
+{% set version = "8.1.1" %} # semver: (x.y.z)
 {% set x,y,z = version.split('.') %}
 {% set version_ffmpeg_style = x ~ '.' ~ y if z == "0" else version %}
 {% set build_number_increment = build_number_increment | default(0) %}
@@ -10,7 +10,7 @@ package:
 
 source:
   url: https://ffmpeg.org/releases/ffmpeg-{{ version_ffmpeg_style }}.tar.gz
-  sha256: b13510e7a6a4ca28fa04307f2be54ef5a31e168eb2bbe055a7f4e4d2cadd51b1
+  sha256: 1b856f26a07082b6879f3e5300d81e8c7ce3b410ade5898b14382d90c2904634
   patches:
     ### conda-forge patches below
     - patches/0001-Generate-pkgconfig-for-windows.patch  # [win]
@@ -35,7 +35,7 @@ source:
     # hmaarrfk -- not sure why i need this one. need to report upstream
     - patches/0006-Use-forward-lahs-on-windows.patch
 
-{% set build = 1 %}
+{% set build = 0 %}
 {% set build = build | int + build_number_increment | int %}
 {% if license_family == 'gpl' %}
     {% set build = build + 100 %}
