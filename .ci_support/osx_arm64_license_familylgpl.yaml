@@ -46,6 +46,8 @@ liblzma_devel:
 - '5'
 libopenvino_dev:
 - 2026.0.0
+libplacebo:
+- '7.351'
 librsvg:
 - '2'
 libwebp:
@@ -62,6 +64,8 @@ openssl:
 - '3.5'
 sdl2:
 - '2'
+shaderc:
+- '2026.2'
 svt_av1:
 - 4.0.1
 target_platform:
