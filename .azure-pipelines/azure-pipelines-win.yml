@@ -11,39 +11,53 @@ jobs:
       win_64_build_number_increment0ffnvcodec_headersNonelicense_familygpl:
         CONFIG: win_64_build_number_increment0ffnvcodec_headersNonelicense_familygpl
         UPLOAD_PACKAGES: 'True'
+        build_workspace_dir: D:\\bld\\
         store_build_artifacts: false
+        tools_install_dir: D:\Miniforge
       win_64_build_number_increment0ffnvcodec_headersNonelicense_familylgpl:
         CONFIG: win_64_build_number_increment0ffnvcodec_headersNonelicense_familylgpl
         UPLOAD_PACKAGES: 'True'
+        build_workspace_dir: D:\\bld\\
         store_build_artifacts: false
+        tools_install_dir: D:\Miniforge
       win_64_build_number_increment400ffnvcodec_headers12.1._license_familygpl:
         CONFIG: win_64_build_number_increment400ffnvcodec_headers12.1._license_familygpl
         UPLOAD_PACKAGES: 'True'
+        build_workspace_dir: D:\\bld\\
         store_build_artifacts: false
+        tools_install_dir: D:\Miniforge
       win_64_build_number_increment400ffnvcodec_headers12.1._license_familylgpl:
         CONFIG: win_64_build_number_increment400ffnvcodec_headers12.1._license_familylgpl
         UPLOAD_PACKAGES: 'True'
+        build_workspace_dir: D:\\bld\\
         store_build_artifacts: false
+        tools_install_dir: D:\Miniforge
       win_64_build_number_increment600ffnvcodec_headers12.2._license_familygpl:
         CONFIG: win_64_build_number_increment600ffnvcodec_headers12.2._license_familygpl
         UPLOAD_PACKAGES: 'True'
+        build_workspace_dir: D:\\bld\\
         store_build_artifacts: false
+        tools_install_dir: D:\Miniforge
       win_64_build_number_increment600ffnvcodec_headers12.2._license_familylgpl:
         CONFIG: win_64_build_number_increment600ffnvcodec_headers12.2._license_familylgpl
         UPLOAD_PACKAGES: 'True'
+        build_workspace_dir: D:\\bld\\
         store_build_artifacts: false
+        tools_install_dir: D:\Miniforge
       win_64_build_number_increment800ffnvcodec_headers13.0._license_familygpl:
         CONFIG: win_64_build_number_increment800ffnvcodec_headers13.0._license_familygpl
         UPLOAD_PACKAGES: 'True'
+        build_workspace_dir: D:\\bld\\
         store_build_artifacts: false
+        tools_install_dir: D:\Miniforge
       win_64_build_number_increment800ffnvcodec_headers13.0._license_familylgpl:
         CONFIG: win_64_build_number_increment800ffnvcodec_headers13.0._license_familylgpl
         UPLOAD_PACKAGES: 'True'
+        build_workspace_dir: D:\\bld\\
         store_build_artifacts: false
+        tools_install_dir: D:\Miniforge
   timeoutInMinutes: 360
   variables:
-    CONDA_BLD_PATH: D:\\bld\\
-    MINIFORGE_HOME: D:\Miniforge
     UPLOAD_TEMP: D:\\tmp
 
   steps:
@@ -52,8 +66,8 @@ jobs:
         call ".scripts\run_win_build.bat"
       displayName: Run Windows build
       env:
-        MINIFORGE_HOME: $(MINIFORGE_HOME)
-        CONDA_BLD_PATH: $(CONDA_BLD_PATH)
+        MINIFORGE_HOME: $(tools_install_dir)
+        CONDA_BLD_PATH: $(build_workspace_dir)
         PYTHONUNBUFFERED: 1
         CONFIG: $(CONFIG)
         CI: azure
