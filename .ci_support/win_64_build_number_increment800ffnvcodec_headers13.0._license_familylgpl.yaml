@@ -1,5 +1,5 @@
 aom:
-- '3.9'
+- '3.14'
 build_number_increment:
 - '800'
 bzip2:
