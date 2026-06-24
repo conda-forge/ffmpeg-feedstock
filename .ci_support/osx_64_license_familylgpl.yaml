@@ -45,7 +45,7 @@ libiconv:
 liblzma_devel:
 - '5'
 libopenvino_dev:
-- 2026.2.0
+- 2026.2.1
 libplacebo:
 - '7.360'
 librsvg:

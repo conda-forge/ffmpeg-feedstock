@@ -35,7 +35,7 @@ source:
     # hmaarrfk -- not sure why i need this one. need to report upstream
     - patches/0006-Use-forward-lahs-on-windows.patch
 
-{% set build = 0 %}
+{% set build = 1 %}
 {% set build = build | int + build_number_increment | int %}
 {% if license_family == 'gpl' %}
     {% set build = build + 100 %}
