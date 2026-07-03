@@ -32,6 +32,8 @@ glib:
 - '2'
 libiconv:
 - '1'
+libjxl:
+- '0.12'
 liblzma_devel:
 - '5'
 librsvg:
