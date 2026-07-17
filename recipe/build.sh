@@ -1,6 +1,21 @@
 #!/bin/bash
 set -ex
 
+# 2026/07 hmaarrfk
+# conda-forge-ci-setup 4.25.0 started exporting the uppercase environment
+# variables HOST_PLATFORM / TARGET_PLATFORM / BUILD_PLATFORM on Windows.
+# Windows cmd.exe treats environment variable names case-insensitively, so
+# the uppercase TARGET_PLATFORM collides with conda-build's lowercase
+# target_platform and the stored name flips to uppercase. The msys2 bash
+# used for the Windows build is case-sensitive, so the lowercase
+# target_platform this script relies on ends up empty, which silently
+# skipped the entire win-64 branch below and broke the build.
+# Restore the lowercase variables from their uppercase counterparts.
+# https://github.com/conda-forge/ffmpeg-feedstock/pull/385
+if [[ -z "${target_platform:-}" && -n "${TARGET_PLATFORM:-}" ]]; then
+  target_platform="${TARGET_PLATFORM}"
+fi
+
 # unset the SUBDIR variable since it changes the behavior of make here
 unset SUBDIR
 
