@@ -55,6 +55,18 @@ if [[ "${target_platform}" == "win-64" ]]; then
   # Thus we avoid specifying ld for the unix platforms
   extra_args="${extra_args} --ld=${LD}"
 
+  # ffmpeg 9.0's configure fails any link test whose output contains an
+  # lld-link "ignoring unknown argument" warning. Our LDFLAGS hold GNU-style
+  # clang driver flags that lld-link has always warned about and ignored, so
+  # keep only the library search paths, translated to lld-link syntax.
+  new_ldflags=""
+  for flag in ${LDFLAGS}; do
+    case "${flag}" in
+      -L*) new_ldflags="${new_ldflags} -libpath:${flag#-L}";;
+    esac
+  done
+  export LDFLAGS="${new_ldflags}"
+
   extra_args="${extra_args} --target-os=win64"
   extra_args="${extra_args} --enable-cross-compile"
   extra_args="${extra_args} --toolchain=msvc"
