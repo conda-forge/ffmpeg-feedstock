@@ -73,9 +73,6 @@ requirements:
     - m2-sed  # [win]
     # makedef uses the printf command which is provided by coreutils
     # - m2-coreutils  # [win]
-    # ffmpeg 9.0 dropped libshaderc linkage; Vulkan shaders are now compiled
-    # at build time with the glslc tool from shaderc
-    # https://github.com/FFmpeg/FFmpeg/blob/n9.0/configure#L7848-L7856
     - shaderc
   host:
     - openssl
@@ -119,7 +116,6 @@ requirements:
     - libvorbis
     - libvulkan-loader
     - libvulkan-headers
-    # optional, enables the swscale SPIR-V backend
     - spirv-headers
     - libplacebo  # [not win and not ppc64le]
     - libjxl
