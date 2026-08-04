@@ -184,7 +184,6 @@ fi
         --enable-libwebp \
         --enable-ffplay \
         --enable-vulkan \
-        --enable-libshaderc \
         --pkg-config=${PKG_CONFIG} \
         || { if [[ ${CI} != "" ]]; then cat ffbuild/config.log; fi; exit 1; }
 

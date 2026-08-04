@@ -73,6 +73,10 @@ requirements:
     - m2-sed  # [win]
     # makedef uses the printf command which is provided by coreutils
     # - m2-coreutils  # [win]
+    # ffmpeg 9.0 dropped libshaderc linkage; Vulkan shaders are now compiled
+    # at build time with the glslc tool from shaderc
+    # https://github.com/FFmpeg/FFmpeg/blob/n9.0/configure#L7848-L7856
+    - shaderc
   host:
     - openssl
     - bzip2
@@ -115,7 +119,8 @@ requirements:
     - libvorbis
     - libvulkan-loader
     - libvulkan-headers
-    - shaderc
+    # optional, enables the swscale SPIR-V backend
+    - spirv-headers
     - libplacebo  # [not win and not ppc64le]
     - libjxl
     - libwebp
@@ -165,13 +170,13 @@ test:
     # One can find the SO versions by reading the release notes
     # https://ffmpeg.org/download.html#releases
     {% set ffmpeg_libs = [
-        "avutil-60",
-        "avcodec-62",
-        "avformat-62",
-        "avdevice-62",
-        "swresample-6",
-        "avfilter-11",
-        "swscale-9",
+        "avutil-61",
+        "avcodec-63",
+        "avformat-63",
+        "avdevice-63",
+        "swresample-7",
+        "avfilter-12",
+        "swscale-10",
     ] %}
     {% for each_ffmpeg_lib in ffmpeg_libs %}
     - echo "Checking for existance of {{ each_ffmpeg_lib }}.dll"             # [win]
