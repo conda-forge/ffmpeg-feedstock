@@ -35,7 +35,14 @@ source:
     # hmaarrfk -- not sure why i need this one. need to report upstream
     - patches/0006-Use-forward-lahs-on-windows.patch
 
-{% set build = 4 %}
+    # nvenc aborts the process instead of failing cleanly when
+    # nvEncCreateBitstreamBuffer() fails during encoder init: the input buffer
+    # is destroyed on the error path but the handle is left dangling, and
+    # ff_nvenc_encode_close() then destroys it a second time.
+    # https://code.ffmpeg.org/FFmpeg/FFmpeg/issues/24019
+    - patches/0007-avcodec-nvenc-fix-double-free-of-the-input-buffer.patch
+
+{% set build = 5 %}
 {% set build = build | int + build_number_increment | int %}
 {% if license_family == 'gpl' %}
     {% set build = build + 100 %}

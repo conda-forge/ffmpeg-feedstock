@@ -1,0 +1,68 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Mark Harfouche <mark.harfouche@gmail.com>
+Date: Wed, 5 Aug 2026 11:17:40 -0400
+Subject: [PATCH] avcodec/nvenc: fix double free of the input buffer on the
+ alloc_surface error path
+
+nvenc_alloc_surface() destroys the input buffer it just created when
+nvEncCreateBitstreamBuffer() fails, but leaves ctx->surfaces[idx].input_surface
+pointing at the destroyed handle. All three nvenc encoders set
+FF_CODEC_CAP_INIT_CLEANUP, so a failed ff_nvenc_encode_init() is followed by
+ff_nvenc_encode_close(), which loops over every surface and calls
+nvEncDestroyInputBuffer() on that same handle a second time. The driver frees a
+host-heap object there, so glibc aborts the process instead of ffmpeg exiting
+with an error.
+
+Also skip the NULL handles left in ctx->surfaces[] for surfaces past the failing
+one. ctx->surfaces is av_calloc'd, so those entries are NULL and were being
+handed straight to the driver.
+
+Reproducer, needs only H.264 NVENC:
+
+    ffmpeg -f lavfi -i nullsrc=s=4096x4096 -frames:v 1 \
+           -vcodec h264_nvenc -surfaces 64 -f null -
+    [h264_nvenc] CreateBitstreamBuffer failed: out of memory (10):
+    free(): invalid pointer
+    -> SIGABRT (rc 134)
+
+4096x4096 is H.264 NVENC's largest picture and 64 is MAX_REGISTERED_FRAMES, so
+the request exceeds the driver's per-session bitstream-buffer budget and
+nvEncCreateBitstreamBuffer() legitimately fails. With this applied the same
+command reports the error and exits with AVERROR(ENOMEM).
+
+Upstream report: https://code.ffmpeg.org/FFmpeg/FFmpeg/issues/24019
+---
+ libavcodec/nvenc.c | 10 +++++++---
+ 1 file changed, 7 insertions(+), 3 deletions(-)
+
+diff --git a/libavcodec/nvenc.c b/libavcodec/nvenc.c
+index 5eab67a1fe..775e064ca1 100644
+--- a/libavcodec/nvenc.c
++++ b/libavcodec/nvenc.c
+@@ -2078,8 +2078,10 @@ static av_cold int nvenc_alloc_surface(AVCodecContext *avctx, int idx)
+     nv_status = p_nvenc->nvEncCreateBitstreamBuffer(ctx->nvencoder, &allocOut);
+     if (nv_status != NV_ENC_SUCCESS) {
+         int err = nvenc_print_error(avctx, nv_status, "CreateBitstreamBuffer failed");
+-        if (avctx->pix_fmt != AV_PIX_FMT_CUDA && avctx->pix_fmt != AV_PIX_FMT_D3D11)
++        if (avctx->pix_fmt != AV_PIX_FMT_CUDA && avctx->pix_fmt != AV_PIX_FMT_D3D11) {
+             p_nvenc->nvEncDestroyInputBuffer(ctx->nvencoder, ctx->surfaces[idx].input_surface);
++            ctx->surfaces[idx].input_surface = NULL;
++        }
+         av_frame_free(&ctx->surfaces[idx].in_ref);
+         return err;
+     }
+@@ -2213,10 +2215,12 @@ av_cold int ff_nvenc_encode_close(AVCodecContext *avctx)
+ 
+     if (ctx->surfaces) {
+         for (i = 0; i < ctx->nb_surfaces; ++i) {
+-            if (avctx->pix_fmt != AV_PIX_FMT_CUDA && avctx->pix_fmt != AV_PIX_FMT_D3D11)
++            if (avctx->pix_fmt != AV_PIX_FMT_CUDA && avctx->pix_fmt != AV_PIX_FMT_D3D11 &&
++                ctx->surfaces[i].input_surface)
+                 p_nvenc->nvEncDestroyInputBuffer(ctx->nvencoder, ctx->surfaces[i].input_surface);
+             av_frame_free(&ctx->surfaces[i].in_ref);
+-            p_nvenc->nvEncDestroyBitstreamBuffer(ctx->nvencoder, ctx->surfaces[i].output_surface);
++            if (ctx->surfaces[i].output_surface)
++                p_nvenc->nvEncDestroyBitstreamBuffer(ctx->nvencoder, ctx->surfaces[i].output_surface);
+         }
+     }
+     av_freep(&ctx->surfaces);
