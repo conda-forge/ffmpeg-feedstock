@@ -1,6 +1,6 @@
 From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
 From: Mark Harfouche <mark.harfouche@gmail.com>
-Date: Wed, 5 Aug 2026 11:17:40 -0400
+Date: Wed, 5 Aug 2026 11:18:28 -0400
 Subject: [PATCH] avcodec/nvenc: fix double free of the input buffer on the
  alloc_surface error path
 
@@ -36,10 +36,10 @@ Upstream report: https://code.ffmpeg.org/FFmpeg/FFmpeg/issues/24019
  1 file changed, 7 insertions(+), 3 deletions(-)
 
 diff --git a/libavcodec/nvenc.c b/libavcodec/nvenc.c
-index 5eab67a1fe..775e064ca1 100644
+index 9203fb65c0..e29dcd2b0b 100644
 --- a/libavcodec/nvenc.c
 +++ b/libavcodec/nvenc.c
-@@ -2078,8 +2078,10 @@ static av_cold int nvenc_alloc_surface(AVCodecContext *avctx, int idx)
+@@ -1915,8 +1915,10 @@ static av_cold int nvenc_alloc_surface(AVCodecContext *avctx, int idx)
      nv_status = p_nvenc->nvEncCreateBitstreamBuffer(ctx->nvencoder, &allocOut);
      if (nv_status != NV_ENC_SUCCESS) {
          int err = nvenc_print_error(avctx, nv_status, "CreateBitstreamBuffer failed");
@@ -51,7 +51,7 @@ index 5eab67a1fe..775e064ca1 100644
          av_frame_free(&ctx->surfaces[idx].in_ref);
          return err;
      }
-@@ -2213,10 +2215,12 @@ av_cold int ff_nvenc_encode_close(AVCodecContext *avctx)
+@@ -2050,10 +2052,12 @@ av_cold int ff_nvenc_encode_close(AVCodecContext *avctx)
  
      if (ctx->surfaces) {
          for (i = 0; i < ctx->nb_surfaces; ++i) {
