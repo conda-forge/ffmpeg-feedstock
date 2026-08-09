@@ -1,4 +1,4 @@
-{% set version = "8.1.2" %} # semver: (x.y.z)
+{% set version = "9.0.0" %} # semver: (x.y.z)
 {% set x,y,z = version.split('.') %}
 {% set version_ffmpeg_style = x ~ '.' ~ y if z == "0" else version %}
 {% set build_number_increment = build_number_increment | default(0) %}
@@ -10,7 +10,7 @@ package:
 
 source:
   url: https://ffmpeg.org/releases/ffmpeg-{{ version_ffmpeg_style }}.tar.gz
-  sha256: 32faba5ef67340d54724941eae1425580791195312a4fd13bf6f820a2818bf22
+  sha256: 1b12b07e0a6c39fc0025104ed1e9b6096fd1a11628daad8ac98a68d8cfd4ebed
   patches:
     ### conda-forge patches below
     - patches/0001-Generate-pkgconfig-for-windows.patch  # [win]
@@ -42,7 +42,7 @@ source:
     # https://code.ffmpeg.org/FFmpeg/FFmpeg/issues/24019
     - patches/0007-avcodec-nvenc-fix-double-free-of-the-input-buffer.patch
 
-{% set build = 6 %}
+{% set build = 0 %}
 {% set build = build | int + build_number_increment | int %}
 {% if license_family == 'gpl' %}
     {% set build = build + 100 %}
@@ -73,6 +73,7 @@ requirements:
     - m2-sed  # [win]
     # makedef uses the printf command which is provided by coreutils
     # - m2-coreutils  # [win]
+    - shaderc
   host:
     - openssl
     - bzip2
@@ -115,7 +116,7 @@ requirements:
     - libvorbis
     - libvulkan-loader
     - libvulkan-headers
-    - shaderc
+    - spirv-headers
     - libplacebo  # [not win and not ppc64le]
     - libjxl
     - libwebp
@@ -165,13 +166,13 @@ test:
     # One can find the SO versions by reading the release notes
     # https://ffmpeg.org/download.html#releases
     {% set ffmpeg_libs = [
-        "avutil-60",
-        "avcodec-62",
-        "avformat-62",
-        "avdevice-62",
-        "swresample-6",
-        "avfilter-11",
-        "swscale-9",
+        "avutil-61",
+        "avcodec-63",
+        "avformat-63",
+        "avdevice-63",
+        "swresample-7",
+        "avfilter-12",
+        "swscale-10",
     ] %}
     {% for each_ffmpeg_lib in ffmpeg_libs %}
     - echo "Checking for existance of {{ each_ffmpeg_lib }}.dll"             # [win]
