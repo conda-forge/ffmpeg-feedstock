@@ -68,62 +68,6 @@ Current build status
                   <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/ffmpeg-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_64_license_familylgpl" alt="variant">
                 </a>
               </td>
-            </tr><tr>
-              <td>win_64_build_number_increment0ffnvcodec_headersNonelicense_familygpl</td>
-              <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=5418&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/ffmpeg-feedstock?branchName=main&jobName=win&configuration=win%20win_64_build_number_increment0ffnvcodec_headersNonelicense_familygpl" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>win_64_build_number_increment0ffnvcodec_headersNonelicense_familylgpl</td>
-              <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=5418&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/ffmpeg-feedstock?branchName=main&jobName=win&configuration=win%20win_64_build_number_increment0ffnvcodec_headersNonelicense_familylgpl" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>win_64_build_number_increment400ffnvcodec_headers12.1._license_familygpl</td>
-              <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=5418&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/ffmpeg-feedstock?branchName=main&jobName=win&configuration=win%20win_64_build_number_increment400ffnvcodec_headers12.1._license_familygpl" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>win_64_build_number_increment400ffnvcodec_headers12.1._license_familylgpl</td>
-              <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=5418&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/ffmpeg-feedstock?branchName=main&jobName=win&configuration=win%20win_64_build_number_increment400ffnvcodec_headers12.1._license_familylgpl" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>win_64_build_number_increment600ffnvcodec_headers12.2._license_familygpl</td>
-              <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=5418&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/ffmpeg-feedstock?branchName=main&jobName=win&configuration=win%20win_64_build_number_increment600ffnvcodec_headers12.2._license_familygpl" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>win_64_build_number_increment600ffnvcodec_headers12.2._license_familylgpl</td>
-              <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=5418&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/ffmpeg-feedstock?branchName=main&jobName=win&configuration=win%20win_64_build_number_increment600ffnvcodec_headers12.2._license_familylgpl" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>win_64_build_number_increment800ffnvcodec_headers13.0._license_familygpl</td>
-              <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=5418&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/ffmpeg-feedstock?branchName=main&jobName=win&configuration=win%20win_64_build_number_increment800ffnvcodec_headers13.0._license_familygpl" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>win_64_build_number_increment800ffnvcodec_headers13.0._license_familylgpl</td>
-              <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=5418&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/ffmpeg-feedstock?branchName=main&jobName=win&configuration=win%20win_64_build_number_increment800ffnvcodec_headers13.0._license_familylgpl" alt="variant">
-                </a>
-              </td>
             </tr>
           </tbody>
         </table>
@@ -149,31 +93,73 @@ conda config --add channels conda-forge
 conda config --set channel_priority strict
 ```
 
-Once the `conda-forge` channel has been enabled, `ffmpeg` can be installed with `conda`:
+How to use
+----------
+
+<details>
+<summary>With conda</summary>
 
 ```
 conda install ffmpeg
 ```
 
-or with `mamba`:
+</details>
+
+<details>
+<summary>With mamba</summary>
 
 ```
 mamba install ffmpeg
 ```
 
-It is possible to list all of the versions of `ffmpeg` available on your platform with `conda`:
+</details>
+
+<details>
+<summary>With pixi</summary>
+
+```
+# for adding to your local project
+pixi add ffmpeg
+# for installing globally
+pixi global install ffmpeg
+```
+
+</details>
+
+Search package versions
+-----------------------
+
+It is possible to list all of the versions of `ffmpeg` available on your platform:
+
+<details>
+<summary>With conda</summary>
 
 ```
 conda search ffmpeg --channel conda-forge
 ```
 
-or with `mamba`:
+</details>
+
+<details>
+<summary>With mamba</summary>
 
 ```
 mamba search ffmpeg --channel conda-forge
 ```
 
-Alternatively, `mamba repoquery` may provide more information:
+</details>
+
+<details>
+<summary>With pixi</summary>
+
+```
+pixi search ffmpeg --channel conda-forge
+```
+
+</details>
+
+<details>
+<summary>With mamba repoquery, which may provide more information</summary>
 
 ```
 # Search all versions available on your platform:
@@ -185,6 +171,8 @@ mamba repoquery whoneeds ffmpeg --channel conda-forge
 # List dependencies of `ffmpeg`:
 mamba repoquery depends ffmpeg --channel conda-forge
 ```
+
+</details>
 
 
 About conda-forge
