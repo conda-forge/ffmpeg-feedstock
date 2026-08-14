@@ -1,4 +1,4 @@
-{% set version = "9.0.0" %} # semver: (x.y.z)
+{% set version = "9.0.1" %} # semver: (x.y.z)
 {% set x,y,z = version.split('.') %}
 {% set version_ffmpeg_style = x ~ '.' ~ y if z == "0" else version %}
 {% set build_number_increment = build_number_increment | default(0) %}
@@ -10,7 +10,7 @@ package:
 
 source:
   url: https://ffmpeg.org/releases/ffmpeg-{{ version_ffmpeg_style }}.tar.gz
-  sha256: 1b12b07e0a6c39fc0025104ed1e9b6096fd1a11628daad8ac98a68d8cfd4ebed
+  sha256: 657dbf258cce6c0681714b6e40b8ca69e988c67ecfc2f7aab47574e6ebaceb38
   patches:
     ### conda-forge patches below
     - patches/0001-Generate-pkgconfig-for-windows.patch  # [win]

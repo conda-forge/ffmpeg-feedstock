@@ -11,7 +11,7 @@ bzip2:
 c_compiler:
 - clang
 c_compiler_version:
-- '19'
+- '21'
 c_stdlib:
 - macosx_deployment_target
 c_stdlib_version:
@@ -23,13 +23,13 @@ channel_targets:
 cxx_compiler:
 - clangxx
 cxx_compiler_version:
-- '19'
+- '21'
 dav1d:
 - 1.2.1
 expat:
 - '2'
 ffmpeg:
-- '8'
+- '9'
 ffnvcodec_headers:
 - None
 fontconfig:
