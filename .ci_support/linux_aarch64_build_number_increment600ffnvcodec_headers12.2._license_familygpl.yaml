@@ -9,7 +9,7 @@ bzip2:
 c_compiler:
 - gcc
 c_compiler_version:
-- '14'
+- '15'
 c_stdlib:
 - sysroot
 c_stdlib_version:
@@ -23,7 +23,7 @@ cuda_version_for_ffnvcodec:
 cxx_compiler:
 - gxx
 cxx_compiler_version:
-- '14'
+- '15'
 dav1d:
 - 1.2.1
 docker_image:
@@ -31,7 +31,7 @@ docker_image:
 expat:
 - '2'
 ffmpeg:
-- '8'
+- '9'
 ffnvcodec_headers:
 - 12.2.*
 fontconfig:

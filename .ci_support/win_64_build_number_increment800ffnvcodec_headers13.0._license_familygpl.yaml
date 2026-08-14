@@ -21,7 +21,7 @@ dav1d:
 expat:
 - '2'
 ffmpeg:
-- '8'
+- '9'
 ffnvcodec_headers:
 - 13.0.*
 fontconfig:
