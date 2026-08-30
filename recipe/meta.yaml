@@ -42,7 +42,7 @@ source:
     # https://code.ffmpeg.org/FFmpeg/FFmpeg/issues/24019
     - patches/0007-avcodec-nvenc-fix-double-free-of-the-input-buffer.patch
 
-{% set build = 7 %}
+{% set build = 8 %}
 {% set build = build | int + build_number_increment | int %}
 {% if license_family == 'gpl' %}
     {% set build = build + 100 %}
@@ -107,7 +107,7 @@ requirements:
     # libopenvino is no longer available for osx-64.
     # https://github.com/openvinotoolkit/openvino/releases/tag/2026.1.0
     - libopenvino-dev    # [not win and not ppc64le and not (osx and x86_64)]
-    - dav1d
+    - dav1d-devel
     - liblzma-devel
     - sdl2
     - libxcb             # [linux]
