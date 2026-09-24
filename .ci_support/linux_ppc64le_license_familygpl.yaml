@@ -22,8 +22,6 @@ cxx_compiler:
 - gxx
 cxx_compiler_version:
 - '15'
-dav1d_devel:
-- 1.5.4
 docker_image:
 - quay.io/condaforge/linux-anvil-x86_64:alma10
 expat:
