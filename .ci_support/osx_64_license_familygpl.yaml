@@ -24,8 +24,6 @@ cxx_compiler:
 - clangxx
 cxx_compiler_version:
 - '21'
-dav1d_devel:
-- 1.5.4
 expat:
 - '2'
 ffmpeg:
