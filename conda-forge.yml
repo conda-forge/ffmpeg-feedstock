@@ -1,6 +1,6 @@
 bot:
   abi_migration_branches:
-    - v8.x
+  - v8.x
 build_platform:
   linux_ppc64le: linux_64
 conda_build:
