@@ -53,7 +53,7 @@ libplacebo:
 librsvg:
 - '2'
 libvpx:
-- '1.15'
+- '1.17'
 libwebp:
 - '1'
 libxcb:

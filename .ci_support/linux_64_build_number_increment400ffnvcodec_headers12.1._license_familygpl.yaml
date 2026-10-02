@@ -55,7 +55,7 @@ librsvg:
 libvpl:
 - '2.16'
 libvpx:
-- '1.15'
+- '1.17'
 libwebp:
 - '1'
 libxcb:
