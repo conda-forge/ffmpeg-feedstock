@@ -50,6 +50,8 @@ libplacebo:
 - '7.360'
 librsvg:
 - '2'
+libvpx:
+- '1.15'
 libwebp:
 - '1'
 libxml2_devel:
