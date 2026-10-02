@@ -46,6 +46,8 @@ liblzma_devel:
 - '5'
 librsvg:
 - '2'
+libvpx:
+- '1.17'
 libwebp:
 - '1'
 libxcb:
