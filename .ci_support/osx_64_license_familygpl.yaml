@@ -65,7 +65,7 @@ openssl:
 sdl2:
 - '2'
 shaderc:
-- '2026.3'
+- '2026.4'
 svt_av1:
 - 4.2.0
 target_platform:
