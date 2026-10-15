@@ -310,6 +310,102 @@ jobs:
             resize_partitions: False
             runs_on: ['windows-2022']
             tools_install_dir: D:\Miniforge
+          - CONFIG: win_arm64_build_number_increment0ffnvcodec_headersNonelicense_familygpl
+            STORE_BUILD_ARTIFACTS: False
+            UPLOAD_PACKAGES: True
+            build_platform: win-arm64
+            build_workspace_dir: C:\\bld\\
+            docker_run_args: 
+            free_disk_space: skip
+            os: windows
+            pagefile_size: 0
+            resize_partitions: False
+            runs_on: ['windows-11-arm']
+            tools_install_dir: C:\Miniforge
+          - CONFIG: win_arm64_build_number_increment0ffnvcodec_headersNonelicense_familylgpl
+            STORE_BUILD_ARTIFACTS: False
+            UPLOAD_PACKAGES: True
+            build_platform: win-arm64
+            build_workspace_dir: C:\\bld\\
+            docker_run_args: 
+            free_disk_space: skip
+            os: windows
+            pagefile_size: 0
+            resize_partitions: False
+            runs_on: ['windows-11-arm']
+            tools_install_dir: C:\Miniforge
+          - CONFIG: win_arm64_build_number_increment400ffnvcodec_headers12.1._license_familygpl
+            STORE_BUILD_ARTIFACTS: False
+            UPLOAD_PACKAGES: True
+            build_platform: win-arm64
+            build_workspace_dir: C:\\bld\\
+            docker_run_args: 
+            free_disk_space: skip
+            os: windows
+            pagefile_size: 0
+            resize_partitions: False
+            runs_on: ['windows-11-arm']
+            tools_install_dir: C:\Miniforge
+          - CONFIG: win_arm64_build_number_increment400ffnvcodec_headers12.1._license_familylgpl
+            STORE_BUILD_ARTIFACTS: False
+            UPLOAD_PACKAGES: True
+            build_platform: win-arm64
+            build_workspace_dir: C:\\bld\\
+            docker_run_args: 
+            free_disk_space: skip
+            os: windows
+            pagefile_size: 0
+            resize_partitions: False
+            runs_on: ['windows-11-arm']
+            tools_install_dir: C:\Miniforge
+          - CONFIG: win_arm64_build_number_increment600ffnvcodec_headers12.2._license_familygpl
+            STORE_BUILD_ARTIFACTS: False
+            UPLOAD_PACKAGES: True
+            build_platform: win-arm64
+            build_workspace_dir: C:\\bld\\
+            docker_run_args: 
+            free_disk_space: skip
+            os: windows
+            pagefile_size: 0
+            resize_partitions: False
+            runs_on: ['windows-11-arm']
+            tools_install_dir: C:\Miniforge
+          - CONFIG: win_arm64_build_number_increment600ffnvcodec_headers12.2._license_familylgpl
+            STORE_BUILD_ARTIFACTS: False
+            UPLOAD_PACKAGES: True
+            build_platform: win-arm64
+            build_workspace_dir: C:\\bld\\
+            docker_run_args: 
+            free_disk_space: skip
+            os: windows
+            pagefile_size: 0
+            resize_partitions: False
+            runs_on: ['windows-11-arm']
+            tools_install_dir: C:\Miniforge
+          - CONFIG: win_arm64_build_number_increment800ffnvcodec_headers13.0._license_familygpl
+            STORE_BUILD_ARTIFACTS: False
+            UPLOAD_PACKAGES: True
+            build_platform: win-arm64
+            build_workspace_dir: C:\\bld\\
+            docker_run_args: 
+            free_disk_space: skip
+            os: windows
+            pagefile_size: 0
+            resize_partitions: False
+            runs_on: ['windows-11-arm']
+            tools_install_dir: C:\Miniforge
+          - CONFIG: win_arm64_build_number_increment800ffnvcodec_headers13.0._license_familylgpl
+            STORE_BUILD_ARTIFACTS: False
+            UPLOAD_PACKAGES: True
+            build_platform: win-arm64
+            build_workspace_dir: C:\\bld\\
+            docker_run_args: 
+            free_disk_space: skip
+            os: windows
+            pagefile_size: 0
+            resize_partitions: False
+            runs_on: ['windows-11-arm']
+            tools_install_dir: C:\Miniforge
     steps:
 
     - name: Checkout code
