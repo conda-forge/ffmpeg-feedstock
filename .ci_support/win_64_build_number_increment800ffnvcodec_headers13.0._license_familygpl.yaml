@@ -34,6 +34,8 @@ libjxl:
 - '0.12'
 liblzma_devel:
 - '5'
+libopenvino:
+- 2026.4.0
 librsvg:
 - '2'
 libwebp:

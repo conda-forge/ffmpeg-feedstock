@@ -42,7 +42,10 @@ source:
     # https://code.ffmpeg.org/FFmpeg/FFmpeg/issues/24019
     - patches/0007-avcodec-nvenc-fix-double-free-of-the-input-buffer.patch
 
-{% set build = 4 %}
+    # https://github.com/conda-forge/ffmpeg-feedstock/issues/285
+    - patches/0008-dnn_backend_openvino-optionally-load-libopenvino_c-w.patch
+
+{% set build = 5 %}
 {% set build = build | int + build_number_increment | int %}
 {% if license_family == 'gpl' %}
     {% set build = build + 100 %}
@@ -57,6 +60,22 @@ build:
     - {{ pin_subpackage('ffmpeg', max_pin='x') }}
   ignore_run_exports_from:
     - glib
+  ignore_run_exports:
+    - libopenvino
+    - libopenvino-arm-cpu-plugin
+    - libopenvino-auto-batch-plugin
+    - libopenvino-auto-plugin
+    - libopenvino-gguf-frontend
+    - libopenvino-hetero-plugin
+    - libopenvino-intel-cpu-plugin
+    - libopenvino-intel-gpu-plugin
+    - libopenvino-intel-npu-plugin
+    - libopenvino-ir-frontend
+    - libopenvino-onnx-frontend
+    - libopenvino-paddle-frontend
+    - libopenvino-pytorch-frontend
+    - libopenvino-tensorflow-frontend
+    - libopenvino-tensorflow-lite-frontend
 
 requirements:
   build:
@@ -125,6 +144,7 @@ requirements:
     - libwebp
   run_constrained:
     - __cuda  >={{ cuda_version_for_ffnvcodec }}  # [ffnvcodec_headers != "None"]
+    - {{ pin_compatible('libopenvino', min_pin='x.x.x', max_pin='x.x.x') }}  # [not win and not ppc64le and not (osx and x86_64)]
 
 {% set grep = "grep" %}  # [unix]
 {% set grep = "findstr" %}  # [win]
@@ -148,6 +168,11 @@ test:
     - ffmpeg -hide_banner -codecs | {{ grep }} "vaapi"            # [linux64]
     - ffmpeg -hide_banner -codecs | {{ grep }} "libaom"
     - ffmpeg -hide_banner -codecs | {{ grep }} "libsvtav1"
+    # Check the dnn_processing filter exists, then run it with the OpenVINO backend (not installed in the test env) and check it logs "Cannot load libopenvino_c" instead of failing to start
+    - ffmpeg -hide_banner -filters | {{ grep }} "dnn_processing"  # [not win and not ppc64le and not (osx and x86_64)]
+    - ffmpeg -hide_banner -f lavfi -i nullsrc -frames:v 1 -vf dnn_processing=dnn_backend=openvino:model=missing.xml:input=x:output=y -f null - > openvino_missing.log 2>&1 || true  # [not win and not ppc64le and not (osx and x86_64)]
+    - cat openvino_missing.log  # [not win and not ppc64le and not (osx and x86_64)]
+    - grep 'Cannot load .*libopenvino_c' openvino_missing.log  # [not win and not ppc64le and not (osx and x86_64)]
     # Verify ffplay is available
     - ffplay -version
     # Verify dynamic libraries on all systems
