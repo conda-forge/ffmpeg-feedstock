@@ -45,7 +45,7 @@ libjxl:
 liblzma_devel:
 - '5'
 libopenvino_dev:
-- 2026.4.0
+- 2026.4.1
 libplacebo:
 - '7.360'
 librsvg:
