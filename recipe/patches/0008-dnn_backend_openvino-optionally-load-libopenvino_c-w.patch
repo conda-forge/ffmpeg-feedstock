@@ -1,0 +1,253 @@
+From 0a26d0ff80f5860f92c3740436b21a88c455615a Mon Sep 17 00:00:00 2001
+From: Mark Harfouche <mark.harfouche@gmail.com>
+Date: Fri, 16 Oct 2026 22:00:27 -0400
+Subject: [PATCH] dnn_backend_openvino: optionally load libopenvino_c with
+ dlopen
+
+Add --enable-libopenvino-dlopen. When set, libavfilter is not linked
+against libopenvino_c; the OpenVINO C API is resolved with dlopen/dlsym
+the first time an OpenVINO DNN model is loaded. Builds can then ship the
+OpenVINO backend without making the OpenVINO runtime a hard dependency,
+similar to how the nvenc/cuvid, AMF and Vulkan code paths load their
+runtimes.
+
+The library name defaults to libopenvino_c.so / libopenvino_c.dylib and
+can be pinned to a specific soversion with -DOPENVINO_C_SOVERSION=<n>.
+---
+ configure                              |   6 +
+ libavfilter/dnn/dnn_backend_openvino.c | 181 +++++++++++++++++++++++++
+ 2 files changed, 187 insertions(+)
+
+diff --git a/configure b/configure
+index 374bd5c..b5aa266 100755
+--- a/configure
++++ b/configure
+@@ -262,6 +262,7 @@ External library support:
+   --enable-libopencolorio  enable color management via OpenColorIO [no]
+   --enable-libopenvino     enable OpenVINO as a DNN module backend
+                            for DNN based filters like dnn_processing [no]
++  --enable-libopenvino-dlopen load the OpenVINO C library at runtime instead of linking it [no]
+   --enable-libopus         enable Opus de/encoding via libopus [no]
+   --enable-libplacebo      enable libplacebo library [no]
+   --enable-libpulse        enable Pulseaudio input via libpulse [no]
+@@ -2215,6 +2216,7 @@ FEATURE_LIST="
+     ftrapv
+     gray
+     hardcoded_tables
++    libopenvino_dlopen
+     runtime_cpudetect
+     safe_bitstream_reader
+     shared
+@@ -7414,6 +7416,10 @@ enabled libopenmpt        && require_pkg_config libopenmpt "libopenmpt >= 0.2.65
+ enabled libopenvino       && { { check_pkg_config libopenvino openvino openvino/c/openvino.h ov_core_create && enable openvino2; } ||
+                                 { check_pkg_config libopenvino openvino c_api/ie_c_api.h ie_c_api_version ||
+                                   require libopenvino c_api/ie_c_api.h ie_c_api_version -linference_engine_c_api; } }
++enabled libopenvino_dlopen && { enabled libopenvino && enabled openvino2 ||
++                                    die "ERROR: --enable-libopenvino-dlopen requires --enable-libopenvino with the OpenVINO 2.0 C API"; } &&
++                                { enabled libdl || die "ERROR: --enable-libopenvino-dlopen requires dlopen"; } &&
++                                libopenvino_extralibs="$libdl_extralibs"
+ enabled libopus           && {
+     enabled libopus_decoder && {
+         require_pkg_config libopus opus opus_multistream.h opus_multistream_decoder_create
+diff --git a/libavfilter/dnn/dnn_backend_openvino.c b/libavfilter/dnn/dnn_backend_openvino.c
+index 764e8da..a345a0d 100644
+--- a/libavfilter/dnn/dnn_backend_openvino.c
++++ b/libavfilter/dnn/dnn_backend_openvino.c
+@@ -39,6 +39,182 @@
+ #endif
+ #include "dnn_backend_common.h"
+ 
++#if CONFIG_LIBOPENVINO_DLOPEN
++#include <dlfcn.h>
++#include "libavutil/macros.h"
++#include "libavutil/thread.h"
++
++#ifdef OPENVINO_C_SOVERSION
++#ifdef __APPLE__
++#define OPENVINO_C_LIBNAME "@rpath/libopenvino_c." AV_STRINGIFY(OPENVINO_C_SOVERSION) ".dylib"
++#else
++#define OPENVINO_C_LIBNAME "libopenvino_c.so." AV_STRINGIFY(OPENVINO_C_SOVERSION)
++#endif
++#else
++#ifdef __APPLE__
++#define OPENVINO_C_LIBNAME "@rpath/libopenvino_c.dylib"
++#else
++#define OPENVINO_C_LIBNAME "libopenvino_c.so"
++#endif
++#endif
++
++#define OV_DL_FUNCS(X) \
++    X(ov_compiled_model_create_infer_request) \
++    X(ov_compiled_model_free) \
++    X(ov_const_port_get_shape) \
++    X(ov_core_compile_model) \
++    X(ov_core_create) \
++    X(ov_core_free) \
++    X(ov_core_read_model) \
++    X(ov_free) \
++    X(ov_get_openvino_version) \
++    X(ov_infer_request_free) \
++    X(ov_infer_request_get_tensor_by_const_port) \
++    X(ov_infer_request_infer) \
++    X(ov_infer_request_set_callback) \
++    X(ov_infer_request_set_input_tensor) \
++    X(ov_infer_request_start_async) \
++    X(ov_layout_create) \
++    X(ov_layout_free) \
++    X(ov_model_const_input) \
++    X(ov_model_const_input_by_name) \
++    X(ov_model_const_output_by_index) \
++    X(ov_model_const_output_by_name) \
++    X(ov_model_free) \
++    X(ov_model_outputs_size) \
++    X(ov_model_reshape_single_input) \
++    X(ov_output_const_port_free) \
++    X(ov_partial_shape_create) \
++    X(ov_partial_shape_free) \
++    X(ov_port_get_any_name) \
++    X(ov_port_get_element_type) \
++    X(ov_preprocess_input_info_free) \
++    X(ov_preprocess_input_info_get_model_info) \
++    X(ov_preprocess_input_info_get_preprocess_steps) \
++    X(ov_preprocess_input_info_get_tensor_info) \
++    X(ov_preprocess_input_model_info_free) \
++    X(ov_preprocess_input_model_info_set_layout) \
++    X(ov_preprocess_input_tensor_info_free) \
++    X(ov_preprocess_input_tensor_info_set_element_type) \
++    X(ov_preprocess_input_tensor_info_set_layout) \
++    X(ov_preprocess_output_info_free) \
++    X(ov_preprocess_output_info_get_tensor_info) \
++    X(ov_preprocess_output_set_element_type) \
++    X(ov_preprocess_output_tensor_info_free) \
++    X(ov_preprocess_prepostprocessor_build) \
++    X(ov_preprocess_prepostprocessor_create) \
++    X(ov_preprocess_prepostprocessor_free) \
++    X(ov_preprocess_prepostprocessor_get_input_info) \
++    X(ov_preprocess_prepostprocessor_get_input_info_by_name) \
++    X(ov_preprocess_prepostprocessor_get_output_info_by_index) \
++    X(ov_preprocess_prepostprocessor_get_output_info_by_name) \
++    X(ov_preprocess_preprocess_steps_convert_element_type) \
++    X(ov_preprocess_preprocess_steps_free) \
++    X(ov_preprocess_preprocess_steps_mean) \
++    X(ov_preprocess_preprocess_steps_scale) \
++    X(ov_shape_free) \
++    X(ov_shape_to_partial_shape) \
++    X(ov_tensor_create) \
++    X(ov_tensor_data) \
++    X(ov_tensor_free) \
++    X(ov_tensor_get_shape) \
++    X(ov_version_free)
++
++#define OV_DL_DECLARE(f) __typeof__(f) *f;
++static struct {
++    void *handle;
++    OV_DL_FUNCS(OV_DL_DECLARE)
++} ov_dl;
++static AVOnce ov_dl_once = AV_ONCE_INIT;
++
++static void ov_dl_load(void)
++{
++    void *handle = dlopen(OPENVINO_C_LIBNAME, RTLD_NOW | RTLD_LOCAL);
++    if (!handle) {
++        av_log(NULL, AV_LOG_ERROR, "Cannot load %s: %s\n"
++               "The OpenVINO DNN backend requires the OpenVINO runtime to be installed.\n",
++               OPENVINO_C_LIBNAME, dlerror());
++        return;
++    }
++#define OV_DL_LOAD(f)                                                       \
++    if (!(ov_dl.f = (__typeof__(f) *)dlsym(handle, #f))) {                  \
++        av_log(NULL, AV_LOG_ERROR, "Cannot find %s in %s\n", #f,            \
++               OPENVINO_C_LIBNAME);                                         \
++        dlclose(handle);                                                    \
++        return;                                                             \
++    }
++    OV_DL_FUNCS(OV_DL_LOAD)
++    ov_dl.handle = handle;
++}
++
++static int ov_dl_init(void)
++{
++    ff_thread_once(&ov_dl_once, ov_dl_load);
++    return ov_dl.handle ? 0 : AVERROR(ENOSYS);
++}
++
++#define ov_compiled_model_create_infer_request(...) ov_dl.ov_compiled_model_create_infer_request(__VA_ARGS__)
++#define ov_compiled_model_free(...) ov_dl.ov_compiled_model_free(__VA_ARGS__)
++#define ov_const_port_get_shape(...) ov_dl.ov_const_port_get_shape(__VA_ARGS__)
++#define ov_core_compile_model(...) ov_dl.ov_core_compile_model(__VA_ARGS__)
++#define ov_core_create(...) ov_dl.ov_core_create(__VA_ARGS__)
++#define ov_core_free(...) ov_dl.ov_core_free(__VA_ARGS__)
++#define ov_core_read_model(...) ov_dl.ov_core_read_model(__VA_ARGS__)
++#define ov_free(...) ov_dl.ov_free(__VA_ARGS__)
++#define ov_get_openvino_version(...) ov_dl.ov_get_openvino_version(__VA_ARGS__)
++#define ov_infer_request_free(...) ov_dl.ov_infer_request_free(__VA_ARGS__)
++#define ov_infer_request_get_tensor_by_const_port(...) ov_dl.ov_infer_request_get_tensor_by_const_port(__VA_ARGS__)
++#define ov_infer_request_infer(...) ov_dl.ov_infer_request_infer(__VA_ARGS__)
++#define ov_infer_request_set_callback(...) ov_dl.ov_infer_request_set_callback(__VA_ARGS__)
++#define ov_infer_request_set_input_tensor(...) ov_dl.ov_infer_request_set_input_tensor(__VA_ARGS__)
++#define ov_infer_request_start_async(...) ov_dl.ov_infer_request_start_async(__VA_ARGS__)
++#define ov_layout_create(...) ov_dl.ov_layout_create(__VA_ARGS__)
++#define ov_layout_free(...) ov_dl.ov_layout_free(__VA_ARGS__)
++#define ov_model_const_input(...) ov_dl.ov_model_const_input(__VA_ARGS__)
++#define ov_model_const_input_by_name(...) ov_dl.ov_model_const_input_by_name(__VA_ARGS__)
++#define ov_model_const_output_by_index(...) ov_dl.ov_model_const_output_by_index(__VA_ARGS__)
++#define ov_model_const_output_by_name(...) ov_dl.ov_model_const_output_by_name(__VA_ARGS__)
++#define ov_model_free(...) ov_dl.ov_model_free(__VA_ARGS__)
++#define ov_model_outputs_size(...) ov_dl.ov_model_outputs_size(__VA_ARGS__)
++#define ov_model_reshape_single_input(...) ov_dl.ov_model_reshape_single_input(__VA_ARGS__)
++#define ov_output_const_port_free(...) ov_dl.ov_output_const_port_free(__VA_ARGS__)
++#define ov_partial_shape_create(...) ov_dl.ov_partial_shape_create(__VA_ARGS__)
++#define ov_partial_shape_free(...) ov_dl.ov_partial_shape_free(__VA_ARGS__)
++#define ov_port_get_any_name(...) ov_dl.ov_port_get_any_name(__VA_ARGS__)
++#define ov_port_get_element_type(...) ov_dl.ov_port_get_element_type(__VA_ARGS__)
++#define ov_preprocess_input_info_free(...) ov_dl.ov_preprocess_input_info_free(__VA_ARGS__)
++#define ov_preprocess_input_info_get_model_info(...) ov_dl.ov_preprocess_input_info_get_model_info(__VA_ARGS__)
++#define ov_preprocess_input_info_get_preprocess_steps(...) ov_dl.ov_preprocess_input_info_get_preprocess_steps(__VA_ARGS__)
++#define ov_preprocess_input_info_get_tensor_info(...) ov_dl.ov_preprocess_input_info_get_tensor_info(__VA_ARGS__)
++#define ov_preprocess_input_model_info_free(...) ov_dl.ov_preprocess_input_model_info_free(__VA_ARGS__)
++#define ov_preprocess_input_model_info_set_layout(...) ov_dl.ov_preprocess_input_model_info_set_layout(__VA_ARGS__)
++#define ov_preprocess_input_tensor_info_free(...) ov_dl.ov_preprocess_input_tensor_info_free(__VA_ARGS__)
++#define ov_preprocess_input_tensor_info_set_element_type(...) ov_dl.ov_preprocess_input_tensor_info_set_element_type(__VA_ARGS__)
++#define ov_preprocess_input_tensor_info_set_layout(...) ov_dl.ov_preprocess_input_tensor_info_set_layout(__VA_ARGS__)
++#define ov_preprocess_output_info_free(...) ov_dl.ov_preprocess_output_info_free(__VA_ARGS__)
++#define ov_preprocess_output_info_get_tensor_info(...) ov_dl.ov_preprocess_output_info_get_tensor_info(__VA_ARGS__)
++#define ov_preprocess_output_set_element_type(...) ov_dl.ov_preprocess_output_set_element_type(__VA_ARGS__)
++#define ov_preprocess_output_tensor_info_free(...) ov_dl.ov_preprocess_output_tensor_info_free(__VA_ARGS__)
++#define ov_preprocess_prepostprocessor_build(...) ov_dl.ov_preprocess_prepostprocessor_build(__VA_ARGS__)
++#define ov_preprocess_prepostprocessor_create(...) ov_dl.ov_preprocess_prepostprocessor_create(__VA_ARGS__)
++#define ov_preprocess_prepostprocessor_free(...) ov_dl.ov_preprocess_prepostprocessor_free(__VA_ARGS__)
++#define ov_preprocess_prepostprocessor_get_input_info(...) ov_dl.ov_preprocess_prepostprocessor_get_input_info(__VA_ARGS__)
++#define ov_preprocess_prepostprocessor_get_input_info_by_name(...) ov_dl.ov_preprocess_prepostprocessor_get_input_info_by_name(__VA_ARGS__)
++#define ov_preprocess_prepostprocessor_get_output_info_by_index(...) ov_dl.ov_preprocess_prepostprocessor_get_output_info_by_index(__VA_ARGS__)
++#define ov_preprocess_prepostprocessor_get_output_info_by_name(...) ov_dl.ov_preprocess_prepostprocessor_get_output_info_by_name(__VA_ARGS__)
++#define ov_preprocess_preprocess_steps_convert_element_type(...) ov_dl.ov_preprocess_preprocess_steps_convert_element_type(__VA_ARGS__)
++#define ov_preprocess_preprocess_steps_free(...) ov_dl.ov_preprocess_preprocess_steps_free(__VA_ARGS__)
++#define ov_preprocess_preprocess_steps_mean(...) ov_dl.ov_preprocess_preprocess_steps_mean(__VA_ARGS__)
++#define ov_preprocess_preprocess_steps_scale(...) ov_dl.ov_preprocess_preprocess_steps_scale(__VA_ARGS__)
++#define ov_shape_free(...) ov_dl.ov_shape_free(__VA_ARGS__)
++#define ov_shape_to_partial_shape(...) ov_dl.ov_shape_to_partial_shape(__VA_ARGS__)
++#define ov_tensor_create(...) ov_dl.ov_tensor_create(__VA_ARGS__)
++#define ov_tensor_data(...) ov_dl.ov_tensor_data(__VA_ARGS__)
++#define ov_tensor_free(...) ov_dl.ov_tensor_free(__VA_ARGS__)
++#define ov_tensor_get_shape(...) ov_dl.ov_tensor_get_shape(__VA_ARGS__)
++#define ov_version_free(...) ov_dl.ov_version_free(__VA_ARGS__)
++#endif /* CONFIG_LIBOPENVINO_DLOPEN */
++
+ typedef struct OVModel{
+     DNNModel model;
+     DnnContext *ctx;
+@@ -1378,6 +1554,11 @@ static DNNModel *dnn_load_model_ov(DnnContext *ctx, DNNFunctionType func_type, A
+     IEStatusCode status;
+ #endif
+ 
++#if CONFIG_LIBOPENVINO_DLOPEN
++    if (ov_dl_init() < 0)
++        return NULL;
++#endif
++
+     ov_model = av_mallocz(sizeof(OVModel));
+     if (!ov_model)
+         return NULL;
+-- 
+2.56.0
+

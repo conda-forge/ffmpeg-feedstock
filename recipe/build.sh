@@ -145,7 +145,17 @@ fi
 if [[ "${target_platform}" == linux-ppc64le ]] || [[ "${target_platform}" == win-64 ]] || [[ "${target_platform}" == osx-64 ]]; then
     extra_args="${extra_args} --disable-libopenvino"
 else
-    extra_args="${extra_args} --enable-libopenvino"
+    extra_args="${extra_args} --enable-libopenvino --enable-libopenvino-dlopen"
+    if [[ "${target_platform}" == osx-* ]]; then
+        openvino_c_soversion=$(ls "${PREFIX}/lib" | sed -nE 's/^libopenvino_c\.([0-9]+)\.dylib$/\1/p')
+    else
+        openvino_c_soversion=$(ls "${PREFIX}/lib" | sed -nE 's/^libopenvino_c\.so\.([0-9]+)$/\1/p')
+    fi
+    if [[ -z "${openvino_c_soversion}" ]]; then
+        echo "Could not determine the libopenvino_c soversion"
+        exit 1
+    fi
+    extra_args="${extra_args} --extra-cflags=-DOPENVINO_C_SOVERSION=${openvino_c_soversion}"
 fi
 
 if [[ "${license_family}" == "gpl" ]]; then
