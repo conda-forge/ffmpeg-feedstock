@@ -1,5 +1,3 @@
-MACOSX_DEPLOYMENT_TARGET:
-- '11.0'
 MACOSX_SDK_VERSION:
 - '11.0'
 aom:
@@ -44,6 +42,8 @@ libjxl:
 - '0.12'
 liblzma_devel:
 - '5'
+libopenvino:
+- 2026.4.1
 libplacebo:
 - '7.360'
 librsvg:
