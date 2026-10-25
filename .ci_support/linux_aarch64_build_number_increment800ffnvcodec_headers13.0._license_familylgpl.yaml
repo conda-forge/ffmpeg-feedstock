@@ -1,3 +1,5 @@
+DOCKER_PLATFORM:
+- linux/aarch64
 alsa_lib:
 - '1.2'
 aom:

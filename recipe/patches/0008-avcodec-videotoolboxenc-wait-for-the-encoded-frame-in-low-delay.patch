@@ -1,0 +1,113 @@
+From ff756888a816d49e40e4b632b61d08d909aec285 Mon Sep 17 00:00:00 2001
+From: Mark Harfouche <mark.harfouche@gmail.com>
+Date: Sun, 25 Oct 2026 13:29:43 -0400
+Subject: [PATCH] avcodec/videotoolboxenc: wait for the encoded frame in low
+ delay mode
+
+VideoToolbox encodes asynchronously, so vtenc_frame() pops whatever packet
+the output callback has queued so far. With nothing waiting for the frame
+just sent, its packet is only returned by the call that sends the next
+frame: every packet comes back one frame late, even with
+AV_CODEC_FLAG_LOW_DELAY and no B-frames.
+
+Count the frames VideoToolbox has handed back to the output callback
+(encoded, dropped or failed) and, in low delay mode without B-frames, wait
+until every frame sent so far has been returned before popping. A dropped
+frame is counted too, so this never waits for a packet that will not come.
+
+Suggested upstream, not yet merged:
+https://code.ffmpeg.org/FFmpeg/FFmpeg/issues/25451
+Rebased onto 9.0.2 (context-only change in vtenc_populate_extradata()).
+---
+ libavcodec/videotoolboxenc.c | 47 +++++++++++++++++++++++++++++++++++-
+ 1 file changed, 46 insertions(+), 1 deletion(-)
+
+diff --git a/libavcodec/videotoolboxenc.c b/libavcodec/videotoolboxenc.c
+index de52923..561108a 100644
+--- a/libavcodec/videotoolboxenc.c
++++ b/libavcodec/videotoolboxenc.c
+@@ -262,6 +262,9 @@ typedef struct VTEncContext {
+ 
+     int64_t frame_ct_out;
+     int64_t frame_ct_in;
++    /* Frames VideoToolbox has returned to the output callback, encoded,
++     * dropped or failed. Under lock; cv_sample_sent is signalled for each. */
++    int64_t frame_ct_done;
+ 
+     int64_t first_pts;
+     int64_t dts_delta;
+@@ -737,7 +740,7 @@ static int set_extradata(AVCodecContext *avctx, CMSampleBufferRef sample_buffer)
+     return 0;
+ }
+ 
+-static void vtenc_output_callback(
++static void vtenc_handle_output(
+     void *ctx,
+     void *sourceFrameCtx,
+     OSStatus status,
+@@ -780,6 +783,42 @@ static void vtenc_output_callback(
+     vtenc_q_push(vtctx, info);
+ }
+ 
++static void vtenc_output_callback(
++    void *ctx,
++    void *sourceFrameCtx,
++    OSStatus status,
++    VTEncodeInfoFlags flags,
++    CMSampleBufferRef sample_buffer)
++{
++    AVCodecContext *avctx = ctx;
++    VTEncContext   *vtctx = avctx->priv_data;
++
++    vtenc_handle_output(ctx, sourceFrameCtx, status, flags, sample_buffer);
++
++    // Counted after the packet, if any, is queued: a waiter that sees the
++    // count can pop it.
++    pthread_mutex_lock(&vtctx->lock);
++    vtctx->frame_ct_done++;
++    pthread_cond_signal(&vtctx->cv_sample_sent);
++    pthread_mutex_unlock(&vtctx->lock);
++}
++
++/**
++ * Wait until VideoToolbox has returned every frame sent so far.
++ *
++ * VideoToolbox encodes asynchronously, so without this a packet is only
++ * popped by the call that sends the next frame, one frame late. A dropped
++ * frame returns no packet but is counted all the same, so this never waits
++ * for a packet that will not come.
++ */
++static void vtenc_wait_for_output(VTEncContext *vtctx)
++{
++    pthread_mutex_lock(&vtctx->lock);
++    while (vtctx->frame_ct_done < vtctx->frame_ct_in && !vtctx->async_error)
++        pthread_cond_wait(&vtctx->cv_sample_sent, &vtctx->lock);
++    pthread_mutex_unlock(&vtctx->lock);
++}
++
+ static int get_length_code_size(
+     AVCodecContext    *avctx,
+     CMSampleBufferRef sample_buffer,
+@@ -2579,6 +2618,11 @@ static av_cold int vtenc_frame(
+         goto end_nopkt;
+     }
+ 
++    // In low delay mode the encoder is one-in-one-out: return the packet of
++    // the frame just sent instead of leaving it for the next call.
++    if (frame && (avctx->flags & AV_CODEC_FLAG_LOW_DELAY) && !vtctx->has_b_frames)
++        vtenc_wait_for_output(vtctx);
++
+     status = vtenc_q_pop(vtctx, !frame, &buf, &sei);
+     if (status) goto end_nopkt;
+     if (!buf)   goto end_nopkt;
+@@ -2691,6 +2735,7 @@ pe_cleanup:
+     }
+ 
+     vtctx->frame_ct_out = 0;
++    vtctx->frame_ct_done = 0;
+ 
+     av_assert0(status != 0 || (avctx->extradata && avctx->extradata_size > 0));
+     if (!status)
+-- 
+2.55.0
+

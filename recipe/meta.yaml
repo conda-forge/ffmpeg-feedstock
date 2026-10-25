@@ -42,7 +42,10 @@ source:
     # https://code.ffmpeg.org/FFmpeg/FFmpeg/issues/24019
     - patches/0007-avcodec-nvenc-fix-double-free-of-the-input-buffer.patch
 
-{% set build = 5 %}
+    # https://code.ffmpeg.org/FFmpeg/FFmpeg/issues/25451
+    - patches/0008-avcodec-videotoolboxenc-wait-for-the-encoded-frame-in-low-delay.patch
+
+{% set build = 6 %}
 {% set build = build | int + build_number_increment | int %}
 {% if license_family == 'gpl' %}
     {% set build = build + 100 %}
