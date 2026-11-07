@@ -45,7 +45,7 @@ liblzma_devel:
 libopenvino_dev:
 - 2026.4.1
 libplacebo:
-- '7.360'
+- '7.387'
 librsvg:
 - '2'
 libvpx:
@@ -59,7 +59,7 @@ license_family:
 macos_machine:
 - arm64-apple-darwin20.0.0
 openh264:
-- 2.6.0
+- 2.7.0
 openssl:
 - '3.5'
 sdl2:
@@ -67,7 +67,7 @@ sdl2:
 shaderc:
 - '2026.4'
 svt_av1:
-- 4.2.0
+- 4.3.0
 target_platform:
 - osx-arm64
 x264:

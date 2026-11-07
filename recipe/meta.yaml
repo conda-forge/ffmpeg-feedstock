@@ -42,7 +42,7 @@ source:
     # https://code.ffmpeg.org/FFmpeg/FFmpeg/issues/24019
     - patches/0007-avcodec-nvenc-fix-double-free-of-the-input-buffer.patch
 
-{% set build = 6 %}
+{% set build = 7 %}
 {% set build = build | int + build_number_increment | int %}
 {% if license_family == 'gpl' %}
     {% set build = build + 100 %}
