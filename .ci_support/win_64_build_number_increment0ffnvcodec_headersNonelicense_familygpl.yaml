@@ -43,7 +43,7 @@ libxml2_devel:
 license_family:
 - gpl
 openh264:
-- 2.6.0
+- 2.7.0
 openssl:
 - '3.5'
 sdl2:

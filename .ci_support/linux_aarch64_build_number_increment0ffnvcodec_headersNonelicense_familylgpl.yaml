@@ -1,3 +1,5 @@
+DOCKER_PLATFORM:
+- linux/aarch64
 alsa_lib:
 - '1.2'
 aom:
@@ -63,7 +65,7 @@ libxml2_devel:
 license_family:
 - lgpl
 openh264:
-- 2.6.0
+- 2.7.0
 openssl:
 - '3.5'
 pulseaudio_client:
