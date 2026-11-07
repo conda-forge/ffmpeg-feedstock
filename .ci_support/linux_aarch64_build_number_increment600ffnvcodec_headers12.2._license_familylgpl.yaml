@@ -65,7 +65,7 @@ libxml2_devel:
 license_family:
 - lgpl
 openh264:
-- 2.6.0
+- 2.7.0
 openssl:
 - '3.5'
 pulseaudio_client:
@@ -75,7 +75,7 @@ sdl2:
 shaderc:
 - '2026.4'
 svt_av1:
-- 4.2.0
+- 4.3.0
 target_platform:
 - linux-aarch64
 x264:
