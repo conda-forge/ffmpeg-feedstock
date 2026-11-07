@@ -1,3 +1,5 @@
+DOCKER_PLATFORM:
+- linux/amd64
 alsa_lib:
 - '1.2'
 aom:
@@ -49,7 +51,7 @@ liblzma_devel:
 libopenvino_dev:
 - 2026.4.1
 libplacebo:
-- '7.360'
+- '7.387'
 librsvg:
 - '2'
 libvpl:
