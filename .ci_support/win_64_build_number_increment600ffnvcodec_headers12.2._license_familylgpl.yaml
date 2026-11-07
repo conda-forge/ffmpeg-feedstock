@@ -51,7 +51,7 @@ sdl2:
 shaderc:
 - '2026.4'
 svt_av1:
-- 4.2.0
+- 4.3.0
 target_platform:
 - win-64
 x264:
