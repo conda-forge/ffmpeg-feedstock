@@ -1,4 +1,4 @@
-{% set version = "9.0.2" %} # semver: (x.y.z)
+{% set version = "9.1.0" %} # semver: (x.y.z)
 {% set x,y,z = version.split('.') %}
 {% set version_ffmpeg_style = x ~ '.' ~ y if z == "0" else version %}
 {% set build_number_increment = build_number_increment | default(0) %}
@@ -10,7 +10,7 @@ package:
 
 source:
   url: https://ffmpeg.org/releases/ffmpeg-{{ version_ffmpeg_style }}.tar.gz
-  sha256: 84960df915059e8754fef2cd7c9afeb614062b1b5458ec471eecee619ee04e98
+  sha256: a7a5c7219a9232e2017f7584922b50e96c1d6d7b55737184f94e394a229d13c7
   patches:
     ### conda-forge patches below
     - patches/0001-Generate-pkgconfig-for-windows.patch  # [win]
@@ -35,14 +35,7 @@ source:
     # hmaarrfk -- not sure why i need this one. need to report upstream
     - patches/0006-Use-forward-lahs-on-windows.patch
 
-    # nvenc aborts the process instead of failing cleanly when
-    # nvEncCreateBitstreamBuffer() fails during encoder init: the input buffer
-    # is destroyed on the error path but the handle is left dangling, and
-    # ff_nvenc_encode_close() then destroys it a second time.
-    # https://code.ffmpeg.org/FFmpeg/FFmpeg/issues/24019
-    - patches/0007-avcodec-nvenc-fix-double-free-of-the-input-buffer.patch
-
-{% set build = 8 %}
+{% set build = 0 %}
 {% set build = build | int + build_number_increment | int %}
 {% if license_family == 'gpl' %}
     {% set build = build + 100 %}
